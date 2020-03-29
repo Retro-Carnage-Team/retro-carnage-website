@@ -1,0 +1,10 @@
+div.TitleScreen {
+    background-color: black;    
+    height: 100%;
+}
+
+h1 {
+    color: #ca5512;
+    font-size: 32px;
+    margin-top: 0;
+}
