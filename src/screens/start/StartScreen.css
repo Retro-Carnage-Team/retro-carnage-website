@@ -1,0 +1,35 @@
+div.StartScreen {
+    background-color: black;    
+    height: 100%;
+}
+
+div.space-0 {
+    height: 20%;
+    width: 100%;
+}
+
+h1 {
+    color: #ca5512;
+    font-size: 32px;
+    margin-top: 0;
+}
+
+div.space-1 {
+    height: 0%;
+    width: 100%;
+}
+
+p.copyright {
+    color: #fbe356;
+    font-size: 32px;
+}
+
+div.space-2 {
+    height: 10%;
+    width: 100%;
+}
+
+p.inspired-by {
+    color: #12a45d;
+    font-size: 32px;
+}

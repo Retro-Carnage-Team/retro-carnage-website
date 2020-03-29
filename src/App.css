@@ -1,4 +1,6 @@
 .App {
-  font-family: 'stencil_cargo_armyregular';
+  background-color: black;
+  font-family: 'stencil_cargo_armyregular';  
+  height: 100%;
   text-align: center;
 }

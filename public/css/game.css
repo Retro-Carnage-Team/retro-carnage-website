@@ -1,18 +1,14 @@
 @font-face {
-font-family: 'stencil_cargo_armyregular';
-src: url('../fonts/stencil-cargo-army.woff2') format('woff2'),
-     url('../fonts/stencil-cargo-army.woff') format('woff');
-font-weight: normal;
-font-style: normal;
+    font-family: 'stencil_cargo_armyregular';
+    src: url('../fonts/stencil-cargo-army.woff2') format('woff2'),
+        url('../fonts/stencil-cargo-army.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-html, body {
+html {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body {
-    overflow: hidden;
 }
     

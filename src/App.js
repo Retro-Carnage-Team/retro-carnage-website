@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 
+import StartScreen from './screens/start/StartScreen';
+
 function App() {
   return (
     <div className="App">
-      <h1>TEST TEST TEST</h1>
+      <StartScreen />
     </div>
   );
 }
