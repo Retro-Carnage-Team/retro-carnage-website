@@ -1,0 +1,15 @@
+div.map-screen {
+    background-color: black;    
+    height: 100%;
+}
+
+div.briefing-container {
+    height: 25%;    
+    width: 100%;    
+}
+
+div.world-map-container {
+    height: 75%;
+    text-align: center;
+    width: 100%;
+}

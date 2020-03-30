@@ -21,7 +21,7 @@ function StartScreen(props) {
   setTimeout(moveToNextScreen, 2000);
 
   return (
-    <div className="StartScreen">
+    <div className="start-screen">
       <div className="space-0" />
       <h1>DOGS OF WAR II</h1>
 

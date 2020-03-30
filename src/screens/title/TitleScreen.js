@@ -10,7 +10,7 @@ function TitleScreen(props) {
   }
 
   return (
-    <div className="TitleScreen" onClick={ moveToNextScreen }>
+    <div className="title-screen" onClick={ moveToNextScreen }>
       <h1>TITLE SCREEN</h1>
 
       <div className="space-0" />
