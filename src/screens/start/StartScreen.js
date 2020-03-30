@@ -1,6 +1,7 @@
 import React from 'react';
 import './StartScreen.css';
 import { TITLE_SCREEN_NAME } from '../title/TitleScreen';
+import { MUSIC_THEME } from '../../game/SoundBoard';
 
 function StartScreen(props) {
 
@@ -10,6 +11,13 @@ function StartScreen(props) {
     }
   }
 
+  function playTheme() {
+    if("object" === typeof props.soundBoard) {
+      props.soundBoard.play(MUSIC_THEME);
+    }
+  }
+  
+  setTimeout(playTheme, 1250);
   setTimeout(moveToNextScreen, 2000);
 
   return (
