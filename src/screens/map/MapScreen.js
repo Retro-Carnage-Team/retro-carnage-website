@@ -1,6 +1,7 @@
 import React from 'react';
 import './MapScreen.css';
 import MissionBriefing from './MissionBriefing';
+import Levels from '../../game/Levels';
 
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
@@ -10,10 +11,14 @@ class MapScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      imageSize: '100%',
+      imageSize: '100%',      
       scalingFactor: 1.0,
       selectedMission: null
     };
+    this.missions = Levels.map(l => ({ 
+      location: l.location,
+      name: l.name
+    }))
   }
 
   updateDimensions = () => {
@@ -23,12 +28,12 @@ class MapScreen extends React.Component {
     if(WORLD_MAP_HEIGHT * widthFactor > availableHeight) {
       const heightFactor = availableHeight / WORLD_MAP_HEIGHT;
       this.setState({ 
-        imageSize: (WORLD_MAP_WIDTH * heightFactor) + "px",
+        imageSize: (WORLD_MAP_WIDTH * heightFactor),
         scalingFactor: heightFactor
       });
     } else {
       this.setState({ 
-        imageSize: availableWidth + "px",
+        imageSize: availableWidth,
         scalingFactor: widthFactor
       });
     }
@@ -44,13 +49,21 @@ class MapScreen extends React.Component {
   }
 
   render() {
+    const widthOfPositionMarker = 18;
+    const spots = this.missions.map(m => (
+      <div className="location-marker" key={ m.name } style={{ 
+        left: ((window.innerWidth - this.state.imageSize) / 2) + (m.location.longitude * this.state.scalingFactor) -(widthOfPositionMarker / 2),
+        top: (m.location.latitude * this.state.scalingFactor) -(widthOfPositionMarker / 2)
+      }} />
+    )); 
     return (
       <div className="map-screen">
         <div className="briefing-container">
           <MissionBriefing mission={ this.selectedMission }/>
         </div>        
         <div className="world-map-container">
-          <img style={{width: this.state.imageSize}} src="images/backgrounds/world-map.jpg" alt=""></img>
+          <img style={{width: this.state.imageSize + 'px'}} src="images/backgrounds/world-map.jpg" alt=""></img>
+          { spots }
         </div>
       </div>
     );
