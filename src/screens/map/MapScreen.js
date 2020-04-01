@@ -11,7 +11,7 @@ class MapScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      imageSize: '100%',      
+      imageSize: '100',      
       scalingFactor: 1.0,
       selectedMission: null
     };
@@ -19,6 +19,53 @@ class MapScreen extends React.Component {
       location: l.location,
       name: l.name
     }))
+  }  
+
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
+
+  render() {
+    const widthOfPositionMarker = 18;
+    const spots = this.missions.map(m => (
+      <div 
+        className="location-container" 
+        key={ m.name } 
+        onMouseEnter={ this.handleMissionMouseEnter.bind(this, m.name) }
+        onMouseLeave={ this.handleMissionMouseLeave } 
+        style={{ 
+        left: ((window.innerWidth - this.state.imageSize) / 2) + (m.location.longitude * this.state.scalingFactor) -(widthOfPositionMarker / 2),
+        top: (m.location.latitude * this.state.scalingFactor) -(widthOfPositionMarker / 2)
+      }}>
+        <div className="location-marker" />
+      </div>      
+    )); 
+    return (
+      <div className="map-screen">
+        <div className="briefing-container">
+          <MissionBriefing mission={ this.state.selectedMission }/>
+        </div>        
+        <div className="world-map-container">
+          <img style={{width: this.state.imageSize + 'px'}} src="images/backgrounds/world-map.jpg" alt=""></img>
+          { spots }
+        </div>
+      </div>
+    );
+  }
+
+  handleMissionMouseEnter = (missionName) => {
+    console.log("handleMissionMouseEnter", missionName);
+    this.setState({ selectedMission: missionName });
+  }
+
+  handleMissionMouseLeave = () => {
+    console.log("handleMissionMouseLeave");
+    this.setState({ selectedMission: null });
   }
 
   updateDimensions = () => {
@@ -37,36 +84,6 @@ class MapScreen extends React.Component {
         scalingFactor: widthFactor
       });
     }
-  }
-
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
-
-  render() {
-    const widthOfPositionMarker = 18;
-    const spots = this.missions.map(m => (
-      <div className="location-marker" key={ m.name } style={{ 
-        left: ((window.innerWidth - this.state.imageSize) / 2) + (m.location.longitude * this.state.scalingFactor) -(widthOfPositionMarker / 2),
-        top: (m.location.latitude * this.state.scalingFactor) -(widthOfPositionMarker / 2)
-      }} />
-    )); 
-    return (
-      <div className="map-screen">
-        <div className="briefing-container">
-          <MissionBriefing mission={ this.selectedMission }/>
-        </div>        
-        <div className="world-map-container">
-          <img style={{width: this.state.imageSize + 'px'}} src="images/backgrounds/world-map.jpg" alt=""></img>
-          { spots }
-        </div>
-      </div>
-    );
   }
 
 }

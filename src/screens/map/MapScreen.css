@@ -15,15 +15,21 @@ div.world-map-container {
     width: 100%;
 }
 
-.location-marker {
-    border: 3px solid orange;
-    border-radius: 30px;
-    height: 18px;
-    width: 18px;
+.location-container {
+    height: 22px;
     position: absolute;
+    width: 22px;
+}
+
+.location-marker {
     animation: pulsate 1s ease-out;
     animation-iteration-count: infinite; 
-    opacity: 0.0
+    border: 3px solid orange;
+    border-radius: 30px;    
+    height: 18px;
+    opacity: 0.0;
+    position: absolute;
+    width: 18px;
 }
 
 @keyframes pulsate {

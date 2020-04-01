@@ -1,5 +1,5 @@
 const Levels = [{
-    briefing: "Ich bin Berlins erfolgreichster Influencer. 100.000 Follower alleine bei Insta - und da sind Facebook und Twitter noch nicht mit dabei. Schalte meinen Wettbewerber aus - für $10.000.",
+    briefing: "I am Berlin's hottest influencer. 30.000 followers at Insta alone - and that's not even counting Youtube and Twitter. My biggest competitor is envious and spreads the rumour that I am not vegan. Take out my competitor - for $10.000.",
     client: "images/tiles/clients/angry-beard-blur-close-up.jpg",
     location: {        
         latitude: 165,

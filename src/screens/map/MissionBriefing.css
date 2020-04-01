@@ -1,0 +1,31 @@
+div.mission-briefing {
+    height: 100%;
+}
+
+div.mission-briefing.selected {
+    display: flex;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+div.mission-briefing.empty div.space-0 {
+    height: 30%;
+    width: 100%;
+}
+
+div.mission-briefing.empty h1 {
+    color: #bb9f84;
+}
+
+div.mission-briefing.selected img {
+    float: left;
+    height: 75%;
+    margin-top: 20px;
+}
+
+div.mission-briefing.selected p {
+    color: #caba04;    
+    font-size: 32px;
+    margin-left: 30px;
+    text-align: initial;
+}
