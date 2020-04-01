@@ -30,8 +30,11 @@ function StartScreen(props) {
 
       <div className="space-2" />
       <p className="inspired-by">
-          INSPIRED BY "DOGS OF WAR"<br />
-          (C) 1989 BY ELITE SYSTEMS LTD.
+          Dedicated to Jonathan Werner
+      </p>
+      <p className="inspired-by">
+         Inspired by "DOGS OF WAR"<br />
+          (C) 1989 by Elite Systems Ltd.
       </p>
     </div>
   );
