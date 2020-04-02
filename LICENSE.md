@@ -17,9 +17,6 @@ This game is based on the work of many great artists who share their work with u
 
 #### Faces
 
-* A Winkel Tripel projection of a Visible Earth by [NASA](https://www.nasa.gov/)  
-  Link: https://commons.wikimedia.org/wiki/File:Winkel-tripel-projection.jpg  
-  License: https://en.wikipedia.org/wiki/public_domain
 * Man Wearing Blue Crew-neck T-shirt by [Italo Melo](https://www.pexels.com/@italo-melo-881954?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-wearing-blue-crew-neck-t-shirt-2379005/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)  
   Link: https://www.pexels.com/photo/man-wearing-blue-crew-neck-t-shirt-2379005/  
   License: https://www.pexels.com/photo-license/
@@ -116,6 +113,12 @@ This game is based on the work of many great artists who share their work with u
 * DM41 by Manniman2  
   Link: https://commons.wikimedia.org/wiki/File:DM41_4_noBG.png  
   License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+
+#### Other
+
+* A Winkel Tripel projection of a Visible Earth by [NASA](https://www.nasa.gov/)  
+  Link: https://commons.wikimedia.org/wiki/File:Winkel-tripel-projection.jpg  
+  License: https://en.wikipedia.org/wiki/public_domain
 
 ### Music
 
