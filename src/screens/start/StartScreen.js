@@ -3,6 +3,7 @@ import './StartScreen.css';
 import { TITLE_SCREEN_NAME } from '../title/TitleScreen';
 import { MUSIC_THEME } from '../../game/SoundBoard';
 import MissionController from '../../game/MissionController';
+import SoundBoard from '../../game/SoundBoard';
 
 function StartScreen(props) {
 
@@ -11,15 +12,11 @@ function StartScreen(props) {
   });
 
   function moveToNextScreen() {
-    if("function" === typeof props.onScreenChangeRequired) {
-      props.onScreenChangeRequired(TITLE_SCREEN_NAME);
-    }
+    props.onScreenChangeRequired(TITLE_SCREEN_NAME);
   }
 
   function playTheme() {
-    if("object" === typeof props.soundBoard) {
-      props.soundBoard.play(MUSIC_THEME);
-    }
+    SoundBoard.play(MUSIC_THEME);
   }
   
   setTimeout(playTheme, 1250);
@@ -39,7 +36,7 @@ function StartScreen(props) {
       </p>
       <p className="inspired-by">
          Inspired by "DOGS OF WAR"<br />
-          (C) 1989 by Elite Systems Ltd.
+         (C) 1989 by Elite Systems Ltd.
       </p>
     </div>
   );

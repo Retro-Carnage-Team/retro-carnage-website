@@ -22,5 +22,5 @@ test('Selected mission can be set and reset', () => {
   expect(MissionController.getSelectedMission()).toBe(missionName);
 
   MissionController.setSelectedMission(null);
-  expect(MissionController.getSelectedMission()).toBe(null);
+  expect(MissionController.getSelectedMission()).toBeNull();
 });

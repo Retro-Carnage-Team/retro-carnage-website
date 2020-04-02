@@ -1,7 +1,7 @@
+import Missions from './Missions';
+
 const KEY_CURRENT_MISSION = "current_mission";
 const KEY_FINISHED_MISSIONS = "finished_missions";
-
-import Missions from './Missions';
 
 class LevelController {
 

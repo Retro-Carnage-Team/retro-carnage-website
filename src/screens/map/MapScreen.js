@@ -3,6 +3,8 @@ import './MapScreen.css';
 import MissionBriefing from './MissionBriefing';
 import MissionController from '../../game/MissionController';
 
+import { SHOP_SCREEN_NAME } from '../shop/ShopScreen';
+
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
 
@@ -36,6 +38,7 @@ class MapScreen extends React.Component {
       <div 
         className="location-container" 
         key={ m.name } 
+        onClick={ this.handleMissionSelected.bind(this, m.name) }
         onMouseEnter={ this.handleMissionMouseEnter.bind(this, m.name) }
         onMouseLeave={ this.handleMissionMouseLeave } 
         style={{ 
@@ -64,6 +67,11 @@ class MapScreen extends React.Component {
 
   handleMissionMouseLeave = () => {
     this.setState({ selectedMission: null });
+  }
+
+  handleMissionSelected = (missionName) => {
+    MissionController.setSelectedMission(missionName);
+    this.props.onScreenChangeRequired(SHOP_SCREEN_NAME);
   }
 
   updateDimensions = () => {

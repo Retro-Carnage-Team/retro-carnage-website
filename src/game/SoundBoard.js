@@ -12,7 +12,7 @@ export const MUSIC_BACKGROUND_11 = 'Missing-You.mp3';
 export const MUSIC_BACKGROUND_12 = 'Raging-Streets.mp3';
 export const MUSIC_THEME = 'The-Only-Me-is-Me.mp3';
 
-export default class SoundBoard {
+class SoundBoard {
 
     constructor() {
         this.sounds = [];
@@ -57,3 +57,7 @@ export default class SoundBoard {
     }
 
 };
+
+const soundBoardInstance = new SoundBoard();
+
+export default soundBoardInstance;
