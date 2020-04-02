@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './StartScreen.css';
 import { TITLE_SCREEN_NAME } from '../title/TitleScreen';
 import { MUSIC_THEME } from '../../game/SoundBoard';
+import MissionController from '../../game/MissionController';
 
 function StartScreen(props) {
+
+  useEffect(() => { 
+    MissionController.reset();
+  });
 
   function moveToNextScreen() {
     if("function" === typeof props.onScreenChangeRequired) {

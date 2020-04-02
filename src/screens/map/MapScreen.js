@@ -1,7 +1,7 @@
 import React from 'react';
 import './MapScreen.css';
 import MissionBriefing from './MissionBriefing';
-import Levels from '../../game/Levels';
+import MissionController from '../../game/MissionController';
 
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
@@ -15,7 +15,7 @@ class MapScreen extends React.Component {
       scalingFactor: 1.0,
       selectedMission: null
     };
-    this.missions = Levels.map(l => ({ 
+    this.missions = MissionController.getRemainingMissions().map(l => ({ 
       location: l.location,
       name: l.name
     }))
@@ -59,12 +59,10 @@ class MapScreen extends React.Component {
   }
 
   handleMissionMouseEnter = (missionName) => {
-    console.log("handleMissionMouseEnter", missionName);
     this.setState({ selectedMission: missionName });
   }
 
   handleMissionMouseLeave = () => {
-    console.log("handleMissionMouseLeave");
     this.setState({ selectedMission: null });
   }
 

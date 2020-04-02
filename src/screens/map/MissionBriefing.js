@@ -1,6 +1,6 @@
 import React from 'react';
 import './MissionBriefing.css';
-import Levels from '../../game/Levels';
+import Missions from '../../game/Missions';
 
 function MissionBriefing(props) {
   if(!props.mission) {
@@ -11,7 +11,7 @@ function MissionBriefing(props) {
       </div>
     );
   } else {
-    const mission = Levels.find(m => m.name === props.mission);
+    const mission = Missions.find(m => m.name === props.mission);
     return (
       <div className="mission-briefing selected">
         <img src={ mission.client } alt="client"></img>        
