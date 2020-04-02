@@ -11,9 +11,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 
 ## Attributions
 
-This game uses the following media elements:
+This game is based on the work of many great artists who share their work with us free of charge. The following list contains all media elements that have not been created by the author of the software.
 
 ### Images
+
+#### Faces
 
 * A Winkel Tripel projection of a Visible Earth by [NASA](https://www.nasa.gov/)  
   Link: https://commons.wikimedia.org/wiki/File:Winkel-tripel-projection.jpg  
@@ -54,6 +56,66 @@ This game uses the following media elements:
 * Woman Wearing Black Long Sleeved Shirt by [Flávio Augusto](https://www.pexels.com/@flavio-augusto-918711?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-wearing-blue-crew-neck-t-shirt-2379005/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)  
   Link: https://www.pexels.com/photo/woman-wearing-black-long-sleeved-shirt-1832959/  
   License: https://www.pexels.com/photo-license/
+
+#### Weapons
+
+* HK-P7 by Betzi  
+  Link: https://commons.wikimedia.org/wiki/File:HK-P7.jpg  
+  License: https://creativecommons.org/licenses/by-sa/3.0/deed.en
+* SIG-P210 by Rama  
+  Link: https://commons.wikimedia.org/wiki/File:SIG_P210_IMG_6829-30_P2_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/2.0/fr/deed.de
+* Uzi by Uziel Galishto  
+  Link: https://commons.wikimedia.org/wiki/File:Uzi_of_the_israeli_armed_forces_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/3.0/deed.de
+* MP5K by US Air Force  
+  Link: https://commons.wikimedia.org/wiki/File:MP5K_Submachine_Gun_(7414624602)_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* HK-MP7 by KrisfromGermany  
+  Link: https://commons.wikimedia.org/wiki/File:HK_MP7_Bundeswehr_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* FAL-G1 by Kevin Murray  
+  Link: https://commons.wikimedia.org/wiki/File:German_FAL-G1_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/3.0/deed.de
+* AK74 by Russian Trooper  
+  Link: https://commons.wikimedia.org/wiki/File:Ak74assault.jpg  
+  License: Public Domain
+* AR10 by Le-boulanger  
+  Link: https://commons.wikimedia.org/wiki/File:AR10_Armalite_vue_d%27ensemble_noBG.jpg  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* G36 by DomoK, SSG VINCENT A KING, USA  
+  Link: https://commons.wikimedia.org/wiki/File:Gewehr_G36_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* HK416N by Dybdal  
+  Link: https://commons.wikimedia.org/wiki/File:HK416N.png  
+  License: https://creativecommons.org/licenses/by-sa/2.0/deed.de
+* BarM1918VWM by Mytwocents  
+  Link: https://commons.wikimedia.org/wiki/File:BarM1918VWM.jpg  
+  License: Public Domain
+* HK-21-LMG by Armémuseum (The Swedish Army Museum)  
+  Link: https://commons.wikimedia.org/wiki/File:HK_21_LMG_Left_and_Right_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* HK-MG4 by Spike78  
+  Link: https://commons.wikimedia.org/wiki/File:HK_MG4_01_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* MG42 by Phanatic  
+  Link: https://commons.wikimedia.org/wiki/File:MG42_1_noBG.jpg  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* M20-Bazooka by Bukvoed  
+  Link: https://commons.wikimedia.org/wiki/File:M20-bazooka-batey-haosef-1_noBG.jpg  
+  License: https://creativecommons.org/licenses/by-sa/3.0/deed.de
+* Panzerfaust-44 by German Armed Forces  
+  Link: https://commons.wikimedia.org/wiki/File:Leichte_Panzerfaust_44_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* Panzerfaust-3 by Sonaz  
+  Link: https://commons.wikimedia.org/wiki/File:Panzerfaust3_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/3.0/deed.de
+* Flammenwerfer-42 by Figugegl  
+  Link: https://commons.wikimedia.org/wiki/File:Flammenwerfer_42_55_W%2BF.jpg  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.en
+* DM41 by Manniman2  
+  Link: https://commons.wikimedia.org/wiki/File:DM41_4_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
 
 ### Music
 
