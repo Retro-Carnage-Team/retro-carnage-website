@@ -11,7 +11,7 @@ function MissionBriefing(props) {
       </div>
     );
   } else {
-    const mission = Levels.find(m => m.name === props.mission);    
+    const mission = Levels.find(m => m.name === props.mission);
     return (
       <div className="mission-briefing selected">
         <img src={ mission.client } alt="client"></img>        

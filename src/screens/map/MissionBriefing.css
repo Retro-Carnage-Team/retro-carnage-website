@@ -18,6 +18,8 @@ div.mission-briefing.empty h1 {
 }
 
 div.mission-briefing.selected img {
+    border: 5px solid #caba04;
+    border-radius: 30px;
     float: left;
     height: 75%;
     margin-top: 20px;

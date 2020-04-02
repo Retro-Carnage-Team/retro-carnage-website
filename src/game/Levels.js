@@ -17,14 +17,14 @@ const Levels = [{
     name: "Minsk",
     reward: 8000
 }, {
-    briefing: "",
+    briefing: "The government has arrested my brother, who worked as a reporter for a foreign news agency. They accuse him of aiding and abetting terrorists. Free my brother from the government prison and get him out of the country safely and you'll get $8,000.",
     client: "images/tiles/clients/woman-wearing-black-long-sleeved-shirt.jpg",
     location: {        
         latitude: 213,
         longitude: 734
     },
     name: "Istanbul",
-    reward: 5000
+    reward: 8000
 }, {
     briefing: "The leader of a local rebel organization bought missiles from me to enforce his legitimate interests. During the handover, special forces of an international military alliance appeared and confiscated the weapons. Return the missiles to my client to restore my reputation. I'll pay you $12,000.",
     client: "images/tiles/clients/bald-man-with-a-serious-facial-expression.jpg",
@@ -35,25 +35,25 @@ const Levels = [{
     name: "Tripolis",
     reward: 12000
 }, {
-    briefing: "",
+    briefing: "The situation in the city is dramatic. Terrorists, mercenaries and military of different nations are fighting a bloody battle for every square foot. The few remaining civilians are living through hell. You must put an end to this! Become the righteous hand of God and solve the conflict in you own way. We pay $15,000.",
     client: "images/tiles/clients/close-up-photo-of-man-s-face.jpg",
     location: {        
         latitude: 384,
         longitude: 800
     },
     name: "Mogadischu",
-    reward: 5000
+    reward: 15000
 }, {
-    briefing: "",
+    briefing: "Corrupt policemen have been confiscating all the medicines I need to treat my patients for months. We can buy the drugs from them at ten times the price. Many families cannot afford this and we have many deaths to mourn. Put an end to this unholy activity! I'll pay $11,000.",
     client: "images/tiles/clients/man-sitting-near-purple-wall.jpg",
     location: {        
         latitude: 311,
         longitude: 895
     },
     name: "Mumbai",
-    reward: 2000
+    reward: 11000
 }, {
-    briefing: "",
+    briefing: "The terrorists in the south of the country were always good customers of mine and bought my latest weapons. But now they are becoming a pain in the ass: bad payment practices, threats, no manners. Show them that such behaviour will not be tolerated by killing the leader's son. I pay $10,000.",
     client: "images/tiles/clients/man-in-brown-coat-and-gray-button-up-shirt.jpg",
     location: {        
         latitude: 199,
@@ -68,35 +68,35 @@ const Levels = [{
         latitude: 312,
         longitude: 973
     },
-    name: "Burma",
+    name: "Myanmar",
     reward: 10000
 }, {
-    briefing: "",
+    briefing: "A clan of criminals has taken control of the underworld of Ho Chi Minh City in a bloody conflict. The clan members will stop at nothing to extort money from the little people. We need your help! You must finish off the head of the clan. For that, you'll get $8,000.",
     client: "images/tiles/clients/adult-aged-beard-elder.jpg",
     location: {        
         latitude: 338,
         longitude: 1018
     },
     name: "Ho-Chi-Minh City",
-    reward: 10000
+    reward: 8000
 }, {
-    briefing: "",
+    briefing: "My father worked as a professor at the University of Mexico City. Last year he and his students were kidnapped, murdered and buried in the desert by the Sinaloa Cartel. Since that incident, my family has had no rest. Avenge my father by eliminating the leader of the cartel. We will pay you $12,000.",
     client: "images/tiles/clients/photo-of-girl-wearing-brown-shirt.jpg",
     location: {        
         latitude: 299,
         longitude: 295
     },
     name: "Mexico City",
-    reward: 1000
+    reward: 12000
 }, {
-    briefing: "",
+    briefing: "An unscrupulous investment swindler has cheated hundreds of people out of their savings. People are desperate. The con man escaped to Texas, where he hid out on a ranch under the protection of a private army. Take out the impostor and his henchmen. We'll pay you a bounty of $9,000.",
     client: "images/tiles/clients/man-wearing-blue-crew-neck-t-shirt.jpg",
     location: {        
         latitude: 257,
         longitude: 309
     },
     name: "San Antonio",
-    reward: 10000
+    reward: 9000
 }, {
     briefing: "I was once a successful .com entrepreneur and retired to the Amazon jungle many years ago I. Actually everything is really cool here. But the last few months, another hermit named Bruce Banner has been bugging me. Solve this problem for me and I'll pay you $10,000.",
     client: "images/tiles/clients/man-wearing-black-sunglasses-and-black-beanie.jpg",

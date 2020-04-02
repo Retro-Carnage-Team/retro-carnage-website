@@ -16,6 +16,7 @@ div.world-map-container {
 }
 
 .location-container {
+    cursor: pointer;
     height: 22px;
     position: absolute;
     width: 22px;
