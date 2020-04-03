@@ -162,4 +162,4 @@ const Weapons = [{
     weight: "22 kg"
 }];
 
-export default Missions;
+export default Weapons;
