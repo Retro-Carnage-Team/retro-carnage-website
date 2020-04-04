@@ -1,4 +1,7 @@
 div.item-ammunition {
-    background-color: white;
-    display: table-cell;
+    background-color: white; 
+}
+
+div.item-ammunition img.item-ammunition-image {
+    width: 100%;
 }

@@ -6,7 +6,7 @@ export default class ItemGrenade extends React.Component {
   render() {
     return (
       <div className="item-grenade">
-        <img src={ this.props.grenade.image } alt=""></img>
+        <img className="item-grenade-image" src={ this.props.grenade.image } alt=""></img>
       </div>
     );
   }

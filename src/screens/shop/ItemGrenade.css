@@ -1,4 +1,7 @@
 div.item-grenade {
     background-color: white;
-    display: table-cell;
+}
+
+div.item-grenade img.item-grenade-image {
+    width: 100%;
 }

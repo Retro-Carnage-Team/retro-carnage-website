@@ -6,7 +6,7 @@ export default class ItemWeapon extends React.Component {
   render() {
     return (
       <div className="item-weapon">   
-        <img src={ this.props.weapon.image } alt=""></img>
+        <img className="item-weapon-image" src={ this.props.weapon.image } alt=""></img>
       </div>
     );
   }

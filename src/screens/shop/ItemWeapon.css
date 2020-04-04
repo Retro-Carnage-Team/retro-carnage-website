@@ -1,4 +1,7 @@
 div.item-weapon {
     background-color: white;
-    display: table-cell;
+}
+
+div.item-weapon img.item-weapon-image {
+    width: 100%;
 }

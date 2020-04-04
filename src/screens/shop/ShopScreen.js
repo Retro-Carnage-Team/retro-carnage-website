@@ -15,10 +15,10 @@ class ShopScreen extends React.Component {
   }  
 
   render() {
-    const items = this.spreadItems(Weapons.map(w => (<ItemWeapon key={ w.name }  weapon={ w }></ItemWeapon>)).concat(
+    const items = Weapons.map(w => (<ItemWeapon key={ w.name }  weapon={ w }></ItemWeapon>)).concat(
       Grenades.map(g => (<ItemGrenade key={ g.name } grenade={ g }></ItemGrenade>)),
       Ammunition.map(a => (<ItemAmmunition key={ a.name } ammunition={ a }></ItemAmmunition>))
-    ));
+    );
 
     return (
       <div className="shop-screen">
@@ -33,15 +33,6 @@ class ShopScreen extends React.Component {
         </div>
       </div>
     );
-  }
-
-  spreadItems = (items) => {
-    const result = [];
-    for(var i=0; i<6; i++) {
-      const rowItems = items.slice(i*5, (i+1)*5);
-      result.push(<div className="catalog-row" key={ "row-" +i }>{ rowItems }</div>);
-    }
-    return result;
   }
 
 }
