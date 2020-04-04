@@ -169,8 +169,8 @@ const Weapons = [{
     speed: "single shot",
     weight: "12.9 kg"
 }, {
-    ammo: "Flammöl",
-    description: "images/tiles/weapons/Flammenwerfer-42.jpg",
+    ammo: "Tar and petrol mixture",
+    description: "The Flammenwerfer 41, or FmW 41 was the standard German flamethrower beginning in 1941 and an upgraded version of the earlier Flammenwerfer 35. It was designed to clear enemy trenches and buildings in highly fortified areas. The Flammenwerfer 35 had been a long needed update on a World War I version simplifying the weapon to a single operating from three and increasing its range. However the 36 kg system was cumbersome to carry and difficult to use. Thus spurred the development of the FmW 41. Similar to many other designs of the time, the FmW 41 used a hydrogen torch to ignite a tar and petrol mixture which was fired from a hand-held torch attached to a tank. The petrol and propellant were carried in separate tanks carried on the back which held 11.8 litres (2.6 imp gal; 3.1 US gal) of tar and petrol mixture called Flammöl 19. The FmW 41 proved to be more reliable and easier to operate than its predecessor, it had an increased range of 32 meters and was lighter weighing in at 28.7 kilograms. Problems surfaced against Soviet troops during the winter of 1941 as its lighting mechanism was unable to cope with the cold weather conditions. Later versions of the weapon replaced the hydrogen torch with a cartridge based system which proved more effective. Flamethrower troops are often targeted by enemy troops as they take a heavy psychological toll on enemy morale in addition to being effective weapons against well entrenched enemy troops. As such, these weapons were often dressed to look like standard infantry rifles in an attempt to disguise operators.",
     image: "images/tiles/weapons/Flammenwerfer-42.jpg",
     length: "40 cm",
     name: "Flammenwerfer 41",

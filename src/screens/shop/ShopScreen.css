@@ -8,14 +8,14 @@ div.shop-screen {
 div.shop-screen div.catalog {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 3px 3px;
-    padding: 3px;
+    grid-gap: 1px 1px;    
 }
 
 div.shop-screen div.details {
     background-color: violet;
     flex-shrink: 100000;
-    height: 100%;    
+    height: 100%;
+    overflow-y: auto;
 }
 
 div.shop-screen div.bottom-line {

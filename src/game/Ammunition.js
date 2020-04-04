@@ -65,7 +65,7 @@ const Ammunition = [{
     description: "",
     image: "images/tiles/weapons/Napalm.jpg",
     maxCount: 1000,
-    name: "Flammöl",
+    name: "Tar and petrol mixture",
     packageSize: 25,
     price: 0
 }];

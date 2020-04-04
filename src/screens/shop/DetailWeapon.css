@@ -1,0 +1,15 @@
+div.details-inner p {
+    text-align: initial;
+}
+
+div.details-inner table {
+    text-align: initial;
+}
+
+td.details-spacer {
+    width: 100px;
+}
+
+td.details-value {
+    padding-left: 20px;
+}
