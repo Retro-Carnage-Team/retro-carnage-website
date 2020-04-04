@@ -96,8 +96,8 @@ The following list contains all media elements that have not been created by the
 * HK416N by Dybdal  
   Link: https://commons.wikimedia.org/wiki/File:HK416N.png  
   License: https://creativecommons.org/licenses/by-sa/2.0/deed.de
-* BarM1918VWM by Mytwocents  
-  Link: https://commons.wikimedia.org/wiki/File:BarM1918VWM.jpg  
+* Bar M1918 by United States Army  
+  Link: https://commons.wikimedia.org/wiki/File:Army_Heritage_Museum_B.A.R..jpg  
   License: Public Domain
 * HK-21-LMG by Armémuseum (The Swedish Army Museum)  
   Link: https://commons.wikimedia.org/wiki/File:HK_21_LMG_Left_and_Right_noBG.png  

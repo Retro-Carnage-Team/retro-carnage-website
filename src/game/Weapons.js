@@ -1,7 +1,7 @@
 const Weapons = [{
     ammo: "9 x 19 mm",
     description: "The P7 is a German 9×19mm semi-automatic pistol designed by Helmut Weldle and produced by Heckler & Koch GmbH (H&K) of Oberndorf am Neckar. It was revealed to the public for the first time in 1976. Prompted by the 1972 Munich Olympics Massacre, the German police decided to replace the .32 ACP Walther PP with a similarly sized but more effective 9×19mm Parabellum pistol. The new firearm was to meet the following requirements: chamber the 9×19mm Parabellum cartridge, weigh no more than 1,000 g (35 oz), the pistol's dimensions would not exceed 180 × 130 × 34 mm, it should have a muzzle energy of no less than 500 J and a service life of at least 10,000-rounds. The pistol was also to be fully ambidextrous, safe to carry with a loaded chamber (both holstered and concealed in a pocket), and able to be quickly drawn and instantly ready to fire. Series production of the P7 started in 1979. Shortly after, the pistol was adopted by the German Federal Police's counter-terrorism unit (GSG 9) and the German Army's special forces formations. The P7 was produced primarily by H&K but also under license by the Greek defense firm Hellenic Arms Industry as well as in Mexico by the Departamento de Industria Militar (DIM), as a sidearm for general officers and staff. The pistol was also exported to several countries.",
-    image: "images/tiles/weapons/9x19.jpg",
+    image: "images/tiles/weapons/HK-P7.png",
     length: "17,1 cm",
     name: "P7",
     price: 350,
@@ -111,7 +111,7 @@ const Weapons = [{
 }, {
     ammo: "5.56 x 45 mm",
     description: "The Heckler & Koch MG4 (also known as the HK123) is a belt-fed 5.56 mm light machine gun designed and developed by German firearm manufacturer Heckler & Koch. The weapon was developed in the late 1990s and was first seen publicly in September 2001. It has been selected to replace the 7.62 mm MG3 general-purpose machine gun in the Bundeswehr at the squad support level; it will complement the MG3 in other roles. The MG4 will also be the secondary armament of the new Puma infantry fighting vehicle. Overall, it is designed to be light, provide maximum safety to the user and function reliably under adverse conditions using a wide range of ammunition from different manufacturers, without the need to adjust the gas system. The machine gun was initially known as the MG43 prior to its adoption by the Bundeswehr.",
-    image: "images/tiles/weapons/HK-MG4-png",
+    image: "images/tiles/weapons/HK-MG4.png",
     length: "103 cm",
     name: "MG4",
     price: 0,
@@ -121,7 +121,7 @@ const Weapons = [{
 }, {
     ammo: "7.62 x 51 mm",
     description: "The HK21 is a German 7.62 mm general-purpose machine gun, developed in 1961 by small arms manufacturer Heckler & Koch and based on the G3 battle rifle. The weapon is in use with the armed forces of several Asian, African and Latin American countries. It was also license-manufactured by Fábrica de Braço de Prata in Portugal as the m/968 and in Mexico by SEDENA as the MG21. In the German military (Bundeswehr) and the federal police (Bundespolizei) it is designated G8.",
-    image: "images/tiles/weapons/HK-21-LMG",
+    image: "images/tiles/weapons/HK-21-LMG.png",
     length: "102.1 cm",
     name: "HK21",
     price: 0,
@@ -131,7 +131,7 @@ const Weapons = [{
 }, {
     ammo: "7.62 x 51 mm",
     description: "The MG 42 (Maschinengewehr 42) is a 7.92×57mm Mauser general-purpose machine gun designed in Nazi Germany and used extensively by the Wehrmacht and the Waffen-SS during the second half of World War II. It was intended to replace the earlier MG 34, which was more expensive and took much longer to produce, but both weapons were produced until the end of World War II. Designed to be low-cost and easy to build, the MG 42 proved to be highly reliable and easy to operate. It is most notable for its very high cyclic rate for a gun using full power service cartridges, averaging about 1,200 rounds per minute compared to around 850 for the MG 34, and perhaps 450 to 600 for other common machine guns like the M1919 Browning or Bren. This ability made it extremely effective in providing suppressive fire, and its unique sound led to it being nicknamed \"Hitler's buzzsaw\". The MG 42 was adopted by several armed organizations after the war, and was both copied and built under licence. The MG 42's lineage continued past Nazi Germany's defeat, forming the basis for the nearly identical MG1 (MG 42/59), chambered in 7.62×51mm NATO, which subsequently evolved into the MG1A3, and later the Bundeswehr's MG 3, Italian MG 42/59 and Austrian MG 74. It also spawned the Yugoslav unlicensed nearly identical Zastava M53. The MG 42 lent many design elements to the Swiss MG 51 and SIG MG 710-3, American M60 and Belgian MAG general-purpose machine guns and the Spanish 5.56×45mm NATO Ameli light machine gun though these machine guns feature other operating mechanisms or actions than the MG 42 and its lineage.",
-    image: "images/tiles/weapons/MK42.jpg",
+    image: "images/tiles/weapons/MG42.jpg",
     length: "123 cm",
     name: "MG 42 converted to NATO caliber",
     price: 0,

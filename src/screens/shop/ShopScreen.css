@@ -1,0 +1,12 @@
+div.shop-screen {
+    background-color: black;    
+    height: 100%;
+}
+
+div.shop-screen div.catalog {
+    display: table;
+}
+
+div.shop-screen div.catalog div.catalog-row {
+    display: table-row;
+}

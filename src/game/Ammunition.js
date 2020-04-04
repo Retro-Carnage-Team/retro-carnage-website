@@ -14,13 +14,6 @@ const Ammunition = [{
     price: 0
 }, {
     description: "",
-    image: "images/tiles/weapons/7.62x51.jpg",
-    maxCount: 10000,
-    name: "7.62 x 51 mm",
-    packageSize: 50,
-    price: 0
-}, {
-    description: "",
     image: "images/tiles/weapons/5.45x39.jpg",
     maxCount: 10000,
     name: "5.45 x 39 mm",
@@ -35,7 +28,14 @@ const Ammunition = [{
     price: 0
 }, {
     description: "",
-    image: "images/tiles/weapons/7.62x63.jpg",
+    image: "images/tiles/weapons/7.62x51.jpg",
+    maxCount: 10000,
+    name: "7.62 x 51 mm",
+    packageSize: 50,
+    price: 0
+}, {
+    description: "",
+    image: "images/tiles/weapons/7.63x63.jpg",
     maxCount: 10000,
     name: "7.62 x 63 mm",
     packageSize: 50,
