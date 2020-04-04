@@ -1,9 +1,24 @@
 div.shop-screen {
     background-color: black;    
-    height: 100%;    
+    display: flex;
+    flex-direction: column;   
+    height: 100%;
 }
 
 div.shop-screen div.catalog {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 3px 3px;
+    padding: 3px;
+}
+
+div.shop-screen div.details {
+    background-color: violet;
+    flex-shrink: 100000;
+    height: 100%;    
+}
+
+div.shop-screen div.bottom-line {
+    background-color: yellow;
+    height: 50px;
 }
