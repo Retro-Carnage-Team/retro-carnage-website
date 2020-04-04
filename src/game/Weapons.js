@@ -4,6 +4,7 @@ const Weapons = [{
     image: "images/tiles/weapons/9x19.jpg",
     length: "17,1 cm",
     name: "P7",
+    price: 0,
     range: 0,
     speed: "single shot",
     weight: "0.780 kg"
@@ -13,6 +14,7 @@ const Weapons = [{
     image: "images/tiles/weapons/SIG-P210.png",
     length: "21.5 cm ",
     name: "P210",
+    price: 0,
     range: 0,
     speed: "single shot",
     weight: "0.970 kg"
@@ -22,6 +24,7 @@ const Weapons = [{
     image: "images/tiles/weapons/Uzi.png",
     length: "47 cm",
     name: "Uzi",
+    price: 0,
     range: 0,
     speed: "600 rounds/min",
     weight: "3.6 kg"
@@ -31,6 +34,7 @@ const Weapons = [{
     image: "images/tiles/weapons/MP5K.png",
     length: "32.5 cm",
     name: "MP5",
+    price: 0,
     range: 0,
     speed: "900 rounds/min",
     weight: "2 kg"
@@ -40,6 +44,7 @@ const Weapons = [{
     image: "images/tiles/weapons/HK-MP7.png",
     length: "41.5 cm",
     name: "MP7",
+    price: 0,
     range: 0,
     speed: "950 rounds/min",
     weight: "1.9 kg"
@@ -49,6 +54,7 @@ const Weapons = [{
     image: "images/tiles/weapons/FAL-G1.png",
     length: "109 cm",
     name: "FN FAL",
+    price: 0,
     range: 0,
     speed: "700 rounds/min",
     weight: "4.25 kg"
@@ -58,6 +64,7 @@ const Weapons = [{
     image: "images/tiles/weapons/AR10.jpg",
     length: "105 cm",
     name: "AR-10",
+    price: 0,
     range: 0,
     speed: "700 rounds/min",
     weight: "4.3 kg"
@@ -67,6 +74,7 @@ const Weapons = [{
     image: "images/tiles/weapons/AK74.jpg",
     length: "94 cm",
     name: "AK-74",
+    price: 0,
     range: 0,
     speed: "600 rounds/min",
     weight: "3.3 kg"
@@ -76,6 +84,7 @@ const Weapons = [{
     image: "images/tiles/weapons/G36.png",
     length: "99.9 cm",
     name: "G36",
+    price: 0,
     range: 0,
     speed: "750 rounds/min",
     weight: "3.63 kg"
@@ -85,6 +94,7 @@ const Weapons = [{
     image: "images/tiles/weapons/HK416N.png",
     length: "103.7 cm",
     name: "G95K",
+    price: 0,
     range: 0,
     speed: "850 rounds/min",
     weight: "3.850 kg"
@@ -94,6 +104,7 @@ const Weapons = [{
     image: "images/tiles/weapons/BarM1918VWM.jpg",
     length: "119.4 cm",
     name: "B.A.R.",
+    price: 0,
     range: 0,
     speed: "650 rounds/min",
     weight: "7.25 kg"
@@ -103,6 +114,7 @@ const Weapons = [{
     image: "images/tiles/weapons/HK-MG4-png",
     length: "103 cm",
     name: "MG4",
+    price: 0,
     range: 0,
     speed: "890 rounds/min",
     weight: "7.35 kg"
@@ -112,6 +124,7 @@ const Weapons = [{
     image: "images/tiles/weapons/HK-21-LMG",
     length: "102.1 cm",
     name: "HK21",
+    price: 0,
     range: 0,
     speed: "900 rounds/min",
     weight: "7.92 kg"
@@ -121,6 +134,7 @@ const Weapons = [{
     image: "images/tiles/weapons/MK42.jpg",
     length: "123 cm",
     name: "MG 42 converted to NATO caliber",
+    price: 0,
     range: 0,
     speed: "1500 rounds/min",
     weight: "10.6 kg"
@@ -130,6 +144,7 @@ const Weapons = [{
     image: "images/tiles/weapons/M20-Bazooka.jpg",
     length: "152 cm",
     name: "M20A1B1 'Super Bazooka'",
+    price: 0,
     range: 0,
     speed: "single shot",
     weight: "5.9 kg"
@@ -139,6 +154,7 @@ const Weapons = [{
     image: "images/tiles/weapons/Panzerfaust-44.png",
     length: "88 cm",
     name: "Panzerfaust 44",
+    price: 0,
     range: 0,
     speed: "single shot",
     weight: "7.8 kg"
@@ -148,6 +164,7 @@ const Weapons = [{
     image: "images/tiles/weapons/Panzerfaust-3.png",
     length: "88 cm",
     name: "Panzerfaust 3",
+    price: 0,
     range: 0,
     speed: "single shot",
     weight: "12.9 kg"
@@ -157,6 +174,7 @@ const Weapons = [{
     image: "images/tiles/weapons/Flammenwerfer-42.jpg",
     length: "40 cm",
     name: "Flammenwerfer 41",
+    price: 0,
     range: 0,
     speed: "60 liters/min",
     weight: "22 kg"

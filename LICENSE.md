@@ -114,6 +114,9 @@ The following list contains all media elements that have not been created by the
 * DM41 by Manniman2  
   Link: https://commons.wikimedia.org/wiki/File:DM41_4_noBG.png  
   License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+* M24 by unknown Wikimedia user  
+  Link: https://commons.wikimedia.org/wiki/File:M24_1_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
 * All ammo pictures are based on a photo taken by Grasyl  
   Link: [https://commons.wikimedia.org/wiki/File:Big_caliber_cartridge_comparison_v3_-_.22lr,_9x18mm,_9x19mm,_7.62x25mm,_.40_S%26W,_10mm_Auto,_.45_ACP,_.454_Casull,_.30_Carbine,_4.6mm_HK,_5.56x45mm_NATO,_5.45x39mm,_7.62x39mm,_7.62x51mm,_7.62x45mmR,_.303,_7.92x57mm,_.30-06.jpg](https://commons.wikimedia.org/wiki/File:Big_caliber_cartridge_comparison_v3_-_.22lr,_9x18mm,_9x19mm,_7.62x25mm,_.40_S%26W,_10mm_Auto,_.45_ACP,_.454_Casull,_.30_Carbine,_4.6mm_HK,_5.56x45mm_NATO,_5.45x39mm,_7.62x39mm,_7.62x51mm,_7.62x45mmR,_.303,_7.92x57mm,_.30-06.jpg)  
   License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
