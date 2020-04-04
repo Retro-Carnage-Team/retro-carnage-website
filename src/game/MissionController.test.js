@@ -18,9 +18,6 @@ test('Selected mission can be set and reset', () => {
 
   const missionName = 'TEST123';
 
-  MissionController.setSelectedMission(missionName);
-  expect(MissionController.getSelectedMission()).toBe(missionName);
-
-  MissionController.setSelectedMission(null);
-  expect(MissionController.getSelectedMission()).toBeNull();
+  MissionController.selectedMission = missionName;
+  expect(MissionController.selectedMission).toBe(missionName);
 });
