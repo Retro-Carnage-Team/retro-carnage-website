@@ -2,6 +2,24 @@ import Ammunition from './Ammunition';
 import Grenades from './Grenades';
 import Weapons from './Weapons';
 
+function buildAmmunitionMap() {
+    let result = { };
+    Ammunition.forEach(a => result[a.name] = 0);
+    return result;
+}
+
+function buildGrenadeMap() {
+    let result = { };
+    Grenades.forEach(g => result[g.name] = 0);
+    return result;
+}
+
+function buildWeaponMap() {
+    let result = { };
+    Weapons.forEach(w => result[w.name] = false);
+    return result;
+}
+
 class InventoryController {
 
     constructor() {
@@ -10,13 +28,38 @@ class InventoryController {
 
     reset = () => {
         this.cash = 5000;
-        this.weapons = this.buildWeaponMap();
+        this.ammunition = buildAmmunitionMap();
+        this.grenades = buildGrenadeMap();
+        this.weapons = buildWeaponMap();
     }
 
-    buildWeaponMap = () => {
-        let result = { };
-        Weapons.forEach(w => result[w.name] = false);
-        return result;
+    getAmmunitionCount = (ammunitionName) => {
+        return this.ammunition[ammunitionName];
+    }
+
+    isAmmunitionProcurable = (ammunitionName) => {
+        const ammoType = Ammunition.find(a => a.name === ammunitionName);
+        return (this.ammunition[ammunitionName] < ammoType.maxCount) && (this.cash >= ammoType.price);
+    }
+
+    buyAmmunition = (ammunitionName) => {
+        const ammoType = Ammunition.find(a => a.name === ammunitionName);
+        this.ammunition[ammunitionName] = Math.min(this.ammunition[ammunitionName] + ammoType.packageSize, ammoType.maxCount);
+        this.cash = this.cash - ammoType.price;
+    }
+
+    getGrenadeCount = (grenadeName) => {
+        return this.grenades[grenadeName];
+    }
+
+    isGrenadeProcurable = (grenadeName) => {
+        const grenadeType = Grenades.find(a => a.name === grenadeName);
+        return (this.grenades[grenadeName] < grenadeType.maxCount) && (this.cash >= grenadeType.price);
+    }
+
+    buyGrenade = (grenadeName) => {
+        this.grenades[grenadeName] = this.grenades[grenadeName] + 1;
+        this.cash = this.cash - Grenades.find(g => g.name === grenadeName).price;
     }
 
     isWeaponInInventory = (weaponName) => {
