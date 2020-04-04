@@ -1,4 +1,5 @@
 import Missions from './Missions';
+import InventoryController from './InventoryController';
 
 class LevelController {
 
@@ -18,7 +19,15 @@ class LevelController {
 
     markMissionFinished = (missionName) => {        
         this.finishedMissions.push(missionName);        
-    }    
+    }
+
+    selectMission = (missionName) => {
+        this.currentMission = missionName;
+        if(!!missionName) {
+            const mission = Missions.find(m => m.name === missionName);
+            InventoryController.cash = InventoryController.cash + mission.reward;
+        }
+    }
 
 }
 

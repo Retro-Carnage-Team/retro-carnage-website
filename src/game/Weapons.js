@@ -4,7 +4,7 @@ const Weapons = [{
     image: "images/tiles/weapons/9x19.jpg",
     length: "17,1 cm",
     name: "P7",
-    price: 0,
+    price: 350,
     range: 0,
     speed: "single shot",
     weight: "0.780 kg"
@@ -14,7 +14,7 @@ const Weapons = [{
     image: "images/tiles/weapons/SIG-P210.png",
     length: "21.5 cm ",
     name: "P210",
-    price: 0,
+    price: 500,
     range: 0,
     speed: "single shot",
     weight: "0.970 kg"

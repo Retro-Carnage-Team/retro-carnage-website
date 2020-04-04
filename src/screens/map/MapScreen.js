@@ -70,7 +70,7 @@ class MapScreen extends React.Component {
   }
 
   handleMissionSelected = (missionName) => {
-    MissionController.selectedMission = missionName;
+    MissionController.selectMission(missionName);
     this.props.onScreenChangeRequired(SHOP_SCREEN_NAME);
   }
 
