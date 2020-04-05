@@ -57,6 +57,7 @@ class ShopScreen extends React.Component {
         ammunition={ ammo }
         key={ ammo.name }
         onMouseEnter={ this.handleItemAmmunitionMouseEnter }
+        onMouseLeave={ this.handleItemMouseLeave }
         selectedWeapon={ this.state.selectedWeapon } />
     );
   }
@@ -66,7 +67,8 @@ class ShopScreen extends React.Component {
       <ItemGrenade 
         key={ grenade.name } 
         grenade={ grenade }
-        onMouseEnter={ this.handleItemGrenadeMouseEnter } />
+        onMouseEnter={ this.handleItemGrenadeMouseEnter } 
+        onMouseLeave={ this.handleItemMouseLeave } />
     );
   }
 
@@ -75,6 +77,7 @@ class ShopScreen extends React.Component {
       <ItemWeapon 
         key={ weapon.name } 
         onMouseEnter={ this.handleItemWeaponMouseEnter }
+        onMouseLeave={ this.handleItemMouseLeave }
         selectedAmmunition={ this.state.selectedAmmunition }
         weapon={ weapon } />
     );
@@ -102,7 +105,15 @@ class ShopScreen extends React.Component {
       selectedGrenade: null,
       selectedWeapon: weapon
     });
-  }  
+  }
+
+  handleItemMouseLeave = () => {
+    this.setState({
+      selectedAmmunition: null,
+      selectedGrenade: null,
+      selectedWeapon: null
+    });
+  }
 
 }
 

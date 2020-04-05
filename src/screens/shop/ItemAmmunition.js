@@ -12,7 +12,10 @@ export default class ItemAmmunition extends React.Component {
     });
 
     return (
-      <div className="item-ammunition" onMouseEnter={ this.handleMouseEnter }>
+      <div 
+        className="item-ammunition" 
+        onMouseEnter={ this.handleMouseEnter }
+        onMouseLeave={ this.handleMouseLeave }>
         <img className={ imgClasses } src={ this.props.ammunition.image } alt=""></img>
       </div>
     );
@@ -20,6 +23,10 @@ export default class ItemAmmunition extends React.Component {
 
   handleMouseEnter = () => {
     this.props.onMouseEnter(this.props.ammunition);
+  }
+
+  handleMouseLeave = () => {
+    this.props.onMouseLeave();
   }
 
 }
