@@ -97,7 +97,7 @@ The following list contains all media elements that have not been created by the
   Link: https://commons.wikimedia.org/wiki/File:HK416N.png  
   License: https://creativecommons.org/licenses/by-sa/2.0/deed.de
 * Bar M1918 by United States Army  
-  Link: https://commons.wikimedia.org/wiki/File:Army_Heritage_Museum_B.A.R..jpg  
+  Link: https://commons.wikimedia.org/wiki/File:Army_Heritage_Museum_B.A.R..png  
   License: Public Domain
 * HK-21-LMG by Armémuseum (The Swedish Army Museum)  
   Link: https://commons.wikimedia.org/wiki/File:HK_21_LMG_Left_and_Right_noBG.png  
@@ -108,9 +108,9 @@ The following list contains all media elements that have not been created by the
 * MG42 by Phanatic  
   Link: https://commons.wikimedia.org/wiki/File:MG42_1_noBG.jpg  
   License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
-* M20-Bazooka by Bukvoed  
-  Link: https://commons.wikimedia.org/wiki/File:M20-bazooka-batey-haosef-1_noBG.jpg  
-  License: https://creativecommons.org/licenses/by-sa/3.0/deed.de
+* M20-Bazooka by Heroes & Generals Fandom Gaming Community  
+  Link: https://heroesandgenerals.gamepedia.com/Bazooka_M9A1  
+  License: https://creativecommons.org/licenses/by-nc-sa/3.0/
 * Panzerfaust-44 by German Armed Forces  
   Link: https://commons.wikimedia.org/wiki/File:Leichte_Panzerfaust_44_noBG.png  
   License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
@@ -135,6 +135,9 @@ The following list contains all media elements that have not been created by the
 * A Winkel Tripel projection of a Visible Earth by [NASA](https://www.nasa.gov/)  
   Link: https://commons.wikimedia.org/wiki/File:Winkel-tripel-projection.jpg  
   License: https://en.wikipedia.org/wiki/public_domain
+* Black scratched metal plate by wildtextures.com  
+  Link: https://www.wildtextures.com/free-textures/black-scratched-metal-plate/  
+  License: not specified
 
 ### Music
 

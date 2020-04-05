@@ -1,7 +1,5 @@
-div.item-ammunition {
-    background-color: white; 
-}
-
 div.item-ammunition img.item-ammunition-image {
+    background-color: grey;
+    border-radius: 30px;
     width: 100%;
 }

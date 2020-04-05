@@ -61,7 +61,7 @@ const Weapons = [{
 }, {
     ammo: "7.62 x 51 mm",
     description: "he ArmaLite AR-10 is a 7.62×51mm NATO battle rifle developed by Eugene Stoner in the late 1950s and manufactured by ArmaLite, then a division of the Fairchild Aircraft Corporation. When first introduced in 1956, the AR-10 used an innovative straight-line barrel/stock design with phenolic composite and forged alloy parts resulting in a small arm significantly easier to control in automatic fire and over 1 lb (0.45 kg) lighter than other infantry rifles of the day. Over its production life, the original AR-10 was built in relatively small numbers, with fewer than 10,000 rifles assembled. However, the ArmaLite AR-10 would become the progenitor for a wide range of firearms. In 1957, the basic AR-10 design was rescaled and substantially modified by ArmaLite to accommodate the .223 Remington cartridge, and given the designation ArmaLite AR-15. In 1959, ArmaLite sold its rights to the AR-10 and AR-15 to Colt Firearms due to financial difficulties, and limitations in terms of manpower and production capacity. After modifications (most notably, the charging handle was re-located from under the carrying handle like AR-10 to the rear of the receiver), the new redesigned rifle was subsequently adopted by the U.S. military as the M16 Rifle. Colt continued to use the AR-15 trademark for its line of semi-automatic-only rifles, which it marketed to civilian and law-enforcement customers as the Colt AR-15. With the expiration of its patent, other manufacturers began producing their own variants, known as AR-15 style rifles.",
-    image: "images/tiles/weapons/AR10.jpg",
+    image: "images/tiles/weapons/AR10.png",
     length: "105 cm",
     name: "AR-10",
     price: 0,
@@ -71,7 +71,7 @@ const Weapons = [{
 }, {
     ammo: "5.45 x 39 mm",
     description: "The AK-74 (Kalashnikov automatic rifle model 1974) is an assault rifle developed in the early 1970s by Russian weapons designer Mikhail Kalashnikov to replace the earlier AKM (itself a refined version of the AK-47). It uses a smaller 5.45×39mm cartridge, replacing the 7.62×39mm chambering of earlier Kalashnikov-pattern weapons. The rifle first saw service with Soviet forces in the 1979 Afghanistan conflict. The head of the Afghan bureau of the Pakistani Inter-Services Intelligence claimed that the CIA paid $5,000 for the first AK-74 captured by the Mujahideen during the Soviet–Afghan War. Today, the rifle is used by most countries of the former Soviet Union. Licensed copies were produced in Bulgaria (AK-74, AKS-74 and AKS-74U), and the former East Germany (MPi-AK-74N, MPi-AKS-74N, MPi-AKS-74NK).",
-    image: "images/tiles/weapons/AK74.jpg",
+    image: "images/tiles/weapons/AK74.png",
     length: "94 cm",
     name: "AK-74",
     price: 0,
@@ -101,7 +101,7 @@ const Weapons = [{
 }, {
     ammo: "7.62 x 63 mm",
     description: "The Browning Automatic Rifle (BAR) is a family of American automatic rifles and machine guns used by the United States and numerous other countries during the 20th century. The primary variant of the BAR series was the M1918, chambered for the .30-06 Springfield rifle cartridge and designed by John Browning in 1917 for the American Expeditionary Forces in Europe as a replacement for the French-made Chauchat and M1909 Benét–Mercié machine guns that US forces had previously been issued. The BAR was designed to be carried by infantrymen during an assault advance while supported by the sling over the shoulder, or to be fired from the hip. This is a concept called 'walking fire'—thought to be necessary for the individual soldier during trench warfare. The BAR never entirely lived up to the original hopes of the war department as either a rifle or a machine gun. The U.S. Army, in practice, used the BAR as a light machine gun, often fired from a bipod (introduced on models after 1938). A variant of the original M1918 BAR, the Colt Monitor Machine Rifle, remains the lightest production automatic firearm chambered for the .30-06 Springfield cartridge, though the limited capacity of its standard 20-round magazine tended to hamper its utility in that role. Although the weapon did see some action in World War I, the BAR did not become standard issue in the US Army until 1938, when it was issued to squads as a portable light machine gun. The BAR saw extensive service in both World War II and the Korean War and saw limited service in the Vietnam War. The US Army began phasing out the BAR in the late 1950s, when it was intended to be replaced by a squad automatic weapon (SAW) variant of the M14, and was without a portable light machine gun until the introduction of the M60 machine gun in 1957.",
-    image: "images/tiles/weapons/BarM1918VWM.jpg",
+    image: "images/tiles/weapons/BarM1918VWM.png",
     length: "119.4 cm",
     name: "B.A.R.",
     price: 0,
@@ -131,9 +131,9 @@ const Weapons = [{
 }, {
     ammo: "7.62 x 51 mm",
     description: "The MG 42 (Maschinengewehr 42) is a 7.92×57mm Mauser general-purpose machine gun designed in Nazi Germany and used extensively by the Wehrmacht and the Waffen-SS during the second half of World War II. It was intended to replace the earlier MG 34, which was more expensive and took much longer to produce, but both weapons were produced until the end of World War II. Designed to be low-cost and easy to build, the MG 42 proved to be highly reliable and easy to operate. It is most notable for its very high cyclic rate for a gun using full power service cartridges, averaging about 1,200 rounds per minute compared to around 850 for the MG 34, and perhaps 450 to 600 for other common machine guns like the M1919 Browning or Bren. This ability made it extremely effective in providing suppressive fire, and its unique sound led to it being nicknamed \"Hitler's buzzsaw\". The MG 42 was adopted by several armed organizations after the war, and was both copied and built under licence. The MG 42's lineage continued past Nazi Germany's defeat, forming the basis for the nearly identical MG1 (MG 42/59), chambered in 7.62×51mm NATO, which subsequently evolved into the MG1A3, and later the Bundeswehr's MG 3, Italian MG 42/59 and Austrian MG 74. It also spawned the Yugoslav unlicensed nearly identical Zastava M53. The MG 42 lent many design elements to the Swiss MG 51 and SIG MG 710-3, American M60 and Belgian MAG general-purpose machine guns and the Spanish 5.56×45mm NATO Ameli light machine gun though these machine guns feature other operating mechanisms or actions than the MG 42 and its lineage.",
-    image: "images/tiles/weapons/MG42.jpg",
+    image: "images/tiles/weapons/MG42.png",
     length: "123 cm",
-    name: "MG 42 converted to NATO caliber",
+    name: "MG 42 (converted to NATO caliber)",
     price: 0,
     range: 0,
     speed: "1500 rounds/min",
@@ -141,7 +141,7 @@ const Weapons = [{
 }, {
     ammo: "89 mm",
     description: "Bazooka is the common name for a man-portable recoilless anti-tank rocket launcher weapon, widely deployed by the United States Army. Also referred to as the 'Stovepipe', the innovative bazooka was among the first generation of rocket-propelled anti-tank weapons used in infantry combat. Featuring a solid-propellant rocket for propulsion, it allowed for high-explosive anti-tank (HEAT) warheads to be delivered against armored vehicles, machine gun nests, and fortified bunkers at ranges beyond that of a standard thrown grenade or mine. The universally-applied nickname arose from the M1 variant's vague resemblance to the musical instrument called a 'bazooka' invented and popularized by 1930s U.S. comedian Bob Burns. During World War II, German armed forces captured several bazookas in early North Africa and Eastern Front encounters and soon reverse engineered their own version, increasing the warhead diameter to 8.8 cm (among other minor changes) and widely issuing it as the Raketenpanzerbüchse 'Panzerschreck'. Near the end of the war, the Japanese developed a similar weapon, the Type 4 70 mm AT Rocket Launcher, which featured a rocket propelled grenade of a different design. The term 'bazooka' still sees informal use as a generic term referring to any ground-to-ground shoulder-fired missile weapon (mainly rocket propelled grenade launchers or recoilless rifles).",
-    image: "images/tiles/weapons/M20-Bazooka.jpg",
+    image: "images/tiles/weapons/M20-Bazooka.png",
     length: "152 cm",
     name: "M20A1B1 'Super Bazooka'",
     price: 0,
@@ -171,7 +171,7 @@ const Weapons = [{
 }, {
     ammo: "Tar and petrol mixture",
     description: "The Flammenwerfer 41, or FmW 41 was the standard German flamethrower beginning in 1941 and an upgraded version of the earlier Flammenwerfer 35. It was designed to clear enemy trenches and buildings in highly fortified areas. The Flammenwerfer 35 had been a long needed update on a World War I version simplifying the weapon to a single operating from three and increasing its range. However the 36 kg system was cumbersome to carry and difficult to use. Thus spurred the development of the FmW 41. Similar to many other designs of the time, the FmW 41 used a hydrogen torch to ignite a tar and petrol mixture which was fired from a hand-held torch attached to a tank. The petrol and propellant were carried in separate tanks carried on the back which held 11.8 litres (2.6 imp gal; 3.1 US gal) of tar and petrol mixture called Flammöl 19. The FmW 41 proved to be more reliable and easier to operate than its predecessor, it had an increased range of 32 meters and was lighter weighing in at 28.7 kilograms. Problems surfaced against Soviet troops during the winter of 1941 as its lighting mechanism was unable to cope with the cold weather conditions. Later versions of the weapon replaced the hydrogen torch with a cartridge based system which proved more effective. Flamethrower troops are often targeted by enemy troops as they take a heavy psychological toll on enemy morale in addition to being effective weapons against well entrenched enemy troops. As such, these weapons were often dressed to look like standard infantry rifles in an attempt to disguise operators.",
-    image: "images/tiles/weapons/Flammenwerfer-42.jpg",
+    image: "images/tiles/weapons/Flammenwerfer-42.png",
     length: "40 cm",
     name: "Flammenwerfer 41",
     price: 0,

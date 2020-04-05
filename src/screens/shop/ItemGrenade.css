@@ -1,7 +1,5 @@
-div.item-grenade {
-    background-color: white;
-}
-
 div.item-grenade img.item-grenade-image {
+    background-color: grey;
+    border-radius: 30px;
     width: 100%;
 }

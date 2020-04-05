@@ -6,6 +6,7 @@ import Weapons from '../../game/Weapons';
 import ItemAmmunition from './ItemAmmunition';
 import ItemGrenade from './ItemGrenade';
 import ItemWeapon from './ItemWeapon';
+import DetailAmmunition from './DetailAmmunition';
 import DetailWeapon from './DetailWeapon';
 
 class ShopScreen extends React.Component {
@@ -26,7 +27,9 @@ class ShopScreen extends React.Component {
     );
 
     let detail = undefined;
-    if(!!this.state.selectedWeapon) {
+    if(!!this.state.selectedAmmunition) {
+      detail = <DetailAmmunition ammunition={ this.state.selectedAmmunition } />
+    } else if(!!this.state.selectedWeapon) {
       detail = <DetailWeapon weapon={ this.state.selectedWeapon } />
     }
 
@@ -88,8 +91,7 @@ class ShopScreen extends React.Component {
     });
   }
 
-  handleItemWeaponMouseEnter = (weapon) => {
-    console.log("handleItemWeaponMouseEnter", weapon);
+  handleItemWeaponMouseEnter = (weapon) => {    
     this.setState({
       selectedAmmunition: null,
       selectedGrenade: null,

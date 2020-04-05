@@ -6,13 +6,15 @@ div.shop-screen {
 }
 
 div.shop-screen div.catalog {
+    background-image: url(/images/backgrounds/wildtextures-black-scratched-plate.jpg);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 1px 1px;    
+    grid-gap: 10px 10px;
+    padding: 8px;
 }
 
-div.shop-screen div.details {
-    background-color: violet;
+div.shop-screen div.details {    
+    color: #0a88e6;
     flex-shrink: 100000;
     height: 100%;
     overflow-y: auto;
