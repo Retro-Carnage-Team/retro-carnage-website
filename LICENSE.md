@@ -84,9 +84,9 @@ The following list contains all media elements that have not been created by the
 * FAL-G1 by Kevin Murray  
   Link: https://commons.wikimedia.org/wiki/File:German_FAL-G1_noBG.png  
   License: https://creativecommons.org/licenses/by-sa/3.0/deed.de
-* AK74 by Russian Trooper  
-  Link: https://commons.wikimedia.org/wiki/File:Ak74assault.jpg  
-  License: Public Domain
+* AK74 (is actually a AK47) by Nemo5576  
+  Link: https://commons.wikimedia.org/wiki/File:AK-47_type_II_noBG.png  
+  License: https://creativecommons.org/licenses/by-sa/4.0/deed.en
 * AR10 by Le-boulanger  
   Link: https://commons.wikimedia.org/wiki/File:AR10_Armalite_vue_d%27ensemble_noBG.jpg  
   License: https://creativecommons.org/licenses/by-sa/4.0/deed.de
