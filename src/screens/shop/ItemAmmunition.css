@@ -6,6 +6,7 @@ div.item-ammunition img.item-ammunition-image {
 
 div.item-ammunition img.item-ammunition-image:hover {
     background-color: #34bd5b;
+    cursor: pointer;
 }
 
 div.item-ammunition img.item-ammunition-image.compatible {

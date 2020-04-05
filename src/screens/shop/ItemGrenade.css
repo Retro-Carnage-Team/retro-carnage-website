@@ -6,4 +6,5 @@ div.item-grenade img.item-grenade-image {
 
 div.item-grenade img.item-grenade-image:hover {
     background-color: #34bd5b;
+    cursor: pointer;
 }

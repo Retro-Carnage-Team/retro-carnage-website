@@ -23,7 +23,22 @@ function buildWeaponMap() {
 class InventoryController {
 
     constructor() {
+        this.changeListeners = [];
         this.reset();
+    }
+
+    addChangeListener = (callback) => {
+        this.changeListeners.push(callback);
+    }
+
+    removeChangeListener = (callback) => {
+        const index = this.changeListeners.indexOf(callback);
+        if (index > -1)
+            this.changeListeners.splice(index, 1);        
+    }
+
+    callListeners = () => {
+        this.changeListeners.forEach(l => l());
     }
 
     reset = () => {
@@ -46,6 +61,7 @@ class InventoryController {
         const ammoType = Ammunition.find(a => a.name === ammunitionName);
         this.ammunition[ammunitionName] = Math.min(this.ammunition[ammunitionName] + ammoType.packageSize, ammoType.maxCount);
         this.cash = this.cash - ammoType.price;
+        this.callListeners();
     }
 
     getGrenadeCount = (grenadeName) => {
@@ -60,6 +76,7 @@ class InventoryController {
     buyGrenade = (grenadeName) => {
         this.grenades[grenadeName] = this.grenades[grenadeName] + 1;
         this.cash = this.cash - Grenades.find(g => g.name === grenadeName).price;
+        this.callListeners();
     }
 
     isWeaponInInventory = (weaponName) => {
@@ -73,6 +90,7 @@ class InventoryController {
     buyWeapon = (weaponName) => {
         this.weapons[weaponName] = true;
         this.cash = this.cash - Weapons.find(w => w.name === weaponName).price;
+        this.callListeners();
     }
 
 }

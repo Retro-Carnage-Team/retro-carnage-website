@@ -1,0 +1,43 @@
+div.bottom-line {    
+    height: 30px;
+    padding: 10px;
+}
+
+div.bottom-line div.cost-label {
+    color: #2e4243;
+    float: left;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+div.bottom-line div.cost-value {
+    color: #897c2a;
+    float: left;
+    font-size: 40px;
+    text-align: right;
+    width: 10%;
+}
+
+div.bottom-line div.credit-label {
+    color: #2e4243;
+    float: left;
+    font-size: 40px;
+    margin-left: 15%;
+    text-transform: uppercase;
+}
+
+div.bottom-line div.credit-value {
+    color: #897c2a;
+    float: left;
+    font-size: 40px;
+    text-align: right;
+    width: 10%;
+}
+
+div.bottom-line div.exit-label {
+    color: #2e4243;
+    cursor: pointer;
+    float: right;
+    font-size: 40px;
+    text-transform: uppercase;
+}

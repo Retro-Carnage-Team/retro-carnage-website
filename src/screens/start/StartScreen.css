@@ -32,4 +32,5 @@ div.start-screen div.space-2 {
 div.start-screen p.inspired-by {
     color: #12a45d;
     font-size: 32px;
+    text-transform: uppercase;
 }

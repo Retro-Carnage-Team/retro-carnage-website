@@ -11,16 +11,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 
 ## Attributions
 
-This game is based on the work of many great artists who share their work with us free of charge.  
+This game is based on the work of many great artists who share their work with us free of charge. Please not that some of these assets are not available for commercial use.  
 The following list contains all media elements that have not been created by the author of the software.
 
 ### Fonts
 
-* Armalite Rifle by Vic Fieger  
-  Link: https://www.1001fonts.com/armalite-rifle-font.html  
-  License: https://www.1001fonts.com/licenses/ffc.html
-* Stencil-Cargo-Army by Galdino Otten  
-  Link: https://www.1001fonts.com/stencil-cargo-army-font.html  
+* XXII ARMY by Lecter Johnson by doubletwo.net  
+  Link: https://fontsbytes.com/x/xxii-army/  
   License: Custom license that can be found right next to the file in the fonts folder
 
 ### Images

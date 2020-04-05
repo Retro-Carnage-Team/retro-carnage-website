@@ -3,12 +3,15 @@ import './ShopScreen.css';
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
+import InventoryController from '../../game/InventoryController';
+import BottomLine from './BottomLine';
 import ItemAmmunition from './ItemAmmunition';
 import ItemGrenade from './ItemGrenade';
 import ItemWeapon from './ItemWeapon';
 import DetailAmmunition from './DetailAmmunition';
 import DetailGrenade from './DetailGrenade';
 import DetailWeapon from './DetailWeapon';
+import { GAME_SCREEN_NAME } from '../game/GameScreen';
 
 class ShopScreen extends React.Component {
 
@@ -20,6 +23,14 @@ class ShopScreen extends React.Component {
       selectedWeapon: null
     };
   }  
+
+  componentDidMount() {    
+    InventoryController.addChangeListener(this.handleInventoryUpdate);
+  }
+  
+  componentWillUnmount() {
+    InventoryController.removeChangeListener(this.handleInventoryUpdate);
+  }
 
   render() {
     const items = Weapons.map(w => this.buildWeaponItem(w)).concat(
@@ -44,11 +55,17 @@ class ShopScreen extends React.Component {
         <div className="details">
           { detail }
         </div>
-        <div className="bottom-line">
-
-        </div>
+        <BottomLine 
+          onExit={ this.handleExitClicked }
+          selectedAmmunition={ this.state.selectedAmmunition }
+          selectedGrenade={ this.state.selectedGrenade }
+          selectedWeapon={ this.state.selectedWeapon } />
       </div>
     );
+  }
+
+  handleInventoryUpdate = () => {
+    this.forceUpdate();
   }
 
   buildAmmunitionItem = (ammo) => {
@@ -113,6 +130,10 @@ class ShopScreen extends React.Component {
       selectedGrenade: null,
       selectedWeapon: null
     });
+  }
+
+  handleExitClicked = () => {
+    this.props.onScreenChangeRequired(GAME_SCREEN_NAME);
   }
 
 }

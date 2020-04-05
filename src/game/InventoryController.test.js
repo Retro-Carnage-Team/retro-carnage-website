@@ -66,3 +66,34 @@ test('Buying a weapons should decrease the amount cash available', () => {
     InventoryController.buyWeapon(weapon);
     expect(InventoryController.cash).toBeLessThan(oldCash);
 });
+
+
+test('Change listeners should get informed every time a change happened', () => {
+    let callCounter = 0;
+    function callback() {
+        callCounter += 1;
+    }
+
+    InventoryController.reset();    
+    InventoryController.addChangeListener(callback);
+    InventoryController.buyWeapon("P7");
+    expect(callCounter).toBe(1);
+
+    InventoryController.removeChangeListener(callback);
+    InventoryController.buyWeapon("P7");
+    expect(callCounter).toBe(1);
+});
+
+
+test('Removing listeners from controller should work', () => {
+    let called = false;
+    function callback() {
+        called = true;
+    }
+
+    InventoryController.reset();
+    InventoryController.addChangeListener(callback);
+    InventoryController.removeChangeListener(callback);
+    InventoryController.buyWeapon("P7");
+    expect(called).toBeFalsy();
+});

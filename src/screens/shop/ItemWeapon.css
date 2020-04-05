@@ -6,6 +6,7 @@ div.item-weapon img.item-weapon-image {
 
 div.item-weapon img.item-weapon-image:hover {
     background-color: #34bd5b;
+    cursor: pointer;
 }
 
 div.item-weapon img.item-weapon-image.compatible {

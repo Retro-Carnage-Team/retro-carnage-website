@@ -15,6 +15,7 @@ div.mission-briefing.empty div.space-0 {
 
 div.mission-briefing.empty h1 {
     color: #bb9f84;
+    text-transform: uppercase;
 }
 
 div.mission-briefing.selected img {

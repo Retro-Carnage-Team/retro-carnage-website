@@ -7,6 +7,7 @@ div.shop-screen {
 
 div.shop-screen div.catalog {
     background-image: url(/images/backgrounds/wildtextures-black-scratched-plate.jpg);
+    background-size: cover;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px 10px;
@@ -18,9 +19,4 @@ div.shop-screen div.details {
     flex-shrink: 100000;
     height: 100%;
     overflow-y: auto;
-}
-
-div.shop-screen div.bottom-line {
-    background-color: yellow;
-    height: 50px;
 }
