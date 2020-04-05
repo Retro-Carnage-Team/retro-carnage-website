@@ -52,8 +52,9 @@ class ShopScreen extends React.Component {
     return (
       <ItemAmmunition 
         ammunition={ ammo }
-        key={ ammo.name } 
-        onMouseEnter={ this.handleItemAmmunitionMouseEnter } />
+        key={ ammo.name }
+        onMouseEnter={ this.handleItemAmmunitionMouseEnter }
+        selectedWeapon={ this.state.selectedWeapon } />
     );
   }
 
@@ -71,6 +72,7 @@ class ShopScreen extends React.Component {
       <ItemWeapon 
         key={ weapon.name } 
         onMouseEnter={ this.handleItemWeaponMouseEnter }
+        selectedAmmunition={ this.state.selectedAmmunition }
         weapon={ weapon } />
     );
   }

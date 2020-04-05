@@ -1,5 +1,13 @@
 div.item-ammunition img.item-ammunition-image {
-    background-color: grey;
+    background-color: black;
     border-radius: 30px;
     width: 100%;
+}
+
+div.item-ammunition img.item-ammunition-image:hover {
+    background-color: #34bd5b;
+}
+
+div.item-ammunition img.item-ammunition-image.compatible {
+    background-color: #ffee93;
 }
