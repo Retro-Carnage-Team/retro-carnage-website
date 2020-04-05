@@ -22,7 +22,7 @@ export default function DetailWeapon(props) {
                         <td className="details-weapon-value">{ props.weapon.range } m</td>                    
                     </tr>
                     <tr>
-                    <td>Length:</td>
+                        <td>Length:</td>
                         <td className="details-weapon-value">{ props.weapon.length }</td>
                         <td className="details-weapon-spacer" />
                         <td>Weight:</td>

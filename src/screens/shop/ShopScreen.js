@@ -7,6 +7,7 @@ import ItemAmmunition from './ItemAmmunition';
 import ItemGrenade from './ItemGrenade';
 import ItemWeapon from './ItemWeapon';
 import DetailAmmunition from './DetailAmmunition';
+import DetailGrenade from './DetailGrenade';
 import DetailWeapon from './DetailWeapon';
 
 class ShopScreen extends React.Component {
@@ -29,6 +30,8 @@ class ShopScreen extends React.Component {
     let detail = undefined;
     if(!!this.state.selectedAmmunition) {
       detail = <DetailAmmunition ammunition={ this.state.selectedAmmunition } />
+    } else if (!!this.state.selectedGrenade) {
+      detail = <DetailGrenade grenade={ this.state.selectedGrenade } />    
     } else if(!!this.state.selectedWeapon) {
       detail = <DetailWeapon weapon={ this.state.selectedWeapon } />
     }

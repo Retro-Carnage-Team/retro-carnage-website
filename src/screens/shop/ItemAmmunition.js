@@ -7,7 +7,7 @@ export default class ItemAmmunition extends React.Component {
   render() {
     var imgClasses = classNames({
       'item-ammunition-image': true,
-      'compatible': (!!this.props.selectedWeapon) && 
+      'compatible': (null !== this.props.selectedWeapon) && 
                     (this.props.selectedWeapon.ammo === this.props.ammunition.name)
     });
 
