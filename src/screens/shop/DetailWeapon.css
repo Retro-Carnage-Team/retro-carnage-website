@@ -1,19 +1,19 @@
 div.details-weapon-inner p {
-    padding-left: 25px;
-    padding-right: 25px;
-    text-align: initial;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: initial;
 }
 
 div.details-weapon-inner table {
-    padding-left: 25px;
-    padding-right: 25px;
-    text-align: initial;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: initial;
 }
 
 td.details-weapon-spacer {
-    width: 100px;
+  width: 100px;
 }
 
-td.details-weapon-value {    
-    padding-left: 20px;
+td.details-weapon-value {
+  padding-left: 20px;
 }

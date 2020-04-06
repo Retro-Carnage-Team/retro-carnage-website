@@ -1,40 +1,40 @@
 div.map-screen {
-    background-color: black;    
-    height: 100%;
+  background-color: black;    
+  height: 100%;
 }
 
 div.briefing-container {
-    height: 25%;    
-    width: 100%;    
+  height: 25%;    
+  width: 100%;    
 }
 
 div.world-map-container {
-    height: 75%;
-    position: absolute;
-    text-align: center;
-    width: 100%;
+  height: 75%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .location-container {
-    cursor: pointer;
-    height: 22px;
-    position: absolute;
-    width: 22px;
+  cursor: pointer;
+  height: 22px;
+  position: absolute;
+  width: 22px;
 }
 
 .location-marker {
-    animation: pulsate 1s ease-out;
-    animation-iteration-count: infinite; 
-    border: 3px solid orange;
-    border-radius: 30px;    
-    height: 18px;
-    opacity: 0.0;
-    position: absolute;
-    width: 18px;
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite; 
+  border: 3px solid orange;
+  border-radius: 30px;    
+  height: 18px;
+  opacity: 0.0;
+  position: absolute;
+  width: 18px;
 }
 
 @keyframes pulsate {
-    0% {transform: scale(0.1, 0.1); opacity: 0.0;}
-    50% {opacity: 1.0;}
-    100% {transform: scale(1.2, 1.2); opacity: 0.0;}
+  0% {transform: scale(0.1, 0.1); opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {transform: scale(1.2, 1.2); opacity: 0.0;}
 }

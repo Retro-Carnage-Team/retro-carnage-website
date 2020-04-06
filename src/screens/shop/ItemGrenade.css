@@ -1,10 +1,10 @@
 div.item-grenade img.item-grenade-image {
-    background-color: black;
-    border-radius: 30px;
-    width: 100%;
+  background-color: black;
+  border-radius: 30px;
+  width: 100%;
 }
 
 div.item-grenade img.item-grenade-image:hover {
-    background-color: #34bd5b;
-    cursor: pointer;
+  background-color: #34bd5b;
+  cursor: pointer;
 }

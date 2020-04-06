@@ -1,15 +1,15 @@
 div.details-ammunition-inner p {
-    padding-left: 25px;
-    padding-right: 25px;
-    text-align: initial;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: initial;
 }
 
 div.details-ammunition-inner table {
-    padding-left: 25px;
-    padding-right: 25px;
-    text-align: initial;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: initial;
 }
 
 td.details-ammunition-value {    
-    padding-left: 20px;
+  padding-left: 20px;
 }
