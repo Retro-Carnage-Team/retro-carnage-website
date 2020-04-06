@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './ItemWeapon.css';
+import InventoryController from '../../game/InventoryController';
 
 export default class ItemWeapon extends React.Component {
 
@@ -14,11 +15,19 @@ export default class ItemWeapon extends React.Component {
     return (
       <div 
         className="item-weapon" 
+        onClick={ this.handleClick }
         onMouseEnter={ this.handleMouseEnter }
         onMouseLeave={ this.handleMouseLeave }>
         <img className={ imgClasses } src={ this.props.weapon.image } alt=""></img>
       </div>
     );
+  }
+
+  handleClick = () => {
+    const weapon = this.props.weapon.name;
+    if(InventoryController.isWeaponProcurable(weapon)) {
+      InventoryController.buyWeapon(weapon);
+    }
   }
 
   handleMouseEnter = () => {
