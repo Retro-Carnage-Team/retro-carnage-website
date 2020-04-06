@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import './ItemWeapon.css';
 import InventoryController from '../../game/InventoryController';
-import SoundBoard, { FX_ERROR } from '../../game/SoundBoard';
 
 export default class ItemWeapon extends React.Component {
 
@@ -25,12 +24,7 @@ export default class ItemWeapon extends React.Component {
   }
 
   handleClick = () => {
-    const weapon = this.props.weapon.name;
-    if(InventoryController.isWeaponProcurable(weapon)) {
-      InventoryController.buyWeapon(weapon);
-    } else {
-      SoundBoard.play(FX_ERROR);
-    }
+    InventoryController.buyWeapon(this.props.weapon.name);
   }
 
   handleMouseEnter = () => {

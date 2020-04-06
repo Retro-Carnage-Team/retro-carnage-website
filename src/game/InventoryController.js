@@ -1,7 +1,7 @@
 import Ammunition from './Ammunition';
 import Grenades from './Grenades';
 import Weapons from './Weapons';
-import SoundBoard, { FX_CASH } from './SoundBoard';
+import SoundBoard, { FX_CASH, FX_ERROR } from './SoundBoard';
 
 function buildAmmunitionMap() {
     let result = { };
@@ -59,11 +59,15 @@ class InventoryController {
     }
 
     buyAmmunition = (ammunitionName) => {
-        const ammoType = Ammunition.find(a => a.name === ammunitionName);
-        this.ammunition[ammunitionName] = Math.min(this.ammunition[ammunitionName] + ammoType.packageSize, ammoType.maxCount);
-        this.cash = this.cash - ammoType.price;
-        this.callListeners();        
-        SoundBoard.play(FX_CASH);
+        if(this.isAmmunitionProcurable(ammunitionName)) {
+            const ammoType = Ammunition.find(a => a.name === ammunitionName);
+            this.ammunition[ammunitionName] = Math.min(this.ammunition[ammunitionName] + ammoType.packageSize, ammoType.maxCount);
+            this.cash = this.cash - ammoType.price;
+            this.callListeners();        
+            SoundBoard.play(FX_CASH);
+        } else {
+            SoundBoard.play(FX_ERROR);
+        }
     }
 
     getGrenadeCount = (grenadeName) => {
@@ -76,11 +80,15 @@ class InventoryController {
     }
 
     buyGrenade = (grenadeName) => {
-        const grenade = Grenades.find(g => g.name === grenadeName);
-        this.grenades[grenadeName] = Math.min(this.grenades[grenadeName] + grenade.packageSize, grenade.maxCount);
-        this.cash = this.cash - Grenades.find(g => g.name === grenadeName).price;
-        this.callListeners();
-        SoundBoard.play(FX_CASH);
+        if(this.isGrenadeProcurable(grenadeName)) {
+            const grenade = Grenades.find(g => g.name === grenadeName);
+            this.grenades[grenadeName] = Math.min(this.grenades[grenadeName] + grenade.packageSize, grenade.maxCount);
+            this.cash = this.cash - Grenades.find(g => g.name === grenadeName).price;
+            this.callListeners();
+            SoundBoard.play(FX_CASH);
+        } else {
+            SoundBoard.play(FX_ERROR);
+        } 
     }
 
     isWeaponInInventory = (weaponName) => {
@@ -92,10 +100,14 @@ class InventoryController {
     }
 
     buyWeapon = (weaponName) => {
-        this.weapons[weaponName] = true;
-        this.cash = this.cash - Weapons.find(w => w.name === weaponName).price;
-        this.callListeners();
-        SoundBoard.play(FX_CASH);
+        if(this.isWeaponProcurable(weaponName)) {
+            this.weapons[weaponName] = true;
+            this.cash = this.cash - Weapons.find(w => w.name === weaponName).price;
+            this.callListeners();
+            SoundBoard.play(FX_CASH);
+        } else {
+            SoundBoard.play(FX_ERROR);
+        } 
     }
 
 }

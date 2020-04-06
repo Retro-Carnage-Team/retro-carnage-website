@@ -1,7 +1,6 @@
 import React from 'react';
 import './ItemGrenade.css';
 import InventoryController from '../../game/InventoryController';
-import SoundBoard, { FX_ERROR } from '../../game/SoundBoard';
 
 export default class ItemGrenade extends React.Component {
 
@@ -18,12 +17,7 @@ export default class ItemGrenade extends React.Component {
   }
 
   handleClick = () => {
-    const grenade = this.props.grenade.name;
-    if(InventoryController.isGrenadeProcurable(grenade)) {
-      InventoryController.buyGrenade(grenade);
-    } else {
-      SoundBoard.play(FX_ERROR);
-    }
+    InventoryController.buyGrenade(this.props.grenade.name);
   }
 
   handleMouseEnter = () => {
