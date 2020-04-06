@@ -31,12 +31,12 @@ test('Buying ammo should decrease the amount cash available', () => {
 });
 
 
-test('Initial grenade count is zero and increases by 1', () => {
+test('Initial grenade count is zero and increases by 5', () => {
     InventoryController.reset();
     const grenade = Grenades[0];
     expect(InventoryController.getGrenadeCount(grenade.name)).toBe(0);
     InventoryController.buyGrenade(grenade.name);
-    expect(InventoryController.getGrenadeCount(grenade.name)).toBe(1);
+    expect(InventoryController.getGrenadeCount(grenade.name)).toBe(5);
 });
 
 

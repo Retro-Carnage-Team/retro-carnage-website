@@ -11,8 +11,8 @@ export default function DetailGrenade(props) {
                         <td>Price:</td>
                         <td className="details-grenade-value">{props.grenade.price}</td>                    
                         <td className="details-grenade-spacer" />                    
-                        <td>Explosive:</td>
-                        <td className="details-grenade-value">{ props.grenade.explosive }</td>
+                        <td>Package size:</td>
+                        <td className="details-grenade-value">{ props.grenade.packageSize }</td>
                     </tr>
                     <tr>
                         <td>Range:</td>

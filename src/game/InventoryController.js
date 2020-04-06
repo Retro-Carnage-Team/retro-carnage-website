@@ -74,7 +74,8 @@ class InventoryController {
     }
 
     buyGrenade = (grenadeName) => {
-        this.grenades[grenadeName] = this.grenades[grenadeName] + 1;
+        const grenade = Grenades.find(g => g.name === grenadeName);
+        this.grenades[grenadeName] = Math.min(this.grenades[grenadeName] + grenade.packageSize, grenade.maxCount);
         this.cash = this.cash - Grenades.find(g => g.name === grenadeName).price;
         this.callListeners();
     }
