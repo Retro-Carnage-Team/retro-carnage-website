@@ -177,3 +177,12 @@ The following list contains all media elements that have not been created by the
 * Beatdown City by Three Chain Links  
   Link: https://soundcloud.com/beardmont/beatdown-city  
   License: http://creativecommons.org/licenses/by/3.0/
+
+### Sounds
+
+* Cash register by kiddpark  
+  Link: https://freesound.org/people/kiddpark/sounds/201159/  
+  License: http://creativecommons.org/licenses/by/3.0/
+* Error by lluiset7  
+  Link: https://freesound.org/people/lluiset7/sounds/141334/  
+  License: http://creativecommons.org/publicdomain/zero/1.0/

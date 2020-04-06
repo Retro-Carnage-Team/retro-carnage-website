@@ -1,6 +1,7 @@
 import Ammunition from './Ammunition';
 import Grenades from './Grenades';
 import Weapons from './Weapons';
+import SoundBoard, { FX_CASH } from './SoundBoard';
 
 function buildAmmunitionMap() {
     let result = { };
@@ -61,7 +62,8 @@ class InventoryController {
         const ammoType = Ammunition.find(a => a.name === ammunitionName);
         this.ammunition[ammunitionName] = Math.min(this.ammunition[ammunitionName] + ammoType.packageSize, ammoType.maxCount);
         this.cash = this.cash - ammoType.price;
-        this.callListeners();
+        this.callListeners();        
+        SoundBoard.play(FX_CASH);
     }
 
     getGrenadeCount = (grenadeName) => {
@@ -78,6 +80,7 @@ class InventoryController {
         this.grenades[grenadeName] = Math.min(this.grenades[grenadeName] + grenade.packageSize, grenade.maxCount);
         this.cash = this.cash - Grenades.find(g => g.name === grenadeName).price;
         this.callListeners();
+        SoundBoard.play(FX_CASH);
     }
 
     isWeaponInInventory = (weaponName) => {
@@ -92,6 +95,7 @@ class InventoryController {
         this.weapons[weaponName] = true;
         this.cash = this.cash - Weapons.find(w => w.name === weaponName).price;
         this.callListeners();
+        SoundBoard.play(FX_CASH);
     }
 
 }

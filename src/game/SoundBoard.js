@@ -1,3 +1,6 @@
+export const FX_CASH = 'cash-register.mp3';
+export const FX_ERROR = 'error.mp3';
+
 export const MUSIC_BACKGROUND_1 = 'All-We-Ever-See-of-Stars.mp3';
 export const MUSIC_BACKGROUND_2 = 'Beatdown-City.mp3';
 export const MUSIC_BACKGROUND_3 = 'Cracked-Streets-And-Broken-Windows.mp3';
@@ -18,7 +21,8 @@ class SoundBoard {
         this.sounds = [];
 
         // sound effects
-        // TODO: Define sound effects here
+        this.sounds[FX_CASH] = new Audio('sounds/fx/' + FX_CASH);
+        this.sounds[FX_ERROR] = new Audio('sounds/fx/' + FX_ERROR);
 
         // music
         this.sounds[MUSIC_BACKGROUND_1] = new Audio('sounds/music/' + MUSIC_BACKGROUND_1);
@@ -52,12 +56,12 @@ class SoundBoard {
         try {
             this.sounds[sound].pause();
             this.sounds[sound].currentTime = 0;
+        } catch (error) { 
+            console.error('Can\'t stop sound: ' + sound, error);
         }
-        catch (error) { }
     }
 
 };
 
 const soundBoardInstance = new SoundBoard();
-
 export default soundBoardInstance;
