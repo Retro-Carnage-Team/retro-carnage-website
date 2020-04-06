@@ -4,7 +4,7 @@ const Grenades = [{
     image: "images/tiles/weapons/DM41.png",
     maxCount: 100,
     name: "DM41",
-    price: 0,
+    price: 500,
     radius: 0,
     range: 0,
     weight: "0.450 kg"
@@ -14,7 +14,7 @@ const Grenades = [{
     image: "images/tiles/weapons/M24.png",
     maxCount: 100,
     name: "Stielhandgranate 24",
-    price: 0,
+    price: 600,
     radius: 0,
     range: 0,
     weight: "0.595 kg"
