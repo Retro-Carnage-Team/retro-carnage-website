@@ -135,6 +135,9 @@ The following list contains all media elements that have not been created by the
 * Black scratched metal plate by wildtextures.com  
   Link: https://www.wildtextures.com/free-textures/black-scratched-metal-plate/  
   License: not specified
+* check_circle_outline-24px by Google  
+  Link: https://material.io/resources/icons/?icon=check_circle_outline&style=baseline  
+  License: https://www.apache.org/licenses/LICENSE-2.0.html
 
 ### Music
 
