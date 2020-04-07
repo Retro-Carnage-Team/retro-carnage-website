@@ -1,6 +1,7 @@
 import React from 'react';
 import './ItemGrenade.css';
 import InventoryController from '../../game/InventoryController';
+import InventoryStatusbar from './InventoryStatusbar';
 
 export default class ItemGrenade extends React.Component {
 
@@ -12,6 +13,9 @@ export default class ItemGrenade extends React.Component {
         onMouseEnter={ this.handleMouseEnter }
         onMouseLeave={ this.handleMouseLeave }>
         <img className="item-grenade-image" src={ this.props.grenade.image } alt=""></img>
+        <InventoryStatusbar 
+          current={ InventoryController.getGrenadeCount(this.props.grenade.name) }
+          max={ this.props.grenade.maxCount } />
       </div>
     );
   }

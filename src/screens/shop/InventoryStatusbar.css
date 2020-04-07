@@ -1,0 +1,12 @@
+div.inventory-statusbar {  
+  bottom: 10px;
+  height: 5px;
+  left: 30px;
+  position: relative;  
+  width: calc(100% - 60px);
+}
+
+div.inventory-statusbar div.status {
+  background-color: #0a88e6;
+  height: 5px;
+}
