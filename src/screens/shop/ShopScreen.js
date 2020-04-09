@@ -4,6 +4,7 @@ import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
 import InventoryController from '../../game/InventoryController';
+import SoundBoard, { MUSIC_THEME } from '../../game/SoundBoard';
 import BottomLine from './BottomLine';
 import ItemAmmunition from './ItemAmmunition';
 import ItemGrenade from './ItemGrenade';
@@ -17,12 +18,12 @@ class ShopScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       selectedAmmunition: null,
       selectedGrenade: null,
       selectedWeapon: null
     };
-  }  
+  }
 
   componentDidMount() {    
     InventoryController.addChangeListener(this.handleInventoryUpdate);
@@ -132,8 +133,20 @@ class ShopScreen extends React.Component {
     });
   }
 
+  fadeOutMusic = () => {
+    const volume = SoundBoard.getVolume(MUSIC_THEME);
+    if(0 < volume) {
+      SoundBoard.setVolume(MUSIC_THEME, Math.max(volume - 0.05, 0));
+      setTimeout(this.fadeOutMusic, 200);
+    } else {
+      SoundBoard.stop(MUSIC_THEME);
+      SoundBoard.setVolume(MUSIC_THEME, 1);
+      this.props.onScreenChangeRequired(LETS_BEGIN_MESSAGE_SCREEN_NAME);
+    }
+  }
+
   handleExitClicked = () => {
-    this.props.onScreenChangeRequired(LETS_BEGIN_MESSAGE_SCREEN_NAME);
+    setTimeout(this.fadeOutMusic, 200);
   }
 
 }

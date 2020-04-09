@@ -38,9 +38,18 @@ class SoundBoard {
     this.sounds[MUSIC_BACKGROUND_11] = new Audio('sounds/music/' + MUSIC_BACKGROUND_11);
     this.sounds[MUSIC_BACKGROUND_12] = new Audio('sounds/music/' + MUSIC_BACKGROUND_12);
     this.sounds[MUSIC_THEME] = new Audio('sounds/music/' + MUSIC_THEME);
+  }
 
-    // TODO: Adapt volume if necessary
-    // this.sounds['xyz'].volume = 0.7;        
+  getVolume = (sound) => {
+    return this.sounds[sound].volume;
+  }
+
+  setVolume = (sound, volume) => {
+    try {
+      this.sounds[sound].volume = volume;
+    } catch (error) { 
+      console.error('Can\'t set volume for sound: ' + sound, error);
+    }
   }
 
   play = (sound) => {
