@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import GameScreen, { GAME_SCREEN_NAME } from './screens/game/GameScreen';
+import LetsBeginScreen, { LETS_BEGIN_MESSAGE_SCREEN_NAME } from './screens/lets-begin/LetsBeginScreen';
 import MapScreen, { MAP_SCREEN_NAME } from './screens/map/MapScreen';
 import ShopScreen, { SHOP_SCREEN_NAME } from './screens/shop/ShopScreen';
 import StartScreen, { START_SCREEN_NAME } from './screens/start/StartScreen';
@@ -23,6 +24,9 @@ class App extends React.Component {
     switch(this.state.screen) {
         case GAME_SCREEN_NAME:
           screen = <GameScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
+          break;
+        case LETS_BEGIN_MESSAGE_SCREEN_NAME:
+          screen = <LetsBeginScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
         case MAP_SCREEN_NAME:
           screen = <MapScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;

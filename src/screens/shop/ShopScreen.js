@@ -11,7 +11,7 @@ import ItemWeapon from './ItemWeapon';
 import DetailAmmunition from './DetailAmmunition';
 import DetailGrenade from './DetailGrenade';
 import DetailWeapon from './DetailWeapon';
-import { GAME_SCREEN_NAME } from '../game/GameScreen';
+import { LETS_BEGIN_MESSAGE_SCREEN_NAME } from '../lets-begin/LetsBeginScreen';
 
 class ShopScreen extends React.Component {
 
@@ -133,7 +133,7 @@ class ShopScreen extends React.Component {
   }
 
   handleExitClicked = () => {
-    this.props.onScreenChangeRequired(GAME_SCREEN_NAME);
+    this.props.onScreenChangeRequired(LETS_BEGIN_MESSAGE_SCREEN_NAME);
   }
 
 }
