@@ -18,7 +18,7 @@ function LetsBeginMessageScreen(props) {
   return (
     <div className="lets-begin-screen">
       <div style={{ height: height + "px" }} />
-      <h1>Let the mission begin</h1>
+      <h1>Let the mission begin!</h1>
     </div>
   );
 }
