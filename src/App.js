@@ -3,6 +3,7 @@ import './App.css';
 
 import GameScreen, { GAME_SCREEN_NAME } from './screens/game/GameScreen';
 import LetsBeginScreen, { LETS_BEGIN_MESSAGE_SCREEN_NAME } from './screens/lets-begin/LetsBeginScreen';
+import LoadingScreen, { LOADING_SCREEN_NAME } from './screens/loading/LoadingScreen';
 import MapScreen, { MAP_SCREEN_NAME } from './screens/map/MapScreen';
 import ShopScreen, { SHOP_SCREEN_NAME } from './screens/shop/ShopScreen';
 import StartScreen, { START_SCREEN_NAME } from './screens/start/StartScreen';
@@ -12,7 +13,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { screen: START_SCREEN_NAME };
+    this.state = { screen: LOADING_SCREEN_NAME };
   }
 
   handleScreenChangeRequired = (screenName) => {
@@ -28,6 +29,9 @@ class App extends React.Component {
         case LETS_BEGIN_MESSAGE_SCREEN_NAME:
           screen = <LetsBeginScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
+        case LOADING_SCREEN_NAME:
+          screen = <LoadingScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
+          break;
         case MAP_SCREEN_NAME:
           screen = <MapScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
@@ -41,7 +45,7 @@ class App extends React.Component {
           screen = <TitleScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
         default:
-          screen = <StartScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
+          screen = <LoadingScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
     }
     return (
