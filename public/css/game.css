@@ -1,14 +1,12 @@
 @font-face {
-    font-family: 'Conv_XXII DIRTY-ARMY';
-	src: url('../fonts/XXII-DIRTY-ARMY.eot');
-	src: local('☺'), url('../fonts/XXII-DIRTY-ARMY.woff') format('woff'), url('../fonts/XXII-DIRTY-ARMY.ttf') format('truetype'), url('../fonts/XXII-DIRTY-ARMY.svg') format('svg');
-    font-weight: normal;
-	font-style: normal;    
+  font-family: 'Conv_XXII DIRTY-ARMY';
+  src: url('../fonts/XXII-DIRTY-ARMY.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;    
 }
 
 html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-    
