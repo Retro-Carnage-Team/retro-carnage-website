@@ -4,7 +4,7 @@ div.item-weapon img {
   width: 100%;
 }
 
-div.item-weapon img:hover {
+div.item-weapon:hover img {
   background-color: #34bd5b;
   cursor: pointer;
 }

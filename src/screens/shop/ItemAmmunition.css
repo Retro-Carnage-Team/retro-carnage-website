@@ -4,7 +4,7 @@ div.item-ammunition img.item-ammunition-image {
   width: 100%;
 }
 
-div.item-ammunition img.item-ammunition-image:hover {
+div.item-ammunition:hover img.item-ammunition-image {
   background-color: #34bd5b;
   cursor: pointer;
 }
