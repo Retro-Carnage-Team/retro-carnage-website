@@ -40,6 +40,16 @@ class KeyboardController {
     }
   }
 
+  setUp = (window) => {
+    window.document.addEventListener('keydown', this.processKeyDown);
+    window.document.addEventListener('keyup', this.processKeyUp);
+  }
+
+  tearDown = (window) => {
+    window.document.removeEventListener('keydown', this.processKeyDown);
+    window.document.removeEventListener('keyup', this.processKeyUp);
+  }
+
 }
 
 const keyboardController = new KeyboardController();

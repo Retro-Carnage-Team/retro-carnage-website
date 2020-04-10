@@ -8,15 +8,13 @@ import KeyboardController from '../../game/KeyboardController';
 class GameScreen extends React.Component {
 
   componentDidMount() {
-    document.addEventListener('keydown', KeyboardController.processKeyDown);
-    document.addEventListener('keyup', KeyboardController.processKeyUp);
-    GamepadController.initialize(window.navigator);
-    setInterval(this.testGamepad, 100);
+    GamepadController.setUp(window);
+    KeyboardController.setUp(window);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', KeyboardController.processKeyDown);
-    document.removeEventListener('keyup', KeyboardController.processKeyUp);
+    GamepadController.tearDown(window);
+    KeyboardController.tearDown(window);
   }
 
   render() {
@@ -25,10 +23,6 @@ class GameScreen extends React.Component {
         Guru meditation: &lt;Canvas&gt; element not supported!
       </canvas>
     );
-  }
-
-  testGamepad = () => {
-    console.debug(GamepadController.getInputState(0));
   }
 
   moveToNextScreen = () => {
