@@ -1,20 +1,40 @@
 import React from 'react';
 import './GameScreen.css';
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
+import GamepadController from '../../game/GamepadController';
+import KeyboardController from '../../game/KeyboardController';
 
-function GameScreen(props) {
-  function moveToNextScreen() {
-    props.onScreenChangeRequired(MAP_SCREEN_NAME);
+
+class GameScreen extends React.Component {
+
+  componentDidMount() {
+    document.addEventListener('keydown', KeyboardController.processKeyDown);
+    document.addEventListener('keyup', KeyboardController.processKeyUp);
+    GamepadController.initialize(window.navigator);
+    setInterval(this.testGamepad, 100);
   }
 
-  return (
-    <div className="title-screen" onClick={ moveToNextScreen }>
-      <h1>GAME SCREEN</h1>
+  componentWillUnmount() {
+    document.removeEventListener('keydown', KeyboardController.processKeyDown);
+    document.removeEventListener('keyup', KeyboardController.processKeyUp);
+  }
 
-      <div className="space-0" />
-      <p className="hint" onClick={ moveToNextScreen }>Click to finish level</p>
-    </div>
-  );
+  render() {
+    return (
+      <canvas id="game">
+        Guru meditation: &lt;Canvas&gt; element not supported!
+      </canvas>
+    );
+  }
+
+  testGamepad = () => {
+    console.debug(GamepadController.getInputState(0));
+  }
+
+  moveToNextScreen = () => {
+    this.props.onScreenChangeRequired(MAP_SCREEN_NAME);
+  }
+
 }
 
 export const GAME_SCREEN_NAME = "game";
