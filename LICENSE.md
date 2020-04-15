@@ -207,3 +207,6 @@ The following list contains all media elements that have not been created by the
 * Error by lluiset7  
   Link: https://freesound.org/people/lluiset7/sounds/141334/  
   License: http://creativecommons.org/publicdomain/zero/1.0/
+* Auto Assault Rifle/Gun Burst by EFlexMusic  
+  Link: https://freesound.org/people/EFlexMusic/sounds/393671/  
+  License: http://creativecommons.org/licenses/by-nc/3.0/

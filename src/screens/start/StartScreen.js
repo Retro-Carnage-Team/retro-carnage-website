@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import './StartScreen.css';
 import { TITLE_SCREEN_NAME } from '../title/TitleScreen';
-import { MUSIC_THEME } from '../../game/SoundBoard';
 import MissionController from '../../game/MissionController';
-import SoundBoard from '../../game/SoundBoard';
 
 function StartScreen(props) {
 
@@ -15,11 +13,6 @@ function StartScreen(props) {
     props.onScreenChangeRequired(TITLE_SCREEN_NAME);
   }
 
-  function playTheme() {
-    SoundBoard.play(MUSIC_THEME);
-  }
-  
-  setTimeout(playTheme, 1250);
   setTimeout(moveToNextScreen, 2000);
 
   return (

@@ -1,6 +1,7 @@
 export const FX_CASH = 'cash-register.mp3';
 export const FX_ERROR = 'error.mp3';
 export const FX_LOADING = 'loading.mp3';
+export const FX_TITLE_RIFLE = 'title-rifle.mp3';
 
 export const MUSIC_BACKGROUND_1 = 'All-We-Ever-See-of-Stars.mp3';
 export const MUSIC_BACKGROUND_2 = 'Beatdown-City.mp3';
@@ -25,6 +26,7 @@ class SoundBoard {
     this.sounds[FX_CASH] = new Audio('sounds/fx/' + FX_CASH);
     this.sounds[FX_ERROR] = new Audio('sounds/fx/' + FX_ERROR);
     this.sounds[FX_LOADING] = new Audio('sounds/fx/' + FX_LOADING);
+    this.sounds[FX_TITLE_RIFLE] = new Audio('sounds/fx/' + FX_TITLE_RIFLE);
 
     // music
     this.sounds[MUSIC_BACKGROUND_1] = new Audio('sounds/music/' + MUSIC_BACKGROUND_1);
