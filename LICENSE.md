@@ -138,6 +138,24 @@ The following list contains all media elements that have not been created by the
 * check_circle_outline-24px by Google  
   Link: https://material.io/resources/icons/?icon=check_circle_outline&style=baseline  
   License: https://www.apache.org/licenses/LICENSE-2.0.html
+* Gunung Palung Jungle by Tom from Netherlands  
+  Link: https://en.wikipedia.org/wiki/File:Gunung_Palung_Jungle.jpg  
+  License: https://creativecommons.org/licenses/by-sa/2.0/deed.en
+* The Flash Logo by Claybrooks  
+  Link: https://www.cleanpng.com/png-muzzle-flash-desktop-wallpaper-portable-network-gr-7014651/  
+  License: Personal Use
+* Red Background by Ratani  
+  Link: https://www.cleanpng.com/png-encapsulated-postscript-2080422/  
+  License: Personal Use
+* Camera Cartoon by Dewole  
+  Link: https://www.cleanpng.com/png-muzzle-flash-clip-art-the-flash-2406834/  
+  License: Personal Use
+* Background Orange by Adoffice  
+  Link: https://www.cleanpng.com/png-muzzle-flash-gunshot-clip-art-arvores-3379867/  
+  License: Personal Use
+* Graphic Background by Inorka  
+  Link: https://www.cleanpng.com/png-muzzle-flash-clip-art-4336582/  
+  License: Personal Use
 
 ### Music
 
