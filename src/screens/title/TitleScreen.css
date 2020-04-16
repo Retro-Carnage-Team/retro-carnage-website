@@ -2,3 +2,8 @@ div.title-screen {
   background-color: black;
   height: 100%;
 }
+
+div.title-screen img#muzzle-flash {
+  position: fixed;
+  transform: rotate(-5deg);
+}
