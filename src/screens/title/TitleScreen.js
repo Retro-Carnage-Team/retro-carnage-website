@@ -38,6 +38,7 @@ class TitleScreen extends React.Component {
 
     setTimeout(() => { 
       SoundBoard.play(MUSIC_THEME);
+      document.getElementById("title-bg").src = "images/backgrounds/title-3.jpg";
     }, 5500);
   }
 
