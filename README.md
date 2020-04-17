@@ -2,4 +2,4 @@
 
 The goal of this project is to rebuild and modernize the classic 1989 video game [Dogs of War](https://gamesdb.launchbox-app.com/games/details/41090) by [Elite Systems](http://www.elite-systems.co.uk).
 
-[![Watch the video](images/screenshot.png)](https://youtu.be/SykQ-GHLBXg)
+[![Watch the video](images/youtube-first-impression.png)](https://youtu.be/W5dJvoZUGt8)
