@@ -4,6 +4,7 @@ import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import GamepadController from '../../game/GamepadController';
 import KeyboardController from '../../game/KeyboardController';
 import Renderer from '../../game/Renderer';
+import PlayerInfo from './PlayerInfo';
 
 class GameScreen extends React.Component {
 
@@ -12,15 +13,19 @@ class GameScreen extends React.Component {
     this.lastFrame = undefined;
     this.renderer = undefined;
     this.running = true;
+    this.state = { playerInfoWidth: 1 };
   }
 
   componentDidMount() {
+    this.updateDimensions();
+
     GamepadController.setUp(window);
     KeyboardController.setUp(window);
     
     const canvas = document.getElementById("game");
     this.renderer = new Renderer(canvas, canvas.getContext("2d"));
 
+    window.addEventListener("resize", this.updateDimensions);
     window.requestAnimationFrame(this.renderGame);
   }
 
@@ -28,18 +33,30 @@ class GameScreen extends React.Component {
     GamepadController.tearDown(window);
     KeyboardController.tearDown(window);
     this.running = false;
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   render() {
     return (
-      <canvas id="game">
-        Guru meditation: &lt;Canvas&gt; element not supported!
-      </canvas>
+      <div className="game-screen">
+        <div className="left" style={{ width: this.state.playerInfoWidth +'px' }}>
+          <PlayerInfo player="1" />
+        </div>
+        <canvas
+          className="left"
+          id="game"
+          style={{ width: `calc(100% - ${this.state.playerInfoWidth}px - ${this.state.playerInfoWidth}px)` }}>
+          Guru meditation: &lt;Canvas&gt; element not supported!
+        </canvas>
+        <div className="right" style={{ width: this.state.playerInfoWidth +'px' }}>
+          <PlayerInfo player="2" />
+        </div>
+      </div>
     );
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
+  updateDimensions = () => {
+    this.setState({ playerInfoWidth: (window.innerWidth - window.innerHeight) / 2 });
   }
 
   renderGame = (timestamp) => {

@@ -156,6 +156,12 @@ The following list contains all media elements that have not been created by the
 * Graphic Background by Inorka  
   Link: https://www.cleanpng.com/png-muzzle-flash-clip-art-4336582/  
   License: Personal Use
+* Brown Camouflage Pattern 11 by http://background-tiles.com  
+  Link: https://background-tiles.com/overview/yellow/1011.php  
+  License: https://background-tiles.com/terms.pdf
+* Camouflage Pattern 21 by http://background-tiles.com  
+  Link: https://background-tiles.com/overview/mixed-colors/1021.php  
+  License: https://background-tiles.com/terms.pdf
 
 ### Music
 

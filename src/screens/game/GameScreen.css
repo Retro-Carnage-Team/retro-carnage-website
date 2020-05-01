@@ -1,4 +1,20 @@
-canvas#game {
+div.game-screen {
+  background-color: black;
   height: 100%;
-  width: 100%;
+}
+
+div.game-screen div {
+  height: 100%;
+}
+
+div.game-screen .left {
+  float: left;
+}
+
+div.game-screen canvas#game {
+  height: 100%;
+}
+
+div.game-screen .right {
+  float: right;
 }

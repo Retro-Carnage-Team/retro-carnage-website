@@ -35,7 +35,7 @@ class InventoryController {
   removeChangeListener = (callback) => {
     const index = this.changeListeners.indexOf(callback);
     if (index > -1)
-      this.changeListeners.splice(index, 1);        
+      this.changeListeners.splice(index, 1);
   }
 
   callListeners = () => {
@@ -63,7 +63,7 @@ class InventoryController {
       const ammoType = Ammunition.find(a => a.name === ammunitionName);
       this.ammunition[ammunitionName] = Math.min(this.ammunition[ammunitionName] + ammoType.packageSize, ammoType.maxCount);
       this.cash = this.cash - ammoType.price;
-      this.callListeners();        
+      this.callListeners();
       SoundBoard.play(FX_CASH);
     } else {
       SoundBoard.play(FX_ERROR);

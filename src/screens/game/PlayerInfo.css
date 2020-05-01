@@ -1,0 +1,29 @@
+div.player-info-1 {
+  background-image: url(/images/backgrounds/1011.png);
+  height: 100%;
+}
+
+img#player-portrait {
+  border: 5px solid black;
+  border-radius: 15px;
+  margin-top: 10%;
+  max-height: 25%;
+  max-width: 80%;
+}
+
+div.player-info-1 h2.score {
+  color: #fbe356;
+  font-size: 40px;
+  margin-top: 5%;
+}
+
+div.player-info-2 {
+  background-image: url(/images/backgrounds/1021.png);
+  height: 100%;
+}
+
+div.player-info-2 h2.score {
+  color: #fbe356;
+  font-size: 40px;
+  margin-top: 5%;
+}
