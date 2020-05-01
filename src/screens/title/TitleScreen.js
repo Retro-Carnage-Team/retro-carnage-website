@@ -13,6 +13,11 @@ class TitleScreen extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.rifleAnimationTimeoutId = null;
+    this.musicAnimationTimeoutId = null;
+    this.musicStarted = false;
+
     this.state = { 
       imageSize: '100',
       muzzleFlash: false,
@@ -20,29 +25,42 @@ class TitleScreen extends React.Component {
     };
   }
 
+  replaceBackground = (src) => {
+    let bg = document.getElementById("title-bg");
+    if(bg) {
+      bg.src = src;
+    }
+  }
+
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
-    setTimeout(() => { 
-      document.getElementById("title-bg").src = "images/backgrounds/title-2.jpg";
-    }, 500);
-    setTimeout(() => { 
+    setTimeout(this.replaceBackground, 500, "images/backgrounds/title-2.jpg");
+    this.rifleAnimationTimeoutId = setTimeout(() => { 
       SoundBoard.play(FX_TITLE_RIFLE);
       this.setState({muzzleFlash: true});
     }, 1500);
 
     setTimeout(() => { 
       this.setState({muzzleFlash: false});
-      document.getElementById("title-bg").src = "images/backgrounds/title-1.jpg";
+      this.replaceBackground("images/backgrounds/title-1.jpg");
     }, 1500 + ANIMATION_LENGTH);
 
-    setTimeout(() => { 
+    this.musicAnimationTimeoutId = setTimeout(() => { 
       SoundBoard.play(MUSIC_THEME);
-      document.getElementById("title-bg").src = "images/backgrounds/title-3.jpg";
+      this.musicStarted = true;
+      this.replaceBackground("images/backgrounds/title-3.jpg");
     }, 5500);
   }
 
   componentWillUnmount() {
+    clearTimeout(this.rifleAnimationTimeoutId);
+    SoundBoard.stop(FX_TITLE_RIFLE);
+
+    clearTimeout(this.musicAnimationTimeoutId);
+    if(!this.musicStarted) 
+      SoundBoard.play(MUSIC_THEME);
+
     window.removeEventListener("resize", this.updateDimensions);
   }
 
