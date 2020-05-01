@@ -1,29 +1,67 @@
-div.player-info-1 {
+div.player-info {
   background-image: url(/images/backgrounds/1011.png);
   height: 100%;
 }
 
-img#player-portrait {
+img.player-portrait {
   border: 5px solid black;
   border-radius: 15px;
-  margin-top: 10%;
+  margin-top: 25px;
   max-height: 25%;
   max-width: 80%;
 }
 
-div.player-info-1 h2.score {
-  color: #fbe356;
-  font-size: 40px;
-  margin-top: 5%;
+div.player-info div.score-container {
+  background-color: black;
+  border-radius: 15px;
+  height: 48px;
+  margin-left: 10%;
+  margin-top: 8px;
+  padding: 1px;
+  width: 80%;
 }
 
-div.player-info-2 {
-  background-image: url(/images/backgrounds/1021.png);
-  height: 100%;
-}
-
-div.player-info-2 h2.score {
+div.player-info div.score-container h2 {
   color: #fbe356;
   font-size: 40px;
-  margin-top: 5%;
+  margin-top: 8px;
+}
+
+div.player-info div.weapon-container {
+  background-image: url(/images/backgrounds/weapon_bg.jpg);
+  background-size: cover;
+  border: 5px solid black;
+  border-radius: 15px;
+  margin-left: calc(10% - 5px);
+  margin-top: 50px;
+  max-height: 35%;
+  max-width: 80%;
+}
+
+div.player-info div.weapon-container img.selected-weapon {
+  max-height: calc(100% - 48px);
+  max-width: 80%;
+}
+
+div.player-info div.weapon-container h2 {
+  color: black;
+  font-size: 40px;
+  margin-top: 8px;
+}
+
+div.player-info div.lives-container {
+  background-color: black;
+  border-radius: 15px;
+  height: 10%;
+  margin-left: 10%;
+  margin-top: 30px;
+  max-height: 25%;
+  max-width: 80%;
+  width: 80%;
+}
+
+div.player-info div.lives-container img {
+  max-height: 80%;
+  max-width: 25%;
+  margin-top: 8px;
 }
