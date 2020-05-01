@@ -14,8 +14,7 @@ class TitleScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.rifleAnimationTimeoutId = null;
-    this.musicAnimationTimeoutId = null;
+    this.animationTimeoutIds = [];
     this.musicStarted = false;
 
     this.state = { 
@@ -35,29 +34,25 @@ class TitleScreen extends React.Component {
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
-    setTimeout(this.replaceBackground, 500, "images/backgrounds/title-2.jpg");
-    this.rifleAnimationTimeoutId = setTimeout(() => { 
+    this.animationTimeoutIds.push(setTimeout(this.replaceBackground, 500, "images/backgrounds/title-2.jpg"));
+    this.animationTimeoutIds.push(setTimeout(() => { 
       SoundBoard.play(FX_TITLE_RIFLE);
       this.setState({muzzleFlash: true});
-    }, 1500);
-
-    setTimeout(() => { 
+    }, 1500));
+    this.animationTimeoutIds.push(setTimeout(() => { 
       this.setState({muzzleFlash: false});
       this.replaceBackground("images/backgrounds/title-1.jpg");
-    }, 1500 + ANIMATION_LENGTH);
-
-    this.musicAnimationTimeoutId = setTimeout(() => { 
+    }, 1500 + ANIMATION_LENGTH));
+    this.animationTimeoutIds.push(setTimeout(() => { 
       SoundBoard.play(MUSIC_THEME);
       this.musicStarted = true;
       this.replaceBackground("images/backgrounds/title-3.jpg");
-    }, 5500);
+    }, 5500));
   }
 
   componentWillUnmount() {
-    clearTimeout(this.rifleAnimationTimeoutId);
+    this.animationTimeoutIds.forEach(id => clearTimeout(id));
     SoundBoard.stop(FX_TITLE_RIFLE);
-
-    clearTimeout(this.musicAnimationTimeoutId);
     if(!this.musicStarted) 
       SoundBoard.play(MUSIC_THEME);
 
