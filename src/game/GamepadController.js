@@ -3,10 +3,10 @@ import InputState from './InputState';
 // Old controllers might be a bit wobbly and need a higher value.
 const INPUT_THRESHOLD = 0.15;
 
-// The Gamepad API (https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) is not event driven
-// and relies on polling instead. For now I assume that it will be sufficient query the state of the 
-// controllers with every frame of the game - which would be every ~33 ms. If that is not sufficient
-// it might be necesary to implement a second, faster polling intervall.
+// The Gamepad API (https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) is not event driven and relies on 
+// polling instead. For now I assume that it will be sufficient query the state of the controllers with every frame of
+// the game - which would be every ~33 ms. If that is not sufficient it might be necesary to implement a second, faster
+// polling intervall.
 class GamepadController {
 
   constructor() {
@@ -18,12 +18,14 @@ class GamepadController {
   }
 
   getInputState = (index) => {
-    if(null == this.navigator)
+    if(null == this.navigator) {
       return null;
+    }
 
     const gamepads = this.navigator.getGamepads();
-    if(index >= gamepads.length)
+    if(index >= gamepads.length) {
       return null;
+    }
 
     // TODO: Add mappings for other controllers
     return this.decodeXBox360Values(gamepads[index]);

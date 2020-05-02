@@ -1,7 +1,7 @@
 div.shop-screen {
-  background-color: black;    
+  background-color: black;
   display: flex;
-  flex-direction: column;   
+  flex-direction: column;
   height: 100%;
 }
 
@@ -14,7 +14,7 @@ div.shop-screen div.catalog {
   padding: 3px;
 }
 
-div.shop-screen div.details {    
+div.shop-screen div.details {
   color: #0a88e6;
   flex-shrink: 100000;
   height: 100%;
