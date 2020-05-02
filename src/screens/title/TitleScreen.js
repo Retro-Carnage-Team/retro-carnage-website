@@ -25,7 +25,7 @@ class TitleScreen extends React.Component {
   }
 
   replaceBackground = (src) => {
-    let bg = document.getElementById("title-bg");
+    let bg = document.getElementById('title-bg');
     if(bg) {
       bg.src = src;
     }
@@ -33,20 +33,20 @@ class TitleScreen extends React.Component {
 
   componentDidMount() {
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions);
-    this.animationTimeoutIds.push(setTimeout(this.replaceBackground, 500, "images/backgrounds/title-2.jpg"));
+    window.addEventListener('resize', this.updateDimensions);
+    this.animationTimeoutIds.push(setTimeout(this.replaceBackground, 500, 'images/backgrounds/title-2.jpg'));
     this.animationTimeoutIds.push(setTimeout(() => { 
       SoundBoard.play(FX_TITLE_RIFLE);
       this.setState({muzzleFlash: true});
     }, 1500));
     this.animationTimeoutIds.push(setTimeout(() => { 
       this.setState({muzzleFlash: false});
-      this.replaceBackground("images/backgrounds/title-1.jpg");
+      this.replaceBackground('images/backgrounds/title-1.jpg');
     }, 1500 + ANIMATION_LENGTH));
     this.animationTimeoutIds.push(setTimeout(() => { 
       SoundBoard.play(MUSIC_THEME);
       this.musicStarted = true;
-      this.replaceBackground("images/backgrounds/title-3.jpg");
+      this.replaceBackground('images/backgrounds/title-3.jpg');
     }, 5500));
   }
 
@@ -56,7 +56,7 @@ class TitleScreen extends React.Component {
     if(!this.musicStarted) 
       SoundBoard.play(MUSIC_THEME);
 
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
@@ -102,5 +102,5 @@ class TitleScreen extends React.Component {
 
 }
 
-export const TITLE_SCREEN_NAME = "title";
+export const TITLE_SCREEN_NAME = 'title';
 export default TitleScreen;
