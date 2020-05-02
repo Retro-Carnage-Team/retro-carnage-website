@@ -35,5 +35,5 @@ function StartScreen(props) {
   );
 }
 
-export const START_SCREEN_NAME = "start";
+export const START_SCREEN_NAME = 'start';
 export default StartScreen;

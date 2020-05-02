@@ -89,7 +89,7 @@ class SoundBoard {
     }
   }
 
-};
+}
 
 const soundBoardInstance = new SoundBoard();
 export default soundBoardInstance;

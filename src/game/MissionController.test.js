@@ -17,7 +17,7 @@ test('Missions should get filtered when marked as finished', () => {
 
 test('Selecting a mission should update property and cash in inventory', () => {
   MissionController.reset();
-  const missionName = "Minsk";
+  const missionName = 'Minsk';
   const oldCash = InventoryController.cash;
   MissionController.selectMission(missionName);
   expect(MissionController.currentMission).toBe(missionName);

@@ -51,11 +51,11 @@ class TitleScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    this.animationTimeoutIds.forEach(id => clearTimeout(id));
+    this.animationTimeoutIds.forEach((id) => clearTimeout(id));
     SoundBoard.stop(FX_TITLE_RIFLE);
-    if(!this.musicStarted) 
+    if(!this.musicStarted) {
       SoundBoard.play(MUSIC_THEME);
-
+    }
     window.removeEventListener('resize', this.updateDimensions);
   }
 
@@ -73,8 +73,8 @@ class TitleScreen extends React.Component {
           alt="muzzle flash"
           style={{ 
             display: (this.state.muzzleFlash ? 'inherit' : 'none'),
-            left: (this.state.scalingFactor * MUZZLE_LEFT + (window.innerWidth - this.state.imageSize) / 2) + 'px',
-            top: (this.state.scalingFactor * MUZZLE_TOP - 64) + 'px',
+            left: `${this.state.scalingFactor * MUZZLE_LEFT + (window.innerWidth - this.state.imageSize) / 2}px`,
+            top: `${this.state.scalingFactor * MUZZLE_TOP - 64}px`,
           }}></img>
       </div>
     );

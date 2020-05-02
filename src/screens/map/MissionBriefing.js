@@ -7,18 +7,18 @@ function MissionBriefing(props) {
     return (
       <div className="mission-briefing empty">
         <div className="space-0" />
-        <h1>Missions available</h1>      
+        <h1>Missions available</h1>
       </div>
     );
   } else {
-    const mission = Missions.find(m => m.name === props.mission);
+    const mission = Missions.find((m) => m.name === props.mission);
     return (
       <div className="mission-briefing selected">
-        <img src={ mission.client } alt="client"></img>        
+        <img src={ mission.client } alt="client"></img>
         <p>{ mission.briefing }</p>
-      </div>      
+      </div>
     );
-  }  
+  }
 }
 
 export default MissionBriefing;

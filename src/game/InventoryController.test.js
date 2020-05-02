@@ -51,7 +51,7 @@ test('Buying a grenade should decrease the amount cash available', () => {
 
 test('Weapons should be procurable when user has cash and did not buy it before', () => {
   InventoryController.reset();
-  const weapon = "P7";
+  const weapon = 'P7';
   expect(InventoryController.isWeaponInInventory(weapon)).toBeFalsy();
   expect(InventoryController.isWeaponProcurable(weapon)).toBeTruthy();
   InventoryController.buyWeapon(weapon);
@@ -61,7 +61,7 @@ test('Weapons should be procurable when user has cash and did not buy it before'
 
 test('Buying a weapons should decrease the amount cash available', () => {
   InventoryController.reset();
-  const weapon = "P7";
+  const weapon = 'P7';
   const oldCash = InventoryController.cash;
   InventoryController.buyWeapon(weapon);
   expect(InventoryController.cash).toBeLessThan(oldCash);
@@ -76,11 +76,11 @@ test('Change listeners should get informed every time a change happened', () => 
 
   InventoryController.reset();    
   InventoryController.addChangeListener(callback);
-  InventoryController.buyWeapon("P7");
+  InventoryController.buyWeapon('P7');
   expect(callCounter).toBe(1);
 
   InventoryController.removeChangeListener(callback);
-  InventoryController.buyWeapon("P7");
+  InventoryController.buyWeapon('P7');
   expect(callCounter).toBe(1);
 });
 
@@ -94,6 +94,6 @@ test('Removing listeners from controller should work', () => {
   InventoryController.reset();
   InventoryController.addChangeListener(callback);
   InventoryController.removeChangeListener(callback);
-  InventoryController.buyWeapon("P7");
+  InventoryController.buyWeapon('P7');
   expect(called).toBeFalsy();
 });
