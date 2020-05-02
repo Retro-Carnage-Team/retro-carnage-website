@@ -13,4 +13,4 @@ export default class ChangeListener {
     this.callback(newValue, changedProperty);
   }
 
-};
+}
