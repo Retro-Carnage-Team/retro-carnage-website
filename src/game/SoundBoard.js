@@ -1,3 +1,6 @@
+const TYPE_FX = 'fx';
+const TYPE_MUSIC = 'music';
+
 export const FX_CASH = 'cash-register.mp3';
 export const FX_ERROR = 'error.mp3';
 export const FX_LOADING = 'loading.mp3';
@@ -17,61 +20,67 @@ export const MUSIC_BACKGROUND_11 = 'Missing-You.mp3';
 export const MUSIC_BACKGROUND_12 = 'Raging-Streets.mp3';
 export const MUSIC_THEME = 'The-Only-Me-is-Me.mp3';
 
+class NamedAudio {
+  constructor(name, type) {
+    this.name = name;
+    this.audio = new Audio(`sounds/${type}/${name}`);
+  }
+}
+
 class SoundBoard {
 
   constructor() {
     this.sounds = [];
 
     // sound effects
-    this.sounds[FX_CASH] = new Audio('sounds/fx/' + FX_CASH);
-    this.sounds[FX_ERROR] = new Audio('sounds/fx/' + FX_ERROR);
-    this.sounds[FX_LOADING] = new Audio('sounds/fx/' + FX_LOADING);
-    this.sounds[FX_TITLE_RIFLE] = new Audio('sounds/fx/' + FX_TITLE_RIFLE);
+    this.sounds.push(new NamedAudio(FX_CASH, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_ERROR, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_LOADING, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_TITLE_RIFLE, TYPE_FX));
 
     // music
-    this.sounds[MUSIC_BACKGROUND_1] = new Audio('sounds/music/' + MUSIC_BACKGROUND_1);
-    this.sounds[MUSIC_BACKGROUND_2] = new Audio('sounds/music/' + MUSIC_BACKGROUND_2);
-    this.sounds[MUSIC_BACKGROUND_3] = new Audio('sounds/music/' + MUSIC_BACKGROUND_3);
-    this.sounds[MUSIC_BACKGROUND_4] = new Audio('sounds/music/' + MUSIC_BACKGROUND_4);
-    this.sounds[MUSIC_BACKGROUND_5] = new Audio('sounds/music/' + MUSIC_BACKGROUND_5);
-    this.sounds[MUSIC_BACKGROUND_6] = new Audio('sounds/music/' + MUSIC_BACKGROUND_6);
-    this.sounds[MUSIC_BACKGROUND_7] = new Audio('sounds/music/' + MUSIC_BACKGROUND_7);
-    this.sounds[MUSIC_BACKGROUND_8] = new Audio('sounds/music/' + MUSIC_BACKGROUND_8);
-    this.sounds[MUSIC_BACKGROUND_9] = new Audio('sounds/music/' + MUSIC_BACKGROUND_9);
-    this.sounds[MUSIC_BACKGROUND_10] = new Audio('sounds/music/' + MUSIC_BACKGROUND_10);
-    this.sounds[MUSIC_BACKGROUND_11] = new Audio('sounds/music/' + MUSIC_BACKGROUND_11);
-    this.sounds[MUSIC_BACKGROUND_12] = new Audio('sounds/music/' + MUSIC_BACKGROUND_12);
-    this.sounds[MUSIC_THEME] = new Audio('sounds/music/' + MUSIC_THEME);
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_1, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_2, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_3, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_4, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_5, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_6, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_7, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_8, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_9, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_10, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_11, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_12, TYPE_MUSIC));
+    this.sounds.push(new NamedAudio(MUSIC_THEME, TYPE_MUSIC));
+  }
+
+  getAudioByName = (name) => {
+    return this.sounds.find(element => element.name === name).audio;
   }
 
   getVolume = (sound) => {
-    return this.sounds[sound].volume;
+    return this.getAudioByName(sound).volume;
   }
 
   setVolume = (sound, volume) => {
     try {
-      this.sounds[sound].volume = volume;
-    } catch (error) { 
-      console.error('Can\'t set volume for sound: ' + sound, error);
-    }
+      this.getAudioByName(sound).volume = volume;
+    } catch (error) { }
   }
 
   play = (sound) => {
     this.stop(sound);
     try {
-      this.sounds[sound].play();
-    } catch (error) {
-      console.error('Can\'t play sound: ' + sound, error);
-    }
+      this.getAudioByName(sound).play();
+    } catch (error) { }
   }
 
   stop = (sound) => {
     try {
-      this.sounds[sound].pause();
-      this.sounds[sound].currentTime = 0;
-    } catch (error) { 
-      console.error('Can\'t stop sound: ' + sound, error);
-    }
+      const audio = this.getAudioByName(sound);
+      audio.pause();
+      audio.currentTime = 0;
+    } catch (error) { }
   }
 
 };
