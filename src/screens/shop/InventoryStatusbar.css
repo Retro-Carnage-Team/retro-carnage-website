@@ -1,8 +1,8 @@
-div.inventory-statusbar {  
+div.inventory-statusbar {
   bottom: 10px;
   height: 5px;
   left: 30px;
-  position: relative;  
+  position: relative;
   width: calc(100% - 60px);
 }
 
