@@ -35,13 +35,12 @@ div.item-weapon svg.compatible path {
   fill: #ffee93;
 }
 
-div.item-weapon svg.compatible.purchased path {
-  fill: black;
-}
-
-
 div.item-weapon svg.purchased path {
   fill: #34bd5b;
+}
+
+div.item-weapon svg.compatible.purchased path {
+  fill: black;
 }
 
 div.item-weapon:hover svg.purchased path {

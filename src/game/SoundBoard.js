@@ -55,7 +55,7 @@ class SoundBoard {
   }
 
   getAudioByName = (name) => {
-    return this.sounds.find(element => element.name === name).audio;
+    return this.sounds.find((e) => e.name === name).audio;
   }
 
   getVolume = (sound) => {
@@ -65,14 +65,18 @@ class SoundBoard {
   setVolume = (sound, volume) => {
     try {
       this.getAudioByName(sound).volume = volume;
-    } catch (error) { }
+    } catch (error) {
+      // continue regardless of error
+    }
   }
 
   play = (sound) => {
     this.stop(sound);
     try {
       this.getAudioByName(sound).play();
-    } catch (error) { }
+    } catch (error) {
+      // continue regardless of error
+    }
   }
 
   stop = (sound) => {
@@ -80,7 +84,9 @@ class SoundBoard {
       const audio = this.getAudioByName(sound);
       audio.pause();
       audio.currentTime = 0;
-    } catch (error) { }
+    } catch (error) {
+      // continue regardless of error
+    }
   }
 
 };
