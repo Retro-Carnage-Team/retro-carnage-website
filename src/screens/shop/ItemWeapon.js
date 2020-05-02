@@ -13,10 +13,10 @@ export default class ItemWeapon extends React.Component {
   render() {
     const compatible = (null !== this.props.selectedAmmunition) && 
                        (this.props.selectedAmmunition.name === this.props.weapon.ammo);
-    const imgClasses = compatible ? 'compatible' : undefined;
+    const imgClasses = compatible ? 'compatible' : null;
     
     var svgClasses = classNames({
-      'compatible': compatible,
+      compatible,
       'purchased': InventoryController.isWeaponInInventory(this.props.weapon.name)
     });
 

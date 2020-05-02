@@ -13,41 +13,41 @@ class MapScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      imageSize: '100',      
+      imageSize: '100',
       scalingFactor: 1.0,
       selectedMission: null
     };
-    this.missions = MissionController.getRemainingMissions().map(l => ({ 
+    this.missions = MissionController.getRemainingMissions().map((l) => ({
       location: l.location,
       name: l.name
-    }))
-  }  
+    }));
+  }
 
   componentDidMount() {
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener('resize', this.updateDimensions);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
     const widthOfPositionMarker = 18;
-    const spots = this.missions.map(m => (
+    const spots = this.missions.map((m) => (
       <div 
         className="location-container" 
         key={ m.name } 
         onClick={ this.handleMissionSelected.bind(this, m.name) }
         onMouseEnter={ this.handleMissionMouseEnter.bind(this, m.name) }
         onMouseLeave={ this.handleMissionMouseLeave } 
-        style={{ 
+        style={{
         left: ((window.innerWidth - this.state.imageSize) / 2) + (m.location.longitude * this.state.scalingFactor) -(widthOfPositionMarker / 2),
         top: (m.location.latitude * this.state.scalingFactor) -(widthOfPositionMarker / 2)
       }}>
         <div className="location-marker" />
-      </div>      
-    )); 
+      </div>
+    ));
     return (
       <div className="map-screen">
         <div className="briefing-container">
@@ -94,5 +94,5 @@ class MapScreen extends React.Component {
 
 }
 
-export const MAP_SCREEN_NAME = "map";
+export const MAP_SCREEN_NAME = 'map';
 export default MapScreen;

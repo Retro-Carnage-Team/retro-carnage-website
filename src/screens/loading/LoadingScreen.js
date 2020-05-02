@@ -19,12 +19,12 @@ function LoadingScreen(props) {
 
   return (
     <div className="loading-screen">
-      <div style={{ height: height + "px" }} />
+      <div style={{ height: `${height}px` }} />
       <h1>DOGS OF WAR II</h1>
       <h1>is loading</h1>
     </div>
   );
 }
 
-export const LOADING_SCREEN_NAME = "loading";
+export const LOADING_SCREEN_NAME = 'loading';
 export default LoadingScreen;

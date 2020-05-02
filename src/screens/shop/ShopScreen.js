@@ -34,18 +34,18 @@ class ShopScreen extends React.Component {
   }
 
   render() {
-    const items = Weapons.map(w => this.buildWeaponItem(w)).concat(
-      Grenades.map(g => this.buildGrenadeItem(g)),
-      Ammunition.map(a => this.buildAmmunitionItem(a))
+    const items = Weapons.map((w) => this.buildWeaponItem(w)).concat(
+      Grenades.map((g) => this.buildGrenadeItem(g)),
+      Ammunition.map((a) => this.buildAmmunitionItem(a))
     );
 
-    let detail = undefined;
+    let detail = void 0;
     if(!!this.state.selectedAmmunition) {
-      detail = <DetailAmmunition ammunition={ this.state.selectedAmmunition } />
+      detail = <DetailAmmunition ammunition={ this.state.selectedAmmunition } />;
     } else if (!!this.state.selectedGrenade) {
-      detail = <DetailGrenade grenade={ this.state.selectedGrenade } />    
+      detail = <DetailGrenade grenade={ this.state.selectedGrenade } />;
     } else if(!!this.state.selectedWeapon) {
-      detail = <DetailWeapon weapon={ this.state.selectedWeapon } />
+      detail = <DetailWeapon weapon={ this.state.selectedWeapon } />;
     }
 
     return (
@@ -151,5 +151,5 @@ class ShopScreen extends React.Component {
 
 }
 
-export const SHOP_SCREEN_NAME = "shop";
+export const SHOP_SCREEN_NAME = 'shop';
 export default ShopScreen;

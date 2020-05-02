@@ -21,19 +21,19 @@ class KeyboardController {
   processKeyEvent = (event, status) => {
     this.inputState.fire = event.ctrlKey;
     switch (event.key) {
-      case "ArrowLeft":
+      case 'ArrowLeft':
         this.inputState.moveLeft = status;
         break;
-      case "ArrowUp":
+      case 'ArrowUp':
         this.inputState.moveUp = status;
         break;
-      case "ArrowRight":
+      case 'ArrowRight':
         this.inputState.moveRight = status;
         break;
-      case "ArrowDown":
+      case 'ArrowDown':
         this.inputState.moveDown = status;
         break;
-      case "Shift":
+      case 'Shift':
         this.inputState.toggleDown = status;
         break;
       default:

@@ -14,7 +14,7 @@ class LevelController {
   }
 
   getRemainingMissions = () => {        
-    return Missions.filter(m => !this.finishedMissions.find(e => e === m.name));        
+    return Missions.filter(m => !this.finishedMissions.find((e) => e === m.name));        
   }
 
   markMissionFinished = (missionName) => {        
@@ -24,7 +24,7 @@ class LevelController {
   selectMission = (missionName) => {
     this.currentMission = missionName;
     if(!!missionName) {
-      const mission = Missions.find(m => m.name === missionName);
+      const mission = Missions.find((m) => m.name === missionName);
       InventoryController.cash = InventoryController.cash + mission.reward;
     }
   }

@@ -17,11 +17,11 @@ function LetsBeginMessageScreen(props) {
 
   return (
     <div className="lets-begin-screen">
-      <div style={{ height: height + "px" }} />
+      <div style={{ height: `${height}px` }} />
       <h1>Let the mission begin!</h1>
     </div>
   );
 }
 
-export const LETS_BEGIN_MESSAGE_SCREEN_NAME = "lets_begin";
+export const LETS_BEGIN_MESSAGE_SCREEN_NAME = 'lets_begin';
 export default LetsBeginMessageScreen;
