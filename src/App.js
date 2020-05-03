@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import BuyYourWeaposScreen, { BUY_YOUR_WEAPONS_SCREEN_NAME } from './screens/buy-your-weapons/BuyYourWeaponsScreen'
+import BuyYourWeaposScreen, { BUY_YOUR_WEAPONS_SCREEN_NAME } from './screens/buy-your-weapons/BuyYourWeaponsScreen';
 import GameScreen, { GAME_SCREEN_NAME } from './screens/game/GameScreen';
 import LetsBeginScreen, { LETS_BEGIN_MESSAGE_SCREEN_NAME } from './screens/lets-begin/LetsBeginScreen';
 import LoadingScreen, { LOADING_SCREEN_NAME } from './screens/loading/LoadingScreen';
@@ -15,6 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { screen: LOADING_SCREEN_NAME };
+    // this.state = { screen: GAME_SCREEN_NAME };
   }
 
   handleScreenChangeRequired = (screenName) => {
@@ -40,7 +41,7 @@ class App extends React.Component {
           screen = <MapScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
         case SHOP_SCREEN_NAME:
-          screen = <ShopScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
+          screen = <ShopScreen onScreenChangeRequired={ this.handleScreenChangeRequired } player={ 0 }/>;
           break;
         case START_SCREEN_NAME:
           screen = <StartScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;

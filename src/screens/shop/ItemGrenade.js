@@ -14,14 +14,14 @@ export default class ItemGrenade extends React.Component {
         onMouseLeave={ this.handleMouseLeave }>
         <img className="item-grenade-image" src={ this.props.grenade.image } alt=""></img>
         <InventoryStatusbar 
-          current={ InventoryController.getGrenadeCount(this.props.grenade.name) }
+          current={ InventoryController.getGrenadeCount(this.props.player, this.props.grenade.name) }
           max={ this.props.grenade.maxCount } />
       </div>
     );
   }
 
   handleClick = () => {
-    InventoryController.buyGrenade(this.props.grenade.name);
+    InventoryController.buyGrenade(this.props.player, this.props.grenade.name);
   }
 
   handleMouseEnter = () => {

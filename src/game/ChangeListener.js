@@ -10,7 +10,9 @@ export default class ChangeListener {
   }
 
   call = (newValue, changedProperty) => {
-    this.callback(newValue, changedProperty);
+    if(this.handlesProperty(changedProperty)) {
+      this.callback(newValue, changedProperty);
+    }
   }
 
 }

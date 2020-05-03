@@ -17,7 +17,7 @@ export default class ItemWeapon extends React.Component {
     
     var svgClasses = classNames({
       compatible,
-      'purchased': InventoryController.isWeaponInInventory(this.props.weapon.name)
+      'purchased': InventoryController.isWeaponInInventory(this.props.player, this.props.weapon.name)
     });
 
     return (
@@ -35,7 +35,7 @@ export default class ItemWeapon extends React.Component {
   }
 
   handleClick = () => {
-    InventoryController.buyWeapon(this.props.weapon.name);
+    InventoryController.buyWeapon(this.props.player, this.props.weapon.name);
   }
 
   handleMouseEnter = () => {

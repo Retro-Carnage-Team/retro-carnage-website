@@ -1,7 +1,7 @@
 import Missions from './Missions';
-import InventoryController from './InventoryController';
+import Players from './Player';
 
-class LevelController {
+class MissionController {
 
   constructor() {
     this.currentMission = null;
@@ -13,23 +13,24 @@ class LevelController {
     this.finishedMissions = [];
   }
 
-  getRemainingMissions = () => {        
-    return Missions.filter(m => !this.finishedMissions.find((e) => e === m.name));        
+  getRemainingMissions = () => {
+    return Missions.filter((m) => !this.finishedMissions.find((e) => e === m.name));
   }
 
-  markMissionFinished = (missionName) => {        
-    this.finishedMissions.push(missionName);        
+  markMissionFinished = (missionName) => {
+    this.finishedMissions.push(missionName);
   }
 
   selectMission = (missionName) => {
     this.currentMission = missionName;
     if(!!missionName) {
       const mission = Missions.find((m) => m.name === missionName);
-      InventoryController.cash = InventoryController.cash + mission.reward;
+      Players[0].cash = Players[0].cash + mission.reward;
+      Players[1].cash = Players[1].cash + mission.reward;
     }
   }
 
 }
 
-const levelControllerInstance = new LevelController();
-export default levelControllerInstance;
+const missionControllerInstance = new MissionController();
+export default missionControllerInstance;

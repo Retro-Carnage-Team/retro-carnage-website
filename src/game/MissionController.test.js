@@ -1,6 +1,7 @@
 import InventoryController from './InventoryController';
 import MissionController from './MissionController';
 import Missions from './Missions';
+import Players from './Player';
 
 test('All missions should be available when game gets reset', () => {
   MissionController.reset();
@@ -18,8 +19,8 @@ test('Missions should get filtered when marked as finished', () => {
 test('Selecting a mission should update property and cash in inventory', () => {
   MissionController.reset();
   const missionName = 'Minsk';
-  const oldCash = InventoryController.cash;
+  const oldCash = Players[0].cash;
   MissionController.selectMission(missionName);
   expect(MissionController.currentMission).toBe(missionName);
-  expect(InventoryController.cash).toBeGreaterThan(oldCash);
+  expect(Players[0].cash).toBeGreaterThan(oldCash);
 });

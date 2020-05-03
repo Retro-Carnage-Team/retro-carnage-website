@@ -3,7 +3,8 @@ import './ShopScreen.css';
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
-import InventoryController from '../../game/InventoryController';
+import ChangeListener from '../../game/ChangeListener';
+import Players from '../../game/Player';
 import SoundBoard, { MUSIC_THEME } from '../../game/SoundBoard';
 import BottomLine from './BottomLine';
 import ItemAmmunition from './ItemAmmunition';
@@ -18,6 +19,7 @@ class ShopScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    this.changeListener = new ChangeListener(this.handleInventoryUpdate);
     this.state = {
       selectedAmmunition: null,
       selectedGrenade: null,
@@ -25,12 +27,12 @@ class ShopScreen extends React.Component {
     };
   }
 
-  componentDidMount() {    
-    InventoryController.addChangeListener(this.handleInventoryUpdate);
+  componentDidMount() {
+    Players[this.props.player].addChangeListener(this.changeListener);
   }
   
   componentWillUnmount() {
-    InventoryController.removeChangeListener(this.handleInventoryUpdate);
+    Players[this.props.player].removeChangeListener(this.changeListener);
   }
 
   render() {
@@ -76,6 +78,7 @@ class ShopScreen extends React.Component {
         key={ ammo.name }
         onMouseEnter={ this.handleItemAmmunitionMouseEnter }
         onMouseLeave={ this.handleItemMouseLeave }
+        player={ this.props.player }
         selectedWeapon={ this.state.selectedWeapon } />
     );
   }
@@ -86,16 +89,18 @@ class ShopScreen extends React.Component {
         key={ grenade.name } 
         grenade={ grenade }
         onMouseEnter={ this.handleItemGrenadeMouseEnter } 
-        onMouseLeave={ this.handleItemMouseLeave } />
+        onMouseLeave={ this.handleItemMouseLeave }
+        player={ this.props.player } />
     );
   }
 
   buildWeaponItem = (weapon) => {
     return (
       <ItemWeapon 
-        key={ weapon.name } 
+        key={ weapon.name }
         onMouseEnter={ this.handleItemWeaponMouseEnter }
         onMouseLeave={ this.handleItemMouseLeave }
+        player={ this.props.player }
         selectedAmmunition={ this.state.selectedAmmunition }
         weapon={ weapon } />
     );

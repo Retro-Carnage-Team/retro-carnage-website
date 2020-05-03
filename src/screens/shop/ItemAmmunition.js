@@ -22,14 +22,14 @@ export default class ItemAmmunition extends React.Component {
         onMouseLeave={ this.handleMouseLeave }>
         <img className={ imgClasses } src={ this.props.ammunition.image } alt=""></img>
         <InventoryStatusbar 
-          current={ InventoryController.getAmmunitionCount(ammoName) }
+          current={ InventoryController.getAmmunitionCount(this.props.player, ammoName) }
           max={ this.props.ammunition.maxCount } />
       </div>
     );
   }
 
   handleClick = () => {
-    InventoryController.buyAmmunition(this.props.ammunition.name);
+    InventoryController.buyAmmunition(this.props.player, this.props.ammunition.name);
   }
 
   handleMouseEnter = () => {
