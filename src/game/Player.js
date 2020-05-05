@@ -3,12 +3,12 @@ import Grenades from './Grenades';
 import Weapons from './Weapons';
 import ChangeListener from './ChangeListener';
 
-export const PROP_AMMUNITION = "ammunition";
-export const PROP_CASH = "cash";
-export const PROP_GRENADES = "grenades";
-export const PROP_LIFES = "lifes";
-export const PROP_SCORE = "score";
-export const PROP_WEAPONS = "weapons";
+export const PROP_AMMUNITION = 'ammunition';
+export const PROP_CASH = 'cash';
+export const PROP_GRENADES = 'grenades';
+export const PROP_LIFES = 'lifes';
+export const PROP_SCORE = 'score';
+export const PROP_WEAPONS = 'weapons';
 
 function buildAmmunitionMap() {
   let result = { };
@@ -79,7 +79,7 @@ class Player {
 
   addChangeListener = (listener) => {
     if(!(listener instanceof ChangeListener)) {                                                                         // I did that mistake too often
-      throw 'ChangeListeners have to be ChangeListener objects - not callbacks!';
+      throw new Error('ChangeListeners have to be ChangeListener objects - not callbacks!');
     }
     this.changeListeners.push(listener);
   }

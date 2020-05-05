@@ -3,10 +3,6 @@ import './PlayerInfo.css';
 
 export default class PlayerInfo extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="player-info">

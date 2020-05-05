@@ -1,9 +1,10 @@
 import InputState from './InputState';
 
-class KeyboardController {
+export default class KeyboardController {
 
   constructor() {
     this.inputState = new InputState();
+    this.setUp();
   }
 
   getInputState = () => {
@@ -40,17 +41,14 @@ class KeyboardController {
     }
   }
 
-  setUp = (window) => {
+  setUp = () => {
     window.document.addEventListener('keydown', this.processKeyDown);
     window.document.addEventListener('keyup', this.processKeyUp);
   }
 
-  tearDown = (window) => {
+  tearDown = () => {
     window.document.removeEventListener('keydown', this.processKeyDown);
     window.document.removeEventListener('keyup', this.processKeyUp);
   }
 
 }
-
-const keyboardController = new KeyboardController();
-export default keyboardController;

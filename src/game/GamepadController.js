@@ -7,14 +7,25 @@ const INPUT_THRESHOLD = 0.15;
 // polling instead. For now I assume that it will be sufficient query the state of the controllers with every frame of
 // the game - which would be every ~33 ms. If that is not sufficient it might be necesary to implement a second, faster
 // polling intervall.
-class GamepadController {
+export default class GamepadController {
 
   constructor() {
-    this.navigator = null;
+    this.navigator = window.navigator;
   }
 
   getControllerCount = () => {
     return (null == this.navigator) ? 0 : this.navigator.getGamepads().length;
+  }
+
+  getControllerInfo = (index) => {
+    if((!this.navigator) || (this.navigator.getGamepads().length <= index)) {
+      return "ERROR";
+    }
+    return this.navigator.getGamepads()[index].id;
+  }
+
+  getInputStateProviders = () => {
+    return this.navigator.getGamepads().map((gp) => (() => this.getInputState(gp.index)));
   }
 
   getInputState = (index) => {
@@ -29,7 +40,7 @@ class GamepadController {
 
     // TODO: Add mappings for other controllers
     return this.decodeXBox360Values(gamepads[index]);
-  }
+  }  
 
   decodeXBox360Values = (gamepad) => {
     let result = new InputState();
@@ -43,13 +54,4 @@ class GamepadController {
     return result;
   }
 
-  setUp = (window) => { 
-    this.navigator = window.navigator;
-  }
-
-  tearDown = (window) => { }
-
 }
-
-const gamepadController = new GamepadController();
-export default gamepadController;

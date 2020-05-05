@@ -1,0 +1,15 @@
+div.result h1.number-of-players {
+  color: #12a45d;
+  font-size: 32px;  
+  text-transform: uppercase;
+}
+
+div.result div.spacer {
+  height: 30px;
+}
+
+div.result h1.controller-info {
+  color: #fbe356;
+  font-size: 32px;  
+  text-transform: uppercase;
+}

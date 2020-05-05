@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import BuyYourWeaposScreen, { BUY_YOUR_WEAPONS_SCREEN_NAME } from './screens/buy-your-weapons/BuyYourWeaponsScreen';
+import ConfigurationScreen, { CONFIGURATION_SCREEN_NAME } from './screens/configuration/ConfigurationScreen';
 import GameScreen, { GAME_SCREEN_NAME } from './screens/game/GameScreen';
 import LetsBeginScreen, { LETS_BEGIN_MESSAGE_SCREEN_NAME } from './screens/lets-begin/LetsBeginScreen';
 import LoadingScreen, { LOADING_SCREEN_NAME } from './screens/loading/LoadingScreen';
@@ -27,6 +28,9 @@ class App extends React.Component {
     switch(this.state.screen) {
         case BUY_YOUR_WEAPONS_SCREEN_NAME:
           screen = <BuyYourWeaposScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
+          break;
+        case CONFIGURATION_SCREEN_NAME:
+          screen = <ConfigurationScreen onScreenChangeRequired={ this.handleScreenChangeRequired } />;
           break;
         case GAME_SCREEN_NAME:
           screen = <GameScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;

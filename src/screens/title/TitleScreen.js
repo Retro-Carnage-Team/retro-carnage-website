@@ -1,6 +1,6 @@
 import React from 'react';
 import './TitleScreen.css';
-import { MAP_SCREEN_NAME } from '../map/MapScreen';
+import { CONFIGURATION_SCREEN_NAME } from '../configuration/ConfigurationScreen';
 import SoundBoard, { FX_TITLE_RIFLE, MUSIC_THEME } from '../../game/SoundBoard';
 
 const BACKGROUND_WIDTH = 1280;
@@ -97,7 +97,7 @@ class TitleScreen extends React.Component {
   }
 
   moveToNextScreen = () => {
-    this.props.onScreenChangeRequired(MAP_SCREEN_NAME);
+    this.props.onScreenChangeRequired(CONFIGURATION_SCREEN_NAME);
   }
 
 }

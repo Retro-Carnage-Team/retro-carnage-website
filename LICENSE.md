@@ -62,6 +62,8 @@ This game is based on the work of many great artists who share their work with u
 *   A Winkel Tripel projection of a Visible Earth by [NASA](https://www.nasa.gov/) ([Link](https://commons.wikimedia.org/wiki/File:Winkel-tripel-projection.jpg), [License](https://en.wikipedia.org/wiki/public_domain))
 *   Black scratched metal plate by wildtextures.com ([Link](https://www.wildtextures.com/free-textures/black-scratched-metal-plate/), no license specified)
 *   check_circle_outline-24px by Google ([Link](https://material.io/resources/icons/?icon=check_circle_outline&style=baseline), [License](https://www.apache.org/licenses/LICENSE-2.0.html))
+*   gamepad-24px by Google ([Link](https://material.io/resources/icons/?icon=gamepad&style=baseline), [License](https://www.apache.org/licenses/LICENSE-2.0.html))
+*   keyboard-24px by Google ([Link](https://material.io/resources/icons/?icon=keyboard&style=baseline), [License](https://www.apache.org/licenses/LICENSE-2.0.html))
 *   Gunung Palung Jungle by Tom from Netherlands ([Link](https://en.wikipedia.org/wiki/File:Gunung_Palung_Jungle.jpg), [License](https://creativecommons.org/licenses/by-sa/2.0/deed.en))
 *   The Flash Logo by Claybrooks ([Link](https://www.cleanpng.com/png-muzzle-flash-desktop-wallpaper-portable-network-gr-7014651/), Free for Personal Use)
 *   Red Background by Ratani ([Link](https://www.cleanpng.com/png-encapsulated-postscript-2080422/), Free for Personal Use)

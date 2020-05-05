@@ -1,8 +1,6 @@
 import React from 'react';
 import './GameScreen.css';
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
-import GamepadController from '../../game/GamepadController';
-import KeyboardController from '../../game/KeyboardController';
 import Renderer from '../../game/Renderer';
 import PlayerInfo from './PlayerInfo';
 
@@ -19,9 +17,6 @@ class GameScreen extends React.Component {
   componentDidMount() {
     this.updateDimensions();
 
-    GamepadController.setUp(window);
-    KeyboardController.setUp(window);
-    
     const canvas = document.getElementById("game");
     this.renderer = new Renderer(canvas, canvas.getContext("2d"));
 
@@ -30,8 +25,6 @@ class GameScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    GamepadController.tearDown(window);
-    KeyboardController.tearDown(window);
     this.running = false;
     window.removeEventListener("resize", this.updateDimensions);
   }
