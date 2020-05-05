@@ -23,15 +23,15 @@ class InputController {
       if(0 < this.gamepadController.getControllerCount()) {
         return this.gamepadController.getControllerInfo(0);
       } else {
-        return "Keyboard";
+        return 'Keyboard';
       }
     }
     if(1 < this.gamepadController.getControllerCount()) {
       return this.gamepadController.getControllerInfo(1);
     } else if(0 < this.gamepadController.getControllerCount()) {
-      return "Keyboard";
+      return 'Keyboard';
     }
-    return "no input device available"
+    return 'no input device available';
   }
 
   isSecondPlayerPossible = () => {

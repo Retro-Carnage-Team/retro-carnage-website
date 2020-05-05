@@ -19,7 +19,7 @@ export default class GamepadController {
 
   getControllerInfo = (index) => {
     if((!this.navigator) || (this.navigator.getGamepads().length <= index)) {
-      return "ERROR";
+      return 'ERROR';
     }
     return this.navigator.getGamepads()[index].id;
   }
