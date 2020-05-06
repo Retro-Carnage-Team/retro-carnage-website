@@ -24,10 +24,10 @@ class App extends React.Component {
   }
 
   render() {
-    var screen = undefined;
+    let screen;
     switch(this.state.screen) {
         case BUY_YOUR_WEAPONS_SCREEN_NAME:
-          screen = <BuyYourWeaposScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
+          screen = <BuyYourWeaposScreen onScreenChangeRequired={ this.handleScreenChangeRequired } player={ 0 }/>;
           break;
         case CONFIGURATION_SCREEN_NAME:
           screen = <ConfigurationScreen onScreenChangeRequired={ this.handleScreenChangeRequired } />;

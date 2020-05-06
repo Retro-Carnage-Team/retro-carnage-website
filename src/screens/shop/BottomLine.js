@@ -1,6 +1,5 @@
 import React from 'react';
 import './BottomLine.css';
-import InventoryController from '../../game/InventoryController';
 
 export default class BottomLine extends React.Component {
 
@@ -10,7 +9,7 @@ export default class BottomLine extends React.Component {
         <div className="cost-label">Cost: </div>
         <div className="cost-value">${ this.getCostForSelectedItem() }</div>
         <div className="credit-label">Credit: </div>
-        <div className="credit-value">${ InventoryController.cash }</div>
+        <div className="credit-value">${ this.props.player.cash }</div>
         <div className="exit-label" onClick={ this.handleExitClicked }>Exit</div>
       </div>
     );

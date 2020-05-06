@@ -58,7 +58,8 @@ class ShopScreen extends React.Component {
         <div className="details">
           { detail }
         </div>
-        <BottomLine 
+        <BottomLine
+          player={ Players[this.props.player] }
           onExit={ this.handleExitClicked }
           selectedAmmunition={ this.state.selectedAmmunition }
           selectedGrenade={ this.state.selectedGrenade }
