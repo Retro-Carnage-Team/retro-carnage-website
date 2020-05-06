@@ -33,7 +33,7 @@ class GameScreen extends React.Component {
     return (
       <div className="game-screen">
         <div className="left" style={{ width: this.state.playerInfoWidth +'px' }}>
-          <PlayerInfo player="1" />
+          <PlayerInfo player={ 0 } />
         </div>
         <canvas
           className="left"
@@ -42,7 +42,7 @@ class GameScreen extends React.Component {
           Guru meditation: &lt;Canvas&gt; element not supported!
         </canvas>
         <div className="right" style={{ width: this.state.playerInfoWidth +'px' }}>
-          <PlayerInfo player="2" />
+          <PlayerInfo player={ 1 } />
         </div>
       </div>
     );

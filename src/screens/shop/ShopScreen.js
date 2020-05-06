@@ -152,6 +152,7 @@ class ShopScreen extends React.Component {
   }
 
   handleExitClicked = () => {
+    Players[this.props.player].selectFirstWeapon();
     setTimeout(this.fadeOutMusic, 200);
   }
 

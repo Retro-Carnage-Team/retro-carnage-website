@@ -5,8 +5,8 @@ const INPUT_THRESHOLD = 0.15;
 
 // The Gamepad API (https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) is not event driven and relies on 
 // polling instead. For now I assume that it will be sufficient query the state of the controllers with every frame of
-// the game - which would be every ~33 ms. If that is not sufficient it might be necesary to implement a second, faster
-// polling intervall.
+// the game - which would be every ~33 ms. If that is not sufficient it might be necessary to implement a second, faster
+// polling interval.
 export default class GamepadController {
 
   constructor() {
