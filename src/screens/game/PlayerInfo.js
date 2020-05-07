@@ -1,7 +1,7 @@
 import React from 'react';
 import './PlayerInfo.css';
 import Players from '../../game/Player';
-import ChangeListener from "../../game/ChangeListener";
+import ChangeListener from '../../game/ChangeListener';
 
 export default class PlayerInfo extends React.Component {
 

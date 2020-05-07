@@ -103,24 +103,9 @@ class Player {
   }
 
   selectFirstWeapon = () => {
-    if(null == this.selectedWeaponName) {
-      for(let idx=0; idx<Weapons.length; idx++) {
-        const weaponName = Weapons[idx].name;
-        if(this.weapons[weaponName]) {
-          this.selectedWeaponName = weaponName;
-          this.changeListeners.forEach((listener) => listener.call(weaponName, PROP_SELECTED_WEAPON));
-          return;
-        }
-      }
-      for(let idx=0; idx<Grenades.length; idx++) {
-        const grenadeName = Grenades[idx].name;
-        if(0 < this.grenades[grenadeName]) {
-          this.selectedWeaponName = grenadeName;
-          this.changeListeners.forEach((listener) => listener.call(grenadeName, PROP_SELECTED_WEAPON));
-          return;
-        }
-      }
-    }
+    const items = getNamesOfWeaponsAndGrenadesInInventory(this.weapons, this.grenades);
+    this.selectedWeaponName = items[0];
+    this.changeListeners.forEach((listener) => listener.call(this.selectedWeaponName, PROP_SELECTED_WEAPON));
   }
 
   selectNextWeapon = () => {
