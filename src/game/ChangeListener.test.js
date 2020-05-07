@@ -2,7 +2,13 @@ import ChangeListener from './ChangeListener';
 
 test('ChangeListener should handle matching property', () => {
   const propertyName = 'name';
-  const listener = new ChangeListener((value) => { }, propertyName);
+  const listener = new ChangeListener(() => { }, propertyName);
+  expect(listener.handlesProperty(propertyName)).toBeTruthy();
+});
+
+test('ChangeListener should handle matching property from list', () => {
+  const propertyName = 'name';
+  const listener = new ChangeListener(() => { }, 'dummy-1', propertyName, 'dummy-2');
   expect(listener.handlesProperty(propertyName)).toBeTruthy();
 });
 

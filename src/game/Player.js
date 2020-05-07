@@ -6,7 +6,7 @@ import ChangeListener from './ChangeListener';
 export const PROP_AMMUNITION = 'ammunition';
 export const PROP_CASH = 'cash';
 export const PROP_GRENADES = 'grenades';
-export const PROP_LIFES = 'lifes';
+export const PROP_LIVES = 'lives';
 export const PROP_SCORE = 'score';
 export const PROP_SELECTED_WEAPON = 'selected-weapon';
 export const PROP_WEAPONS = 'weapons';
@@ -65,9 +65,9 @@ class Player {
     this.changeListeners.forEach((listener) => listener.call(value, PROP_GRENADES));
   }
 
-  setLifes = (value) => {
-    this.lifes = value;
-    this.changeListeners.forEach((listener) => listener.call(value, PROP_LIFES));
+  setLives = (value) => {
+    this.lives = value;
+    this.changeListeners.forEach((listener) => listener.call(value, PROP_LIVES));
   }
 
   setScore = (value) => {
@@ -87,6 +87,11 @@ class Player {
   getSelectedWeapon = () => {
     const weapon = Weapons.find((w) => w.name === this.selectedWeaponName);
     return weapon ? weapon : Grenades.find((g) => g.name === this.selectedWeaponName);
+  }
+
+  getAmmunitionCountForSelectedWeapon = () => {
+    const weapon = Weapons.find((w) => w.name === this.selectedWeaponName);
+    return weapon ? this.getAmmunitionCount(weapon.ammo) : this.getGrenadeCount(this.selectedWeaponName);
   }
 
   addChangeListener = (listener) => {
@@ -124,7 +129,7 @@ class Player {
 
   reset = () => {
     this.cash = 5000;
-    this.lifes = 3;
+    this.lives = 3;
     this.score = 0;
     this.selectedWeaponName = null;
 

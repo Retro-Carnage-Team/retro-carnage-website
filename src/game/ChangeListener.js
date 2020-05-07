@@ -1,12 +1,12 @@
 export default class ChangeListener {
   
-  constructor(callback, propertyName) {
+  constructor(callback, ...propertyNames) {
     this.callback = callback;
-    this.propertyName = propertyName;
+    this.propertyNames = propertyNames;
   }
 
   handlesProperty = (propertyName) => {
-    return (!this.propertyName) || (this.propertyName === propertyName);
+    return (0 === this.propertyNames.length) || (-1 !== this.propertyNames.indexOf(propertyName));
   }
 
   call = (newValue, changedProperty) => {

@@ -1,18 +1,33 @@
 import React from 'react';
 import './PlayerInfo.css';
-import Players from '../../game/Player';
+import Players, {
+  PROP_AMMUNITION,
+  PROP_GRENADES,
+  PROP_LIVES,
+  PROP_SCORE,
+  PROP_SELECTED_WEAPON
+} from '../../game/Player';
 import ChangeListener from '../../game/ChangeListener';
+
+function playerToState(player) {
+  const { lives, score } = player;
+  return {
+    ammunition: player.getAmmunitionCountForSelectedWeapon(),
+    lives,
+    score,
+    selectedWeapon: player.getSelectedWeapon()
+  };
+}
 
 export default class PlayerInfo extends React.Component {
 
   constructor(props) {
     super(props);
     this.player = Players[props.player];
-    this.playerChangeListener = new ChangeListener(this.playerDataChanged);
-    this.state = {
-      score: this.player.score,
-      selectedWeapon: this.player.getSelectedWeapon()
-    };
+    this.playerChangeListener = new ChangeListener(
+      this.playerDataChanged, PROP_AMMUNITION, PROP_GRENADES, PROP_LIVES, PROP_SCORE, PROP_SELECTED_WEAPON
+    );
+    this.state = playerToState(this.player);
   }
 
   componentDidMount() {
@@ -31,6 +46,12 @@ export default class PlayerInfo extends React.Component {
         src={ this.state.selectedWeapon.imageRotated } />
     ) : null;
 
+    const liveImages = [];
+    for(let i=0; i<this.state.lives; i++) {
+      const path = `images/backgrounds/life-player-${this.props.player +1}.png`;
+      liveImages.push(<img key={`life-${i}`} src={path} alt="" />);
+    }
+
     return (
       <div className="player-info">
         <img 
@@ -44,24 +65,18 @@ export default class PlayerInfo extends React.Component {
 
         <div className="weapon-container">
           { weaponImage }
-          <h2>2154</h2>
+          <h2>{ this.state.ammunition }</h2>
         </div>
 
         <div className="lives-container">
-          <img src="images/backgrounds/life-player-1.png" alt="" />
-          <img src="images/backgrounds/life-player-1.png" alt="" />
-          <img src="images/backgrounds/life-player-1.png" alt="" />
-          <img src="images/backgrounds/life-player-1.png" alt="" />
+          { liveImages }
         </div>
       </div>
     );
   }
 
   playerDataChanged = () => {
-    this.setState({
-      score: this.player.score,
-      selectedWeapon: this.player.getSelectedWeapon()
-    });
+    this.setState(playerToState(this.player));
   }
 
 }
