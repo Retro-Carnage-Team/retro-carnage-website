@@ -11,7 +11,7 @@ class InputController {
 
   getControllerStatus = () => {
     let result = [];
-    for(var i=0; i<this.gamepadController.getControllerCount(); i++) {
+    for(let i=0; i<this.gamepadController.getControllerCount(); i++) {
       result.push('G');
     }
     result.push('K');
@@ -39,7 +39,8 @@ class InputController {
   }
 
   assignControllersToPlayers = () => {
-    this.inputProviders = this.gamepadController.getInputStateProviders().concat(this.keyboardController);
+    this.inputProviders = [].concat(this.gamepadController.getInputStateProviders())
+                            .concat([this.keyboardController.getInputState]);
   }
 
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import './GameScreen.css';
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
-import Renderer from '../../game/Renderer';
+import Renderer from '../../game/engine/Renderer';
 import PlayerInfo from './PlayerInfo';
+import Engine from '../../game/engine/Engine';
 import Players from '../../game/Player';
 import MissionController from '../../game/MissionController';
 import SoundBoard from '../../game/SoundBoard';
@@ -18,8 +19,8 @@ class GameScreen extends React.Component {
     this.updateDimensions();
     SoundBoard.play(MissionController.currentMission.music);
 
-    const canvas = document.getElementById('game');
-    this.renderer = new Renderer(canvas);
+    this.engine = new Engine(MissionController.currentMission);
+    this.renderer = new Renderer(document.getElementById('game'));
 
     this.running = true;
     window.addEventListener("resize", this.updateDimensions);
@@ -58,8 +59,14 @@ class GameScreen extends React.Component {
   }
 
   renderGame = (timestamp) => {
-    if(undefined !== this.lastFrame)
-      this.renderer.render(timestamp - this.lastFrame);
+    if(undefined === this.lastFrame) {
+      this.engine.initializeGameState();
+    } else {
+      const elapsedTimeInMs = timestamp - this.lastFrame;
+      this.engine.updateGameState(elapsedTimeInMs);
+      this.renderer.render(elapsedTimeInMs);
+    }
+
     this.lastFrame = timestamp;
     if(this.running)
       window.requestAnimationFrame(this.renderGame);

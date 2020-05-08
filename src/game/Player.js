@@ -35,7 +35,7 @@ function getNamesOfWeaponsAndGrenadesInInventory(weapons, grenades) {
   return w.concat(g);
 }
 
-class Player {
+export class Player {
 
   constructor(index) {
     this.changeListeners = [];
