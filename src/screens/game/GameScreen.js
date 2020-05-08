@@ -16,11 +16,9 @@ class GameScreen extends React.Component {
 
   componentDidMount() {
     this.updateDimensions();
-
-    console.log(MissionController.currentMission, MissionController.currentMission.music);
     SoundBoard.play(MissionController.currentMission.music);
 
-    const canvas = document.getElementById("game");
+    const canvas = document.getElementById('game');
     this.renderer = new Renderer(canvas);
 
     this.running = true;
