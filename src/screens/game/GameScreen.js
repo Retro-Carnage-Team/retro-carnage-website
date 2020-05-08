@@ -4,7 +4,6 @@ import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import Renderer from '../../game/engine/Renderer';
 import PlayerInfo from './PlayerInfo';
 import Engine from '../../game/engine/Engine';
-import Players from '../../game/Player';
 import MissionController from '../../game/MissionController';
 import SoundBoard from '../../game/SoundBoard';
 
@@ -13,6 +12,7 @@ class GameScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { playerInfoWidth: 1 };
+    this.lastFrame = 0;
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class GameScreen extends React.Component {
     this.renderer = new Renderer(document.getElementById('game'));
 
     this.running = true;
-    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener('resize', this.updateDimensions);
     window.requestAnimationFrame(this.renderGame);
   }
 
@@ -31,7 +31,7 @@ class GameScreen extends React.Component {
     SoundBoard.stop(MissionController.currentMission.music);
 
     this.running = false;
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
@@ -43,7 +43,6 @@ class GameScreen extends React.Component {
         <canvas
           className="left"
           id="game"
-          onClick={ this.handleClick }
           style={{ width: `calc(100% - ${this.state.playerInfoWidth}px - ${this.state.playerInfoWidth}px)` }}>
           Guru meditation: &lt;Canvas&gt; element not supported!
         </canvas>
@@ -59,7 +58,7 @@ class GameScreen extends React.Component {
   }
 
   renderGame = (timestamp) => {
-    if(undefined === this.lastFrame) {
+    if(this.lastFrame) {
       this.engine.initializeGameState();
     } else {
       const elapsedTimeInMs = timestamp - this.lastFrame;
@@ -72,16 +71,11 @@ class GameScreen extends React.Component {
       window.requestAnimationFrame(this.renderGame);
   }
 
-  handleClick = () => {
-    // This is for debugging only and can be removed.
-    Players[0].selectNextWeapon();
-  }
-
   moveToNextScreen = () => {
     this.props.onScreenChangeRequired(MAP_SCREEN_NAME);
   }
 
 }
 
-export const GAME_SCREEN_NAME = "game";
+export const GAME_SCREEN_NAME = 'game';
 export default GameScreen;

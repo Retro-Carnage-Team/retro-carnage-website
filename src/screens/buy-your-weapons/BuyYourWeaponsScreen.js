@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import './BuyYourWeaponsScreen.css';
-import { SHOP_SCREEN_NAME } from '../shop/ShopScreen';
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
@@ -24,7 +23,7 @@ class BuyYourWeaponsScreen extends React.Component {
     this.animationIntervalId = setInterval(() => { 
       if(this.state.text.length === this.state.fullText.length) {
         clearInterval(this.animationIntervalId);
-        setTimeout(() => { this.props.onScreenChangeRequired(SHOP_SCREEN_NAME); }, 500);
+        setTimeout(() => { this.props.onScreenChangeRequired() }, 500);
       } else {
         this.setState({ text: this.state.fullText.substring(0, this.state.text.length +1) });
       }
@@ -44,5 +43,4 @@ class BuyYourWeaponsScreen extends React.Component {
 
 }
 
-export const BUY_YOUR_WEAPONS_SCREEN_NAME = 'buy_your_weapons';
 export default BuyYourWeaponsScreen;

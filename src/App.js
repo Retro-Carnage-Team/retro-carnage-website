@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import BuyYourWeaposScreen, { BUY_YOUR_WEAPONS_SCREEN_NAME } from './screens/buy-your-weapons/BuyYourWeaponsScreen';
 import ConfigurationScreen, { CONFIGURATION_SCREEN_NAME } from './screens/configuration/ConfigurationScreen';
 import GameScreen, { GAME_SCREEN_NAME } from './screens/game/GameScreen';
 import LetsBeginScreen, { LETS_BEGIN_MESSAGE_SCREEN_NAME } from './screens/lets-begin/LetsBeginScreen';
 import LoadingScreen, { LOADING_SCREEN_NAME } from './screens/loading/LoadingScreen';
 import MapScreen, { MAP_SCREEN_NAME } from './screens/map/MapScreen';
-import ShopScreen, { SHOP_SCREEN_NAME } from './screens/shop/ShopScreen';
+import ShoppingFlow, { SHOPPING_FLOW_NAME } from './screens/shopping-flow/ShoppingFlow';
 import StartScreen, { START_SCREEN_NAME } from './screens/start/StartScreen';
 import TitleScreen, { TITLE_SCREEN_NAME } from './screens/title/TitleScreen';
 
@@ -16,7 +15,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { screen: LOADING_SCREEN_NAME };
-    // this.state = { screen: GAME_SCREEN_NAME };
   }
 
   handleScreenChangeRequired = (screenName) => {
@@ -26,9 +24,6 @@ class App extends React.Component {
   render() {
     let screen;
     switch(this.state.screen) {
-        case BUY_YOUR_WEAPONS_SCREEN_NAME:
-          screen = <BuyYourWeaposScreen onScreenChangeRequired={ this.handleScreenChangeRequired } player={ 0 }/>;
-          break;
         case CONFIGURATION_SCREEN_NAME:
           screen = <ConfigurationScreen onScreenChangeRequired={ this.handleScreenChangeRequired } />;
           break;
@@ -44,8 +39,8 @@ class App extends React.Component {
         case MAP_SCREEN_NAME:
           screen = <MapScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
-        case SHOP_SCREEN_NAME:
-          screen = <ShopScreen onScreenChangeRequired={ this.handleScreenChangeRequired } player={ 0 }/>;
+        case SHOPPING_FLOW_NAME:
+          screen = <ShoppingFlow onScreenChangeRequired={ this.handleScreenChangeRequired }/>;
           break;
         case START_SCREEN_NAME:
           screen = <StartScreen onScreenChangeRequired={ this.handleScreenChangeRequired }/>;

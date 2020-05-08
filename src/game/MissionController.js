@@ -1,5 +1,5 @@
 import Missions from './Missions';
-import Players from './Player';
+import PlayerController from './PlayerController';
 
 class MissionController {
 
@@ -24,8 +24,7 @@ class MissionController {
   selectMission = (missionName) => {
     this.currentMission = Missions.find((m) => m.name === missionName);
     if(this.currentMission) {
-      Players[0].cash = Players[0].cash + (Players[0].isAlive() ? this.currentMission.reward : 0);
-      Players[1].cash = Players[1].cash + (Players[1].isAlive() ? this.currentMission.reward : 0);
+      PlayerController.getRemainingPlayers().forEach((p) => p.cash = p.cash + this.currentMission.reward);
     }
   }
 

@@ -5,7 +5,6 @@ import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
 import ChangeListener from '../../game/ChangeListener';
 import Players from '../../game/Player';
-import SoundBoard, { MUSIC_THEME } from '../../game/SoundBoard';
 import BottomLine from './BottomLine';
 import ItemAmmunition from './ItemAmmunition';
 import ItemGrenade from './ItemGrenade';
@@ -13,7 +12,6 @@ import ItemWeapon from './ItemWeapon';
 import DetailAmmunition from './DetailAmmunition';
 import DetailGrenade from './DetailGrenade';
 import DetailWeapon from './DetailWeapon';
-import { LETS_BEGIN_MESSAGE_SCREEN_NAME } from '../lets-begin/LetsBeginScreen';
 
 class ShopScreen extends React.Component {
 
@@ -139,24 +137,11 @@ class ShopScreen extends React.Component {
     });
   }
 
-  fadeOutMusic = () => {
-    const volume = SoundBoard.getVolume(MUSIC_THEME);
-    if(0 < volume) {
-      SoundBoard.setVolume(MUSIC_THEME, Math.max(volume - 0.05, 0));
-      setTimeout(this.fadeOutMusic, 200);
-    } else {
-      SoundBoard.stop(MUSIC_THEME);
-      SoundBoard.setVolume(MUSIC_THEME, 1);
-      this.props.onScreenChangeRequired(LETS_BEGIN_MESSAGE_SCREEN_NAME);
-    }
-  }
-
   handleExitClicked = () => {
     Players[this.props.player].selectFirstWeapon();
-    setTimeout(this.fadeOutMusic, 200);
+    this.props.onScreenChangeRequired();
   }
 
 }
 
-export const SHOP_SCREEN_NAME = 'shop';
 export default ShopScreen;

@@ -3,6 +3,7 @@ import './ConfigurationScreen.css';
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import UserInput from './UserInput';
 import Result from './Result';
+import PlayerController from '../../game/PlayerController';
 
 function ConfigurationScreen(props) {
   const [numberOfPlayers, setNumberOfPlayers] = useState(null);
@@ -13,6 +14,7 @@ function ConfigurationScreen(props) {
 
   function numberOfPlayerSelected(number) {
     setNumberOfPlayers(number);
+    PlayerController.numberOfPlayers = number;
     setTimeout(moveToNextScreen, 3000);
   }
 

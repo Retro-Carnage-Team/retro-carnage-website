@@ -39,6 +39,7 @@ export class Player {
 
   constructor(index) {
     this.changeListeners = [];
+    this.index = index;
     this.name = `Player ${index +1}`;
     this.reset();
   }

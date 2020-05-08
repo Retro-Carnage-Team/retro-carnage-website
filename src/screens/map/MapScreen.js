@@ -3,7 +3,7 @@ import './MapScreen.css';
 import MissionBriefing from './MissionBriefing';
 import MissionController from '../../game/MissionController';
 
-import { BUY_YOUR_WEAPONS_SCREEN_NAME } from '../buy-your-weapons/BuyYourWeaponsScreen';
+import { SHOPPING_FLOW_NAME } from '../shopping-flow/ShoppingFlow';
 
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
@@ -71,7 +71,7 @@ class MapScreen extends React.Component {
 
   handleMissionSelected = (missionName) => {
     MissionController.selectMission(missionName);
-    this.props.onScreenChangeRequired(BUY_YOUR_WEAPONS_SCREEN_NAME);
+    this.props.onScreenChangeRequired(SHOPPING_FLOW_NAME);
   }
 
   updateDimensions = () => {

@@ -1,5 +1,5 @@
 import InputController from '../InputController';
-import Players from '../Player';
+import PlayerController from '../PlayerController';
 
 export default class Engine {
 
@@ -13,8 +13,8 @@ export default class Engine {
   }
 
   updateGameState = () => {
-    Players.map((player, idx) =>
-      console.log(idx, InputController.inputProviders[idx]())
+    PlayerController.getRemainingPlayers().map((player) =>
+      console.log(player.name, InputController.inputProviders[player.index]())
     );
   }
 
