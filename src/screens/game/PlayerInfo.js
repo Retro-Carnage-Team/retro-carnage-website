@@ -46,7 +46,7 @@ export default class PlayerInfo extends React.Component {
         src={ this.state.selectedWeapon.imageRotated } />
     ) : null;
 
-    const liveImages = (0 < this.state.lives) ? []: "M.I.A.";
+    const liveImages = (0 < this.state.lives) ? []: 'M.I.A.';
     for(let i=0; i<this.state.lives; i++) {
       const path = `images/backgrounds/life-player-${this.props.player +1}.png`;
       liveImages.push(<img key={`life-${i}`} src={path} alt="" />);

@@ -9,15 +9,6 @@ function ShoppingFlow(props) {
   const [step, setStep] = useState(0);
   const [player, setPlayer] = useState(PlayerController.getRemainingPlayers()[0].index);
 
-  function onShopFinished() {
-    if(player + 1 === PlayerController.getRemainingPlayers().length) {
-      setTimeout(fadeOutMusic, 200);
-    } else {
-      setStep(0);
-      setPlayer(player +1);
-    }
-  }
-
   function fadeOutMusic() {
     const volume = SoundBoard.getVolume(MUSIC_THEME);
     if(0 < volume) {
@@ -30,10 +21,19 @@ function ShoppingFlow(props) {
     }
   }
 
+  function onShopFinished() {
+    if(player + 1 === PlayerController.getRemainingPlayers().length) {
+      setTimeout(fadeOutMusic, 200);
+    } else {
+      setStep(0);
+      setPlayer(player +1);
+    }
+  }
+
   if(0 === step) {
-    return <BuyYourWeaponsScreen player={ player } onScreenChangeRequired={ () => setStep(1) } />
+    return <BuyYourWeaponsScreen player={ player } onScreenChangeRequired={ () => setStep(1) } />;
   } else {
-    return <ShopScreen player={ player } onScreenChangeRequired={ onShopFinished } />
+    return <ShopScreen player={ player } onScreenChangeRequired={ onShopFinished } />;
   }
 }
 

@@ -23,7 +23,7 @@ class BuyYourWeaponsScreen extends React.Component {
     this.animationIntervalId = setInterval(() => { 
       if(this.state.text.length === this.state.fullText.length) {
         clearInterval(this.animationIntervalId);
-        setTimeout(() => { this.props.onScreenChangeRequired() }, 500);
+        setTimeout(() => { this.props.onScreenChangeRequired(); }, 500);
       } else {
         this.setState({ text: this.state.fullText.substring(0, this.state.text.length +1) });
       }
