@@ -22,11 +22,10 @@ class MissionController {
   }
 
   selectMission = (missionName) => {
-    this.currentMission = missionName;
-    if(!!missionName) {
-      const mission = Missions.find((m) => m.name === missionName);
-      Players[0].cash = Players[0].cash + mission.reward;
-      Players[1].cash = Players[1].cash + mission.reward;
+    this.currentMission = Missions.find((m) => m.name === missionName);
+    if(this.currentMission) {
+      Players[0].cash = Players[0].cash + (Players[0].isAlive() ? this.currentMission.reward : 0);
+      Players[1].cash = Players[1].cash + (Players[1].isAlive() ? this.currentMission.reward : 0);
     }
   }
 

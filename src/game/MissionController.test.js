@@ -1,4 +1,3 @@
-import InventoryController from './InventoryController';
 import MissionController from './MissionController';
 import Missions from './Missions';
 import Players from './Player';
@@ -21,6 +20,6 @@ test('Selecting a mission should update property and cash in inventory', () => {
   const missionName = 'Minsk';
   const oldCash = Players[0].cash;
   MissionController.selectMission(missionName);
-  expect(MissionController.currentMission).toBe(missionName);
+  expect(MissionController.currentMission.name).toBe(missionName);
   expect(Players[0].cash).toBeGreaterThan(oldCash);
 });

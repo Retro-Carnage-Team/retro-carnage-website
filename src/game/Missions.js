@@ -1,3 +1,18 @@
+import {
+  MUSIC_BACKGROUND_1,
+  MUSIC_BACKGROUND_2,
+  MUSIC_BACKGROUND_3,
+  MUSIC_BACKGROUND_4,
+  MUSIC_BACKGROUND_5,
+  MUSIC_BACKGROUND_6,
+  MUSIC_BACKGROUND_7,
+  MUSIC_BACKGROUND_8,
+  MUSIC_BACKGROUND_9,
+  MUSIC_BACKGROUND_10,
+  MUSIC_BACKGROUND_11,
+  MUSIC_BACKGROUND_12
+} from './SoundBoard';
+
 const Missions = [{
   briefing: 'I am Berlin\'s hottest influencer. 30.000 followers on Insta alone - and that\'s not even counting Youtube and Twitter. My biggest competitor is envious and spreads the rumour that I am not vegan. Take out my competitor - for $10.000.',
   client: 'images/tiles/clients/angry-beard-blur-close-up.jpg',
@@ -5,6 +20,7 @@ const Missions = [{
     latitude: 165,
     longitude: 677
   },
+  music: MUSIC_BACKGROUND_1,
   name: 'Berlin',
   reward: 10000
 }, {
@@ -14,6 +30,7 @@ const Missions = [{
     latitude: 158,
     longitude: 713
   },
+  music: MUSIC_BACKGROUND_2,
   name: 'Minsk',
   reward: 8000
 }, {
@@ -23,6 +40,7 @@ const Missions = [{
     latitude: 213,
     longitude: 734
   },
+  music: MUSIC_BACKGROUND_3,
   name: 'Istanbul',
   reward: 8000
 }, {
@@ -32,6 +50,7 @@ const Missions = [{
     latitude: 249,
     longitude: 684
   },
+  music: MUSIC_BACKGROUND_4,
   name: 'Tripolis',
   reward: 12000
 }, {
@@ -41,6 +60,7 @@ const Missions = [{
     latitude: 384,
     longitude: 800
   },
+  music: MUSIC_BACKGROUND_5,
   name: 'Mogadischu',
   reward: 15000
 }, {
@@ -50,6 +70,7 @@ const Missions = [{
     latitude: 311,
     longitude: 895
   },
+  music: MUSIC_BACKGROUND_6,
   name: 'Mumbai',
   reward: 11000
 }, {
@@ -59,6 +80,7 @@ const Missions = [{
     latitude: 199,
     longitude: 871
   },
+  music: MUSIC_BACKGROUND_7,
   name: 'Bischkek',
   reward: 5000
 }, {
@@ -68,6 +90,7 @@ const Missions = [{
     latitude: 312,
     longitude: 973
   },
+  music: MUSIC_BACKGROUND_8,
   name: 'Myanmar',
   reward: 10000
 }, {
@@ -77,6 +100,7 @@ const Missions = [{
     latitude: 338,
     longitude: 1018
   },
+  music: MUSIC_BACKGROUND_9,
   name: 'Ho-Chi-Minh City',
   reward: 8000
 }, {
@@ -86,6 +110,7 @@ const Missions = [{
     latitude: 299,
     longitude: 295
   },
+  music: MUSIC_BACKGROUND_10,
   name: 'Mexico City',
   reward: 12000
 }, {
@@ -95,6 +120,7 @@ const Missions = [{
     latitude: 257,
     longitude: 309
   },
+  music: MUSIC_BACKGROUND_11,
   name: 'San Antonio',
   reward: 9000
 }, {
@@ -104,6 +130,7 @@ const Missions = [{
     latitude: 398,
     longitude: 412
   },
+  music: MUSIC_BACKGROUND_12,
   name: 'Amazonas',
   reward: 5000
 }];

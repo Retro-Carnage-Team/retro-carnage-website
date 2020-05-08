@@ -1,8 +1,8 @@
 export default class Renderer {
 
-  constructor(canvas, ctx) {
+  constructor(canvas) {
     this.canvas = canvas;
-    this.ctx = ctx;
+    this.ctx = canvas.getContext("2d");
   }
 
   render = (elapsedTimeInMs) => {

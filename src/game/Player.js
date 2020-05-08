@@ -37,8 +37,9 @@ function getNamesOfWeaponsAndGrenadesInInventory(weapons, grenades) {
 
 class Player {
 
-  constructor() {
+  constructor(index) {
     this.changeListeners = [];
+    this.name = `Player ${index +1}`;
     this.reset();
   }
 
@@ -63,6 +64,10 @@ class Player {
   setGrenadeCount = (grenadeName, value) => {
     this.grenades[grenadeName] = value;
     this.changeListeners.forEach((listener) => listener.call(value, PROP_GRENADES));
+  }
+
+  isAlive = () => {
+    return this.lives > 0;
   }
 
   setLives = (value) => {
@@ -140,6 +145,6 @@ class Player {
 
 }
 
-const playerOne = new Player();
-const playerTwo = new Player();
+const playerOne = new Player(0);
+const playerTwo = new Player(1);
 export default [playerOne, playerTwo];

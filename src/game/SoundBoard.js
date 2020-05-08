@@ -24,6 +24,7 @@ class NamedAudio {
   constructor(name, type) {
     this.name = name;
     this.audio = new Audio(`sounds/${type}/${name}`);
+    this.audio.loop = TYPE_MUSIC === type;
   }
 }
 

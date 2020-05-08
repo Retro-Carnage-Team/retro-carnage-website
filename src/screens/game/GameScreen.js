@@ -3,28 +3,34 @@ import './GameScreen.css';
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import Renderer from '../../game/Renderer';
 import PlayerInfo from './PlayerInfo';
+import Players from '../../game/Player';
+import MissionController from '../../game/MissionController';
+import SoundBoard from '../../game/SoundBoard';
 
 class GameScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.lastFrame = undefined;
-    this.renderer = undefined;
-    this.running = true;
     this.state = { playerInfoWidth: 1 };
   }
 
   componentDidMount() {
     this.updateDimensions();
 
-    const canvas = document.getElementById("game");
-    this.renderer = new Renderer(canvas, canvas.getContext("2d"));
+    console.log(MissionController.currentMission, MissionController.currentMission.music);
+    SoundBoard.play(MissionController.currentMission.music);
 
+    const canvas = document.getElementById("game");
+    this.renderer = new Renderer(canvas);
+
+    this.running = true;
     window.addEventListener("resize", this.updateDimensions);
     window.requestAnimationFrame(this.renderGame);
   }
 
   componentWillUnmount() {
+    SoundBoard.stop(MissionController.currentMission.music);
+
     this.running = false;
     window.removeEventListener("resize", this.updateDimensions);
   }
@@ -38,6 +44,7 @@ class GameScreen extends React.Component {
         <canvas
           className="left"
           id="game"
+          onClick={ this.handleClick }
           style={{ width: `calc(100% - ${this.state.playerInfoWidth}px - ${this.state.playerInfoWidth}px)` }}>
           Guru meditation: &lt;Canvas&gt; element not supported!
         </canvas>
@@ -58,6 +65,11 @@ class GameScreen extends React.Component {
     this.lastFrame = timestamp;
     if(this.running)
       window.requestAnimationFrame(this.renderGame);
+  }
+
+  handleClick = () => {
+    // This is for debugging only and can be removed.
+    Players[0].selectNextWeapon();
   }
 
   moveToNextScreen = () => {
