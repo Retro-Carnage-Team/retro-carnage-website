@@ -1,6 +1,5 @@
 import React from 'react';
 import './GameScreen.css';
-import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import Renderer from '../../game/engine/Renderer';
 import PlayerInfo from './PlayerInfo';
 import Engine from '../../game/engine/Engine';
@@ -67,12 +66,9 @@ class GameScreen extends React.Component {
     }
 
     this.lastFrame = timestamp;
-    if(this.running)
+    if(this.running) {
       window.requestAnimationFrame(this.renderGame);
-  }
-
-  moveToNextScreen = () => {
-    this.props.onScreenChangeRequired(MAP_SCREEN_NAME);
+    }
   }
 
 }

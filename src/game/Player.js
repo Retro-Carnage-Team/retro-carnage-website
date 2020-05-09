@@ -101,7 +101,7 @@ export class Player {
   }
 
   addChangeListener = (listener) => {
-    if(!(listener instanceof ChangeListener)) {                                                                         // I did that mistake too often
+    if(!(listener instanceof ChangeListener)) {                                                                         // I made that mistake too often
       throw new Error('ChangeListeners have to be ChangeListener objects - not callbacks!');
     }
     this.changeListeners.push(listener);
@@ -109,8 +109,9 @@ export class Player {
 
   removeChangeListener = (listener) => {
     const index = this.changeListeners.indexOf(listener);
-    if (index > -1)
+    if (index > -1) {
       this.changeListeners.splice(index, 1);
+    }
   }
 
   selectFirstWeapon = () => {
