@@ -22,7 +22,52 @@ const Missions = [{
   },
   music: MUSIC_BACKGROUND_1,
   name: 'Berlin',
-  reward: 10000
+  reward: 10000,
+  segments: [
+    {
+      backgrounds: ['bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
+      direction: 'up',
+      enemies: [],
+      goal: null,
+      obstacles: []
+    }, {
+      backgrounds: ['bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg'],
+      direction: 'left',
+      enemies: [],
+      goal: null,
+      obstacles: []
+    }, {
+      backgrounds: ['bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg'],
+      direction: 'up',
+      enemies: [],
+      goal: null,
+      obstacles: []
+    }, {
+      backgrounds: ['bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
+      direction: 'right',
+      enemies: [],
+      goal: null,
+      obstacles: []
+    }, {
+      backgrounds: ['bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg'],
+      direction: 'up',
+      enemies: [],
+      goal: null,
+      obstacles: []
+    }, {
+      backgrounds: ['bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg'],
+      direction: 'left',
+      enemies: [],
+      goal: null,
+      obstacles: []
+    }, {
+      backgrounds: ['bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
+      direction: 'up',
+      enemies: [],
+      goal: { x: 42, y: 42, w: 100, h: 100 },
+      obstacles: []
+    }
+  ]
 }, {
   briefing: 'My name is Dr. Valentin Pillmann. I have spent most of my life in the ... Zone ... and risked a lot to get hold of a valuable artifact called Nightstar. Bandits robbed me and stole it from me. Get the artifact back and you\'ll get $8,000.',
   client: 'images/tiles/clients/adult-aged-black-and-white-close-up.jpg',

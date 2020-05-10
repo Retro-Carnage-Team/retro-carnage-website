@@ -21,7 +21,7 @@ export default class PlayerBehavior {
   }
 
   update = (userInput) => {
-    if(!this.player.isAlive()) {
+    if(!userInput || !this.player.isAlive()) {
       return;
     }
 

@@ -6,13 +6,12 @@ class PlayerController {
     this.numberOfPlayers = null;
   }
 
-  getAllPlayers = () => {
-    return Players;
+  getConfiguredPlayers = () => {
+    return (1 === this.numberOfPlayers) ? [Players[0]] : Players;
   }
 
   getRemainingPlayers = () => {
-    const unfiltered = (1 === this.numberOfPlayers) ? [Players[0]] : Players;
-    return unfiltered.filter((p) => p.isAlive());
+    return this.getConfiguredPlayers().filter((p) => p.isAlive());
   }
 
 }

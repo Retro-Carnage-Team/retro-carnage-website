@@ -2,7 +2,7 @@ import React from 'react';
 import './GameScreen.css';
 import Renderer from '../../game/engine/Renderer';
 import PlayerInfo from './PlayerInfo';
-import Engine from '../../game/engine/Engine';
+import Engine, { SCREEN_SIZE } from '../../game/engine/Engine';
 import MissionController from '../../game/MissionController';
 import SoundBoard from '../../game/SoundBoard';
 
@@ -19,7 +19,7 @@ class GameScreen extends React.Component {
     SoundBoard.play(MissionController.currentMission.music);
 
     this.engine = new Engine(MissionController.currentMission);
-    this.renderer = new Renderer(document.getElementById('game'));
+    this.renderer = new Renderer(document.getElementById('game'), this.engine);
 
     this.running = true;
     window.addEventListener('resize', this.updateDimensions);
@@ -42,7 +42,9 @@ class GameScreen extends React.Component {
         <canvas
           className="left"
           id="game"
-          style={{ width: `calc(100% - ${this.state.playerInfoWidth}px - ${this.state.playerInfoWidth}px)` }}>
+          height={ SCREEN_SIZE }
+          style={{ width: `calc(100% - ${this.state.playerInfoWidth}px - ${this.state.playerInfoWidth}px)` }}
+          width={ SCREEN_SIZE }>
           Guru meditation: &lt;Canvas&gt; element not supported!
         </canvas>
         <div className="right" style={{ width: this.state.playerInfoWidth +'px' }}>
@@ -57,7 +59,7 @@ class GameScreen extends React.Component {
   }
 
   renderGame = (timestamp) => {
-    if(this.lastFrame) {
+    if(!this.lastFrame) {
       this.engine.initializeGameState();
     } else {
       const elapsedTimeInMs = timestamp - this.lastFrame;
