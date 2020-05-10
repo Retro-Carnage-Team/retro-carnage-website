@@ -1,7 +1,7 @@
 import InputController from '../InputController';
 import PlayerController from '../PlayerController';
 import PlayerBehavior from './PlayerBehavior';
-import Rectangle from "./Rectangle";
+import Rectangle from './Rectangle';
 
 const PLAYER_HEIGHT = 200;
 const PLAYER_WIDTH = 90;

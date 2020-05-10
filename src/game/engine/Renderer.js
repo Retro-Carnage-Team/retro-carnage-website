@@ -8,7 +8,7 @@ export default class Renderer {
     this.ctx = canvas.getContext('2d');
     this.engine = engine;
     this.playerTileSuppliers = PlayerController.getConfiguredPlayers()
-      .map((player) => new PlayerTileSupplier(player))
+      .map((player) => new PlayerTileSupplier(player));
   }
 
   render = (elapsedTimeInMs) => {
