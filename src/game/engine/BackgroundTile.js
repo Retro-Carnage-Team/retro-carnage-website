@@ -1,16 +1,14 @@
 import Rectangle from './Rectangle';
-import { renderToOffScreenCanvas } from './Tiles';
+import { renderToOffScreenCanvas, SCREEN_SIZE } from './Tiles';
 
-export default class PlayerTile {
+export default class BackgroundTile {
 
-  constructor(width, height, path, offsetX, offsetY) {
-    this.width = width;
-    this.height = height;
+  constructor(path) {
     this.path = path;
-    this.offsetX = offsetX;
-    this.offsetY = offsetY;
+    this.offsetX = 0;
+    this.offsetY = 0;
 
-    this.image = new Image(this.width, this.height);
+    this.image = new Image(SCREEN_SIZE, SCREEN_SIZE);
     this.image.loading = 'eager';
     this.image.src = this.path;
 
@@ -19,7 +17,7 @@ export default class PlayerTile {
 
   getCanvas = () => {
     if(!this.offScreenCanvas && this.image.complete) {
-      this.offScreenCanvas = renderToOffScreenCanvas(this.image, this.width, this.height);
+      this.offScreenCanvas = renderToOffScreenCanvas(this.image, SCREEN_SIZE, SCREEN_SIZE);
     }
     return this.offScreenCanvas;
   }

@@ -7,6 +7,7 @@ function LetsBeginMessageScreen(props) {
 
   useEffect(() => { 
     setHeight(window.innerHeight / 2 - 40);
+    // TODO: preload backgrounds of selected level
   }, []);
 
   function moveToNextScreen() {
