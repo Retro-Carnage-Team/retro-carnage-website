@@ -1,3 +1,14 @@
+import Rectangle from './Rectangle';
+
+function renderToOffScreenCanvas(image, width, height) {
+  const canvas = window.document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext('2d');
+  context.drawImage(image, 0, 0);
+  return canvas;
+}
+
 export default class PlayerTile {
 
   constructor(width, height, path, offsetX, offsetY) {
@@ -16,18 +27,13 @@ export default class PlayerTile {
 
   getCanvas = () => {
     if(!this.offScreenCanvas && this.image.complete) {
-      this.offScreenCanvas = this.renderToOffScreenCanvas();
+      this.offScreenCanvas = renderToOffScreenCanvas(this.image, this.width, this.height);
     }
     return this.offScreenCanvas;
   }
 
-  renderToOffScreenCanvas = () => {
-    const canvas = window.document.createElement('canvas');
-    canvas.width = this.width;
-    canvas.height = this.height;
-    const context = canvas.getContext('2d');
-    context.drawImage(this.image, 0, 0);
-    return canvas;
+  translate = (position) => {
+    return new Rectangle(position.x + this.offsetX, position.y + this.offsetY, position.width, position.height);
   }
 
 }

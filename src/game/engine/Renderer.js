@@ -31,8 +31,8 @@ export default class Renderer {
     const behaviors = this.engine.playerBehaviors;
     PlayerController.getRemainingPlayers().forEach((player) => {
       const tile = this.playerTileSuppliers[player.index].getTile(elapsedTimeInMs, behaviors[player.index]);
-      const position = positions[player.index];
-      this.ctx.drawImage(tile.getCanvas(), position.x, position.y);
+      const translatedPosition = tile.translate(positions[player.index]);
+      this.ctx.drawImage(tile.getCanvas(), translatedPosition.x, translatedPosition.y);
     });
   }
 
