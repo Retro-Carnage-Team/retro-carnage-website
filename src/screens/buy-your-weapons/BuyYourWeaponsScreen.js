@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import './BuyYourWeaponsScreen.css';
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
@@ -12,7 +11,6 @@ class BuyYourWeaponsScreen extends React.Component {
     this.state = {
       fullText: `Buy your weapons player ${props.player + 1}`,
       height: 100,
-      images: Weapons.map((w) => w.image).concat(Grenades.map((g) => g.image), Ammunition.map((a) => a.image)),
       text: ''
     };
     this.animationIntervalId = null;
@@ -28,17 +26,26 @@ class BuyYourWeaponsScreen extends React.Component {
         this.setState({ text: this.state.fullText.substring(0, this.state.text.length +1) });
       }
     }, 120);
+    this.preloadImagesForShop();
   }
 
   render() {
-    const links = this.state.images.map((image) => (<link key={ image } rel="preload" href={ image } />));
     return (
       <div className="buy-your-weapons-screen">
         <div style={{ height: `${this.state.height}px` }} />
         <h1>{ this.state.text }</h1>
-        <Helmet>{ links }</Helmet>
       </div>
     );
+  }
+
+  preloadImagesForShop = () => {
+    Weapons.map((w) => w.image)
+      .concat(Grenades.map((g) => g.image), Ammunition.map((a) => a.image))
+      .forEach((i) => {
+        const image = new Image(300, 110);
+        image.src = i;
+        image.loading = 'eager';
+      });
   }
 
 }
