@@ -94,3 +94,6 @@ This game is based on the work of many great artists who share their work with u
 *   Cash register by kiddpark ([Link](https://freesound.org/people/kiddpark/sounds/201159/), [License](http://creativecommons.org/licenses/by/3.0/))
 *   Error by lluiset7 ([Link](https://freesound.org/people/lluiset7/sounds/141334/), [License](http://creativecommons.org/publicdomain/zero/1.0/))
 *   Auto Assault Rifle/Gun Burst by EFlexMusic ([Link](https://freesound.org/people/EFlexMusic/sounds/393671/), [License](http://creativecommons.org/licenses/by-nc/3.0/))
+*   Warrior Death Cry - British Male by theuncertainman ([Link](https://freesound.org/people/theuncertainman/sounds/417539/), [License](http://creativecommons.org/licenses/by/3.0/))
+*   Male Being Impaled/Beaten AC by oldedgar ([Link](https://freesound.org/people/oldedgar/sounds/131710/), [License](http://creativecommons.org/publicdomain/zero/1.0/))
+*   Man die by thestigmata ([Link](https://freesound.org/people/thestigmata/sounds/202037/), [License](http://creativecommons.org/licenses/by-nc/3.0/))

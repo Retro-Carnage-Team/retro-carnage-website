@@ -4,6 +4,16 @@ const TYPE_MUSIC = 'music';
 export const FX_CASH = 'cash-register.mp3';
 export const FX_ERROR = 'error.mp3';
 export const FX_LOADING = 'loading.mp3';
+export const FX_DEATH_ENEMY_0 = 'death-enemy-0.mp3';
+export const FX_DEATH_ENEMY_1 = 'death-enemy-1.mp3';
+export const FX_DEATH_ENEMY_2 = 'death-enemy-2.mp3';
+export const FX_DEATH_ENEMY_3 = 'death-enemy-3.mp3';
+export const FX_DEATH_ENEMY_4 = 'death-enemy-4.mp3';
+export const FX_DEATH_ENEMY_5 = 'death-enemy-5.mp3';
+export const FX_DEATH_ENEMY_6 = 'death-enemy-6.mp3';
+export const FX_DEATH_ENEMY_7 = 'death-enemy-7.mp3';
+export const FX_DEATH_PLAYER_1 = 'death-player-1.mp3';
+export const FX_DEATH_PLAYER_2 = 'death-player-2.mp3';
 export const FX_TITLE_RIFLE = 'title-rifle.mp3';
 
 export const MUSIC_BACKGROUND_1 = 'All-We-Ever-See-of-Stars.mp3';
@@ -37,6 +47,16 @@ class SoundBoard {
     this.sounds.push(new NamedAudio(FX_CASH, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_ERROR, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_LOADING, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_0, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_1, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_2, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_3, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_4, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_5, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_6, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_7, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_PLAYER_1, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_DEATH_PLAYER_2, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_TITLE_RIFLE, TYPE_FX));
 
     // music
