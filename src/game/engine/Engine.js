@@ -4,6 +4,7 @@ import PlayerController from '../PlayerController';
 import PlayerBehavior from './PlayerBehavior';
 import Rectangle from './Rectangle';
 import { PLAYER_HEIGHT, PLAYER_WIDTH } from './Tiles';
+import { updatePlayerMovement } from './PlayerMovement';
 
 export default class Engine {
 
@@ -30,12 +31,23 @@ export default class Engine {
 
   updateGameState = (elapsedTimeInMs) => {
     this.updatePlayerBehaviorByInput();
+    this.updatePlayerPositionWithMovement(elapsedTimeInMs);
   }
 
   updatePlayerBehaviorByInput = () => {
     PlayerController.getRemainingPlayers().forEach((p) => {
       const inputState = InputController.inputProviders[p.index]();
       this.playerBehaviors[p.index].update(inputState);
+    });
+  }
+
+  updatePlayerPositionWithMovement = (elapsedTimeInMs) => {
+    PlayerController.getRemainingPlayers().forEach((p) => {
+      const behavior = this.playerBehaviors[p.index];
+      if(behavior.moving) {
+        const oldPosition = this.playerPositions[p.index];
+        this.playerPositions[p.index] = updatePlayerMovement(elapsedTimeInMs, behavior.direction, oldPosition);
+      }
     });
   }
 
