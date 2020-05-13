@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.css';
 
 import ConfigurationScreen, { CONFIGURATION_SCREEN_NAME } from './screens/configuration/ConfigurationScreen';
 import GameScreen, { GAME_SCREEN_NAME } from './screens/game/GameScreen';
@@ -53,7 +53,7 @@ class App extends React.Component {
           break;
     }
     return (
-      <div className="App">
+      <div className={ styles.app }>
         { screen }
       </div>
     );

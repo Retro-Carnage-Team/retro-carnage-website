@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './LoadingScreen.css';
+import styles from './LoadingScreen.module.css';
 import { START_SCREEN_NAME } from '../start/StartScreen';
 import SoundBoard, { FX_LOADING } from '../../game/SoundBoard';
 
@@ -18,7 +18,7 @@ function LoadingScreen(props) {
   setTimeout(moveToNextScreen, 8000);
 
   return (
-    <div className="loading-screen">
+    <div className={ styles.screen }>
       <div style={{ height: `${height}px` }} />
       <h1>DOGS OF WAR II</h1>
       <h1>is loading</h1>

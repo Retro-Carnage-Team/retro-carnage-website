@@ -1,10 +1,10 @@
 import React from 'react';
-import './UserInput.css';
+import styles from './UserInput.module.css';
 import InputController from '../../game/InputController';
 
 function GamepadIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <svg className={ styles.icon } xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
       <path d="M15 7.5V2H9v5.5l3 3 3-3zM7.5 9H2v6h5.5l3-3-3-3zM9 16.5V22h6v-5.5l-3-3-3 3zM16.5 9l-3 3 3 3H22V9h-5.5z"/>
     </svg>
   );
@@ -12,7 +12,7 @@ function GamepadIcon() {
 
 function KeyboardIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <svg className={ styles.icon } xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
       <path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/>
     </svg>
   );
@@ -71,12 +71,12 @@ export default class UserInput extends React.Component {
     const callToAction = this.state.twoPlayerPossible ? 
                          '1 or 2 player game?' : 'Press 1 to start single player game';
     return (
-      <div className="user-input">
+      <div>
         <div style={{ height: `${this.state.height - 80}px` }} />
-        <h1 className="controllers">{ searchMessage }</h1>
-        <h1 className="controllers">{ devices }</h1>
-        <div className="spacer" />
-        <h1 className="number-of-players">{ callToAction }</h1>
+        <h1 className={ styles.controllers }>{ searchMessage }</h1>
+        <h1 className={ styles.controllers }>{ devices }</h1>
+        <div className={ styles.spacer } />
+        <h1 className={ styles.players }>{ callToAction }</h1>
       </div>
     );
   }

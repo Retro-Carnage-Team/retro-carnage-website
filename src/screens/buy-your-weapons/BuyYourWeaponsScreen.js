@@ -1,5 +1,5 @@
 import React from 'react';
-import './BuyYourWeaponsScreen.css';
+import styles from './BuyYourWeaponsScreen.module.css';
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
@@ -31,7 +31,7 @@ class BuyYourWeaponsScreen extends React.Component {
 
   render() {
     return (
-      <div className="buy-your-weapons-screen">
+      <div className={ styles.screen }>
         <div style={{ height: `${this.state.height}px` }} />
         <h1>{ this.state.text }</h1>
       </div>

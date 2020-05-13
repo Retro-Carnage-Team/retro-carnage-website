@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ConfigurationScreen.css';
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import UserInput from './UserInput';
 import Result from './Result';
@@ -19,13 +18,13 @@ function ConfigurationScreen(props) {
   }
 
   return (
-    <div className="lets-begin-screen">
+    <>
       { 
         null === numberOfPlayers ? 
           <UserInput onPlayersSelected={ numberOfPlayerSelected } /> :
           <Result numberOfPlayers={ numberOfPlayers } />
       }
-    </div>
+    </>
   );
 }
 

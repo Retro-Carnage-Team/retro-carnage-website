@@ -1,19 +1,19 @@
-div.user-input h1.controllers {
+h1.controllers {
   color: #ee0;
   font-size: 32px;
   margin-top: 0;
   text-transform: uppercase;
 }
 
-div.user-input svg path {
+.icon path {
   fill: #ee0;
 }
 
-div.user-input div.spacer {
+div.spacer {
   height: 40px;
 }
 
-div.user-input h1.number-of-players {
+h1.players {
   color: white;
   font-size: 32px;
   margin-top: 0;

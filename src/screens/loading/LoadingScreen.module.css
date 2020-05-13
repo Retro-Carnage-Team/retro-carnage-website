@@ -1,9 +1,9 @@
-div.loading-screen {
+.screen {
   background-color: black;
   height: 100%;
 }
 
-div.loading-screen h1 {
+.screen h1 {
   color: #ee0;
   font-size: 32px;
   margin-top: 0;
