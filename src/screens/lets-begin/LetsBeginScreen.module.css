@@ -1,9 +1,9 @@
-div.lets-begin-screen {
+.screen {
   background-color: black;
   height: 100%;
 }
 
-div.lets-begin-screen h1 {
+.screen h1 {
   color: #fddc49;
   font-size: 32px;
   margin-top: 0;

@@ -1,28 +1,28 @@
-div.map-screen {
+.screen {
   background-color: black;
   height: 100%;
 }
 
-div.briefing-container {
+.briefingContainer {
   height: 25%;
   width: 100%;
 }
 
-div.world-map-container {
+.worldMapContainer {
   height: 75%;
   position: absolute;
   text-align: center;
   width: 100%;
 }
 
-.location-container {
+.locationContainer {
   cursor: pointer;
   height: 22px;
   position: absolute;
   width: 22px;
 }
 
-.location-marker {
+.locationMarker {
   animation: pulsate 1s ease-out;
   animation-iteration-count: infinite;
   border: 3px solid orange;

@@ -1,25 +1,25 @@
 import React from 'react';
-import './DetailGrenade.css';
+import styles from './DetailGrenade.module.css';
 
 export default function DetailGrenade(props) {  
   return (
-    <div className="details-grenade-inner">
+    <div className={ styles.detailsGrenadeInner }>
       <h2>{ props.grenade.name }</h2>
       <table>
         <tbody>
          <tr>
             <td>Price:</td>
-            <td className="details-grenade-value">{props.grenade.price}</td>                    
-            <td className="details-grenade-spacer" />                    
+            <td className={ styles.detailsGrenadeValue }>{props.grenade.price}</td>
+            <td className={ styles.detailsGrenadeSpacer } />
             <td>Package size:</td>
-            <td className="details-grenade-value">{ props.grenade.packageSize }</td>
+            <td className={ styles.detailsGrenadeValue }>{ props.grenade.packageSize }</td>
           </tr>
           <tr>
             <td>Range:</td>
-            <td className="details-grenade-value">{ props.grenade.range }</td>
-            <td className="details-grenade-spacer" />
+            <td className={ styles.detailsGrenadeValue }>{ props.grenade.range }</td>
+            <td className={ styles.detailsGrenadeSpacer } />
             <td>Radius:</td>
-            <td className="details-grenade-value">{ props.grenade.radius }</td>
+            <td className={ styles.detailsGrenadeValue }>{ props.grenade.radius }</td>
           </tr>
         </tbody>
       </table>

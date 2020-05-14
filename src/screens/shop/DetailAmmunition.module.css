@@ -1,19 +1,15 @@
-div.details-grenade-inner p {
+.detailsAmmunitionInner p {
   padding-left: 25px;
   padding-right: 25px;
   text-align: initial;
 }
 
-div.details-grenade-inner table {
+.detailsAmmunitionInner table {
   padding-left: 25px;
   padding-right: 25px;
   text-align: initial;
 }
 
-td.details-grenade-spacer {
-  width: 100px;
-}
-
-td.details-grenade-value {
+.detailsAmmunitionValue {
   padding-left: 20px;
 }

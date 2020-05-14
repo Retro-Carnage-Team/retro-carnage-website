@@ -1,11 +1,11 @@
-div.shop-screen {
+.screen {
   background-color: black;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-div.shop-screen div.catalog {
+.catalog {
   background-image: url(/images/backgrounds/wildtextures-black-scratched-plate.jpg);
   background-size: cover;
   display: grid;
@@ -14,7 +14,7 @@ div.shop-screen div.catalog {
   padding: 3px;
 }
 
-div.shop-screen div.details {
+.details {
   color: #0a88e6;
   flex-shrink: 100000;
   height: 100%;

@@ -1,15 +1,19 @@
-div.details-ammunition-inner p {
+.detailsWeaponInner p {
   padding-left: 25px;
   padding-right: 25px;
   text-align: initial;
 }
 
-div.details-ammunition-inner table {
+.detailsWeaponInner table {
   padding-left: 25px;
   padding-right: 25px;
   text-align: initial;
 }
 
-td.details-ammunition-value {
+.detailsWeaponSpacer {
+  width: 100px;
+}
+
+.detailsWeaponValue {
   padding-left: 20px;
 }

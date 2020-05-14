@@ -1,20 +1,21 @@
-div.game-screen {
+.screen {
   background-color: black;
   height: 100%;
 }
 
-div.game-screen div {
+.container {
   height: 100%;
 }
 
-div.game-screen .left {
+.left {
   float: left;
 }
 
-div.game-screen canvas#game {
+.game {
+  float: left;
   height: 100%;
 }
 
-div.game-screen .right {
+.right {
   float: right;
 }

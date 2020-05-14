@@ -1,19 +1,19 @@
-div.item-weapon img {
+.itemWeapon img {
   background-color: black;
   border-radius: 30px;
   width: 100%;
 }
 
-div.item-weapon:hover img {
+.itemWeapon:hover img {
   background-color: #34bd5b;
   cursor: pointer;
 }
 
-div.item-weapon img.compatible {
+.itemWeapon img.compatible {
   background-color: #ffee93;
 }
 
-div.item-weapon svg {
+.itemWeapon svg {
   float: right;
   height: 24px;
   margin-right: 10px;
@@ -23,26 +23,26 @@ div.item-weapon svg {
   width: 24px;
 }
 
-div.item-weapon svg path {
+.itemWeapon svg path {
   fill: black;
 }
 
-div.item-weapon:hover svg path {
+.itemWeapon:hover svg path {
   fill: #34bd5b;
 }
 
-div.item-weapon svg.compatible path {
+.itemWeapon svg.compatible path {
   fill: #ffee93;
 }
 
-div.item-weapon svg.purchased path {
+.itemWeapon svg.purchased path {
   fill: #34bd5b;
 }
 
-div.item-weapon svg.compatible.purchased path {
+.itemWeapon svg.compatible.purchased path {
   fill: black;
 }
 
-div.item-weapon:hover svg.purchased path {
+.itemWeapon:hover svg.purchased path {
   fill: black;
 }

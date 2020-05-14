@@ -1,16 +1,16 @@
-div.bottom-line {
+.bottomLine {
   height: 30px;
   padding: 10px;
 }
 
-div.bottom-line div.cost-label {
+.costLabel {
   color: #2e4243;
   float: left;
   font-size: 40px;
   text-transform: uppercase;
 }
 
-div.bottom-line div.cost-value {
+.costValue {
   color: #897c2a;
   float: left;
   font-size: 40px;
@@ -18,7 +18,7 @@ div.bottom-line div.cost-value {
   width: 10%;
 }
 
-div.bottom-line div.credit-label {
+.creditLabel {
   color: #2e4243;
   float: left;
   font-size: 40px;
@@ -26,7 +26,7 @@ div.bottom-line div.credit-label {
   text-transform: uppercase;
 }
 
-div.bottom-line div.credit-value {
+.creditValue {
   color: #897c2a;
   float: left;
   font-size: 40px;
@@ -34,7 +34,7 @@ div.bottom-line div.credit-value {
   width: 10%;
 }
 
-div.bottom-line div.exit-label {
+.exitLabel {
   color: #2e4243;
   cursor: pointer;
   float: right;

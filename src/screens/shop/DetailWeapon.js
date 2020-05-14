@@ -1,32 +1,32 @@
 import React from 'react';
-import './DetailWeapon.css';
+import styles from './DetailWeapon.module.css';
 
 export default function DetailWeapon(props) {  
   return (
-    <div className="details-weapon-inner">
+    <div className={ styles.detailsWeaponInner }>
       <h2>{ props.weapon.name }</h2>
       <table>
         <tbody>
           <tr>
             <td>Price:</td>
-            <td className="details-weapon-value">{props.weapon.price}</td>                    
-            <td className="details-weapon-spacer" />                    
+            <td className={ styles.detailsWeaponValue }>{props.weapon.price}</td>
+            <td className={ styles.detailsWeaponSpacer } />
             <td>Speed:</td>
-            <td className="details-weapon-value">{ props.weapon.speed }</td>
+            <td className={ styles.detailsWeaponValue }>{ props.weapon.speed }</td>
           </tr>
           <tr>
             <td>Ammo:</td>
-            <td className="details-weapon-value">{ props.weapon.ammo }</td>
-            <td className="details-weapon-spacer" />
+            <td className={ styles.detailsWeaponValue }>{ props.weapon.ammo }</td>
+            <td className={ styles.detailsWeaponSpacer } />
             <td>Range:</td>
-            <td className="details-weapon-value">{ props.weapon.range } m</td>                    
+            <td className={ styles.detailsWeaponValue }>{ props.weapon.range } m</td>
           </tr>
           <tr>
             <td>Length:</td>
-            <td className="details-weapon-value">{ props.weapon.length }</td>
-            <td className="details-weapon-spacer" />
+            <td className={ styles.detailsWeaponValue }>{ props.weapon.length }</td>
+            <td className={ styles.detailsWeaponSpacer } />
             <td>Weight:</td>
-            <td className="details-weapon-value">{ props.weapon.weight }</td>
+            <td className={ styles.detailsWeaponValue }>{ props.weapon.weight }</td>
           </tr>
         </tbody>
       </table>

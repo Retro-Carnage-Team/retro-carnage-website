@@ -1,5 +1,5 @@
 import React from 'react';
-import './ShopScreen.css';
+import styles from './ShopScreen.module.css';
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
@@ -49,11 +49,11 @@ class ShopScreen extends React.Component {
     }
 
     return (
-      <div className="shop-screen">
-        <div className="catalog">
+      <div className={ styles.screen }>
+        <div className={ styles.catalog }>
           { items }
         </div>
-        <div className="details">
+        <div className={ styles.details }>
           { detail }
         </div>
         <BottomLine

@@ -1,16 +1,16 @@
 import React from 'react';
-import './BottomLine.css';
+import styles from './BottomLine.module.css';
 
 export default class BottomLine extends React.Component {
 
   render() {
     return (
-      <div className="bottom-line">
-        <div className="cost-label">Cost: </div>
-        <div className="cost-value">${ this.getCostForSelectedItem() }</div>
-        <div className="credit-label">Credit: </div>
-        <div className="credit-value">${ this.props.player.cash }</div>
-        <div className="exit-label" onClick={ this.handleExitClicked }>Exit</div>
+      <div className={ styles.bottomLine }>
+        <div className={ styles.costLabel }>Cost: </div>
+        <div className={ styles.costValue }>${ this.getCostForSelectedItem() }</div>
+        <div className={ styles.creditLabel }>Credit: </div>
+        <div className={ styles.creditValue }>${ this.props.player.cash }</div>
+        <div className={ styles.exitLabel } onClick={ this.handleExitClicked }>Exit</div>
       </div>
     );
   }

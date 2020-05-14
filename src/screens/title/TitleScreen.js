@@ -1,5 +1,5 @@
 import React from 'react';
-import './TitleScreen.css';
+import styles from './TitleScreen.module.css';
 import { CONFIGURATION_SCREEN_NAME } from '../configuration/ConfigurationScreen';
 import SoundBoard, { FX_TITLE_RIFLE, MUSIC_THEME } from '../../game/SoundBoard';
 
@@ -61,21 +61,21 @@ class TitleScreen extends React.Component {
 
   render() {
     return (
-      <div className="title-screen" onClick={ this.moveToNextScreen }>
-        <img 
-          id="title-bg" 
-          src="images/backgrounds/title-1.jpg" 
+      <div className={ styles.screen } onClick={ this.moveToNextScreen }>
+        <img
+          id="title-bg"
+          src="images/backgrounds/title-1.jpg"
           alt=""
-          style={{width: this.state.imageSize + 'px'}}></img>
+          style={{width: this.state.imageSize + 'px'}}/>
         <img 
-          id="muzzle-flash"
+          className={ styles.muzzleFlash }
           src="images/backgrounds/muzzle.gif"
           alt="muzzle flash"
           style={{ 
             display: (this.state.muzzleFlash ? 'inherit' : 'none'),
             left: `${this.state.scalingFactor * MUZZLE_LEFT + (window.innerWidth - this.state.imageSize) / 2}px`,
             top: `${this.state.scalingFactor * MUZZLE_TOP - 64}px`,
-          }}></img>
+          }}/>
       </div>
     );
   }

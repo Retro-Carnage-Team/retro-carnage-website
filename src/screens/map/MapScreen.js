@@ -1,5 +1,5 @@
 import React from 'react';
-import './MapScreen.css';
+import styles from './MapScreen.module.css';
 import MissionBriefing from './MissionBriefing';
 import MissionController from '../../game/MissionController';
 
@@ -36,7 +36,7 @@ class MapScreen extends React.Component {
     const widthOfPositionMarker = 18;
     const spots = this.missions.map((m) => (
       <div 
-        className="location-container" 
+        className={ styles.locationContainer }
         key={ m.name } 
         onClick={ this.handleMissionSelected.bind(this, m.name) }
         onMouseEnter={ this.handleMissionMouseEnter.bind(this, m.name) }
@@ -45,16 +45,16 @@ class MapScreen extends React.Component {
         left: ((window.innerWidth - this.state.imageSize) / 2) + (m.location.longitude * this.state.scalingFactor) -(widthOfPositionMarker / 2),
         top: (m.location.latitude * this.state.scalingFactor) -(widthOfPositionMarker / 2)
       }}>
-        <div className="location-marker" />
+        <div className={ styles.locationMarker } />
       </div>
     ));
     return (
-      <div className="map-screen">
-        <div className="briefing-container">
+      <div className={ styles.screen }>
+        <div className={ styles.briefingContainer }>
           <MissionBriefing mission={ this.state.selectedMission }/>
         </div>        
-        <div className="world-map-container">
-          <img style={{width: this.state.imageSize + 'px'}} src="images/backgrounds/world-map.jpg" alt=""></img>
+        <div className={ styles.worldMapContainer }>
+          <img style={{width: this.state.imageSize + 'px'}} src="images/backgrounds/world-map.jpg" alt="" />
           { spots }
         </div>
       </div>

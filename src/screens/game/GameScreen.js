@@ -1,5 +1,5 @@
 import React from 'react';
-import './GameScreen.css';
+import styles from './GameScreen.module.css';
 import Renderer from '../../game/engine/Renderer';
 import PlayerInfo from './PlayerInfo';
 import Engine from '../../game/engine/Engine';
@@ -36,19 +36,19 @@ class GameScreen extends React.Component {
 
   render() {
     return (
-      <div className="game-screen">
-        <div className="left" style={{ width: this.state.playerInfoWidth +'px' }}>
+      <div className={ styles.screen }>
+        <div className={ `${styles.container} ${styles.left}` } style={{ width: this.state.playerInfoWidth +'px' }}>
           <PlayerInfo player={ 0 } />
         </div>
         <canvas
-          className="left"
+          className={ styles.left }
           id="game"
           height={ SCREEN_SIZE }
           style={{ width: `calc(100% - ${this.state.playerInfoWidth}px - ${this.state.playerInfoWidth}px)` }}
           width={ SCREEN_SIZE }>
           Guru meditation: &lt;Canvas&gt; element not supported!
         </canvas>
-        <div className="right" style={{ width: this.state.playerInfoWidth +'px' }}>
+        <div className={ `${styles.container} ${styles.right}` } style={{ width: this.state.playerInfoWidth +'px' }}>
           <PlayerInfo player={ 1 } />
         </div>
       </div>

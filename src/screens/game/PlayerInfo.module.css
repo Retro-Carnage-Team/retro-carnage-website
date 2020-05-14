@@ -1,9 +1,9 @@
-div.player-info {
+.playerInfo {
   background-image: url(/images/backgrounds/1011.png);
   height: 100%;
 }
 
-img.player-portrait {
+.playerPortrait {
   border: 5px solid black;
   border-radius: 15px;
   margin-top: 25px;
@@ -11,7 +11,7 @@ img.player-portrait {
   max-width: 80%;
 }
 
-div.player-info div.score-container {
+.scoreContainer {
   background-color: black;
   border-radius: 15px;
   height: 48px;
@@ -21,13 +21,13 @@ div.player-info div.score-container {
   width: 80%;
 }
 
-div.player-info div.score-container h2 {
+.scoreContainer h2 {
   color: #fbe356;
   font-size: 40px;
   margin-top: 8px;
 }
 
-div.player-info div.weapon-container {
+.weaponContainer {
   background-image: url(/images/backgrounds/weapon_bg.jpg);
   background-size: cover;
   border: 5px solid black;
@@ -38,18 +38,18 @@ div.player-info div.weapon-container {
   max-width: 80%;
 }
 
-div.player-info div.weapon-container img.selected-weapon {
+.selectedWeapon {
   max-height: calc(100% - 48px);
   max-width: 80%;
 }
 
-div.player-info div.weapon-container h2 {
+.weaponContainer h2 {
   color: black;
   font-size: 40px;
   margin-top: 8px;
 }
 
-div.player-info div.lives-container {
+.livesContainer {
   background-color: black;
   border-radius: 15px;
   height: 10%;
@@ -60,7 +60,7 @@ div.player-info div.lives-container {
   width: 80%;
 }
 
-div.player-info div.lives-container img {
+.livesContainer img {
   max-height: 80%;
   max-width: 25%;
   margin-top: 8px;

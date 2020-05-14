@@ -1,19 +1,19 @@
 import React from 'react';
-import './DetailAmmunition.css';
+import styles from './DetailAmmunition.module.css';
 
 export default function DetailAmmunition(props) {  
   return (
-    <div className="details-ammunition-inner">
+    <div className={ styles.detailsAmmunitionInner }>
       <h2>{ props.ammunition.name }</h2>
       <table>
         <tbody>
           <tr>
             <td>Price:</td>
-            <td className="details-ammunition-value">${props.ammunition.price}</td>
+            <td className={ styles.detailsAmmunitionValue }>${props.ammunition.price}</td>
           </tr>
           <tr>
             <td>Package size:</td>
-            <td className="details-ammunition-value">{ props.ammunition.packageSize }</td>
+            <td className={ styles.detailsAmmunitionValue }>{ props.ammunition.packageSize }</td>
           </tr>
         </tbody>
       </table>

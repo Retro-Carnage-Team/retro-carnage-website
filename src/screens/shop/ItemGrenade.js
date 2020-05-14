@@ -1,35 +1,32 @@
 import React from 'react';
-import './ItemGrenade.css';
+import styles from './ItemGrenade.module.css';
 import InventoryController from '../../game/InventoryController';
 import InventoryStatusbar from './InventoryStatusbar';
 
-export default class ItemGrenade extends React.Component {
+export default function ItemGrenade(props) {
 
-  render() {
-    return (
-      <div 
-        className="item-grenade" 
-        onClick={ this.handleClick }
-        onMouseEnter={ this.handleMouseEnter }
-        onMouseLeave={ this.handleMouseLeave }>
-        <img className="item-grenade-image" src={ this.props.grenade.image } alt=""></img>
-        <InventoryStatusbar 
-          current={ InventoryController.getGrenadeCount(this.props.player, this.props.grenade.name) }
-          max={ this.props.grenade.maxCount } />
-      </div>
-    );
+  function handleClick() {
+    InventoryController.buyGrenade(props.player, props.grenade.name);
   }
 
-  handleClick = () => {
-    InventoryController.buyGrenade(this.props.player, this.props.grenade.name);
+  function handleMouseEnter() {
+    props.onMouseEnter(props.grenade);
   }
 
-  handleMouseEnter = () => {
-    this.props.onMouseEnter(this.props.grenade);
+  function handleMouseLeave() {
+    props.onMouseLeave();
   }
 
-  handleMouseLeave = () => {
-    this.props.onMouseLeave();
-  }
-
+  return (
+    <div
+      className={ styles.itemGrenade }
+      onClick={ handleClick }
+      onMouseEnter={ handleMouseEnter }
+      onMouseLeave={ handleMouseLeave }>
+      <img className={ styles.itemGrenadeImage } src={ props.grenade.image } alt="" />
+      <InventoryStatusbar
+        current={ InventoryController.getGrenadeCount(props.player, props.grenade.name) }
+        max={ props.grenade.maxCount } />
+    </div>
+  );
 }

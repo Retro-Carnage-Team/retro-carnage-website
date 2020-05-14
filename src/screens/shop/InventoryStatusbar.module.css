@@ -1,4 +1,4 @@
-div.inventory-statusbar {
+.inventoryStatusbar {
   bottom: 10px;
   height: 5px;
   left: 30px;
@@ -6,7 +6,7 @@ div.inventory-statusbar {
   width: calc(100% - 60px);
 }
 
-div.inventory-statusbar div.status {
+.status {
   background-color: #0a88e6;
   height: 5px;
 }

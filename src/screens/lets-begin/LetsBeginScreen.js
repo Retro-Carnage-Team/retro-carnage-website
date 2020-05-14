@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './LetsBeginScreen.css';
+import styles from './LetsBeginScreen.module.css';
 import { GAME_SCREEN_NAME } from '../game/GameScreen';
 
 function LetsBeginMessageScreen(props) {
@@ -17,7 +17,7 @@ function LetsBeginMessageScreen(props) {
   setTimeout(moveToNextScreen, 4000);
 
   return (
-    <div className="lets-begin-screen">
+    <div className={ styles.screen }>
       <div style={{ height: `${height}px` }} />
       <h1>Let the mission begin!</h1>
     </div>

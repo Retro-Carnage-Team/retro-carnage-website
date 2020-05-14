@@ -1,6 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
-import './ItemAmmunition.css';
+import styles from './ItemAmmunition.module.css';
 import InventoryController from '../../game/InventoryController';
 import InventoryStatusbar from './InventoryStatusbar';
 
@@ -8,19 +7,18 @@ export default class ItemAmmunition extends React.Component {
   
   render() {
     const ammoName = this.props.ammunition.name;
-    var imgClasses = classNames({
-      'item-ammunition-image': true,
-      'compatible': (null !== this.props.selectedWeapon) && 
-                    (this.props.selectedWeapon.ammo === ammoName)
-    });
+    let imgClasses = styles.itemAmmunitionImage;
+    if((null !== this.props.selectedWeapon) && (this.props.selectedWeapon.ammo === ammoName)) {
+      imgClasses += ' ' + styles.compatible;
+    }
 
     return (
       <div 
-        className="item-ammunition" 
+        className={ styles.itemAmmunition }
         onClick={ this.handleClick }
         onMouseEnter={ this.handleMouseEnter }
         onMouseLeave={ this.handleMouseLeave }>
-        <img className={ imgClasses } src={ this.props.ammunition.image } alt=""></img>
+        <img className={ imgClasses } src={ this.props.ammunition.image } alt="" />
         <InventoryStatusbar 
           current={ InventoryController.getAmmunitionCount(this.props.player, ammoName) }
           max={ this.props.ammunition.maxCount } />

@@ -1,5 +1,5 @@
 import React from 'react';
-import './PlayerInfo.css';
+import styles from './PlayerInfo.module.css';
 import Players, {
   PROP_AMMUNITION,
   PROP_GRENADES,
@@ -42,7 +42,7 @@ export default class PlayerInfo extends React.Component {
     const weaponImage = this.state.selectedWeapon ? (
       <img
         alt={`Selected weapon of player ${this.props.player +1}`}
-        className="selected-weapon"
+        className={ styles.selectedWeapon }
         src={ this.state.selectedWeapon.imageRotated } />
     ) : null;
 
@@ -53,22 +53,22 @@ export default class PlayerInfo extends React.Component {
     }
 
     return (
-      <div className="player-info">
+      <div className={ styles.playerInfo }>
         <img 
           alt={`Portrait of player ${this.props.player +1}`}
-          className="player-portrait" 
+          className={ styles.playerPortrait }
           src={`images/backgrounds/portrait-player-${this.props.player +1}.jpg`} />
         
-        <div className="score-container">
+        <div className={ styles.scoreContainer }>
           <h2>{ this.state.score }</h2>
         </div>
 
-        <div className="weapon-container">
+        <div className={ styles.weaponContainer }>
           { weaponImage }
           <h2>{ this.state.ammunition }</h2>
         </div>
 
-        <div className="lives-container">
+        <div className={ styles.livesContainer }>
           { liveImages }
         </div>
       </div>

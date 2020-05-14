@@ -1,0 +1,14 @@
+.itemAmmunition img.itemAmmunitionImage {
+  background-color: black;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.itemAmmunition:hover img.itemAmmunitionImage {
+  background-color: #34bd5b;
+  cursor: pointer;
+}
+
+.itemAmmunition img.itemAmmunitionImage.compatible {
+  background-color: #ffee93;
+}
