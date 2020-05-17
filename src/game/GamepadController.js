@@ -11,15 +11,15 @@ const INPUT_THRESHOLD = 0.15;
  */
 export function computeStickAngle(x,y) {
   if(0 <= x && 0 <= y) {                    // first quadrant
-    return Math.asin(y)
+    return Math.asin(y);
   }
   if(0 > x && 0 <= y) {                     // second quadrant
     return Math.PI - Math.asin(y);
   }
   if(0 > x && 0 > y) {                      // second quadrant
-    return Math.PI + Math.asin(-1 * y)
+    return Math.PI + Math.asin(-1 * y);
   }
-  return 2 * Math.PI - Math.asin(-1 * y)
+  return 2 * Math.PI - Math.asin(-1 * y);
 }
 
 /**

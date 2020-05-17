@@ -11,15 +11,15 @@ test('Compute stick angle in radians for a point specified at 170 degrees', () =
 });
 
 test('Angle of PI/4 get converted to up / right', () => {
-  const { up, left, right, down } = convertStickAngleToCardinalDirections(Math.PI/4);
+  const { up, down, left, right } = convertStickAngleToCardinalDirections(Math.PI/4);
   expect(up).toBeTruthy();
   expect(down).toBeFalsy();
   expect(left).toBeFalsy();
   expect(right).toBeTruthy();
 });
 
-test('Angle of 3PI/4 get converted to up / right', () => {
-  const { up, left, right, down } = convertStickAngleToCardinalDirections(3*Math.PI/4);
+test('Angle of 3PI/4 get converted to up / left', () => {
+  const { up, down, left, right } = convertStickAngleToCardinalDirections(3*Math.PI/4);
   expect(up).toBeTruthy();
   expect(down).toBeFalsy();
   expect(left).toBeTruthy();
