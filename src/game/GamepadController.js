@@ -3,6 +3,15 @@ import InputState from './InputState';
 // Old controllers might be a bit wobbly and need a higher value.
 const INPUT_THRESHOLD = 0.15;
 
+const PI_OVER_8 = Math.PI / 8;
+const PI_TIMES_3_OVER_8 = 3 * Math.PI / 8;
+const PI_TIMES_5_OVER_8 = 5 * Math.PI / 8;
+const PI_TIMES_7_OVER_8 = 7 * Math.PI / 8;
+const PI_TIMES_9_OVER_8 = 9 * Math.PI / 8;
+const PI_TIMES_11_OVER_8 = 11 * Math.PI / 8;
+const PI_TIMES_13_OVER_8 = 13 * Math.PI / 8;
+const PI_TIMES_15_OVER_8 = 15 * Math.PI / 8;
+
 /**
  * Computes the angle (given in radians) for any point of the unit circle.
  * @param x position on x-axis
@@ -28,31 +37,32 @@ export function computeStickAngle(x,y) {
  * @returns {{left: boolean, up: boolean, right: boolean, down: boolean}}
  */
 export function convertStickAngleToCardinalDirections(angle) {
-  if((Math.PI / 8 <=  angle) && (3 * Math.PI / 8 > angle)) {
+  if((PI_OVER_8 <=  angle) && (PI_TIMES_3_OVER_8 > angle)) {
     return { up: true, down: false, left: false, right: true };
   }
-  if((3 * Math.PI / 8 <=  angle) && (5 * Math.PI / 8 > angle)) {
+  if((PI_TIMES_3_OVER_8 <=  angle) && (PI_TIMES_5_OVER_8 > angle)) {
     return { up: true, down: false, left: false, right: false };
   }
-  if((5 * Math.PI / 8 <=  angle) && (7 * Math.PI / 8 > angle)) {
+  if((PI_TIMES_5_OVER_8 <=  angle) && (PI_TIMES_7_OVER_8 > angle)) {
     return { up: true, down: false, left: true, right: false };
   }
-  if((7 * Math.PI / 8 <=  angle) && (9 * Math.PI / 8 > angle)) {
+  if((PI_TIMES_7_OVER_8 <=  angle) && (PI_TIMES_9_OVER_8 > angle)) {
     return { up: false, down: false, left: true, right: false };
   }
-  if((9 * Math.PI / 8 <=  angle) && (11 * Math.PI / 8 > angle)) {
+  if((PI_TIMES_9_OVER_8 <=  angle) && (PI_TIMES_11_OVER_8 > angle)) {
     return { up: false, down: true, left: true, right: false };
   }
-  if((11 * Math.PI / 8 <=  angle) && (13 * Math.PI / 8 > angle)) {
+  if((PI_TIMES_11_OVER_8 <=  angle) && (PI_TIMES_13_OVER_8 > angle)) {
     return { up: false, down: true, left: false, right: false };
   }
-  if((13 * Math.PI / 8 <=  angle) && (15 * Math.PI / 8 > angle)) {
+  if((PI_TIMES_13_OVER_8 <=  angle) && (PI_TIMES_15_OVER_8 > angle)) {
     return { up: false, down: true, left: false, right: true };
   }
   return { up: false, down: false, left: false, right: true };
 }
 
 function isStickMovedFully(x, y) {
+  // Use Pythagorean theorem
   const radius = Math.sqrt(x*x + y*y);
   return 1 - INPUT_THRESHOLD < radius;
 }
