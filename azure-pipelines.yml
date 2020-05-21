@@ -18,8 +18,7 @@ steps:
 - script: |
     npm install
     npm run build
-    npm run test -- --watchAll=false
-    npm run coverage
+    npm run test -- --watchAll=false --coverage --coverageReporters=cobertura
   displayName: 'npm install and build'
 
 - task: PublishCodeCoverageResults@1
