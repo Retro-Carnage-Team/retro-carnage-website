@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/huddeldaddel/Personal%20Projects/_apis/build/status/huddeldaddel.dogs-of-war-2?branchName=master)](https://dev.azure.com/huddeldaddel/Personal%20Projects/_build/latest?definitionId=9&branchName=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e0baf14057ec42eb8be297c3eaaabe3c)](https://www.codacy.com/manual/huddeldaddel/dogs-of-war-2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=huddeldaddel/dogs-of-war-2&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://dev.azure.com/huddeldaddel/Personal%20Projects/_apis/build/status/huddeldaddel.retro-carnage?branchName=master)](https://dev.azure.com/huddeldaddel/Personal%20Projects/_build/latest?definitionId=10&branchName=master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e0baf14057ec42eb8be297c3eaaabe3c)](https://www.codacy.com/manual/huddeldaddel/retro-carnage?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=huddeldaddel/retro-carnage&amp;utm_campaign=Badge_Grade)
 
 # RETRO CARNAGE
 
