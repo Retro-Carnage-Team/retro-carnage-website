@@ -20,7 +20,7 @@ function LoadingScreen(props) {
   return (
     <div className={ styles.screen }>
       <div style={{ height: `${height}px` }} />
-      <h1>DOGS OF WAR II</h1>
+      <h1>Retro Carnage</h1>
       <h1>is loading</h1>
     </div>
   );

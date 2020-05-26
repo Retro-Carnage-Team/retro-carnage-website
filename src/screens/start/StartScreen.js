@@ -18,7 +18,7 @@ function StartScreen(props) {
   return (
     <div className={ styles.screen }>
       <div className={ styles.space0 } />
-      <h1>DOGS OF WAR II</h1>
+      <h1>RETRO CARNAGE</h1>
 
       <div className={ styles.space1 } />
       <p className={ styles.copyright }>(C) 2020 THOMAS WERNER</p>
