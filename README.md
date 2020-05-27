@@ -7,7 +7,7 @@ The goal of this project is to build a modern multi-directional scrolling shoote
 [Elite Systems](http://www.elite-systems.co.uk).
 
 This game is currently under development. You can find a recent development snapshot on the official homepage:
-[http://wwww.retro-carnage.net](http://wwww.retro-carnage.net). Development news will be announced here. Additional 
+[http://www.retro-carnage.net](http://www.retro-carnage.net). Development news will be announced here. Additional 
 martial can be found on my Youtube channel.
 
 [![Watch the video](images/youtube-first-impression.png)](https://youtu.be/W5dJvoZUGt8)
