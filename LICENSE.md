@@ -62,6 +62,7 @@ This game is based on the work of many great artists who share their work with u
 *   A Winkel Tripel projection of a Visible Earth by [NASA](https://www.nasa.gov/) ([Link](https://commons.wikimedia.org/wiki/File:Winkel-tripel-projection.jpg), [License](https://en.wikipedia.org/wiki/public_domain))
 *   Black scratched metal plate by wildtextures.com ([Link](https://www.wildtextures.com/free-textures/black-scratched-metal-plate/), no license specified)
 *   check_circle_outline-24px by Google ([Link](https://material.io/resources/icons/?icon=check_circle_outline&style=baseline), [License](https://www.apache.org/licenses/LICENSE-2.0.html))
+*   explosion-7 by BenHickling ([Link](https://opengameart.org/content/explosion-7), [License](https://creativecommons.org/publicdomain/zero/1.0/))
 *   gamepad-24px by Google ([Link](https://material.io/resources/icons/?icon=gamepad&style=baseline), [License](https://www.apache.org/licenses/LICENSE-2.0.html))
 *   keyboard-24px by Google ([Link](https://material.io/resources/icons/?icon=keyboard&style=baseline), [License](https://www.apache.org/licenses/LICENSE-2.0.html))
 *   Gunung Palung Jungle by Tom from Netherlands ([Link](https://en.wikipedia.org/wiki/File:Gunung_Palung_Jungle.jpg), [License](https://creativecommons.org/licenses/by-sa/2.0/deed.en))
@@ -97,3 +98,4 @@ This game is based on the work of many great artists who share their work with u
 *   Warrior Death Cry - British Male by theuncertainman ([Link](https://freesound.org/people/theuncertainman/sounds/417539/), [License](http://creativecommons.org/licenses/by/3.0/))
 *   Male Being Impaled/Beaten AC by oldedgar ([Link](https://freesound.org/people/oldedgar/sounds/131710/), [License](http://creativecommons.org/publicdomain/zero/1.0/))
 *   Man die by thestigmata ([Link](https://freesound.org/people/thestigmata/sounds/202037/), [License](http://creativecommons.org/licenses/by-nc/3.0/))
+*   Q009's weapon sounds by Q009 ([Link](https://opengameart.org/content/q009s-weapon-sounds), [License](https://creativecommons.org/licenses/by-sa/3.0/))
