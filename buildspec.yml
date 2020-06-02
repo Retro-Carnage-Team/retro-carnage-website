@@ -16,7 +16,7 @@ reports:
   jest_reports:
     files:
       - report.xml
-    base-directory: test
+    base-directory: build
     file-format: JunitXml
 
 artifacts:
