@@ -1,5 +1,5 @@
 {
-  "name": "dog-of-war-2",
+  "name": "retro-carnage",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -31,7 +31,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "jest-junit": "^10.0.0"
-  }
+  "devDependencies": {}
 }

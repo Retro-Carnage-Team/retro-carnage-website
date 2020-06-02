@@ -12,13 +12,6 @@ phases:
       npm run build
       npm run test -- --watchAll=false
 
-reports:
-  jest_reports:
-    files:
-      - report.xml
-    base-directory: build
-    file-format: JunitXml
-
 artifacts:
   files:
     - '**/*'
