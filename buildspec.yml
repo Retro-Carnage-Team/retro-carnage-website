@@ -1,0 +1,55 @@
+version: 0.2
+
+  #env:
+  #variables:
+  # key: "value"
+  # key: "value"
+  #parameter-store:
+  # key: "value"
+  # key: "value"
+  #secrets-manager:
+  # key: secret-id:json-key:version-stage:version-id
+  # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+  # - variable
+  # - variable
+#git-credential-helper: yes
+
+phases:
+  install:
+    #Wenn Sie das Ubuntu-Standard-Image 2.0 oder höher verwenden, müssen Sie Laufzeitversionen angeben.
+    #Wenn Sie Laufzeitversionen angeben und ein anderes Image als das Ubuntu-Standard-Image 2.0 verwenden, schlägt der Build fehl.
+    runtime-versions:
+      nodejs: 12
+      #commands:
+      # - command
+      # - command
+  pre_build:
+    commands:
+      npm install
+  build:
+    commands:
+      npm run build
+      npm run test -- --watchAll=false --coverage --coverageReporters=cobertura
+      #post_build:
+      #commands:
+      # - command
+      # - command
+      #reports:
+      #report-name-or-arn:
+      #files:
+      # - location
+    # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+artifacts:
+  files:
+    - '**/*'
+    # - location
+  #name: $(date +%Y-%m-%d)
+  #discard-paths: yes
+  base-directory: build
+    #cache:
+    #paths:
+  # - paths
