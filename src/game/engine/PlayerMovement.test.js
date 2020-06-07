@@ -1,7 +1,10 @@
 import { DIRECTION_LEFT, DIRECTION_UP, DIRECTION_UP_RIGHT } from './Directions';
 import { getMovementX, getMovementY, updatePlayerMovement } from './PlayerMovement';
 import Rectangle from './Rectangle';
-import { PLAYER_HEIGHT, PLAYER_WIDTH } from './Tiles';
+import {
+  PLAYER_HIT_RECT_HEIGHT as PLAYER_HEIGHT,
+  PLAYER_HIT_RECT_WIDTH as PLAYER_WIDTH
+} from './Engine';
 
 test('Should calculate the correct distance for various movements', () => {
   expect(getMovementX(100, DIRECTION_LEFT)).toBe(-75);

@@ -3,8 +3,11 @@ import InputController from '../InputController';
 import PlayerController from '../PlayerController';
 import PlayerBehavior from './PlayerBehavior';
 import Rectangle from './Rectangle';
-import { PLAYER_HEIGHT, PLAYER_WIDTH } from './Tiles';
 import { updatePlayerMovement } from './PlayerMovement';
+
+export const PLAYER_HIT_RECT_HEIGHT = 200;
+export const PLAYER_HIT_RECT_WIDTH = 90;
+export const SCREEN_SIZE = 1500;
 
 export default class Engine {
 
@@ -21,7 +24,7 @@ export default class Engine {
 
     this.playerBehaviors = PlayerController.getConfiguredPlayers().map((p) => new PlayerBehavior(p));
     this.playerPositions = PlayerController.getConfiguredPlayers().map(
-      (p, idx) => new Rectangle(500 + idx * 500, 1200, PLAYER_WIDTH, PLAYER_HEIGHT)
+      (p, idx) => new Rectangle(500 + idx * 500, 1200, PLAYER_HIT_RECT_WIDTH, PLAYER_HIT_RECT_HEIGHT)
     );
   }
 

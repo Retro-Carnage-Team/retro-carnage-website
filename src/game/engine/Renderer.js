@@ -1,7 +1,7 @@
 import PlayerController from '../PlayerController';
 import PlayerTileSupplier from './PlayerTileSupplier';
 import Rectangle from './Rectangle';
-import { SCREEN_SIZE } from './Tiles';
+import { SCREEN_SIZE } from './Engine';
 
 export default class Renderer {
 

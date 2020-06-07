@@ -8,7 +8,11 @@ import {
   DIRECTION_UP_LEFT,
   DIRECTION_UP_RIGHT
 } from './Directions';
-import {PLAYER_HEIGHT, PLAYER_WIDTH, SCREEN_SIZE} from './Tiles';
+import {
+  PLAYER_HIT_RECT_HEIGHT as PLAYER_HEIGHT,
+  PLAYER_HIT_RECT_WIDTH as PLAYER_WIDTH
+} from './Engine';
+import { SCREEN_SIZE } from './Engine';
 import Rectangle from './Rectangle';
 
 export const MIN_PLAYER_DISTANCE_TO_BORDER = 25;

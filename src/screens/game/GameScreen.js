@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './GameScreen.module.css';
 import Renderer from '../../game/engine/Renderer';
 import PlayerInfo from './PlayerInfo';
-import Engine from '../../game/engine/Engine';
-import { SCREEN_SIZE } from '../../game/engine/Tiles';
+import Engine, { SCREEN_SIZE } from '../../game/engine/Engine';
 import MissionController from '../../game/MissionController';
 import SoundBoard from '../../game/SoundBoard';
 

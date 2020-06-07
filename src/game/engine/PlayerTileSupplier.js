@@ -1,11 +1,11 @@
-import PlayerTile from './PlayerTile';
+import Tile from './Tile';
 
 export const DURATION_OF_MOVEMENT_ANIMATION = 75;  // in ms
 
 function buildAnimationSeries(count, w, h, folder, offsetX, offsetY) {
   let result = [];
   for(let i=0; i<count; i++) {
-    result.push(new PlayerTile(w, h, `${folder}${i +1}.png`, offsetX, offsetY));
+    result.push(new Tile(`${folder}${i +1}.png`, w, h, offsetX, offsetY));
   }
   return result;
 }
@@ -15,14 +15,14 @@ const TILES_PLAYER_1 = {
   down_left: buildAnimationSeries(6, 154, 200, 'images/tiles/player-1/down_left/', -48, 0),
   down_right: buildAnimationSeries(6, 88, 200, 'images/tiles/player-1/down_right/', 1, 0),
   idle: {
-    down: new PlayerTile(100, 200, 'images/tiles/player-1/idle/down.png', -5, 0),
-    down_left: new PlayerTile(127, 200, 'images/tiles/player-1/idle/down_left.png', -37, 0),
-    down_right: new PlayerTile(108, 200, 'images/tiles/player-1/idle/down_right.png', 6, 0),
-    left: new PlayerTile(112, 200, 'images/tiles/player-1/idle/left.png', -22, 0),
-    right: new PlayerTile(131, 200, 'images/tiles/player-1/idle/right.png', 0, 0),
-    up: new PlayerTile(94, 200, 'images/tiles/player-1/idle/up.png', -2, 0),
-    up_left: new PlayerTile(85, 200, 'images/tiles/player-1/idle/up_left.png', 2, 0),
-    up_right: new PlayerTile(125, 200, 'images/tiles/player-1/idle/up_right.png', 0, 0)
+    down: new Tile('images/tiles/player-1/idle/down.png', 100, 200, -5, 0),
+    down_left: new Tile('images/tiles/player-1/idle/down_left.png', 127, 200, -37, 0),
+    down_right: new Tile('images/tiles/player-1/idle/down_right.png', 108, 200, 6, 0),
+    left: new Tile('images/tiles/player-1/idle/left.png', 112, 200, -22, 0),
+    right: new Tile('images/tiles/player-1/idle/right.png', 131, 200, 0, 0),
+    up: new Tile('images/tiles/player-1/idle/up.png', 94, 200, -2, 0),
+    up_left: new Tile('images/tiles/player-1/idle/up_left.png', 85, 200, 2, 0),
+    up_right: new Tile('images/tiles/player-1/idle/up_right.png', 125, 200, 0, 0)
   },
   left: buildAnimationSeries(6, 160, 200, 'images/tiles/player-1/left/', -33, 0),
   right: buildAnimationSeries(6, 155, 200, 'images/tiles/player-1/right/', 0, 0),
