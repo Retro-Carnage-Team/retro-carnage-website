@@ -2,6 +2,7 @@ import PlayerController from '../PlayerController';
 import PlayerTileSupplier from './PlayerTileSupplier';
 import Rectangle from './Rectangle';
 import { SCREEN_SIZE } from './Engine';
+import ExplosionTileSupplier from './ExplosionTileSupplier';
 
 export default class Renderer {
 
@@ -20,9 +21,20 @@ export default class Renderer {
     this.drawBackground();
     this.drawPlayers(elapsedTimeInMs);
     // this.drawEnemies();
-    // this.drawAnimations();
+    this.drawExplosions(elapsedTimeInMs);
 
     this.ctx.restore();
+  }
+
+  drawBackground = () => {
+    const backgroundRect = new Rectangle(0, 0, SCREEN_SIZE, SCREEN_SIZE);
+    this.engine.backgrounds.forEach((bg) => {
+      const translatedPosition = bg.translate(backgroundRect);
+      const canvas = bg.getCanvas();
+      if(canvas) {
+        this.ctx.drawImage(canvas, translatedPosition.x, translatedPosition.y);
+      }
+    });
   }
 
   drawPlayers = (elapsedTimeInMs) => {
@@ -38,13 +50,15 @@ export default class Renderer {
     });
   }
 
-  drawBackground = () => {
-    const backgroundRect = new Rectangle(0, 0, SCREEN_SIZE, SCREEN_SIZE);
-    this.engine.backgrounds.forEach((bg) => {
-      const translatedPosition = bg.translate(backgroundRect);
-      const canvas = bg.getCanvas();
+  drawExplosions = (elapsedTimeInMs) => {
+    this.engine.explosions.forEach((explosion) => {
+      if(!explosion.tileSupplier) {
+        explosion.tileSupplier = new ExplosionTileSupplier();
+      }
+      const tile = explosion.tileSupplier.getTile(elapsedTimeInMs);
+      const canvas = tile.getCanvas();
       if(canvas) {
-        this.ctx.drawImage(canvas, translatedPosition.x, translatedPosition.y);
+        this.ctx.drawImage(canvas, explosion.x, explosion.y);
       }
     });
   }

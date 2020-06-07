@@ -1,0 +1,12 @@
+import ExplosionTileSupplier, { DURATION_OF_FRAME } from './ExplosionTileSupplier';
+
+test('Returns tiles with correct timing', () => {
+  const explosionTileSupplier = new ExplosionTileSupplier();
+
+  let result = explosionTileSupplier.getTile(0);
+  expect(result.path).toBe('images/tiles/explosion/0.png');
+  result = explosionTileSupplier.getTile(DURATION_OF_FRAME -5);
+  expect(result.path).toBe('images/tiles/explosion/0.png');
+  result = explosionTileSupplier.getTile(DURATION_OF_FRAME -5);
+  expect(result.path).toBe('images/tiles/explosion/1.png');
+});
