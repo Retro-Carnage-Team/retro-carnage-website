@@ -2,7 +2,7 @@ import Ammunition from './Ammunition';
 import Grenades from './Grenades';
 import Weapons from './Weapons';
 import Players from './Player';
-import SoundBoard, { FX_CASH, FX_ERROR } from './SoundBoard';
+import SoundBoard, {FX_CASH, FX_ERROR, FX_OUT_OF_AMMO} from './SoundBoard';
 
 class InventoryController {
 
@@ -26,6 +26,23 @@ class InventoryController {
       SoundBoard.play(FX_CASH);
     } else {
       SoundBoard.play(FX_ERROR);
+    }
+  }
+
+  removeAmmunition = (playerIdx) => {
+    const player = Players[playerIdx];
+    if(player.isGrenadeSelected()) {
+      const grenadeCount = player.getGrenadeCount(player.selectedWeaponName);
+      if(0 < grenadeCount) {
+        player.setGrenadeCount(player.selectedWeaponName, grenadeCount -1);
+      } // There is no "out of ammo" sound fx for grenades
+    } else {
+      const ammo = player.getSelectedWeapon().ammo;
+      if(0 < player.getAmmunitionCount(ammo)) {
+        // TODO: play sound fx matching the current weapon
+      } else {
+        SoundBoard.play(FX_OUT_OF_AMMO);
+      }
     }
   }
 

@@ -71,3 +71,15 @@ test('Buying a weapons should decrease the amount cash available', () => {
   InventoryController.buyWeapon(0, weapon);
   expect(player.cash).toBeLessThan(oldCash);
 });
+
+test('Removing ammunition should change amount of amount > 0', () => {
+  const player = Players[0];
+  player.reset();
+  const grenade = Grenades[0];
+  InventoryController.buyGrenade(0, grenade.name);
+  const count = player.getGrenadeCount(grenade.name);
+  expect(count).toBeGreaterThan(0);
+  player.selectedWeaponName = grenade.name;
+  InventoryController.removeAmmunition(0);
+  expect(player.getGrenadeCount(grenade.name)).toBe(count -1);
+});

@@ -95,6 +95,16 @@ export class Player {
     return weapon ? weapon : Grenades.find((g) => g.name === this.selectedWeaponName);
   }
 
+  isGrenadeSelected = () => {
+    const selected = this.getSelectedWeapon();
+    return undefined !== selected.explosive;
+  }
+
+  isRpgSelected = () => {
+    const selected = this.getSelectedWeapon();
+    return ('89 mm' === selected.ammo) || ('60 mm' === selected.ammo) || ('110 mm' === selected.ammo);
+  }
+
   getAmmunitionCountForSelectedWeapon = () => {
     const weapon = Weapons.find((w) => w.name === this.selectedWeaponName);
     return weapon ? this.getAmmunitionCount(weapon.ammo) : this.getGrenadeCount(this.selectedWeaponName);

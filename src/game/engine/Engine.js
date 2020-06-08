@@ -1,5 +1,6 @@
 import BackgroundTile from './BackgroundTile';
 import InputController from '../InputController';
+import InventoryController from '../InventoryController';
 import PlayerController from '../PlayerController';
 import PlayerBehavior from './PlayerBehavior';
 import Rectangle from './Rectangle';
@@ -29,9 +30,10 @@ export default class Engine {
       (p, idx) => new Rectangle(500 + idx * 500, 1200, PLAYER_HIT_RECT_WIDTH, PLAYER_HIT_RECT_HEIGHT)
     );
 
-    this.explosions = [
-      new Rectangle(75, 75, EXPLOSION_HIT_RECT_WIDTH, EXPLOSION_HIT_RECT_HEIGHT)
-    ];
+    this.projectiles = [];
+    this.explosives = [];
+    this.explosions = [];
+    // new Rectangle(75, 75, EXPLOSION_HIT_RECT_WIDTH, EXPLOSION_HIT_RECT_HEIGHT)
   }
 
   initializeGameState = () => {
@@ -41,6 +43,8 @@ export default class Engine {
   updateGameState = (elapsedTimeInMs) => {
     this.updatePlayerBehaviorByInput();
     this.updatePlayerPositionWithMovement(elapsedTimeInMs);
+    this.updateExplosives();
+    this.handleWeaponAction(elapsedTimeInMs);
   }
 
   updatePlayerBehaviorByInput = () => {
@@ -56,6 +60,30 @@ export default class Engine {
       if(behavior.moving) {
         const oldPosition = this.playerPositions[p.index];
         this.playerPositions[p.index] = updatePlayerMovement(elapsedTimeInMs, behavior.direction, oldPosition);
+      }
+    });
+  }
+
+  updateExplosives = (elapsedTimeInMs) => {
+    // TODO: For each item in explosives:
+    // - Update position
+    // - if reached target:
+    //   - remove from list
+    //   - add explosion to this.explosions
+  }
+
+  handleWeaponAction = (elapsedTimeInMs) => {
+    PlayerController.getRemainingPlayers().forEach((p) => {
+      const behavior = this.playerBehaviors[p.index];
+      if(behavior.triggeredFire && (p.isGrenadeSelected() || p.isRpgSelected())) {
+        // TODO: handle RPGs
+        InventoryController.removeAmmunition(p.index);
+        // TODO:
+        //  - Create instance of Explosive
+        //  - set direction, image source, target and movement
+        //  - add to this.explosives
+      } else {
+        // TODO: handle fire arms
       }
     });
   }

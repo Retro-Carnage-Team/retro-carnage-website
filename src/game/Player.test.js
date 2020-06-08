@@ -96,3 +96,31 @@ test('selectPreviousWeapon should iterate all weapons and grenades in inventory'
   player.selectPreviousWeapon();
   expect(player.getSelectedWeapon().name).toBe('AR-10');
 });
+
+test('isGrenadeSelected should return whether or not a grenade has been selected', () => {
+  const player = Players[0];
+  player.reset();
+  player.setGrenadeCount('Stielhandgranate 24', 1);
+  player.setWeaponInInventory('AR-10', true);
+
+  player.selectedWeaponName = 'Stielhandgranate 24';
+  expect(player.isGrenadeSelected()).toBeTruthy();
+  player.selectPreviousWeapon();
+  expect(player.isGrenadeSelected()).toBeFalsy();
+});
+
+test('isRpgSelected should return true if the selected weapon fires rockets', () => {
+  const player = Players[0];
+  player.reset();
+  player.setGrenadeCount('Stielhandgranate 24', 1);
+  player.setWeaponInInventory('AR-10', true);
+  player.setWeaponInInventory('Panzerfaust 44', true);
+
+  player.selectedWeaponName = 'Stielhandgranate 24';
+  expect(player.isRpgSelected()).toBeFalsy();
+  player.selectedWeaponName = 'AR-10';
+  expect(player.isRpgSelected()).toBeFalsy();
+  player.selectedWeaponName = 'Panzerfaust 44';
+  expect(player.isRpgSelected()).toBeTruthy();
+});
+

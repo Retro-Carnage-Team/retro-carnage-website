@@ -14,6 +14,15 @@ export const FX_DEATH_ENEMY_6 = 'enemy-death-6.mp3';
 export const FX_DEATH_ENEMY_7 = 'enemy-death-7.mp3';
 export const FX_DEATH_PLAYER_1 = 'death-player-1.mp3';
 export const FX_DEATH_PLAYER_2 = 'death-player-2.mp3';
+export const FX_GRENADE_1 = 'grenade.mp3';
+export const FX_GRENADE_2 = 'grenade2.mp3';
+export const FX_GRENADE_3 = 'grenade3.mp3';
+export const FX_MINIGUN_1 = 'minigun.mp3';
+export const FX_MINIGUN_2 = 'minigun2.mp3';
+export const FX_MINIGUN_3 = 'minigun3.mp3';
+export const FX_OUT_OF_AMMO = 'outofammo.mp3';
+export const FX_PISTOL_1 = 'pistol.mp3';
+export const FX_PISTOL_2 = 'pistol2.mp3';
 export const FX_TITLE_RIFLE = 'title-rifle.mp3';
 
 export const MUSIC_BACKGROUND_1 = 'All-We-Ever-See-of-Stars.mp3';
@@ -57,6 +66,15 @@ class SoundBoard {
     this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_7, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_DEATH_PLAYER_1, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_DEATH_PLAYER_2, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_GRENADE_1, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_GRENADE_2, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_GRENADE_3, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_MINIGUN_1, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_MINIGUN_2, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_MINIGUN_3, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_OUT_OF_AMMO, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_PISTOL_1, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_PISTOL_2, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_TITLE_RIFLE, TYPE_FX));
 
     // music
