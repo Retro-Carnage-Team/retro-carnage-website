@@ -15,7 +15,8 @@ export default class PlayerBehavior {
     this.player = player;
     this.direction = DIRECTION_UP;
     this.moving = false;
-    this.firing = false;
+    this.firing = false;              // will be true as long as the player keeps the trigger pressed
+    this.triggeredFire = false;       // will be true only when switching from "not firing" to "firing"
     this.nextWeapon = false;
     this.previousWeapon = false;
   }
@@ -27,6 +28,7 @@ export default class PlayerBehavior {
 
     const playerWantsToMove = (userInput.moveUp || userInput.moveDown || userInput.moveLeft || userInput.moveRight);
     this.moving = playerWantsToMove && !(!this.moving && this.firing);
+    this.triggeredFire = !this.firing && userInput.fire;
     this.firing = userInput.fire;
     if(playerWantsToMove) {
       this.direction = this.getDirection(userInput.moveUp, userInput.moveDown, userInput.moveLeft, userInput.moveRight);

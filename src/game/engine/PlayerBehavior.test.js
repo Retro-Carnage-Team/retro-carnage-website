@@ -123,3 +123,14 @@ test('Switching to previous weapon gets fired only once per button press', () =>
 
   player.removeChangeListener(listener);
 });
+
+test('triggeredFire gets set when firing and unset when held down', () => {
+  const player = new Player();
+  const playerBehavior = new PlayerBehavior(player);
+  const inputState = new InputState();
+  inputState.fire = true;
+  playerBehavior.update(inputState);
+  expect(playerBehavior.triggeredFire).toBeTruthy();
+  playerBehavior.update(inputState);
+  expect(playerBehavior.triggeredFire).toBeFalsy();
+});
