@@ -80,6 +80,7 @@ test('Removing ammunition should change amount of amount > 0', () => {
   const count = player.getGrenadeCount(grenade.name);
   expect(count).toBeGreaterThan(0);
   player.selectedWeaponName = grenade.name;
-  InventoryController.removeAmmunition(0);
+  const result = InventoryController.removeAmmunition(0);
+  expect(result).toBeTruthy();
   expect(player.getGrenadeCount(grenade.name)).toBe(count -1);
 });

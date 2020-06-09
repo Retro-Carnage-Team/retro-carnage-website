@@ -29,19 +29,29 @@ class InventoryController {
     }
   }
 
+  /*
+    Removes one piece of ammunition for the currently selected weapon.
+    Returns whether or not that was possible
+   */
   removeAmmunition = (playerIdx) => {
     const player = Players[playerIdx];
+    const selectedWeapon = player.getSelectedWeapon();
     if(player.isGrenadeSelected()) {
       const grenadeCount = player.getGrenadeCount(player.selectedWeaponName);
       if(0 < grenadeCount) {
         player.setGrenadeCount(player.selectedWeaponName, grenadeCount -1);
-      } // There is no "out of ammo" sound fx for grenades
+        return true;
+      }
+      // There is no "out of ammo" sound fx for grenades
+      return false;
     } else {
-      const ammo = player.getSelectedWeapon().ammo;
+      const ammo = selectedWeapon.ammo;
       if(0 < player.getAmmunitionCount(ammo)) {
         // TODO: play sound fx matching the current weapon
+        return true;
       } else {
         SoundBoard.play(FX_OUT_OF_AMMO);
+        return false;
       }
     }
   }

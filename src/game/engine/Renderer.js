@@ -2,7 +2,6 @@ import PlayerController from '../PlayerController';
 import PlayerTileSupplier from './PlayerTileSupplier';
 import Rectangle from './Rectangle';
 import { SCREEN_SIZE } from './Engine';
-import ExplosionTileSupplier from './ExplosionTileSupplier';
 
 export default class Renderer {
 
@@ -20,7 +19,7 @@ export default class Renderer {
 
     this.drawBackground();
     this.drawPlayers(elapsedTimeInMs);
-    // this.drawEnemies();
+    this.drawExplosives();
     this.drawExplosions(elapsedTimeInMs);
 
     this.ctx.restore();
@@ -50,15 +49,21 @@ export default class Renderer {
     });
   }
 
+  drawExplosives = () => {
+    this.engine.explosives.forEach((explosive) => {
+      const canvas = explosive.tile.getCanvas();
+      if(canvas) {
+        this.ctx.drawImage(canvas, explosive.position.x, explosive.position.y);
+      }
+    });
+  }
+
   drawExplosions = (elapsedTimeInMs) => {
     this.engine.explosions.forEach((explosion) => {
-      if(!explosion.tileSupplier) {
-        explosion.tileSupplier = new ExplosionTileSupplier();
-      }
       const tile = explosion.tileSupplier.getTile(elapsedTimeInMs);
       const canvas = tile.getCanvas();
       if(canvas) {
-        this.ctx.drawImage(canvas, explosion.x, explosion.y);
+        this.ctx.drawImage(canvas, explosion.position.x, explosion.position.y);
       }
     });
   }

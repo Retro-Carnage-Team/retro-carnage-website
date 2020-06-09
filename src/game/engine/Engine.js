@@ -5,6 +5,8 @@ import PlayerController from '../PlayerController';
 import PlayerBehavior from './PlayerBehavior';
 import Rectangle from './Rectangle';
 import { updatePlayerMovement } from './PlayerMovement';
+import Explosive from './Explosive';
+import Explosion from './Explosion';
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -43,7 +45,8 @@ export default class Engine {
   updateGameState = (elapsedTimeInMs) => {
     this.updatePlayerBehaviorByInput();
     this.updatePlayerPositionWithMovement(elapsedTimeInMs);
-    this.updateExplosives();
+    this.updateExplosions(elapsedTimeInMs);
+    this.updateExplosives(elapsedTimeInMs);
     this.handleWeaponAction(elapsedTimeInMs);
   }
 
@@ -64,12 +67,21 @@ export default class Engine {
     });
   }
 
+  updateExplosions = (elapsedTimeInMs) => {
+    this.explosions = this.explosions.filter((explosion) => {
+      explosion.duration += elapsedTimeInMs;
+      return explosion.duration < 1_200;
+    });
+  }
+
   updateExplosives = (elapsedTimeInMs) => {
-    // TODO: For each item in explosives:
-    // - Update position
-    // - if reached target:
-    //   - remove from list
-    //   - add explosion to this.explosions
+    this.explosives = this.explosives.filter((explosive) => {
+      const done = explosive.move(elapsedTimeInMs);
+      if(done) {
+        this.explosions.push(new Explosion(explosive));
+      }
+      return !done;
+    });
   }
 
   handleWeaponAction = (elapsedTimeInMs) => {
@@ -77,11 +89,10 @@ export default class Engine {
       const behavior = this.playerBehaviors[p.index];
       if(behavior.triggeredFire && (p.isGrenadeSelected() || p.isRpgSelected())) {
         // TODO: handle RPGs
-        InventoryController.removeAmmunition(p.index);
-        // TODO:
-        //  - Create instance of Explosive
-        //  - set direction, image source, target and movement
-        //  - add to this.explosives
+        if(InventoryController.removeAmmunition(p.index)) {
+          const position = this.playerPositions[p.index];
+          this.explosives.push(new Explosive(position, behavior, p.getSelectedWeapon()));
+        }
       } else {
         // TODO: handle fire arms
       }

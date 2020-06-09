@@ -1,60 +1,13 @@
 import {
-  DIRECTION_DOWN,
-  DIRECTION_DOWN_LEFT,
-  DIRECTION_DOWN_RIGHT,
-  DIRECTION_LEFT,
-  DIRECTION_RIGHT,
-  DIRECTION_UP,
-  DIRECTION_UP_LEFT,
-  DIRECTION_UP_RIGHT
-} from './Directions';
-import {
   PLAYER_HIT_RECT_HEIGHT as PLAYER_HEIGHT,
   PLAYER_HIT_RECT_WIDTH as PLAYER_WIDTH
 } from './Engine';
 import { SCREEN_SIZE } from './Engine';
+import { getMovementX, getMovementY } from './Movement';
 import Rectangle from './Rectangle';
 
 export const MIN_PLAYER_DISTANCE_TO_BORDER = 25;
-
-export function getMovementDistance(elapsedTimeInMs) {
-  // Screen.width = 1500 / 2.000 milliseconds = 0.75 px / ms
-  return elapsedTimeInMs * 0.75;
-}
-
-export function getMovementX(elapsedTimeInMs, direction) {
-  const distanceExact = getMovementDistance(elapsedTimeInMs);
-  const diagonalDistance = Math.round(Math.sqrt((distanceExact * distanceExact) / 2));
-  const distance = Math.round(distanceExact);
-  switch(direction) {
-    case DIRECTION_UP: return 0;
-    case DIRECTION_UP_RIGHT: return diagonalDistance;
-    case DIRECTION_RIGHT: return distance;
-    case DIRECTION_DOWN_RIGHT: return diagonalDistance;
-    case DIRECTION_DOWN: return 0;
-    case DIRECTION_DOWN_LEFT: return diagonalDistance * -1;
-    case DIRECTION_LEFT: return distance * -1;
-    case DIRECTION_UP_LEFT: return diagonalDistance * -1;
-    default: return 0;
-  }
-}
-
-export function getMovementY(elapsedTimeInMs, direction) {
-  const distanceExact = getMovementDistance(elapsedTimeInMs);
-  const diagonalDistance = Math.round(Math.sqrt((distanceExact * distanceExact) / 2));
-  const distance = Math.round(distanceExact);
-  switch(direction) {
-    case DIRECTION_UP: return distance * -1;
-    case DIRECTION_UP_RIGHT: return diagonalDistance * -1;
-    case DIRECTION_RIGHT: return 0;
-    case DIRECTION_DOWN_RIGHT: return diagonalDistance;
-    case DIRECTION_DOWN: return distance;
-    case DIRECTION_DOWN_LEFT: return diagonalDistance;
-    case DIRECTION_LEFT: return 0;
-    case DIRECTION_UP_LEFT: return diagonalDistance * -1;
-    default: return 0;
-  }
-}
+const PLAYER_MOVEMENT_PER_MS = 0.75;                  // Screen.width = 1500 / 2.000 milliseconds = 0.75 px / ms
 
 export function limitPlayerMovementToScreenArea(position) {
   if(position.x < MIN_PLAYER_DISTANCE_TO_BORDER) {
@@ -74,7 +27,7 @@ export function limitPlayerMovementToScreenArea(position) {
 
 export function updatePlayerMovement(elapsedTimeInMs, direction, oldPosition) {
   const result = new Rectangle(oldPosition.x, oldPosition.y, oldPosition.width, oldPosition.height);
-  result.x += getMovementX(elapsedTimeInMs, direction);
-  result.y += getMovementY(elapsedTimeInMs, direction);
+  result.x += getMovementX(elapsedTimeInMs, direction, PLAYER_MOVEMENT_PER_MS);
+  result.y += getMovementY(elapsedTimeInMs, direction, PLAYER_MOVEMENT_PER_MS);
   return limitPlayerMovementToScreenArea(result);
 }

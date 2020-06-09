@@ -8,7 +8,8 @@ const Grenades = [{
   packageSize: 5,
   price: 500,
   radius: 0,
-  range: 0,
+  range: 550,
+  speed: 0.85,
   weight: '0.450 kg'
 }, {
   description: 'The Stielhandgranate (German for "stick hand grenade") was a German hand grenade of unique design. It was the standard issue of the German Empire during World War I, and became the widespread issue of Nazi Germany\'s Wehrmacht during World War II. The very distinctive appearance led to it being called a "stick grenade", or "potato masher" in British Army slang, and is today one of the most easily recognized infantry weapons of the 20th century.',
@@ -20,7 +21,8 @@ const Grenades = [{
   packageSize: 5,
   price: 600,
   radius: 0,
-  range: 0,
+  range: 650,
+  speed: 0.95,
   weight: '0.595 kg'
 }];
 

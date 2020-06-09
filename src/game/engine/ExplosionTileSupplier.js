@@ -1,6 +1,6 @@
 import Tile from './Tile';
 
-export const DURATION_OF_FRAME = 25;  // in ms
+export const DURATION_OF_FRAME = 25;            // in ms
 const FOLDER = 'images/tiles/explosion';
 const NUMBER_OF_TILES = 48;
 const IMAGE_SIZE = 200;
