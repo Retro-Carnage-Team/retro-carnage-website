@@ -1,14 +1,15 @@
 import Rectangle from './Rectangle';
-import {EXPLOSION_HIT_RECT_HEIGHT, EXPLOSION_HIT_RECT_WIDTH} from './Engine';
+import { EXPLOSION_HIT_RECT_HEIGHT, EXPLOSION_HIT_RECT_WIDTH } from './Engine';
 import ExplosionTileSupplier from './ExplosionTileSupplier';
+import { GRENADE_HEIGHT, GRENADE_WIDTH } from './Explosive';
 
 export default class Explosion {
 
   constructor(explosive) {
     this.duration = 0;
     this.position = new Rectangle(
-      explosive.position.x,
-      explosive.position.y,
+      Math.round(explosive.position.x + (GRENADE_WIDTH / 2) - (EXPLOSION_HIT_RECT_WIDTH / 2)),
+      Math.round(explosive.position.y + GRENADE_HEIGHT - EXPLOSION_HIT_RECT_HEIGHT),
       EXPLOSION_HIT_RECT_WIDTH,
       EXPLOSION_HIT_RECT_HEIGHT
     );
