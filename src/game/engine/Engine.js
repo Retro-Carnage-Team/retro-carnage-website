@@ -7,6 +7,7 @@ import Rectangle from './Rectangle';
 import { updatePlayerMovement } from './PlayerMovement';
 import Explosive from './Explosive';
 import Explosion from './Explosion';
+import SoundBoard, {FX_GRENADE_1} from "../SoundBoard";
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -70,7 +71,7 @@ export default class Engine {
   updateExplosions = (elapsedTimeInMs) => {
     this.explosions = this.explosions.filter((explosion) => {
       explosion.duration += elapsedTimeInMs;
-      return explosion.duration < 1_200;
+      return explosion.duration < 1_600;
     });
   }
 
@@ -79,6 +80,7 @@ export default class Engine {
       const done = explosive.move(elapsedTimeInMs);
       if(done) {
         this.explosions.push(new Explosion(explosive));
+        SoundBoard.play(FX_GRENADE_1);
       }
       return !done;
     });
