@@ -15,30 +15,16 @@ function buildAnimationSeries() {
 
 const TILES = buildAnimationSeries();
 
-function* tileGenerator() {
-  let index = 0;
-  while (true) {
-    yield TILES[index];
-    index = (index +1) % TILES.length;
-  }
-}
-
 export default class ExplosionTileSupplier {
 
   constructor() {
-    this.durationSinceLastTile = 0;
-    this.lastTile = null;
-    this.tileGenerator = tileGenerator();
+    this.duration = 0;
   }
 
   getTile = (elapsedTimeInMs) => {
-    if(!this.lastTile || DURATION_OF_FRAME <= this.durationSinceLastTile + elapsedTimeInMs) {
-      this.durationSinceLastTile = 0;
-      this.lastTile = this.tileGenerator.next().value;
-    } else {
-      this.durationSinceLastTile += elapsedTimeInMs;
-    }
-    return this.lastTile;
+    this.duration += elapsedTimeInMs;
+    const idx = Math.floor(this.duration / DURATION_OF_FRAME);
+    return TILES[Math.min(TILES.length -1, idx)];
   }
 
 }

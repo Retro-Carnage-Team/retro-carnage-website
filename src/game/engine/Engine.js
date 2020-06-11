@@ -36,7 +36,6 @@ export default class Engine {
     this.projectiles = [];
     this.explosives = [];
     this.explosions = [];
-    // new Rectangle(75, 75, EXPLOSION_HIT_RECT_WIDTH, EXPLOSION_HIT_RECT_HEIGHT)
   }
 
   initializeGameState = () => {
@@ -71,7 +70,7 @@ export default class Engine {
   updateExplosions = (elapsedTimeInMs) => {
     this.explosions = this.explosions.filter((explosion) => {
       explosion.duration += elapsedTimeInMs;
-      return explosion.duration < 1_600;
+      return explosion.duration < 1_200;
     });
   }
 
