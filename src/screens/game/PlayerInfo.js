@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './PlayerInfo.module.css';
 import Players, {
   PROP_AMMUNITION,
   PROP_GRENADES,
@@ -8,6 +7,8 @@ import Players, {
   PROP_SELECTED_WEAPON
 } from '../../game/Player';
 import ChangeListener from '../../game/ChangeListener';
+
+import styles from './PlayerInfo.module.css';
 
 function playerToState(player) {
   const { lives, score } = player;
