@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styles from './LoadingScreen.module.css';
+import {isBrowser, isMobile} from 'react-device-detect';
+
 import { START_SCREEN_NAME } from '../start/StartScreen';
 import SoundBoard, { FX_LOADING } from '../../game/SoundBoard';
+
+import styles from './LoadingScreen.module.css';
 
 function LoadingScreen(props) {
   const [height, setHeight] = useState(100);
@@ -12,7 +15,9 @@ function LoadingScreen(props) {
   }, []);
 
   function moveToNextScreen() {
-    props.onScreenChangeRequired(START_SCREEN_NAME);
+    if(isBrowser) {
+      props.onScreenChangeRequired(START_SCREEN_NAME);
+    }
   }
 
   setTimeout(moveToNextScreen, 8000);
@@ -21,7 +26,7 @@ function LoadingScreen(props) {
     <div className={ styles.screen }>
       <div style={{ height: `${height}px` }} />
       <h1>Retro Carnage</h1>
-      <h1>is loading</h1>
+      <h1>{isMobile ? '(currently) requires a desktop browser' : 'is loading'}</h1>
     </div>
   );
 }
