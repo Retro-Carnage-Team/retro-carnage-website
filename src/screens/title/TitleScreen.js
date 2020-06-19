@@ -1,7 +1,11 @@
 import React from 'react';
-import styles from './TitleScreen.module.css';
+
+import ChangeListener from '../../game/ChangeListener';
+import InputController, { PROP_BUTTON } from '../../game/InputController';
 import { CONFIGURATION_SCREEN_NAME } from '../configuration/ConfigurationScreen';
 import SoundBoard, { FX_TITLE_RIFLE, MUSIC_THEME } from '../../game/SoundBoard';
+
+import styles from './TitleScreen.module.css';
 
 const BACKGROUND_WIDTH = 1280;
 const BACKGROUND_HEIGHT = 720;
@@ -16,6 +20,7 @@ class TitleScreen extends React.Component {
 
     this.animationTimeoutIds = [];
     this.musicStarted = false;
+    this.inputControllerListener = new ChangeListener(this.handleInputControllerInput);
 
     this.state = { 
       imageSize: '100',
@@ -34,6 +39,8 @@ class TitleScreen extends React.Component {
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
+    InputController.startGuiMode();
+    InputController.addChangeListener(this.inputControllerListener);
     this.animationTimeoutIds.push(setTimeout(this.replaceBackground, 500, 'images/backgrounds/title-2.jpg'));
     this.animationTimeoutIds.push(setTimeout(() => { 
       SoundBoard.play(FX_TITLE_RIFLE);
@@ -56,6 +63,8 @@ class TitleScreen extends React.Component {
     if(!this.musicStarted) {
       SoundBoard.play(MUSIC_THEME);
     }
+    InputController.removeChangeListener(this.inputControllerListener);
+    InputController.stopGuiMode();
     window.removeEventListener('resize', this.updateDimensions);
   }
 
@@ -98,6 +107,12 @@ class TitleScreen extends React.Component {
 
   moveToNextScreen = () => {
     this.props.onScreenChangeRequired(CONFIGURATION_SCREEN_NAME);
+  }
+
+  handleInputControllerInput = (value, property) => {
+    if(PROP_BUTTON === property) {
+      this.moveToNextScreen();
+    }
   }
 
 }

@@ -1,5 +1,8 @@
 import InputState from './InputState';
 
+// This module is written for and tested with the X-Box 360 controller.
+// See https://en.wikipedia.org/wiki/Xbox_360_controller for details.
+
 // Old controllers might be a bit wobbly and need a higher value.
 const INPUT_THRESHOLD = 0.15;
 
@@ -14,6 +17,7 @@ const PI_TIMES_15_OVER_8 = 15 * Math.PI / 8;
 
 /**
  * Computes the angle (given in radians) for any point of the unit circle.
+ *
  * @param x position on x-axis
  * @param y position on x-axis
  * @returns {number}
@@ -33,6 +37,7 @@ export function computeStickAngle(x,y) {
 
 /**
  * Converts the given angle (in radians) into a combination of 4 cardinal directions
+ *
  * @param angle in radians
  * @returns {{left: boolean, up: boolean, right: boolean, down: boolean}}
  */
@@ -62,24 +67,45 @@ export function convertStickAngleToCardinalDirections(angle) {
 }
 
 function isStickMovedFully(x, y) {
-  // Use Pythagorean theorem
-  const radius = Math.sqrt(x*x + y*y);
+  const radius = Math.sqrt(x*x + y*y);      // Use Pythagorean theorem
   return 1 - INPUT_THRESHOLD < radius;
+}
+
+/**
+ * Gets the direction input from both the left thumb stick and the d-pad. Uses the input device that has to larger
+ * absolute value (the device that gets actually used by the player).
+ *
+ * @param gamepad
+ * @returns {{horizontal: float, vertical: float}}
+ * @see https://en.wikipedia.org/wiki/D-Pad
+ * @see https://en.wikipedia.org/wiki/Analog_stick
+ */
+function getDirectionFromThumbStickAndDPad(gamepad) {
+  let horizontal = gamepad.axes[0];
+  let vertical = gamepad.axes[1];
+  if((Math.abs(horizontal) + Math.abs(vertical)) < (Math.abs(gamepad.axes[6]) + Math.abs(gamepad.axes[7]))) {
+    horizontal = gamepad.axes[6];
+    vertical = gamepad.axes[7];
+  }
+  return { horizontal, vertical };
 }
 
 function decodeXBox360Values(gamepad) {
   let result = new InputState();
-  if(isStickMovedFully(gamepad.axes[0], gamepad.axes[1])) {
-    const angle = computeStickAngle(gamepad.axes[0], gamepad.axes[1] * -1);
+
+  const { horizontal, vertical } = getDirectionFromThumbStickAndDPad(gamepad);
+  if(isStickMovedFully(horizontal, vertical)) {
+    const angle = computeStickAngle(horizontal, vertical * -1);
     const {up, left, right, down} = convertStickAngleToCardinalDirections(angle);
     result.moveUp = up;
     result.moveDown = down;
     result.moveLeft = left;
     result.moveRight = right;
   }
-  result.fire = gamepad.axes[5] > 0;
-  result.toggleUp = gamepad.buttons[4].pressed;
-  result.toggleDown = !result.toggleUp && gamepad.buttons[5].pressed;
+  result.fire = gamepad.buttons[0].pressed;
+  result.grenade = gamepad.buttons[1].pressed;
+  result.toggleUp = gamepad.buttons[3].pressed;
+  result.toggleDown = !result.toggleUp && gamepad.buttons[2].pressed;
   return result;
 }
 

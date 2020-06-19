@@ -6,6 +6,7 @@ export default class InputState {
     this.moveLeft = false;
     this.moveRight = false;
     this.fire = false;
+    this.grenade = false;
     this.toggleUp = false;
     this.toggleDown = false;
   }
