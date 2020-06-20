@@ -1,12 +1,45 @@
 import React from 'react';
-import styles from './MapScreen.module.css';
+
+import ChangeListener from '../../game/ChangeListener';
+import {DIRECTION_DOWN, DIRECTION_UP, DIRECTION_LEFT, DIRECTION_RIGHT} from '../../game/engine/Directions';
+import GamepadLocationMarker from './GamepadLocationMarker';
+import InputController, {PROP_BUTTON} from '../../game/InputController';
 import MissionBriefing from './MissionBriefing';
 import MissionController from '../../game/MissionController';
-
 import { SHOPPING_FLOW_NAME } from '../shopping-flow/ShoppingFlow';
+
+import styles from './MapScreen.module.css';
 
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
+
+function getNextMissionNorth(missions, currentMission) {
+  return missions
+    .filter((m) => m.location.latitude < currentMission.location.latitude)
+    .sort((a, b) => a.location.latitude - b.location.latitude)
+    .pop();
+}
+
+function getNextMissionSouth(missions, currentMission) {
+  return missions
+    .filter((m) => m.location.latitude > currentMission.location.latitude)
+    .sort((a, b) => a.location.latitude - b.location.latitude)
+    .shift();
+}
+
+function getNextMissionWest(missions, currentMission) {
+  return missions
+    .filter((m) => m.location.longitude < currentMission.location.longitude)
+    .sort((a, b) => a.location.longitude - b.location.longitude)
+    .pop();
+}
+
+function getNextMissionEast(missions, currentMission) {
+  return missions
+    .filter((m) => m.location.longitude > currentMission.location.longitude)
+    .sort((a, b) => a.location.longitude - b.location.longitude)
+    .shift();
+}
 
 class MapScreen extends React.Component {
 
@@ -21,18 +54,27 @@ class MapScreen extends React.Component {
       location: l.location,
       name: l.name
     }));
+    this.inputControllerListener = new ChangeListener(this.handleInputControllerInput);
   }
 
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
+    InputController.startGuiMode();
+    InputController.addChangeListener(this.inputControllerListener);
+    if(InputController.isSecondPlayerPossible()) {
+      this.setState({ selectedMission: 'Berlin'});
+    }
   }
 
   componentWillUnmount() {
+    InputController.removeChangeListener(this.inputControllerListener);
+    InputController.stopGuiMode();
     window.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
+    const widthOfGamepadPositionMarker = 48;
     const widthOfPositionMarker = 18;
     const spots = this.missions.map((m) => (
       <div 
@@ -48,6 +90,20 @@ class MapScreen extends React.Component {
         <div className={ styles.locationMarker } />
       </div>
     ));
+
+    const locationMarker = this.missions
+      .filter((m) => m.name === this.state.selectedMission)
+      .map((m) => (
+        <GamepadLocationMarker
+          className={styles.gamepadLocationMarker}
+          key="gamepad-location-marker"
+          style={{
+            left: ((window.innerWidth - this.state.imageSize) / 2) + (m.location.longitude * this.state.scalingFactor) -(widthOfGamepadPositionMarker / 2),
+            top: (m.location.latitude * this.state.scalingFactor) -(widthOfGamepadPositionMarker)
+          }}/>
+      )
+    );
+
     return (
       <div className={ styles.screen }>
         <div className={ styles.briefingContainer }>
@@ -56,6 +112,7 @@ class MapScreen extends React.Component {
         <div className={ styles.worldMapContainer }>
           <img style={{width: this.state.imageSize + 'px'}} src="images/backgrounds/world-map.jpg" alt="" />
           { spots }
+          { locationMarker }
         </div>
       </div>
     );
@@ -89,6 +146,40 @@ class MapScreen extends React.Component {
         imageSize: availableWidth,
         scalingFactor: widthFactor
       });
+    }
+  }
+
+  handleInputControllerInput = (value, property) => {
+    if((PROP_BUTTON === property) && this.state.selectedMission) {
+      this.handleMissionSelected(this.state.selectedMission);
+    }
+
+    const currentMission = this.missions
+      .find((m) => m.name === (this.state.selectedMission || this.missions[0].name));
+
+    if(DIRECTION_UP === value) {
+      const nextMission = getNextMissionNorth(this.missions, currentMission);
+      if(nextMission) {
+        this.setState({selectedMission: nextMission.name});
+      }
+    }
+    if(DIRECTION_DOWN === value) {
+      const nextMission = getNextMissionSouth(this.missions, currentMission);
+      if(nextMission) {
+        this.setState({selectedMission: nextMission.name});
+      }
+    }
+    if(DIRECTION_LEFT === value) {
+      const nextMission = getNextMissionWest(this.missions, currentMission);
+      if(nextMission) {
+        this.setState({selectedMission: nextMission.name});
+      }
+    }
+    if(DIRECTION_RIGHT === value) {
+      const nextMission = getNextMissionEast(this.missions, currentMission);
+      if(nextMission) {
+        this.setState({selectedMission: nextMission.name});
+      }
     }
   }
 
