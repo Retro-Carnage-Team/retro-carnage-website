@@ -1,21 +1,64 @@
-h1.controllers {
+.container {
+  height: 100%;
+  position: relative;
+}
+
+.centered {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.playerInfoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.portrait {
+  max-height: 200px;
+}
+
+.input {
   color: #ee0;
   font-size: 32px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 0;
+  max-width: 200px;
   text-transform: uppercase;
 }
 
-.icon path {
-  fill: #ee0;
+.input svg {
+  margin-right: 20px;
 }
 
-div.spacer {
-  height: 40px;
+.input p {
+  height: 92px;
 }
 
-h1.players {
+.modeSelectionContainer {
+  display: inline flow-root list-item;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+}
+
+.gameMode {
+  border: 3px solid black;
+  border-radius: 15px;
   color: white;
   font-size: 32px;
-  margin-top: 0;
+  margin: 10px 10px;
+  padding: 10px 10px;
   text-transform: uppercase;
+}
+
+.gameMode.selected {
+  border-color: #ee0;
 }
