@@ -91,8 +91,11 @@ function getDirectionFromThumbStickAndDPad(gamepad) {
 }
 
 function decodeXBox360Values(gamepad) {
-  let result = new InputState();
+  if(!gamepad) {
+    return null;
+  }
 
+  let result = new InputState();
   const { horizontal, vertical } = getDirectionFromThumbStickAndDPad(gamepad);
   if(isStickMovedFully(horizontal, vertical)) {
     const angle = computeStickAngle(horizontal, vertical * -1);
