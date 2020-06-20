@@ -29,13 +29,11 @@ export default class UserInput extends React.Component {
     });
     InputController.startGuiMode();
     InputController.addChangeListener(this.inputControllerListener);
-    window.document.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
     InputController.removeChangeListener(this.inputControllerListener);
     InputController.stopGuiMode();
-    window.document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   render() {
@@ -66,13 +64,14 @@ export default class UserInput extends React.Component {
             <h1 className={cn(
               styles.gameMode,
               1 === this.state.selectedGameMode ? styles.selected : null
-            )}>
+            )} onClick={() => this.setGameMode(1)}>
               Start 1 player game
             </h1>
             <h1 className={cn(
               styles.gameMode,
+              InputController.isSecondPlayerPossible() ? null : styles.hidden,
               2 === this.state.selectedGameMode ? styles.selected : null
-            )}>
+            )} onClick={() => this.setGameMode(2)}>
               Start 2 player game
             </h1>
           </div>
@@ -81,23 +80,12 @@ export default class UserInput extends React.Component {
     );
   }
 
-  handleKeyDown = (event) => {
-    event.preventDefault();
-    // the no-mixed-operators option is for mollycoddles
-    // eslint-disable-next-line
-    if("1" === event.key || ("2" === event.key) && this.state.twoPlayerPossible) {
-      InputController.assignControllersToPlayers();
-      this.props.onPlayersSelected(parseInt(event.key));
-    }
-  }
-
   handleInputControllerInput = (value, property) => {
     const [inputPlayer1, inputPlayer2] = InputController.getControllerStatus();
     this.setState({ inputPlayer1, inputPlayer2 });
 
     if(PROP_BUTTON === property) {
-      InputController.assignControllersToPlayers();
-      this.props.onPlayersSelected(this.state.selectedGameMode);
+      this.setGameMode(this.state.selectedGameMode);
     }
     if(PROP_DIRECTION === property) {
       if((DIRECTION_DOWN === value) && (1 === this.state.selectedGameMode)) {
@@ -129,6 +117,11 @@ export default class UserInput extends React.Component {
       default:
         return 'Use gamepad to activate 2nd player';
     }
+  }
+
+  setGameMode = (numberOfPlayers) => {
+    InputController.assignControllersToPlayers();
+    this.props.onPlayersSelected(numberOfPlayers);
   }
 
 }
