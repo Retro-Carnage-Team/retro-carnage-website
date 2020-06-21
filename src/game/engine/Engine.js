@@ -7,7 +7,7 @@ import Rectangle from './Rectangle';
 import { updatePlayerMovement } from './PlayerMovement';
 import Explosive from './Explosive';
 import Explosion from './Explosion';
-import SoundBoard, {FX_GRENADE_1} from "../SoundBoard";
+import SoundBoard, {FX_GRENADE_1} from '../SoundBoard';
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;

@@ -97,7 +97,7 @@ export class Player {
 
   isGrenadeSelected = () => {
     const selected = this.getSelectedWeapon();
-    return selected && (undefined !== selected.explosive);
+    return selected && selected.explosive;
   }
 
   isRpgSelected = () => {
