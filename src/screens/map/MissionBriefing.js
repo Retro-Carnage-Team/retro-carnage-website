@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './MissionBriefing.module.css';
+
 import Missions from '../../game/Missions';
+
+import styles from './MissionBriefing.module.css';
 
 function MissionBriefing(props) {
   if(!props.mission) {

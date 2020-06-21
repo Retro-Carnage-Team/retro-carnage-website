@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ShopScreen.module.css';
+
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
@@ -12,6 +12,8 @@ import ItemWeapon from './ItemWeapon';
 import DetailAmmunition from './DetailAmmunition';
 import DetailGrenade from './DetailGrenade';
 import DetailWeapon from './DetailWeapon';
+
+import styles from './ShopScreen.module.css';
 
 class ShopScreen extends React.Component {
 

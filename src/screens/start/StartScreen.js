@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import styles from './StartScreen.module.css';
+
 import { TITLE_SCREEN_NAME } from '../title/TitleScreen';
 import MissionController from '../../game/MissionController';
+
+import styles from './StartScreen.module.css';
 
 function StartScreen(props) {
 

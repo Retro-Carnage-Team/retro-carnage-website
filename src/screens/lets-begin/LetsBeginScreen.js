@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styles from './LetsBeginScreen.module.css';
+
 import { GAME_SCREEN_NAME } from '../game/GameScreen';
+
+import styles from './LetsBeginScreen.module.css';
 
 function LetsBeginMessageScreen(props) {
   const [height, setHeight] = useState(100);

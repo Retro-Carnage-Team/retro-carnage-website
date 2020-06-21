@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Result.module.css';
+
 import InputController from '../../game/InputController';
+
+import styles from './Result.module.css';
 
 export default function Result(props) {
   const [height, setHeight] = useState(100);

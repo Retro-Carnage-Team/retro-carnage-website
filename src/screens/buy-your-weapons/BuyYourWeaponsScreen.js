@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './BuyYourWeaponsScreen.module.css';
+
 import Ammunition from '../../game/Ammunition';
 import Grenades from '../../game/Grenades';
 import Weapons from '../../game/Weapons';
+
+import styles from './BuyYourWeaponsScreen.module.css';
 
 class BuyYourWeaponsScreen extends React.Component {
 

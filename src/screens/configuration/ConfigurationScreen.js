@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { MAP_SCREEN_NAME } from '../map/MapScreen';
 import UserInput from './UserInput';
 import Result from './Result';
