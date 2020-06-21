@@ -35,37 +35,7 @@ const Missions = [
       backgrounds: ['bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg'],
       direction: 'left',
       enemies: [],
-      goal: null,
-      obstacles: []
-    }, {
-      backgrounds: ['bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg'],
-      direction: 'up',
-      enemies: [],
-      goal: null,
-      obstacles: []
-    }, {
-      backgrounds: ['bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
-      direction: 'right',
-      enemies: [],
-      goal: null,
-      obstacles: []
-    }, {
-      backgrounds: ['bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg'],
-      direction: 'up',
-      enemies: [],
-      goal: null,
-      obstacles: []
-    }, {
-      backgrounds: ['bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg'],
-      direction: 'left',
-      enemies: [],
-      goal: null,
-      obstacles: []
-    }, {
-      backgrounds: ['bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
-      direction: 'up',
-      enemies: [],
-      goal: { x: 42, y: 42, w: 100, h: 100 },
+      goal: { x: 42, y: 42, w: 200, h: 200 },
       obstacles: []
     }
   ]

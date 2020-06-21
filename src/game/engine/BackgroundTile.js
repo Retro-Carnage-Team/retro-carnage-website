@@ -4,8 +4,8 @@ export const SCREEN_SIZE = 1500;
 
 export default class BackgroundTile extends Tile {
 
-  constructor(path) {
-    super(path, SCREEN_SIZE, SCREEN_SIZE, 0, 0);
+  constructor(path, offsetX, offsetY) {
+    super(path, SCREEN_SIZE, SCREEN_SIZE, offsetX, offsetY);
   }
 
 }

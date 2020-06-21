@@ -27,7 +27,7 @@ export default class Renderer {
 
   drawBackground = () => {
     const backgroundRect = new Rectangle(0, 0, SCREEN_SIZE, SCREEN_SIZE);
-    this.engine.backgrounds.forEach((bg) => {
+    this.engine.getBackgrounds().forEach((bg) => {
       const translatedPosition = bg.translate(backgroundRect);
       const canvas = bg.getCanvas();
       if(canvas) {

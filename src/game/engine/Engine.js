@@ -1,4 +1,3 @@
-import BackgroundTile from './BackgroundTile';
 import InputController from '../InputController';
 import InventoryController from '../InventoryController';
 import PlayerController from '../PlayerController';
@@ -8,6 +7,7 @@ import { updatePlayerMovement } from './PlayerMovement';
 import Explosive from './Explosive';
 import Explosion from './Explosion';
 import SoundBoard, {FX_GRENADE_1} from '../SoundBoard';
+import LevelController from './LevelController';
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -19,14 +19,7 @@ export default class Engine {
 
   constructor(mission) {
     this.mission = mission;
-    this.missionSegment = mission.segments[0];
-
-    this.backgrounds = [
-      new BackgroundTile('images/backgrounds/bg-dummy-1.jpg'),
-      new BackgroundTile('images/backgrounds/bg-dummy-2.jpg')
-    ];
-    this.backgrounds[0].offsetY = -600;
-    this.backgrounds[1].offsetY = 900;
+    this.backgroundController = new LevelController(mission.segments);
 
     this.playerBehaviors = PlayerController.getConfiguredPlayers().map((p) => new PlayerBehavior(p));
     this.playerPositions = PlayerController.getConfiguredPlayers().map(
@@ -40,6 +33,10 @@ export default class Engine {
 
   initializeGameState = () => {
 
+  }
+
+  getBackgrounds = () => {
+    return this.backgroundController.getVisibleTiles();
   }
 
   updateGameState = (elapsedTimeInMs) => {
