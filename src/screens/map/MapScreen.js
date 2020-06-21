@@ -3,7 +3,7 @@ import React from 'react';
 import ChangeListener from '../../game/ChangeListener';
 import {DIRECTION_DOWN, DIRECTION_UP, DIRECTION_LEFT, DIRECTION_RIGHT} from '../../game/engine/Directions';
 import GamepadLocationMarker from './GamepadLocationMarker';
-import InputController, {PROP_BUTTON} from '../../game/InputController';
+import InputController, {PROP_BUTTON, PROP_DIRECTION} from '../../game/InputController';
 import MissionBriefing from './MissionBriefing';
 import MissionController from '../../game/MissionController';
 import { SHOPPING_FLOW_NAME } from '../shopping-flow/ShoppingFlow';
@@ -12,34 +12,6 @@ import styles from './MapScreen.module.css';
 
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
-
-function getNextMissionNorth(missions, currentMission) {
-  return missions
-    .filter((m) => m.location.latitude < currentMission.location.latitude)
-    .sort((a, b) => a.location.latitude - b.location.latitude)
-    .pop();
-}
-
-function getNextMissionSouth(missions, currentMission) {
-  return missions
-    .filter((m) => m.location.latitude > currentMission.location.latitude)
-    .sort((a, b) => a.location.latitude - b.location.latitude)
-    .shift();
-}
-
-function getNextMissionWest(missions, currentMission) {
-  return missions
-    .filter((m) => m.location.longitude < currentMission.location.longitude)
-    .sort((a, b) => a.location.longitude - b.location.longitude)
-    .pop();
-}
-
-function getNextMissionEast(missions, currentMission) {
-  return missions
-    .filter((m) => m.location.longitude > currentMission.location.longitude)
-    .sort((a, b) => a.location.longitude - b.location.longitude)
-    .shift();
-}
 
 class MapScreen extends React.Component {
 
@@ -154,31 +126,19 @@ class MapScreen extends React.Component {
       this.handleMissionSelected(this.state.selectedMission);
     }
 
-    const currentMission = this.missions
-      .find((m) => m.name === (this.state.selectedMission || this.missions[0].name));
-
-    if(DIRECTION_UP === value) {
-      const nextMission = getNextMissionNorth(this.missions, currentMission);
-      if(nextMission) {
-        this.setState({selectedMission: nextMission.name});
-      }
-    }
-    if(DIRECTION_DOWN === value) {
-      const nextMission = getNextMissionSouth(this.missions, currentMission);
-      if(nextMission) {
-        this.setState({selectedMission: nextMission.name});
-      }
-    }
-    if(DIRECTION_LEFT === value) {
-      const nextMission = getNextMissionWest(this.missions, currentMission);
-      if(nextMission) {
-        this.setState({selectedMission: nextMission.name});
-      }
-    }
-    if(DIRECTION_RIGHT === value) {
-      const nextMission = getNextMissionEast(this.missions, currentMission);
-      if(nextMission) {
-        this.setState({selectedMission: nextMission.name});
+    if(PROP_DIRECTION === property) {
+      const missionResolver = {};
+      missionResolver[DIRECTION_UP] = MissionController.getNextMissionNorth;
+      missionResolver[DIRECTION_DOWN] = MissionController.getNextMissionSouth;
+      missionResolver[DIRECTION_LEFT] = MissionController.getNextMissionWest;
+      missionResolver[DIRECTION_RIGHT] = MissionController.getNextMissionEast;
+      if (missionResolver[value]) {
+        const selectionName = (this.state.selectedMission || this.missions[0].name);
+        const currentMission = this.missions.find((m) => m.name === selectionName);
+        const nextMission = missionResolver[value](currentMission);
+        if (nextMission) {
+          this.setState({selectedMission: nextMission.name});
+        }
       }
     }
   }

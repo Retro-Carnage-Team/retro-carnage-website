@@ -13,7 +13,8 @@ import {
   MUSIC_BACKGROUND_12
 } from './SoundBoard';
 
-const Missions = [{
+const Missions = [
+{
   briefing: 'I am Berlin\'s hottest influencer. 30.000 followers on Insta alone - and that\'s not even counting Youtube and Twitter. My biggest competitor is envious and spreads the rumour that I am not vegan. Take out my competitor - for $10.000.',
   client: 'images/tiles/clients/angry-beard-blur-close-up.jpg',
   location: {

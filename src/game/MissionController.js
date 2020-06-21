@@ -13,6 +13,34 @@ class MissionController {
     this.finishedMissions = [];
   }
 
+  getNextMissionNorth = (relativeTo) => {
+    return this.getRemainingMissions()
+      .filter((m) => m.location.latitude < relativeTo.location.latitude)
+      .sort((a, b) => a.location.latitude - b.location.latitude)
+      .pop();
+  }
+
+  getNextMissionSouth = (relativeTo) => {
+    return this.getRemainingMissions()
+      .filter((m) => m.location.latitude > relativeTo.location.latitude)
+      .sort((a, b) => a.location.latitude - b.location.latitude)
+      .shift();
+  }
+
+  getNextMissionWest = (relativeTo) => {
+    return this.getRemainingMissions()
+      .filter((m) => m.location.longitude < relativeTo.location.longitude)
+      .sort((a, b) => a.location.longitude - b.location.longitude)
+      .pop();
+  }
+
+  getNextMissionEast = (relativeTo) => {
+    return this.getRemainingMissions()
+      .filter((m) => m.location.longitude > relativeTo.location.longitude)
+      .sort((a, b) => a.location.longitude - b.location.longitude)
+      .shift();
+  }
+
   getRemainingMissions = () => {
     return Missions.filter((m) => !this.finishedMissions.find((e) => e === m.name));
   }
