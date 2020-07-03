@@ -10,11 +10,16 @@ const SCROLL_BARRIER_UP = 1_000;
 const SCROLL_BARRIER_LEFT = 1_000;
 const SCROLL_BARRIER_RIGHT = 500;
 
+const SCROLL_MOVEMENT_PER_MS = 0.3;                                                                                     // Screen.width = 1500 / 5.000 milliseconds = 0.2 px / ms
+
 export default class LevelController {
 
   constructor(missionSegments) {
     this.segments = missionSegments;
     this.currentSegmentIdx = 0;
+    this.distanceToScroll = 0;
+    this.distanceScrolled = 0;
+    this.segmentScrollLengthInPixels = 0;
     this.loadSegment(this.segments[this.currentSegmentIdx]);
   }
 
@@ -23,6 +28,9 @@ export default class LevelController {
       const offsets = BACKGROUND_OFFSETS[segment.direction];
       return new BackgroundTile(`images/backgrounds/${bg}`, idx * offsets.x, idx * offsets.y);
     });
+    this.segmentScrollLengthInPixels = 1500 * (this.backgrounds.length -1);
+    this.distanceScrolled = 0;
+    this.distanceToScroll = 0;
   }
 
   progressToNextSegment = () => {
@@ -33,23 +41,34 @@ export default class LevelController {
   }
 
   updatePosition = (elapsedTimeInMs, playerPositions) => {
-    const scrollDistance = this.getDistanceBehindScrollBarrier(playerPositions);
-    // TODO: scrollDistance is how far the background has to scroll based on the current player position.
-    //       If this is larger than the current value, we increase the current value
-    // TODO: Get the number of pixels we have to scroll now based on the elapsed time. Update all offsets and the
-    //       current scroll-distance value. Then return the number of pixels that we scrolled to x and y as an object
+    // TODO: This currently ignores the position of the second player. We should only scroll if we don't kick the other
+    //       player out of the visible area
+
+    const scrollDistanceByPlayerPosition = this.getDistanceBehindScrollBarrier(playerPositions);                        // How far is the player behind the scroll barrier?
+    this.distanceToScroll = Math.max(scrollDistanceByPlayerPosition, this.distanceToScroll);                            // Has he been further behind the barrier before?
+
+    const availablePixelsToScroll = Math.min(
+      this.segmentScrollLengthInPixels - this.distanceScrolled,                                                   // number if pixels to scroll left for this segment
+      Math.floor(elapsedTimeInMs * SCROLL_MOVEMENT_PER_MS),                                                           // scroll distance for the elapsed time
+      this.distanceToScroll                                                                                             // distance by player position behind scroll barrier
+    );
+
+    return this.scroll(availablePixelsToScroll);
   }
 
   scroll = (pixels) => {
+    this.distanceToScroll -= pixels;
+    this.distanceScrolled += pixels;
+
     const direction = this.segments[this.currentSegmentIdx].direction;
     if(DIRECTION_UP === direction) {
-     this.scrollUp(pixels);
+     return this.scrollUp(pixels);
     }
     if(DIRECTION_LEFT === direction) {
-      this.scrollLeft(pixels);
+      return this.scrollLeft(pixels);
     }
     if(DIRECTION_RIGHT === direction) {
-      this.scrollRight(pixels);
+      return this.scrollRight(pixels);
     }
   }
 
@@ -59,6 +78,7 @@ export default class LevelController {
       this.backgrounds[this.backgrounds.length -1].offsetY = 0;
       this.progressToNextSegment();
     }
+    return { x: 0, y: -pixels };
   }
 
   scrollLeft = (pixels) => {
@@ -67,6 +87,7 @@ export default class LevelController {
       this.backgrounds[this.backgrounds.length -1].offsetX = 0;
       this.progressToNextSegment();
     }
+    return { x: -pixels, y: 0 };
   }
 
   scrollRight = (pixels) => {
@@ -75,6 +96,7 @@ export default class LevelController {
       this.backgrounds[this.backgrounds.length -1].offsetX = 0;
       this.progressToNextSegment();
     }
+    return { x: pixels, y: 0 };
   }
 
   getVisibleTiles = () => {

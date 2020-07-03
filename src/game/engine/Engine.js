@@ -40,11 +40,14 @@ export default class Engine {
   }
 
   updateGameState = (elapsedTimeInMs) => {
-    this.updatePlayerBehaviorByInput();
-    this.updatePlayerPositionWithMovement(elapsedTimeInMs);
-    this.updateExplosions(elapsedTimeInMs);
-    this.updateExplosives(elapsedTimeInMs);
-    this.handleWeaponAction(elapsedTimeInMs);
+    this.updatePlayerBehaviorByInput();                                                                                 // read controller state
+    this.updatePlayerPositionWithMovement(elapsedTimeInMs);                                                             // move player around
+    this.updateExplosions(elapsedTimeInMs);                                                                             // animations
+    this.updateExplosives(elapsedTimeInMs);                                                                             // movement of explosive objects
+    this.handleWeaponAction(elapsedTimeInMs);                                                                           // fire / throw
+
+    const scrollOffsets = this.backgroundController.updatePosition(elapsedTimeInMs, this.playerPositions);              // scroll the background
+    this.updateAllPositionsWithScrollOffset(scrollOffsets);                                                             // update positions of players, explosions etc. when scrolled
   }
 
   updatePlayerBehaviorByInput = () => {
@@ -79,6 +82,21 @@ export default class Engine {
         SoundBoard.play(FX_GRENADE_1);
       }
       return !done;
+    });
+  }
+
+  updateAllPositionsWithScrollOffset = (scrollOffset) => {
+    this.playerPositions.forEach((playerPosition) => {
+      playerPosition.x -= scrollOffset.x;
+      playerPosition.y -= scrollOffset.y;
+    });
+    this.explosives.forEach((explosive) => {
+      explosive.position.x -= scrollOffset.x;
+      explosive.position.y -= scrollOffset.y;
+    });
+    this.explosions.forEach((explosion) => {
+      explosion.position.x -= scrollOffset.x;
+      explosion.position.y -= scrollOffset.y;
     });
   }
 
