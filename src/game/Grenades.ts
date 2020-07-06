@@ -1,4 +1,19 @@
-const Grenades = [{
+export interface Grenade {
+  description: string;
+  explosive: string;
+  image: string;
+  imageRotated: string;
+  maxCount: number;
+  name: string;
+  packageSize: number;
+  price: number;
+  radius: number;
+  range: number;
+  speed: number;
+  weight: string;
+}
+
+export const Grenades: Grenade[] = [{
   description: 'The DM41 is a fragmentation hand grenade and based on the US-American M26A2 hand grenade with fuse M215. The M26 entered service around 1952 and was used in combat during the Korean War. Its distinct lemon shape led it to being nicknamed the "lemon grenade" (compare the Russian F1 grenade and American Mk 2 "pineapple" grenade, with similar nicknames). Fragmentation is enhanced by a special pre-notched fragmentation coil that lies along the inside of the grenade\'s body. This coil had a circular cross-section in the M26 grenade and an improved square cross-section in the M26A1 and later designs.',
   explosive: '150 g',
   image: 'images/tiles/weapons/DM41.png',
@@ -25,5 +40,3 @@ const Grenades = [{
   speed: 0.95,
   weight: '0.595 kg'
 }];
-
-export default Grenades;

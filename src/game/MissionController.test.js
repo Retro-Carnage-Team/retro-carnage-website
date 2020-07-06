@@ -1,6 +1,6 @@
 import MissionController from './MissionController';
 import Missions from './Missions';
-import Players from './Player';
+import {Players} from './Player';
 
 test('All missions should be available when game gets reset', () => {
   MissionController.reset();

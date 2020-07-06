@@ -3,13 +3,13 @@ import {
   DIRECTION_DOWN_RIGHT,
   DIRECTION_LEFT,
 } from './Directions';
-import { Player, PROP_SELECTED_WEAPON } from '../Player';
+import { Player, PlayerProperties } from '../Player';
 import PlayerBehavior from './PlayerBehavior';
 import ChangeListener from '../ChangeListener';
 import InputState from '../InputState';
 
 test('Player in default state should be able to move up', () => {
-  const player = new Player();
+  const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
   const inputState = new InputState();
   inputState.moveUp = true;
@@ -19,7 +19,7 @@ test('Player in default state should be able to move up', () => {
 });
 
 test('Player in default state should be able to move diagonally', () => {
-  const player = new Player();
+  const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
   const inputState = new InputState();
 
@@ -32,7 +32,7 @@ test('Player in default state should be able to move diagonally', () => {
 });
 
 test('Moving player should be able to change direction while moving', () => {
-  const player = new Player();
+  const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
 
   let inputState = new InputState();
@@ -48,7 +48,7 @@ test('Moving player should be able to change direction while moving', () => {
 });
 
 test('Player should keep direction when stopping movement and keep firing', () => {
-  const player = new Player();
+  const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
 
   let inputState = new InputState();
@@ -67,7 +67,7 @@ test('Player should keep direction when stopping movement and keep firing', () =
 });
 
 test('Player should be able to change direction but not start moving when firing', () => {
-  const player = new Player();
+  const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
 
   let inputState = new InputState();
@@ -89,8 +89,8 @@ test('Switching to next weapon gets fired only once per button press', () => {
   function callback() {
     callCounter += 1;
   }
-  const player = new Player();
-  const listener = new ChangeListener(callback, PROP_SELECTED_WEAPON);
+  const player = new Player(0);
+  const listener = new ChangeListener(callback, PlayerProperties.SelectedWeapon);
   player.addChangeListener(listener);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -109,8 +109,8 @@ test('Switching to previous weapon gets fired only once per button press', () =>
   function callback() {
     callCounter += 1;
   }
-  const player = new Player();
-  const listener = new ChangeListener(callback, PROP_SELECTED_WEAPON);
+  const player = new Player(0);
+  const listener = new ChangeListener(callback, PlayerProperties.SelectedWeapon);
   player.addChangeListener(listener);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -125,7 +125,7 @@ test('Switching to previous weapon gets fired only once per button press', () =>
 });
 
 test('triggeredFire gets set when firing and unset when held down', () => {
-  const player = new Player();
+  const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
   const inputState = new InputState();
   inputState.fire = true;

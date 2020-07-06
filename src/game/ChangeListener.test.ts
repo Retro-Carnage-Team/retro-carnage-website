@@ -30,7 +30,7 @@ test('ChangeListener should call the specified callback correctly', () => {
   const newValue = 42;
   let called = false;
 
-  const callback = (value, propertyName) => { 
+  const callback = (value: number, propertyName: string) => {
     called = true;
     expect(value).toBe(newValue);
     expect(propertyName).toBe(propertyNameValue);

@@ -1,7 +1,7 @@
-import Ammunition from './Ammunition';
-import Grenades from './Grenades';
-import Weapons from './Weapons';
-import Players from './Player';
+import {Ammunitions} from './Ammunition';
+import {Grenades} from './Grenades';
+import {Weapons} from './Weapons';
+import {Players} from './Player';
 import SoundBoard, {FX_CASH, FX_ERROR, FX_OUT_OF_AMMO} from './SoundBoard';
 
 class InventoryController {
@@ -11,14 +11,14 @@ class InventoryController {
   }
 
   isAmmunitionProcurable = (playerIdx, ammunitionName) => {
-    const ammoType = Ammunition.find((a) => a.name === ammunitionName);
+    const ammoType = Ammunitions.find((a) => a.name === ammunitionName);
     return (this.getAmmunitionCount(playerIdx, ammunitionName) < ammoType.maxCount) 
             && (Players[playerIdx].cash >= ammoType.price);
   }
 
   buyAmmunition = (playerIdx, ammunitionName) => {
     if(this.isAmmunitionProcurable(playerIdx, ammunitionName)) {
-      const ammoType = Ammunition.find((a) => a.name === ammunitionName);
+      const ammoType = Ammunitions.find((a) => a.name === ammunitionName);
       const player = Players[playerIdx];
       const increasedCount = player.getAmmunitionCount(ammunitionName) + ammoType.packageSize;
       player.setAmmunitionCount(ammunitionName, Math.min(increasedCount, ammoType.maxCount));

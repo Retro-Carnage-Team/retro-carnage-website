@@ -1,11 +1,11 @@
 import InventoryController from './InventoryController';
-import Ammunition from './Ammunition';
-import Grenades from './Grenades';
-import Players from './Player';
+import {Ammunitions} from './Ammunition';
+import {Grenades} from './Grenades';
+import {Players} from './Player';
 
 test('Initial ammo count is zero and increases by package size of ammo type', () => {
   Players[0].reset();
-  const ammo = Ammunition[0];
+  const ammo = Ammunitions[0];
   expect(InventoryController.getAmmunitionCount(0, ammo.name)).toBe(0);
   InventoryController.buyAmmunition(0, ammo.name);
   expect(InventoryController.getAmmunitionCount(0, ammo.name)).toBe(ammo.packageSize);
@@ -13,7 +13,7 @@ test('Initial ammo count is zero and increases by package size of ammo type', ()
 
 
 test('Ammo count does not grow larger than maxCount', () => {
-  const ammo = Ammunition[0];
+  const ammo = Ammunitions[0];
   const player = Players[0];
   player.reset();  
   player.setAmmunitionCount(ammo.name, ammo.maxCount - 1);
@@ -27,7 +27,7 @@ test('Ammo count does not grow larger than maxCount', () => {
 test('Buying ammo should decrease the amount cash available', () => {
   const player = Players[0];
   player.reset();
-  const ammo = Ammunition[0];
+  const ammo = Ammunitions[0];
   const oldCash = player.cash;
   InventoryController.buyAmmunition(0, ammo.name);
   expect(player.cash).toBe(oldCash - ammo.price);

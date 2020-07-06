@@ -1,6 +1,15 @@
 export default class InputState {
 
-  constructor() {
+  public moveUp: boolean;
+  public moveDown: boolean;
+  public moveLeft: boolean;
+  public moveRight: boolean;
+  public fire: boolean;
+  public grenade: boolean;
+  public toggleUp: boolean;
+  public toggleDown: boolean;
+
+  public constructor() {
     this.moveUp = false;
     this.moveDown = false;
     this.moveLeft = false;

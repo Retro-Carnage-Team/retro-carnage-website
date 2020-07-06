@@ -1,12 +1,12 @@
 import ChangeListener from './ChangeListener';
-import Players, { PROP_WEAPONS } from './Player';
+import { Players, PlayerProperties} from './Player';
 
 test('Change listeners should get informed every time a change happened', () => {
   let callCounter = 0;
   let value = null;
   let name = null;
 
-  function callback(v, n) {
+  function callback(v: boolean, n: string) {
     value = v;
     name = n;
     callCounter += 1;
@@ -19,7 +19,7 @@ test('Change listeners should get informed every time a change happened', () => 
   player.setWeaponInInventory('P7', true);
   expect(callCounter).toBe(1);
   expect(value).toBeTruthy();
-  expect(name).toBe(PROP_WEAPONS);
+  expect(name).toBe(PlayerProperties.Weapons);
 
   player.removeChangeListener(changeListener);
   player.setWeaponInInventory('P7', false);
@@ -40,7 +40,7 @@ test('selectFirstWeapon should select the first weapon in inventory', () => {
   player.selectFirstWeapon();
 
   expect(callCounter).toBe(1);
-  expect(player.getSelectedWeapon().name).toBe('AR-10');
+  expect(player.getSelectedWeapon()?.name).toBe('AR-10');
 
   player.removeChangeListener(changeListener);
 });
@@ -58,7 +58,7 @@ test('selectFirstWeapon should select the first grenade of no weapon is in inven
   player.selectFirstWeapon();
 
   expect(callCounter).toBe(1);
-  expect(player.getSelectedWeapon().name).toBe('Stielhandgranate 24');
+  expect(player.getSelectedWeapon()?.name).toBe('Stielhandgranate 24');
 
   player.removeChangeListener(changeListener);
 });
@@ -71,13 +71,13 @@ test('selectNextWeapon should iterate all weapons and grenades in inventory', ()
   player.setWeaponInInventory('Panzerfaust 3', true);
 
   player.selectFirstWeapon();
-  expect(player.getSelectedWeapon().name).toBe('AR-10');
+  expect(player.getSelectedWeapon()?.name).toBe('AR-10');
   player.selectNextWeapon();
-  expect(player.getSelectedWeapon().name).toBe('Panzerfaust 3');
+  expect(player.getSelectedWeapon()?.name).toBe('Panzerfaust 3');
   player.selectNextWeapon();
-  expect(player.getSelectedWeapon().name).toBe('Stielhandgranate 24');
+  expect(player.getSelectedWeapon()?.name).toBe('Stielhandgranate 24');
   player.selectNextWeapon();
-  expect(player.getSelectedWeapon().name).toBe('AR-10');
+  expect(player.getSelectedWeapon()?.name).toBe('AR-10');
 });
 
 test('selectPreviousWeapon should iterate all weapons and grenades in inventory', () => {
@@ -88,13 +88,13 @@ test('selectPreviousWeapon should iterate all weapons and grenades in inventory'
   player.setWeaponInInventory('Panzerfaust 3', true);
 
   player.selectFirstWeapon();
-  expect(player.getSelectedWeapon().name).toBe('AR-10');
+  expect(player.getSelectedWeapon()?.name).toBe('AR-10');
   player.selectPreviousWeapon();
-  expect(player.getSelectedWeapon().name).toBe('Stielhandgranate 24');
+  expect(player.getSelectedWeapon()?.name).toBe('Stielhandgranate 24');
   player.selectPreviousWeapon();
-  expect(player.getSelectedWeapon().name).toBe('Panzerfaust 3');
+  expect(player.getSelectedWeapon()?.name).toBe('Panzerfaust 3');
   player.selectPreviousWeapon();
-  expect(player.getSelectedWeapon().name).toBe('AR-10');
+  expect(player.getSelectedWeapon()?.name).toBe('AR-10');
 });
 
 test('isGrenadeSelected should return whether or not a grenade has been selected', () => {

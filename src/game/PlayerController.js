@@ -1,4 +1,4 @@
-import Players from './Player';
+import {Players} from './Player';
 
 class PlayerController {
 
