@@ -1,27 +1,28 @@
-import {
-  DIRECTION_UP,
-  DIRECTION_UP_RIGHT,
-  DIRECTION_RIGHT,
-  DIRECTION_DOWN_RIGHT,
-  DIRECTION_DOWN,
-  DIRECTION_DOWN_LEFT,
-  DIRECTION_LEFT,
-  DIRECTION_UP_LEFT
-} from './Directions';
+import {Directions} from './Directions';
+import {Player} from '../Player';
+import InputState from '../InputState';
 
 export default class PlayerBehavior {
 
-  constructor(player) {
+  player: Player;
+  direction: Directions;
+  moving: boolean;
+  firing: boolean;                    // will be true as long as the player keeps the trigger pressed
+  triggeredFire: boolean;             // will be true only when switching from "not firing" to "firing"
+  nextWeapon: boolean;
+  previousWeapon: boolean;
+
+  constructor(player: Player) {
     this.player = player;
-    this.direction = DIRECTION_UP;
+    this.direction = Directions.Up;
     this.moving = false;
-    this.firing = false;              // will be true as long as the player keeps the trigger pressed
-    this.triggeredFire = false;       // will be true only when switching from "not firing" to "firing"
+    this.firing = false;
+    this.triggeredFire = false;
     this.nextWeapon = false;
     this.previousWeapon = false;
   }
 
-  update = (userInput) => {
+  update = (userInput: InputState) => {
     if(!userInput || !this.player.isAlive()) {
       return;
     }
@@ -45,30 +46,30 @@ export default class PlayerBehavior {
     this.previousWeapon = userInput.toggleDown;
   }
 
-  getDirection = (up, down, left, right) => {
+  getDirection = (up: boolean, down: boolean, left: boolean, right: boolean): Directions => {
     if(up && !down && !left && !right) {
-      return DIRECTION_UP;
+      return Directions.Up;
     }
     if(up && !down && left && !right) {
-      return DIRECTION_UP_LEFT;
+      return Directions.UpLeft;
     }
     if(up && !down && !left && right) {
-      return DIRECTION_UP_RIGHT;
+      return Directions.UpRight;
     }
     if(!up && down && !left && !right) {
-      return DIRECTION_DOWN;
+      return Directions.Down;
     }
     if(!up && down && left && !right) {
-      return DIRECTION_DOWN_LEFT;
+      return Directions.DownLeft;
     }
     if(!up && down && !left && right) {
-      return DIRECTION_DOWN_RIGHT;
+      return Directions.DownRight;
     }
     if(!up && !down && left && !right) {
-      return DIRECTION_LEFT;
+      return Directions.Left;
     }
     if(!up && !down && !left && right) {
-      return DIRECTION_RIGHT;
+      return Directions.Right;
     }
     return this.direction;
   }

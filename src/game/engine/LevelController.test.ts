@@ -1,24 +1,25 @@
 import LevelController from './LevelController';
 import Rectangle from './Rectangle';
+import {Directions} from "./Directions";
 
 const SEGMENTS = [
   {
     backgrounds: ['bg-dummy-1.jpg', 'bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
-    direction: 'up',
+    direction: Directions.Up,
     enemies: [],
     goal: null,
     obstacles: []
   }, {
     backgrounds: ['bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg', 'bg-dummy-2.jpg'],
-    direction: 'left',
+    direction: Directions.Left,
     enemies: [],
     goal: null,
     obstacles: []
   }, {
     backgrounds: ['bg-dummy-2.jpg', 'bg-dummy-3.jpg', 'bg-dummy-1.jpg'],
-    direction: 'right',
+    direction: Directions.Right,
     enemies: [],
-    goal: { x: 42, y: 42, w: 200, h: 200 },
+    goal: { x: 42, y: 42, width: 200, height: 200 },
     obstacles: []
   },
 ];

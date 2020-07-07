@@ -1,8 +1,4 @@
-import {
-  DIRECTION_UP,
-  DIRECTION_DOWN_RIGHT,
-  DIRECTION_LEFT,
-} from './Directions';
+import {Directions} from './Directions';
 import { Player, PlayerProperties } from '../Player';
 import PlayerBehavior from './PlayerBehavior';
 import ChangeListener from '../ChangeListener';
@@ -15,7 +11,7 @@ test('Player in default state should be able to move up', () => {
   inputState.moveUp = true;
   playerBehavior.update(inputState);
   expect(playerBehavior.moving).toBeTruthy();
-  expect(playerBehavior.direction).toBe(DIRECTION_UP);
+  expect(playerBehavior.direction).toBe(Directions.Up);
 });
 
 test('Player in default state should be able to move diagonally', () => {
@@ -28,7 +24,7 @@ test('Player in default state should be able to move diagonally', () => {
 
   playerBehavior.update(inputState);
   expect(playerBehavior.moving).toBeTruthy();
-  expect(playerBehavior.direction).toBe(DIRECTION_DOWN_RIGHT);
+  expect(playerBehavior.direction).toBe(Directions.DownRight);
 });
 
 test('Moving player should be able to change direction while moving', () => {
@@ -44,7 +40,7 @@ test('Moving player should be able to change direction while moving', () => {
   playerBehavior.update(inputState);
 
   expect(playerBehavior.moving).toBeTruthy();
-  expect(playerBehavior.direction).toBe(DIRECTION_LEFT);
+  expect(playerBehavior.direction).toBe(Directions.Left);
 });
 
 test('Player should keep direction when stopping movement and keep firing', () => {
@@ -62,7 +58,7 @@ test('Player should keep direction when stopping movement and keep firing', () =
   playerBehavior.update(inputState);
 
   expect(playerBehavior.moving).toBeFalsy();
-  expect(playerBehavior.direction).toBe(DIRECTION_UP);
+  expect(playerBehavior.direction).toBe(Directions.Up);
   expect(playerBehavior.firing).toBeTruthy();
 });
 
@@ -80,7 +76,7 @@ test('Player should be able to change direction but not start moving when firing
   playerBehavior.update(inputState);
 
   expect(playerBehavior.moving).toBeFalsy();
-  expect(playerBehavior.direction).toBe(DIRECTION_LEFT);
+  expect(playerBehavior.direction).toBe(Directions.Left);
   expect(playerBehavior.firing).toBeTruthy();
 });
 

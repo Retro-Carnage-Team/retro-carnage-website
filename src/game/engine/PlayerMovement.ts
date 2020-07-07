@@ -5,11 +5,12 @@ import {
 import { SCREEN_SIZE } from './Engine';
 import { getMovementX, getMovementY } from './Movement';
 import Rectangle from './Rectangle';
+import {Directions} from "./Directions";
 
 export const MIN_PLAYER_DISTANCE_TO_BORDER = 25;
 const PLAYER_MOVEMENT_PER_MS = 0.75;                  // Screen.width = 1500 / 2.000 milliseconds = 0.75 px / ms
 
-export function limitPlayerMovementToScreenArea(position) {
+export function limitPlayerMovementToScreenArea(position: Rectangle): Rectangle {
   if(position.x < MIN_PLAYER_DISTANCE_TO_BORDER) {
     position.x = MIN_PLAYER_DISTANCE_TO_BORDER;
   }
@@ -25,9 +26,9 @@ export function limitPlayerMovementToScreenArea(position) {
   return position;
 }
 
-export function updatePlayerMovement(elapsedTimeInMs, direction, oldPosition) {
+export function updatePlayerMovement(elapsedTimeInMs: number, direction: Directions, oldPosition: Rectangle): Rectangle {
   const result = new Rectangle(oldPosition.x, oldPosition.y, oldPosition.width, oldPosition.height);
-  result.x += getMovementX(elapsedTimeInMs, direction, PLAYER_MOVEMENT_PER_MS);
-  result.y += getMovementY(elapsedTimeInMs, direction, PLAYER_MOVEMENT_PER_MS);
+  result.x += getMovementX(elapsedTimeInMs, direction, PLAYER_MOVEMENT_PER_MS, undefined);
+  result.y += getMovementY(elapsedTimeInMs, direction, PLAYER_MOVEMENT_PER_MS, undefined);
   return limitPlayerMovementToScreenArea(result);
 }

@@ -1,10 +1,17 @@
 import BackgroundTile from './BackgroundTile';
-import {DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP} from './Directions';
+import {Directions} from './Directions';
+import {Segment} from '../Missions';
+import Rectangle from './Rectangle';
 
-const BACKGROUND_OFFSETS = { };
-BACKGROUND_OFFSETS[DIRECTION_UP] = { x: 0, y: -1500 };
-BACKGROUND_OFFSETS[DIRECTION_LEFT] = { x: -1500, y: 0 };
-BACKGROUND_OFFSETS[DIRECTION_RIGHT] = { x: 1500, y: 0 };
+interface Offset {
+  x: number;
+  y: number;
+}
+
+const BACKGROUND_OFFSETS: Map<Directions, Offset> = new Map<Directions, Offset>();
+BACKGROUND_OFFSETS.set(Directions.Up, { x: 0, y: -1500 });
+BACKGROUND_OFFSETS.set(Directions.Left, { x: -1500, y: 0 });
+BACKGROUND_OFFSETS.set(Directions.Right, { x: 1500, y: 0 });
 
 const SCROLL_BARRIER_UP = 1_000;
 const SCROLL_BARRIER_LEFT = 1_000;
@@ -14,8 +21,16 @@ const SCROLL_MOVEMENT_PER_MS = 0.3;                                             
 
 export default class LevelController {
 
-  constructor(missionSegments) {
+  private readonly segments: Segment[];
+  backgrounds: BackgroundTile[];
+  private currentSegmentIdx: number;
+  private distanceToScroll: number;
+  private distanceScrolled: number;
+  private segmentScrollLengthInPixels: number;
+
+  constructor(missionSegments: Segment[]) {
     this.segments = missionSegments;
+    this.backgrounds = [];
     this.currentSegmentIdx = 0;
     this.distanceToScroll = 0;
     this.distanceScrolled = 0;
@@ -23,9 +38,12 @@ export default class LevelController {
     this.loadSegment(this.segments[this.currentSegmentIdx]);
   }
 
-  loadSegment = (segment) => {
+  loadSegment = (segment: Segment) => {
     this.backgrounds = segment.backgrounds.map((bg, idx) => {
-      const offsets = BACKGROUND_OFFSETS[segment.direction];
+      let offsets = BACKGROUND_OFFSETS.get(segment.direction);
+      if(!offsets) {
+        offsets = { x: 0, y: 0};
+      }
       return new BackgroundTile(`images/backgrounds/${bg}`, idx * offsets.x, idx * offsets.y);
     });
     this.segmentScrollLengthInPixels = 1500 * (this.backgrounds.length -1);
@@ -40,7 +58,7 @@ export default class LevelController {
     }
   }
 
-  updatePosition = (elapsedTimeInMs, playerPositions) => {
+  updatePosition = (elapsedTimeInMs: number, playerPositions: Rectangle[]) => {
     // TODO: This currently ignores the position of the second player. We should only scroll if we don't kick the other
     //       player out of the visible area
 
@@ -56,23 +74,24 @@ export default class LevelController {
     return this.scroll(availablePixelsToScroll);
   }
 
-  scroll = (pixels) => {
+  scroll = (pixels: number): Offset => {
     this.distanceToScroll -= pixels;
     this.distanceScrolled += pixels;
 
     const direction = this.segments[this.currentSegmentIdx].direction;
-    if(DIRECTION_UP === direction) {
+    if(Directions.Up === direction) {
      return this.scrollUp(pixels);
     }
-    if(DIRECTION_LEFT === direction) {
+    if(Directions.Left === direction) {
       return this.scrollLeft(pixels);
     }
-    if(DIRECTION_RIGHT === direction) {
+    if(Directions.Right === direction) {
       return this.scrollRight(pixels);
     }
+    return {x: 0, y: 0};                                                                                                // should not happen
   }
 
-  scrollUp = (pixels) => {
+  scrollUp = (pixels: number): Offset => {
     this.backgrounds.forEach((bg) => bg.offsetY += pixels);
     if(0 <= this.backgrounds[this.backgrounds.length -1].offsetY) {
       this.backgrounds[this.backgrounds.length -1].offsetY = 0;
@@ -81,7 +100,7 @@ export default class LevelController {
     return { x: 0, y: -pixels };
   }
 
-  scrollLeft = (pixels) => {
+  scrollLeft = (pixels: number): Offset => {
     this.backgrounds.forEach((bg) => bg.offsetX -= pixels);
     if(0 >= this.backgrounds[this.backgrounds.length -1].offsetX) {
       this.backgrounds[this.backgrounds.length -1].offsetX = 0;
@@ -90,7 +109,7 @@ export default class LevelController {
     return { x: -pixels, y: 0 };
   }
 
-  scrollRight = (pixels) => {
+  scrollRight = (pixels: number): Offset => {
     this.backgrounds.forEach((bg) => bg.offsetX += pixels);
     if(0 <= this.backgrounds[this.backgrounds.length -1].offsetX) {
       this.backgrounds[this.backgrounds.length -1].offsetX = 0;
@@ -99,30 +118,31 @@ export default class LevelController {
     return { x: pixels, y: 0 };
   }
 
-  getVisibleTiles = () => {
+  getVisibleTiles = (): BackgroundTile[] => {
     return this.backgrounds.filter((bg) =>
       (-1500 < bg.offsetX) && (1500 > bg.offsetX) &&
       (-1500 < bg.offsetY) && (1500 > bg.offsetY)
     );
   }
 
-  getDistanceBehindScrollBarrier = (playerPositions) => {
+  getDistanceBehindScrollBarrier = (playerPositions: Rectangle[]): number => {
     const direction = this.segments[this.currentSegmentIdx].direction;
-    if(DIRECTION_UP === direction) {
+    if(Directions.Up === direction) {
       let topMostPosition = 1500;
       playerPositions.forEach((pos) => topMostPosition = Math.min(topMostPosition, pos.y));
       return SCROLL_BARRIER_UP - topMostPosition;
     }
-    if(DIRECTION_LEFT === direction) {
+    if(Directions.Left === direction) {
       let leftMostPosition = 1500;
       playerPositions.forEach((pos) => leftMostPosition = Math.min(leftMostPosition, pos.x));
       return SCROLL_BARRIER_LEFT - leftMostPosition;
     }
-    if(DIRECTION_RIGHT === direction) {
+    if(Directions.Right === direction) {
       let rightMostPosition = 0;
       playerPositions.forEach((pos) => rightMostPosition = Math.max(rightMostPosition, pos.x + pos.width));
       return rightMostPosition - SCROLL_BARRIER_RIGHT;
     }
+    return 0;                                                                                                           // should not happen
   }
 
 }
