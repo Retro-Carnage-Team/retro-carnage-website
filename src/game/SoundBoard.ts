@@ -40,7 +40,11 @@ export const MUSIC_BACKGROUND_12 = 'Raging-Streets.mp3';
 export const MUSIC_THEME = 'The-Only-Me-is-Me.mp3';
 
 class NamedAudio {
-  constructor(name, type) {
+
+  name: string;
+  audio: HTMLAudioElement;
+
+  constructor(name: string, type: string) {
     this.name = name;
     this.audio = new Audio(`sounds/${type}/${name}`);
     this.audio.loop = TYPE_MUSIC === type;
@@ -48,6 +52,8 @@ class NamedAudio {
 }
 
 class SoundBoard {
+
+  sounds: NamedAudio[];
 
   constructor() {
     this.sounds = [];
@@ -93,36 +99,44 @@ class SoundBoard {
     this.sounds.push(new NamedAudio(MUSIC_THEME, TYPE_MUSIC));
   }
 
-  getAudioByName = (name) => {
-    return this.sounds.find((e) => e.name === name).audio;
+  getAudioByName = (name: string): HTMLAudioElement | undefined => {
+    return this.sounds.find((e) => e.name === name)?.audio;
   }
 
-  getVolume = (sound) => {
-    return this.getAudioByName(sound).volume;
+  getVolume = (sound: string): number | undefined => {
+    return this.getAudioByName(sound)?.volume;
   }
 
-  setVolume = (sound, volume) => {
-    try {
-      this.getAudioByName(sound).volume = volume;
-    } catch (error) {
-      // continue regardless of error
-    }
-  }
-
-  play = (sound) => {
-    this.stop(sound);
-    try {
-      this.getAudioByName(sound).play();
-    } catch (error) {
-      // continue regardless of error
-    }
-  }
-
-  stop = (sound) => {
+  setVolume = (sound: string, volume: number) => {
     try {
       const audio = this.getAudioByName(sound);
-      audio.pause();
-      audio.currentTime = 0;
+      if(audio) {
+        audio.volume = volume;
+      }
+    } catch (error) {
+      // continue regardless of error
+    }
+  }
+
+  play = (sound: string) => {
+    this.stop(sound);
+    try {
+      const audio = this.getAudioByName(sound);
+      if(audio) {
+        audio.play();
+      }
+    } catch (error) {
+      // continue regardless of error
+    }
+  }
+
+  stop = (sound: string) => {
+    try {
+      const audio = this.getAudioByName(sound);
+      if(audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
     } catch (error) {
       // continue regardless of error
     }

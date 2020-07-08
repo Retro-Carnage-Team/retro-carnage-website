@@ -1,6 +1,8 @@
 import {Players} from './Player';
 
-class PlayerController {
+export class PlayerController {
+
+  numberOfPlayers: number | null;
 
   constructor() {
     this.numberOfPlayers = null;
@@ -16,5 +18,4 @@ class PlayerController {
 
 }
 
-const playerControllerInstance = new PlayerController();
-export default playerControllerInstance;
+export default new PlayerController();

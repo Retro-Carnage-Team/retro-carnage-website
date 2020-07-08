@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ChangeListener from '../../game/ChangeListener';
-import {DIRECTION_DOWN, DIRECTION_UP, DIRECTION_LEFT, DIRECTION_RIGHT} from '../../game/engine/Directions';
+import {Directions} from '../../game/engine/Directions';
 import GamepadLocationMarker from './GamepadLocationMarker';
 import InputController, {PROP_BUTTON, PROP_DIRECTION} from '../../game/InputController';
 import MissionBriefing from './MissionBriefing';
@@ -128,10 +128,10 @@ class MapScreen extends React.Component {
 
     if(PROP_DIRECTION === property) {
       const missionResolver = {};
-      missionResolver[DIRECTION_UP] = MissionController.getNextMissionNorth;
-      missionResolver[DIRECTION_DOWN] = MissionController.getNextMissionSouth;
-      missionResolver[DIRECTION_LEFT] = MissionController.getNextMissionWest;
-      missionResolver[DIRECTION_RIGHT] = MissionController.getNextMissionEast;
+      missionResolver[Directions.Up] = MissionController.getNextMissionNorth;
+      missionResolver[Directions.Down] = MissionController.getNextMissionSouth;
+      missionResolver[Directions.Left] = MissionController.getNextMissionWest;
+      missionResolver[Directions.Right] = MissionController.getNextMissionEast;
       if (missionResolver[value]) {
         const selectionName = (this.state.selectedMission || this.missions[0].name);
         const currentMission = this.missions.find((m) => m.name === selectionName);

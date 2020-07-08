@@ -15,6 +15,18 @@ const PI_TIMES_11_OVER_8 = 11 * Math.PI / 8;
 const PI_TIMES_13_OVER_8 = 13 * Math.PI / 8;
 const PI_TIMES_15_OVER_8 = 15 * Math.PI / 8;
 
+interface CardinalDirections {
+  up: boolean;
+  down: boolean;
+  left: boolean;
+  right: boolean;
+}
+
+interface StickState {
+  horizontal: number;
+  vertical: number;
+}
+
 /**
  * Computes the angle (given in radians) for any point of the unit circle.
  *
@@ -22,7 +34,7 @@ const PI_TIMES_15_OVER_8 = 15 * Math.PI / 8;
  * @param y position on x-axis
  * @returns {number}
  */
-export function computeStickAngle(x,y) {
+export function computeStickAngle(x: number, y: number): number {
   if(0 <= x && 0 <= y) {                    // first quadrant
     return Math.asin(y);
   }
@@ -41,7 +53,7 @@ export function computeStickAngle(x,y) {
  * @param angle in radians
  * @returns {{left: boolean, up: boolean, right: boolean, down: boolean}}
  */
-export function convertStickAngleToCardinalDirections(angle) {
+export function convertStickAngleToCardinalDirections(angle: number): CardinalDirections {
   if((PI_OVER_8 <=  angle) && (PI_TIMES_3_OVER_8 > angle)) {
     return { up: true, down: false, left: false, right: true };
   }
@@ -66,7 +78,7 @@ export function convertStickAngleToCardinalDirections(angle) {
   return { up: false, down: false, left: false, right: true };
 }
 
-function isStickMovedFully(x, y) {
+function isStickMovedFully(x: number, y: number): boolean {
   const radius = Math.sqrt(x*x + y*y);      // Use Pythagorean theorem
   return 1 - INPUT_THRESHOLD < radius;
 }
@@ -80,7 +92,7 @@ function isStickMovedFully(x, y) {
  * @see https://en.wikipedia.org/wiki/D-Pad
  * @see https://en.wikipedia.org/wiki/Analog_stick
  */
-function getDirectionFromThumbStickAndDPad(gamepad) {
+function getDirectionFromThumbStickAndDPad(gamepad: Gamepad): StickState {
   let horizontal = gamepad.axes[0];
   let vertical = gamepad.axes[1];
   if((Math.abs(horizontal) + Math.abs(vertical)) < (Math.abs(gamepad.axes[6]) + Math.abs(gamepad.axes[7]))) {
@@ -90,7 +102,7 @@ function getDirectionFromThumbStickAndDPad(gamepad) {
   return { horizontal, vertical };
 }
 
-function decodeXBox360Values(gamepad) {
+function decodeXBox360Values(gamepad: Gamepad) {
   if(!gamepad) {
     return null;
   }
@@ -120,6 +132,8 @@ function decodeXBox360Values(gamepad) {
 // TODO: Add support for additional controllers
 export default class GamepadController {
 
+  navigator?: Navigator;
+
   constructor() {
     this.navigator = window.navigator;
   }
@@ -136,15 +150,16 @@ export default class GamepadController {
     return result;
   }
 
-  getControllerInfo = (index) => {
+  getControllerInfo = (index: number): string => {
     if((!this.navigator) || (this.navigator.getGamepads().length <= index)) {
       return 'ERROR';
     }
-    return this.navigator.getGamepads()[index].id;
+    const pad = this.navigator.getGamepads()[index];
+    return pad ? pad.id : 'ERROR';
   }
 
-  getInputStateProviders = () => {
-    let result = [];
+  getInputStateProviders = (): (()=> InputState | null)[] => {
+    let result: (()=> InputState | null)[] = [];
     if(this.navigator) {
       for (let idx = 0; idx < this.navigator.getGamepads().length; idx++) {
         if(this.navigator.getGamepads()[idx]) {
@@ -155,13 +170,18 @@ export default class GamepadController {
     return result;
   }
 
-  getInputState = (index) => {
+  getInputState = (index: number): InputState | null => {
     if(!this.navigator) {
       return null;
     }
 
     const gamepads = this.navigator.getGamepads();
-    return (index >= gamepads.length) ? null : decodeXBox360Values(gamepads[index]);
+    if(index >= gamepads.length) {
+      return null;
+    } else {
+      const gamepad = gamepads[index];
+      return gamepad ? decodeXBox360Values(gamepad) : null;
+    }
   }
 
 }

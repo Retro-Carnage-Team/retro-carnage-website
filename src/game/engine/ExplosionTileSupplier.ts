@@ -1,6 +1,6 @@
 import Tile from './Tile';
 
-export const DURATION_OF_FRAME = 25;            // in ms
+export const DURATION_OF_FRAME = 25;      // in ms
 const FOLDER = 'images/tiles/explosion';
 const NUMBER_OF_TILES = 48;
 const IMAGE_SIZE = 200;
@@ -17,11 +17,13 @@ const TILES = buildAnimationSeries();
 
 export default class ExplosionTileSupplier {
 
+  duration: number;
+
   constructor() {
     this.duration = 0;
   }
 
-  getTile = (elapsedTimeInMs) => {
+  getTile = (elapsedTimeInMs: number): Tile => {
     this.duration += elapsedTimeInMs;
     const idx = Math.floor(this.duration / DURATION_OF_FRAME);
     return TILES[Math.min(TILES.length -1, idx)];

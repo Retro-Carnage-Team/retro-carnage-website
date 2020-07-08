@@ -2,11 +2,7 @@ import BackgroundTile from './BackgroundTile';
 import {Directions} from './Directions';
 import {Segment} from '../Missions';
 import Rectangle from './Rectangle';
-
-interface Offset {
-  x: number;
-  y: number;
-}
+import Offset from "./Offset";
 
 const BACKGROUND_OFFSETS: Map<Directions, Offset> = new Map<Directions, Offset>();
 BACKGROUND_OFFSETS.set(Directions.Up, { x: 0, y: -1500 });

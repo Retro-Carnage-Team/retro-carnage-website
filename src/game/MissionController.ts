@@ -1,7 +1,10 @@
-import Missions from './Missions';
+import Missions, {Mission} from './Missions';
 import PlayerController from './PlayerController';
 
-class MissionController {
+export class MissionController {
+
+  currentMission: Mission | null;
+  finishedMissions: string[];
 
   constructor() {
     this.currentMission = null;
@@ -13,50 +16,52 @@ class MissionController {
     this.finishedMissions = [];
   }
 
-  getNextMissionNorth = (relativeTo) => {
+  getNextMissionNorth = (relativeTo: Mission): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.latitude < relativeTo.location.latitude)
       .sort((a, b) => a.location.latitude - b.location.latitude)
       .pop();
   }
 
-  getNextMissionSouth = (relativeTo) => {
+  getNextMissionSouth = (relativeTo: Mission): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.latitude > relativeTo.location.latitude)
       .sort((a, b) => a.location.latitude - b.location.latitude)
       .shift();
   }
 
-  getNextMissionWest = (relativeTo) => {
+  getNextMissionWest = (relativeTo: Mission): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.longitude < relativeTo.location.longitude)
       .sort((a, b) => a.location.longitude - b.location.longitude)
       .pop();
   }
 
-  getNextMissionEast = (relativeTo) => {
+  getNextMissionEast = (relativeTo: Mission): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.longitude > relativeTo.location.longitude)
       .sort((a, b) => a.location.longitude - b.location.longitude)
       .shift();
   }
 
-  getRemainingMissions = () => {
+  getRemainingMissions = (): Mission[] => {
     return Missions.filter((m) => !this.finishedMissions.find((e) => e === m.name));
   }
 
-  markMissionFinished = (missionName) => {
+  markMissionFinished = (missionName: string) => {
     this.finishedMissions.push(missionName);
   }
 
-  selectMission = (missionName) => {
-    this.currentMission = Missions.find((m) => m.name === missionName);
-    if(this.currentMission) {
-      PlayerController.getRemainingPlayers().forEach((p) => p.cash = p.cash + this.currentMission.reward);
+  selectMission = (missionName: string) => {
+    const newMission = Missions.find((m) => m.name === missionName);
+    if(newMission) {
+      this.currentMission = newMission;
+      PlayerController.getRemainingPlayers().forEach((p) => p.cash = p.cash + newMission.reward);
+    } else {
+      this.currentMission = null;
     }
   }
 
 }
 
-const missionControllerInstance = new MissionController();
-export default missionControllerInstance;
+export default new MissionController();

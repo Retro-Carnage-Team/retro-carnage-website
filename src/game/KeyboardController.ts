@@ -2,6 +2,8 @@ import InputState from './InputState';
 
 export default class KeyboardController {
 
+  inputState: InputState;
+
   constructor() {
     this.inputState = new InputState();
     this.setUp();
@@ -11,15 +13,15 @@ export default class KeyboardController {
     return this.inputState;
   }
 
-  processKeyDown = (event) => {
+  processKeyDown = (event: KeyboardEvent) => {
     this.processKeyEvent(event, true);
   }
 
-  processKeyUp = (event) => {
+  processKeyUp = (event: KeyboardEvent) => {
     this.processKeyEvent(event, false);
   }
 
-  processKeyEvent = (event, status) => {
+  processKeyEvent = (event: KeyboardEvent, status: boolean) => {
     this.inputState.fire = event.ctrlKey;
     switch (event.key) {
       case 'ArrowLeft':
