@@ -1,10 +1,10 @@
-import {Directions} from './Directions';
-import { Player, PlayerProperties } from '../Player';
-import PlayerBehavior from './PlayerBehavior';
-import ChangeListener from '../ChangeListener';
-import InputState from '../InputState';
+import { Directions } from "./Directions";
+import { Player, PlayerProperties } from "../Player";
+import PlayerBehavior from "./PlayerBehavior";
+import ChangeListener from "../ChangeListener";
+import InputState from "../InputState";
 
-test('Player in default state should be able to move up', () => {
+test("Player in default state should be able to move up", () => {
   const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
   const inputState = new InputState();
@@ -14,7 +14,7 @@ test('Player in default state should be able to move up', () => {
   expect(playerBehavior.direction).toBe(Directions.Up);
 });
 
-test('Player in default state should be able to move diagonally', () => {
+test("Player in default state should be able to move diagonally", () => {
   const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
   const inputState = new InputState();
@@ -27,7 +27,7 @@ test('Player in default state should be able to move diagonally', () => {
   expect(playerBehavior.direction).toBe(Directions.DownRight);
 });
 
-test('Moving player should be able to change direction while moving', () => {
+test("Moving player should be able to change direction while moving", () => {
   const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -43,7 +43,7 @@ test('Moving player should be able to change direction while moving', () => {
   expect(playerBehavior.direction).toBe(Directions.Left);
 });
 
-test('Player should keep direction when stopping movement and keep firing', () => {
+test("Player should keep direction when stopping movement and keep firing", () => {
   const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -62,7 +62,7 @@ test('Player should keep direction when stopping movement and keep firing', () =
   expect(playerBehavior.firing).toBeTruthy();
 });
 
-test('Player should be able to change direction but not start moving when firing', () => {
+test("Player should be able to change direction but not start moving when firing", () => {
   const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -80,13 +80,16 @@ test('Player should be able to change direction but not start moving when firing
   expect(playerBehavior.firing).toBeTruthy();
 });
 
-test('Switching to next weapon gets fired only once per button press', () => {
+test("Switching to next weapon gets fired only once per button press", () => {
   let callCounter = 0;
   function callback() {
     callCounter += 1;
   }
   const player = new Player(0);
-  const listener = new ChangeListener(callback, PlayerProperties.SelectedWeapon);
+  const listener = new ChangeListener(
+    callback,
+    PlayerProperties.SelectedWeapon
+  );
   player.addChangeListener(listener);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -100,13 +103,16 @@ test('Switching to next weapon gets fired only once per button press', () => {
   player.removeChangeListener(listener);
 });
 
-test('Switching to previous weapon gets fired only once per button press', () => {
+test("Switching to previous weapon gets fired only once per button press", () => {
   let callCounter = 0;
   function callback() {
     callCounter += 1;
   }
   const player = new Player(0);
-  const listener = new ChangeListener(callback, PlayerProperties.SelectedWeapon);
+  const listener = new ChangeListener(
+    callback,
+    PlayerProperties.SelectedWeapon
+  );
   player.addChangeListener(listener);
   const playerBehavior = new PlayerBehavior(player);
 
@@ -120,7 +126,7 @@ test('Switching to previous weapon gets fired only once per button press', () =>
   player.removeChangeListener(listener);
 });
 
-test('triggeredFire gets set when firing and unset when held down', () => {
+test("triggeredFire gets set when firing and unset when held down", () => {
   const player = new Player(0);
   const playerBehavior = new PlayerBehavior(player);
   const inputState = new InputState();

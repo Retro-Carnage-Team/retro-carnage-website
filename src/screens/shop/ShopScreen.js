@@ -1,36 +1,35 @@
-import React from 'react';
+import React from "react";
 
-import Ammunition from '../../game/Ammunition';
-import Grenades from '../../game/Grenades';
-import Weapons from '../../game/Weapons';
-import ChangeListener from '../../game/ChangeListener';
-import Players from '../../game/Player';
-import BottomLine from './BottomLine';
-import ItemAmmunition from './ItemAmmunition';
-import ItemGrenade from './ItemGrenade';
-import ItemWeapon from './ItemWeapon';
-import DetailAmmunition from './DetailAmmunition';
-import DetailGrenade from './DetailGrenade';
-import DetailWeapon from './DetailWeapon';
+import Ammunition from "../../game/Ammunition";
+import Grenades from "../../game/Grenades";
+import Weapons from "../../game/Weapons";
+import ChangeListener from "../../game/ChangeListener";
+import Players from "../../game/Player";
+import BottomLine from "./BottomLine";
+import ItemAmmunition from "./ItemAmmunition";
+import ItemGrenade from "./ItemGrenade";
+import ItemWeapon from "./ItemWeapon";
+import DetailAmmunition from "./DetailAmmunition";
+import DetailGrenade from "./DetailGrenade";
+import DetailWeapon from "./DetailWeapon";
 
-import styles from './ShopScreen.module.css';
+import styles from "./ShopScreen.module.css";
 
 class ShopScreen extends React.Component {
-
   constructor(props) {
     super(props);
     this.changeListener = new ChangeListener(this.handleInventoryUpdate);
     this.state = {
       selectedAmmunition: null,
       selectedGrenade: null,
-      selectedWeapon: null
+      selectedWeapon: null,
     };
   }
 
   componentDidMount() {
     Players[this.props.player].addChangeListener(this.changeListener);
   }
-  
+
   componentWillUnmount() {
     Players[this.props.player].removeChangeListener(this.changeListener);
   }
@@ -42,108 +41,107 @@ class ShopScreen extends React.Component {
     );
 
     let detail = void 0;
-    if(!!this.state.selectedAmmunition) {
-      detail = <DetailAmmunition ammunition={ this.state.selectedAmmunition } />;
+    if (!!this.state.selectedAmmunition) {
+      detail = <DetailAmmunition ammunition={this.state.selectedAmmunition} />;
     } else if (!!this.state.selectedGrenade) {
-      detail = <DetailGrenade grenade={ this.state.selectedGrenade } />;
-    } else if(!!this.state.selectedWeapon) {
-      detail = <DetailWeapon weapon={ this.state.selectedWeapon } />;
+      detail = <DetailGrenade grenade={this.state.selectedGrenade} />;
+    } else if (!!this.state.selectedWeapon) {
+      detail = <DetailWeapon weapon={this.state.selectedWeapon} />;
     }
 
     return (
-      <div className={ styles.screen }>
-        <div className={ styles.catalog }>
-          { items }
-        </div>
-        <div className={ styles.details }>
-          { detail }
-        </div>
+      <div className={styles.screen}>
+        <div className={styles.catalog}>{items}</div>
+        <div className={styles.details}>{detail}</div>
         <BottomLine
-          player={ Players[this.props.player] }
-          onExit={ this.handleExitClicked }
-          selectedAmmunition={ this.state.selectedAmmunition }
-          selectedGrenade={ this.state.selectedGrenade }
-          selectedWeapon={ this.state.selectedWeapon } />
+          player={Players[this.props.player]}
+          onExit={this.handleExitClicked}
+          selectedAmmunition={this.state.selectedAmmunition}
+          selectedGrenade={this.state.selectedGrenade}
+          selectedWeapon={this.state.selectedWeapon}
+        />
       </div>
     );
   }
 
   handleInventoryUpdate = () => {
     this.forceUpdate();
-  }
+  };
 
   buildAmmunitionItem = (ammo) => {
     return (
-      <ItemAmmunition 
-        ammunition={ ammo }
-        key={ ammo.name }
-        onMouseEnter={ this.handleItemAmmunitionMouseEnter }
-        onMouseLeave={ this.handleItemMouseLeave }
-        player={ this.props.player }
-        selectedWeapon={ this.state.selectedWeapon } />
+      <ItemAmmunition
+        ammunition={ammo}
+        key={ammo.name}
+        onMouseEnter={this.handleItemAmmunitionMouseEnter}
+        onMouseLeave={this.handleItemMouseLeave}
+        player={this.props.player}
+        selectedWeapon={this.state.selectedWeapon}
+      />
     );
-  }
+  };
 
   buildGrenadeItem = (grenade) => {
     return (
-      <ItemGrenade 
-        key={ grenade.name } 
-        grenade={ grenade }
-        onMouseEnter={ this.handleItemGrenadeMouseEnter } 
-        onMouseLeave={ this.handleItemMouseLeave }
-        player={ this.props.player } />
+      <ItemGrenade
+        key={grenade.name}
+        grenade={grenade}
+        onMouseEnter={this.handleItemGrenadeMouseEnter}
+        onMouseLeave={this.handleItemMouseLeave}
+        player={this.props.player}
+      />
     );
-  }
+  };
 
   buildWeaponItem = (weapon) => {
     return (
-      <ItemWeapon 
-        key={ weapon.name }
-        onMouseEnter={ this.handleItemWeaponMouseEnter }
-        onMouseLeave={ this.handleItemMouseLeave }
-        player={ this.props.player }
-        selectedAmmunition={ this.state.selectedAmmunition }
-        weapon={ weapon } />
+      <ItemWeapon
+        key={weapon.name}
+        onMouseEnter={this.handleItemWeaponMouseEnter}
+        onMouseLeave={this.handleItemMouseLeave}
+        player={this.props.player}
+        selectedAmmunition={this.state.selectedAmmunition}
+        weapon={weapon}
+      />
     );
-  }
+  };
 
-  handleItemAmmunitionMouseEnter = (ammunition) => {    
+  handleItemAmmunitionMouseEnter = (ammunition) => {
     this.setState({
       selectedAmmunition: ammunition,
       selectedGrenade: null,
-      selectedWeapon: null
+      selectedWeapon: null,
     });
-  }
+  };
 
   handleItemGrenadeMouseEnter = (grenade) => {
     this.setState({
       selectedAmmunition: null,
       selectedGrenade: grenade,
-      selectedWeapon: null
+      selectedWeapon: null,
     });
-  }
+  };
 
-  handleItemWeaponMouseEnter = (weapon) => {    
+  handleItemWeaponMouseEnter = (weapon) => {
     this.setState({
       selectedAmmunition: null,
       selectedGrenade: null,
-      selectedWeapon: weapon
+      selectedWeapon: weapon,
     });
-  }
+  };
 
   handleItemMouseLeave = () => {
     this.setState({
       selectedAmmunition: null,
       selectedGrenade: null,
-      selectedWeapon: null
+      selectedWeapon: null,
     });
-  }
+  };
 
   handleExitClicked = () => {
     Players[this.props.player].selectFirstWeapon();
     this.props.onScreenChangeRequired();
-  }
-
+  };
 }
 
 export default ShopScreen;

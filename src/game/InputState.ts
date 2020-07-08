@@ -1,5 +1,4 @@
 export default class InputState {
-
   public moveUp: boolean;
   public moveDown: boolean;
   public moveLeft: boolean;
@@ -19,5 +18,4 @@ export default class InputState {
     this.toggleUp = false;
     this.toggleDown = false;
   }
-
 }

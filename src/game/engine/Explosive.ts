@@ -1,10 +1,10 @@
-import {getMovementDistance, getMovementX, getMovementY} from './Movement';
-import Rectangle from './Rectangle';
-import Tile from './Tile';
-import {Directions} from "./Directions";
+import { getMovementDistance, getMovementX, getMovementY } from "./Movement";
+import Rectangle from "./Rectangle";
+import Tile from "./Tile";
+import { Directions } from "./Directions";
 import Offset from "./Offset";
 import PlayerBehavior from "./PlayerBehavior";
-import {Grenade} from "../Grenades";
+import { Grenade } from "../Grenades";
 
 export const GRENADE_HEIGHT = 17;
 export const GRENADE_WIDTH = 32;
@@ -21,7 +21,6 @@ Offsets.set(Directions.UpLeft, { x: 0, y: -GRENADE_HEIGHT });
 
 // Explosives are Grenades and RPG ammo that has been fired by the player.
 export default class Explosive {
-
   distanceMoved: number;
   distanceToTarget: number;
   direction: Directions;
@@ -29,7 +28,11 @@ export default class Explosive {
   position: Rectangle;
   tile: Tile;
 
-  constructor(playerPosition: Rectangle, playerBehavior: PlayerBehavior, selectedWeapon: Grenade) {
+  constructor(
+    playerPosition: Rectangle,
+    playerBehavior: PlayerBehavior,
+    selectedWeapon: Grenade
+  ) {
     this.distanceMoved = 0;
     this.distanceToTarget = selectedWeapon.range;
     this.direction = playerBehavior.direction;
@@ -41,7 +44,13 @@ export default class Explosive {
       GRENADE_WIDTH,
       GRENADE_HEIGHT
     );
-    this.tile = new Tile('images/tiles/weapons/grenade.png', GRENADE_WIDTH, GRENADE_HEIGHT, 0, 0);
+    this.tile = new Tile(
+      "images/tiles/weapons/grenade.png",
+      GRENADE_WIDTH,
+      GRENADE_HEIGHT,
+      0,
+      0
+    );
   }
 
   /*
@@ -49,13 +58,26 @@ export default class Explosive {
     Returns true if the explosive reached it's destination
    */
   move = (elapsedTimeInMs: number): boolean => {
-    if(this.distanceMoved < this.distanceToTarget) {
+    if (this.distanceMoved < this.distanceToTarget) {
       const maxDistance = this.distanceToTarget - this.distanceMoved;
-      this.distanceMoved += getMovementDistance(elapsedTimeInMs, this.speed, maxDistance);
-      this.position.x += getMovementX(elapsedTimeInMs, this.direction, this.speed, maxDistance);
-      this.position.y += getMovementY(elapsedTimeInMs, this.direction, this.speed, maxDistance);
+      this.distanceMoved += getMovementDistance(
+        elapsedTimeInMs,
+        this.speed,
+        maxDistance
+      );
+      this.position.x += getMovementX(
+        elapsedTimeInMs,
+        this.direction,
+        this.speed,
+        maxDistance
+      );
+      this.position.y += getMovementY(
+        elapsedTimeInMs,
+        this.direction,
+        this.speed,
+        maxDistance
+      );
     }
     return this.distanceMoved >= this.distanceToTarget;
-  }
-
+  };
 }

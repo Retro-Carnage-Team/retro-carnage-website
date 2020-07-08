@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { MAP_SCREEN_NAME } from '../map/MapScreen';
-import UserInput from './UserInput';
-import Result from './Result';
-import PlayerController from '../../game/PlayerController';
+import { MAP_SCREEN_NAME } from "../map/MapScreen";
+import UserInput from "./UserInput";
+import Result from "./Result";
+import PlayerController from "../../game/PlayerController";
 
 function ConfigurationScreen(props) {
   const [numberOfPlayers, setNumberOfPlayers] = useState(null);
@@ -20,14 +20,14 @@ function ConfigurationScreen(props) {
 
   return (
     <>
-      { 
-        null === numberOfPlayers ? 
-          <UserInput onPlayersSelected={ numberOfPlayerSelected } /> :
-          <Result numberOfPlayers={ numberOfPlayers } />
-      }
+      {null === numberOfPlayers ? (
+        <UserInput onPlayersSelected={numberOfPlayerSelected} />
+      ) : (
+        <Result numberOfPlayers={numberOfPlayers} />
+      )}
     </>
   );
 }
 
-export const CONFIGURATION_SCREEN_NAME = 'configuration';
+export const CONFIGURATION_SCREEN_NAME = "configuration";
 export default ConfigurationScreen;
