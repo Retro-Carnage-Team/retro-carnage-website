@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./DetailAmmunition.module.css";
+import { Ammunition } from "../../game/Ammunition";
 
-export default function DetailAmmunition(props) {
+export interface DetailAmmunitionProps {
+  ammunition: Ammunition;
+}
+
+export default function DetailAmmunition(props: DetailAmmunitionProps) {
   return (
     <div className={styles.detailsAmmunitionInner}>
       <h2>{props.ammunition.name}</h2>

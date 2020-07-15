@@ -2,8 +2,16 @@ import React from "react";
 import styles from "./ItemGrenade.module.css";
 import InventoryController from "../../game/InventoryController";
 import InventoryStatusbar from "./InventoryStatusbar";
+import { Grenade } from "../../game/Grenades";
 
-export default function ItemGrenade(props) {
+export interface ItemGrenadeProps {
+  grenade: Grenade;
+  onMouseEnter: (ammo: Grenade) => void;
+  onMouseLeave: () => void;
+  player: number;
+}
+
+export default function ItemGrenade(props: ItemGrenadeProps) {
   function handleClick() {
     InventoryController.buyGrenade(props.player, props.grenade.name);
   }

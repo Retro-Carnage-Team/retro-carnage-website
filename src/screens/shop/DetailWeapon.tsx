@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./DetailWeapon.module.css";
+import { Weapon } from "../../game/Weapons";
 
-export default function DetailWeapon(props) {
+export interface DetailWeaponProps {
+  weapon: Weapon;
+}
+
+export default function DetailWeapon(props: DetailWeaponProps) {
   return (
     <div className={styles.detailsWeaponInner}>
       <h2>{props.weapon.name}</h2>

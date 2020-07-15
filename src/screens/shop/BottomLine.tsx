@@ -1,7 +1,19 @@
 import React from "react";
 import styles from "./BottomLine.module.css";
+import { Player } from "../../game/Player";
+import { Ammunition } from "../../game/Ammunition";
+import { Grenade } from "../../game/Grenades";
+import { Weapon } from "../../game/Weapons";
 
-export default class BottomLine extends React.Component {
+export interface BottomLineProps {
+  onExit: () => void;
+  player: Player;
+  selectedAmmunition: Ammunition | null;
+  selectedGrenade: Grenade | null;
+  selectedWeapon: Weapon | null;
+}
+
+export default class BottomLine extends React.Component<BottomLineProps> {
   render() {
     return (
       <div className={styles.bottomLine}>

@@ -8,7 +8,9 @@ import SoundBoard from "../../game/SoundBoard";
 
 import styles from "./GameScreen.module.css";
 
-export interface GameScreenProps {}
+export interface GameScreenProps {
+  onScreenChangeRequired: (screenName: string) => void;
+}
 
 export interface GameScreenState {
   playerInfoWidth: number;

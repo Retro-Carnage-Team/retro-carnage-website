@@ -1,10 +1,10 @@
 import React from "react";
 
-import Ammunition from "../../game/Ammunition";
-import Grenades from "../../game/Grenades";
-import Weapons from "../../game/Weapons";
+import { Ammunition, Ammunitions } from "../../game/Ammunition";
+import { Grenade, Grenades } from "../../game/Grenades";
+import { Weapon, Weapons } from "../../game/Weapons";
 import ChangeListener from "../../game/ChangeListener";
-import Players from "../../game/Player";
+import { Players } from "../../game/Player";
 import BottomLine from "./BottomLine";
 import ItemAmmunition from "./ItemAmmunition";
 import ItemGrenade from "./ItemGrenade";
@@ -15,8 +15,21 @@ import DetailWeapon from "./DetailWeapon";
 
 import styles from "./ShopScreen.module.css";
 
-class ShopScreen extends React.Component {
-  constructor(props) {
+export interface ShopScreenProps {
+  onScreenChangeRequired: () => void;
+  player: number;
+}
+
+export interface ShopScreenState {
+  selectedAmmunition: Ammunition | null;
+  selectedGrenade: Grenade | null;
+  selectedWeapon: Weapon | null;
+}
+
+class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
+  changeListener: ChangeListener<any>;
+
+  constructor(props: ShopScreenProps) {
     super(props);
     this.changeListener = new ChangeListener(this.handleInventoryUpdate);
     this.state = {
@@ -37,10 +50,10 @@ class ShopScreen extends React.Component {
   render() {
     const items = Weapons.map((w) => this.buildWeaponItem(w)).concat(
       Grenades.map((g) => this.buildGrenadeItem(g)),
-      Ammunition.map((a) => this.buildAmmunitionItem(a))
+      Ammunitions.map((a) => this.buildAmmunitionItem(a))
     );
 
-    let detail = void 0;
+    let detail: JSX.Element | undefined;
     if (!!this.state.selectedAmmunition) {
       detail = <DetailAmmunition ammunition={this.state.selectedAmmunition} />;
     } else if (!!this.state.selectedGrenade) {
@@ -68,7 +81,7 @@ class ShopScreen extends React.Component {
     this.forceUpdate();
   };
 
-  buildAmmunitionItem = (ammo) => {
+  buildAmmunitionItem = (ammo: Ammunition) => {
     return (
       <ItemAmmunition
         ammunition={ammo}
@@ -81,7 +94,7 @@ class ShopScreen extends React.Component {
     );
   };
 
-  buildGrenadeItem = (grenade) => {
+  buildGrenadeItem = (grenade: Grenade) => {
     return (
       <ItemGrenade
         key={grenade.name}
@@ -93,7 +106,7 @@ class ShopScreen extends React.Component {
     );
   };
 
-  buildWeaponItem = (weapon) => {
+  buildWeaponItem = (weapon: Weapon) => {
     return (
       <ItemWeapon
         key={weapon.name}
@@ -106,7 +119,7 @@ class ShopScreen extends React.Component {
     );
   };
 
-  handleItemAmmunitionMouseEnter = (ammunition) => {
+  handleItemAmmunitionMouseEnter = (ammunition: Ammunition) => {
     this.setState({
       selectedAmmunition: ammunition,
       selectedGrenade: null,
@@ -114,7 +127,7 @@ class ShopScreen extends React.Component {
     });
   };
 
-  handleItemGrenadeMouseEnter = (grenade) => {
+  handleItemGrenadeMouseEnter = (grenade: Grenade) => {
     this.setState({
       selectedAmmunition: null,
       selectedGrenade: grenade,
@@ -122,7 +135,7 @@ class ShopScreen extends React.Component {
     });
   };
 
-  handleItemWeaponMouseEnter = (weapon) => {
+  handleItemWeaponMouseEnter = (weapon: Weapon) => {
     this.setState({
       selectedAmmunition: null,
       selectedGrenade: null,

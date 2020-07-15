@@ -18,13 +18,17 @@ import ShoppingFlow, {
 import StartScreen, { START_SCREEN_NAME } from "./screens/start/StartScreen";
 import TitleScreen, { TITLE_SCREEN_NAME } from "./screens/title/TitleScreen";
 
-class App extends React.Component {
-  constructor(props) {
+interface AppState {
+  screen: string;
+}
+
+class App extends React.Component<Readonly<{}>, AppState> {
+  constructor(props: Readonly<{}>) {
     super(props);
     this.state = { screen: LOADING_SCREEN_NAME };
   }
 
-  handleScreenChangeRequired = (screenName) => {
+  handleScreenChangeRequired = (screenName: string) => {
     this.setState({ screen: screenName });
   };
 

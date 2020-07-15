@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./DetailGrenade.module.css";
+import { Grenade } from "../../game/Grenades";
 
-export default function DetailGrenade(props) {
+export interface DetailGrenadeProps {
+  grenade: Grenade;
+}
+
+export default function DetailGrenade(props: DetailGrenadeProps) {
   return (
     <div className={styles.detailsGrenadeInner}>
       <h2>{props.grenade.name}</h2>

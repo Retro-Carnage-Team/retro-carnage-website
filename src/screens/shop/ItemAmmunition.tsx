@@ -2,8 +2,20 @@ import React from "react";
 import styles from "./ItemAmmunition.module.css";
 import InventoryController from "../../game/InventoryController";
 import InventoryStatusbar from "./InventoryStatusbar";
+import { Ammunition } from "../../game/Ammunition";
+import { Weapon } from "../../game/Weapons";
 
-export default class ItemAmmunition extends React.Component {
+export interface ItemAmmunitionProps {
+  ammunition: Ammunition;
+  onMouseEnter: (ammo: Ammunition) => void;
+  onMouseLeave: () => void;
+  player: number;
+  selectedWeapon: Weapon | null;
+}
+
+export default class ItemAmmunition extends React.Component<
+  ItemAmmunitionProps
+> {
   render() {
     const ammoName = this.props.ammunition.name;
     let imgClasses = styles.itemAmmunitionImage;
