@@ -1,4 +1,4 @@
-![Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiTTZlN3NMalI1M3FkTTVnQldDeVl0ZHYyY1V5RS9XVVJ6MWxjdmV3V1pqR3hWc3BYVnVuZkxCTGs1TGNXQ25lbkl1eW82ODE3OWxFMU53TlloRzdIM0lzPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBOWkFndTBRZ2hOd2o4NXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e0baf14057ec42eb8be297c3eaaabe3c)](https://www.codacy.com/manual/huddeldaddel/retro-carnage?utm_source=github.com&utm_medium=referral&utm_content=huddeldaddel/retro-carnage&utm_campaign=Badge_Grade)
+![Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiTTZlN3NMalI1M3FkTTVnQldDeVl0ZHYyY1V5RS9XVVJ6MWxjdmV3V1pqR3hWc3BYVnVuZkxCTGs1TGNXQ25lbkl1eW82ODE3OWxFMU53TlloRzdIM0lzPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBOWkFndTBRZ2hOd2o4NXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 # RETRO CARNAGE
 
