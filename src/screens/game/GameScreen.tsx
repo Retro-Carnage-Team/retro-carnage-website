@@ -37,7 +37,7 @@ class GameScreen extends React.Component<GameScreenProps, GameScreenState> {
       SoundBoard.play(mission.music);
       this.engine = new Engine(mission);
       this.renderer = new Renderer(
-        document.getElementById("game"),
+        document.getElementById("game") as HTMLCanvasElement,
         this.engine
       );
       this.running = true;
