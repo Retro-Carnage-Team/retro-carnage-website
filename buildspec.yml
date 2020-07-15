@@ -5,14 +5,12 @@ phases:
     runtime-versions:
       nodejs: 12
   pre_build:
-    commands:
-      npm install
+    commands: npm install
   build:
-    commands:
-      npm run build
+    commands: npm run build
       npm run test -- --watchAll=false
 
 artifacts:
   files:
-    - '**/*'
+    - "**/*"
   base-directory: build
