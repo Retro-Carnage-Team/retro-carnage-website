@@ -1,16 +1,23 @@
 import React from "react";
-import Players, {
-  PROP_AMMUNITION,
-  PROP_GRENADES,
-  PROP_LIVES,
-  PROP_SCORE,
-  PROP_SELECTED_WEAPON,
-} from "../../game/Player";
+import { Player, PlayerProperties, Players } from "../../game/Player";
 import ChangeListener from "../../game/ChangeListener";
 
 import styles from "./PlayerInfo.module.css";
+import { Weapon } from "../../game/Weapons";
+import { Grenade } from "../../game/Grenades";
 
-function playerToState(player) {
+export interface PlayerInfoProps {
+  player: number;
+}
+
+export interface PlayerInfoState {
+  ammunition: number;
+  lives: number;
+  score: number;
+  selectedWeapon: Weapon | Grenade | undefined;
+}
+
+function playerToState(player: Player) {
   const { lives, score } = player;
   return {
     ammunition: player.getAmmunitionCountForSelectedWeapon(),
@@ -20,17 +27,23 @@ function playerToState(player) {
   };
 }
 
-export default class PlayerInfo extends React.Component {
-  constructor(props) {
+export default class PlayerInfo extends React.Component<
+  PlayerInfoProps,
+  PlayerInfoState
+> {
+  player: Player;
+  playerChangeListener: ChangeListener<any>;
+
+  constructor(props: PlayerInfoProps) {
     super(props);
     this.player = Players[props.player];
     this.playerChangeListener = new ChangeListener(
       this.playerDataChanged,
-      PROP_AMMUNITION,
-      PROP_GRENADES,
-      PROP_LIVES,
-      PROP_SCORE,
-      PROP_SELECTED_WEAPON
+      PlayerProperties.Ammunition,
+      PlayerProperties.Grenades,
+      PlayerProperties.Lives,
+      PlayerProperties.Score,
+      PlayerProperties.SelectedWeapon
     );
     this.state = playerToState(this.player);
   }
@@ -52,7 +65,7 @@ export default class PlayerInfo extends React.Component {
       />
     ) : null;
 
-    const liveImages = 0 < this.state.lives ? [] : "M.I.A.";
+    const liveImages = [];
     for (let i = 0; i < this.state.lives; i++) {
       const path = `images/backgrounds/life-player-${
         this.props.player + 1
@@ -79,7 +92,9 @@ export default class PlayerInfo extends React.Component {
           <h2>{this.state.ammunition}</h2>
         </div>
 
-        <div className={styles.livesContainer}>{liveImages}</div>
+        <div className={styles.livesContainer}>
+          {0 < this.state.lives ? liveImages : "M.I.A."}
+        </div>
       </div>
     );
   }

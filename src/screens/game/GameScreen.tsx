@@ -8,27 +8,48 @@ import SoundBoard from "../../game/SoundBoard";
 
 import styles from "./GameScreen.module.css";
 
-class GameScreen extends React.Component {
-  constructor(props) {
+export interface GameScreenProps {}
+
+export interface GameScreenState {
+  playerInfoWidth: number;
+}
+
+class GameScreen extends React.Component<GameScreenProps, GameScreenState> {
+  engine: Engine | undefined;
+  lastFrame: number;
+  renderer: Renderer | undefined;
+  running: boolean;
+
+  constructor(props: GameScreenProps) {
     super(props);
     this.state = { playerInfoWidth: 1 };
     this.lastFrame = 0;
+    this.running = false;
   }
 
   componentDidMount() {
     this.updateDimensions();
-    SoundBoard.play(MissionController.currentMission.music);
 
-    this.engine = new Engine(MissionController.currentMission);
-    this.renderer = new Renderer(document.getElementById("game"), this.engine);
+    const mission = MissionController.currentMission;
+    if (mission) {
+      SoundBoard.play(mission.music);
+      this.engine = new Engine(mission);
+      this.renderer = new Renderer(
+        document.getElementById("game"),
+        this.engine
+      );
+      this.running = true;
+    }
 
-    this.running = true;
     window.addEventListener("resize", this.updateDimensions);
     window.requestAnimationFrame(this.renderGame);
   }
 
   componentWillUnmount() {
-    SoundBoard.stop(MissionController.currentMission.music);
+    const mission = MissionController.currentMission;
+    if (mission) {
+      SoundBoard.stop(mission.music);
+    }
 
     this.running = false;
     window.removeEventListener("resize", this.updateDimensions);
@@ -70,13 +91,17 @@ class GameScreen extends React.Component {
     });
   };
 
-  renderGame = (timestamp) => {
+  renderGame = (timestamp: number) => {
     if (!this.lastFrame) {
-      this.engine.initializeGameState();
+      if (this.engine) {
+        this.engine.initializeGameState();
+      }
     } else {
       const elapsedTimeInMs = timestamp - this.lastFrame;
-      this.engine.updateGameState(elapsedTimeInMs);
-      this.renderer.render(elapsedTimeInMs);
+      if (this.engine && this.renderer) {
+        this.engine.updateGameState(elapsedTimeInMs);
+        this.renderer.render(elapsedTimeInMs);
+      }
     }
 
     this.lastFrame = timestamp;

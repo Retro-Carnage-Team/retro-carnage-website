@@ -5,7 +5,11 @@ import MissionController from "../../game/MissionController";
 
 import styles from "./StartScreen.module.css";
 
-function StartScreen(props) {
+export interface StartScreenProps {
+  onScreenChangeRequired: (screenName: string) => void;
+}
+
+function StartScreen(props: StartScreenProps) {
   useEffect(() => {
     MissionController.reset();
   });

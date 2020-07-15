@@ -8,19 +8,40 @@ import InputController, {
   PROP_DIRECTION,
 } from "../../game/InputController";
 import MissionBriefing from "./MissionBriefing";
-import MissionController from "../../game/MissionController";
+import MissionController, {
+  NavigatableMission,
+} from "../../game/MissionController";
 import { SHOPPING_FLOW_NAME } from "../shopping-flow/ShoppingFlow";
 
 import styles from "./MapScreen.module.css";
+import { Location, Mission } from "../../game/Missions";
 
 const WORLD_MAP_WIDTH = 1280;
 const WORLD_MAP_HEIGHT = 783;
 
-class MapScreen extends React.Component {
-  constructor(props) {
+export interface MapScreenProps {
+  onScreenChangeRequired: (screenName: string) => void;
+}
+
+export interface MapScreenState {
+  imageSize: number;
+  scalingFactor: number;
+  selectedMission: string | null;
+}
+
+interface MissionExtract {
+  location: Location;
+  name: string;
+}
+
+class MapScreen extends React.Component<MapScreenProps, MapScreenState> {
+  inputControllerListener: ChangeListener<any>;
+  missions: MissionExtract[];
+
+  constructor(props: MapScreenProps) {
     super(props);
     this.state = {
-      imageSize: "100",
+      imageSize: 100,
       scalingFactor: 1.0,
       selectedMission: null,
     };
@@ -94,7 +115,7 @@ class MapScreen extends React.Component {
     return (
       <div className={styles.screen}>
         <div className={styles.briefingContainer}>
-          <MissionBriefing mission={this.state.selectedMission} />
+          <MissionBriefing mission={this.state.selectedMission || ""} />
         </div>
         <div className={styles.worldMapContainer}>
           <img
@@ -109,7 +130,7 @@ class MapScreen extends React.Component {
     );
   }
 
-  handleMissionMouseEnter = (missionName) => {
+  handleMissionMouseEnter = (missionName: string) => {
     this.setState({ selectedMission: missionName });
   };
 
@@ -117,7 +138,7 @@ class MapScreen extends React.Component {
     this.setState({ selectedMission: null });
   };
 
-  handleMissionSelected = (missionName) => {
+  handleMissionSelected = (missionName: string) => {
     MissionController.selectMission(missionName);
     this.props.onScreenChangeRequired(SHOPPING_FLOW_NAME);
   };
@@ -140,26 +161,41 @@ class MapScreen extends React.Component {
     }
   };
 
-  handleInputControllerInput = (value, property) => {
+  handleInputControllerInput = (value: string, property: string) => {
     if (PROP_BUTTON === property && this.state.selectedMission) {
       this.handleMissionSelected(this.state.selectedMission);
     }
 
     if (PROP_DIRECTION === property) {
-      const missionResolver = {};
-      missionResolver[Directions.Up] = MissionController.getNextMissionNorth;
-      missionResolver[Directions.Down] = MissionController.getNextMissionSouth;
-      missionResolver[Directions.Left] = MissionController.getNextMissionWest;
-      missionResolver[Directions.Right] = MissionController.getNextMissionEast;
-      if (missionResolver[value]) {
+      const missionResolver = new Map<
+        string,
+        (mission: NavigatableMission) => Mission | undefined
+      >();
+      missionResolver.set(Directions.Up, MissionController.getNextMissionNorth);
+      missionResolver.set(
+        Directions.Down,
+        MissionController.getNextMissionSouth
+      );
+      missionResolver.set(
+        Directions.Left,
+        MissionController.getNextMissionWest
+      );
+      missionResolver.set(
+        Directions.Right,
+        MissionController.getNextMissionEast
+      );
+      if (missionResolver.get(value)) {
         const selectionName =
           this.state.selectedMission || this.missions[0].name;
         const currentMission = this.missions.find(
           (m) => m.name === selectionName
         );
-        const nextMission = missionResolver[value](currentMission);
-        if (nextMission) {
-          this.setState({ selectedMission: nextMission.name });
+        const resolver = missionResolver.get(value);
+        if (resolver && currentMission) {
+          const nextMission = resolver(currentMission);
+          if (nextMission) {
+            this.setState({ selectedMission: nextMission.name });
+          }
         }
       }
     }

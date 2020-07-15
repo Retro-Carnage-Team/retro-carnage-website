@@ -4,7 +4,11 @@ import InputController from "../../game/InputController";
 
 import styles from "./Result.module.css";
 
-export default function Result(props) {
+export interface ResultProps {
+  numberOfPlayers: number;
+}
+
+export default function Result(props: ResultProps) {
   const [height, setHeight] = useState(100);
 
   useEffect(() => {

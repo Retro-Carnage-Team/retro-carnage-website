@@ -13,8 +13,22 @@ const ANIMATION_LENGTH = 2500;
 const MUZZLE_LEFT = 814;
 const MUZZLE_TOP = 457;
 
-class TitleScreen extends React.Component {
-  constructor(props) {
+export interface TitleScreenProps {
+  onScreenChangeRequired: (screenName: string) => void;
+}
+
+export interface TitleScreenState {
+  imageSize: number;
+  muzzleFlash: boolean;
+  scalingFactor: number;
+}
+
+class TitleScreen extends React.Component<TitleScreenProps, TitleScreenState> {
+  animationTimeoutIds: number[];
+  inputControllerListener: ChangeListener<any>;
+  musicStarted: boolean;
+
+  constructor(props: TitleScreenProps) {
     super(props);
 
     this.animationTimeoutIds = [];
@@ -24,14 +38,14 @@ class TitleScreen extends React.Component {
     );
 
     this.state = {
-      imageSize: "100",
+      imageSize: 100,
       muzzleFlash: false,
       scalingFactor: 1.0,
     };
   }
 
-  replaceBackground = (src) => {
-    let bg = document.getElementById("title-bg");
+  replaceBackground = (src: string) => {
+    let bg = document.getElementById("title-bg") as HTMLImageElement;
     if (bg) {
       bg.src = src;
     }
@@ -46,19 +60,19 @@ class TitleScreen extends React.Component {
       setTimeout(this.replaceBackground, 500, "images/backgrounds/title-2.jpg")
     );
     this.animationTimeoutIds.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         SoundBoard.play(FX_TITLE_RIFLE);
         this.setState({ muzzleFlash: true });
       }, 1500)
     );
     this.animationTimeoutIds.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         this.setState({ muzzleFlash: false });
         this.replaceBackground("images/backgrounds/title-1.jpg");
       }, 1500 + ANIMATION_LENGTH)
     );
     this.animationTimeoutIds.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         SoundBoard.play(MUSIC_THEME);
         this.musicStarted = true;
         this.replaceBackground("images/backgrounds/title-3.jpg");
@@ -123,7 +137,7 @@ class TitleScreen extends React.Component {
     this.props.onScreenChangeRequired(CONFIGURATION_SCREEN_NAME);
   };
 
-  handleInputControllerInput = (value, property) => {
+  handleInputControllerInput = (value: any, property: string) => {
     if (PROP_BUTTON === property) {
       this.moveToNextScreen();
     }

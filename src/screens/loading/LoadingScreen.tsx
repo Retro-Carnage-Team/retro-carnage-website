@@ -6,7 +6,11 @@ import SoundBoard, { FX_LOADING } from "../../game/SoundBoard";
 
 import styles from "./LoadingScreen.module.css";
 
-function LoadingScreen(props) {
+export interface LoadingScreenProps {
+  onScreenChangeRequired: (screenName: string) => void;
+}
+
+function LoadingScreen(props: LoadingScreenProps) {
   const [height, setHeight] = useState(100);
 
   useEffect(() => {

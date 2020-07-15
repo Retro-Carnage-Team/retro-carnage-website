@@ -4,7 +4,11 @@ import { GAME_SCREEN_NAME } from "../game/GameScreen";
 
 import styles from "./LetsBeginScreen.module.css";
 
-function LetsBeginMessageScreen(props) {
+export interface LetsBeginMessageScreenProps {
+  onScreenChangeRequired: (screenName: string) => void;
+}
+
+function LetsBeginMessageScreen(props: LetsBeginMessageScreenProps) {
   const [height, setHeight] = useState(100);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 
 import ChangeListener from "../../game/ChangeListener";
-import { DIRECTION_DOWN, DIRECTION_UP } from "../../game/engine/Directions";
+import { Directions } from "../../game/engine/Directions";
 import GamepadIcon from "../../components/GamepadIcon";
 import InputController, {
   PROP_BUTTON,
@@ -12,11 +12,29 @@ import KeyboardIcon from "../../components/KeyboardIcon";
 
 import styles from "./UserInput.module.css";
 
-export default class UserInput extends React.Component {
-  constructor(props) {
+export interface UserInputProps {
+  onPlayersSelected: (numberOfPlayers: number) => void;
+}
+
+export interface UserInputState {
+  height: number;
+  inputPlayer1: string | undefined;
+  inputPlayer2: string | undefined;
+  selectedGameMode: number;
+}
+
+export default class UserInput extends React.Component<
+  UserInputProps,
+  UserInputState
+> {
+  inputControllerListener: ChangeListener<any>;
+
+  constructor(props: UserInputProps) {
     super(props);
     this.state = {
       height: 100,
+      inputPlayer1: undefined,
+      inputPlayer2: undefined,
       selectedGameMode: 1,
     };
     this.inputControllerListener = new ChangeListener(
@@ -98,7 +116,7 @@ export default class UserInput extends React.Component {
     );
   }
 
-  handleInputControllerInput = (value, property) => {
+  handleInputControllerInput = (value: any, property: string) => {
     const [inputPlayer1, inputPlayer2] = InputController.getControllerStatus();
     this.setState({ inputPlayer1, inputPlayer2 });
 
@@ -106,16 +124,16 @@ export default class UserInput extends React.Component {
       this.setGameMode(this.state.selectedGameMode);
     }
     if (PROP_DIRECTION === property) {
-      if (DIRECTION_DOWN === value && 1 === this.state.selectedGameMode) {
+      if (Directions.Down === value && 1 === this.state.selectedGameMode) {
         this.setState({ selectedGameMode: 2 });
       }
-      if (DIRECTION_UP === value && 2 === this.state.selectedGameMode) {
+      if (Directions.Up === value && 2 === this.state.selectedGameMode) {
         this.setState({ selectedGameMode: 1 });
       }
     }
   };
 
-  getIconForInputType = (type) => {
+  getIconForInputType = (type: string | undefined) => {
     switch (type) {
       case "G":
         return <GamepadIcon />;
@@ -126,7 +144,7 @@ export default class UserInput extends React.Component {
     }
   };
 
-  getNameForInputType = (type) => {
+  getNameForInputType = (type: string | undefined) => {
     switch (type) {
       case "G":
         return "Gamepad";
@@ -137,7 +155,7 @@ export default class UserInput extends React.Component {
     }
   };
 
-  setGameMode = (numberOfPlayers) => {
+  setGameMode = (numberOfPlayers: number) => {
     InputController.assignControllersToPlayers();
     this.props.onPlayersSelected(numberOfPlayers);
   };

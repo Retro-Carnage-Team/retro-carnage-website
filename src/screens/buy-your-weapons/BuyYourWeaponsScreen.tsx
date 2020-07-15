@@ -1,13 +1,29 @@
 import React from "react";
 
-import Ammunition from "../../game/Ammunition";
-import Grenades from "../../game/Grenades";
-import Weapons from "../../game/Weapons";
+import { Ammunitions } from "../../game/Ammunition";
+import { Grenades } from "../../game/Grenades";
+import { Weapons } from "../../game/Weapons";
 
 import styles from "./BuyYourWeaponsScreen.module.css";
 
-class BuyYourWeaponsScreen extends React.Component {
-  constructor(props) {
+export interface BuyYourWeaponsScreenProps {
+  onScreenChangeRequired: () => void;
+  player: number;
+}
+
+export interface BuyYourWeaponsScreenState {
+  fullText: string;
+  height: number;
+  text: string;
+}
+
+class BuyYourWeaponsScreen extends React.Component<
+  BuyYourWeaponsScreenProps,
+  BuyYourWeaponsScreenState
+> {
+  animationIntervalId: number | null;
+
+  constructor(props: BuyYourWeaponsScreenProps) {
     super(props);
     this.state = {
       fullText: `Buy your weapons player ${props.player + 1}`,
@@ -19,9 +35,11 @@ class BuyYourWeaponsScreen extends React.Component {
 
   componentDidMount() {
     this.setState({ height: window.innerHeight / 2 - 40 });
-    this.animationIntervalId = setInterval(() => {
+    this.animationIntervalId = window.setInterval(() => {
       if (this.state.text.length === this.state.fullText.length) {
-        clearInterval(this.animationIntervalId);
+        if (null !== this.animationIntervalId) {
+          clearInterval(this.animationIntervalId);
+        }
         setTimeout(() => {
           this.props.onScreenChangeRequired();
         }, 500);
@@ -47,12 +65,11 @@ class BuyYourWeaponsScreen extends React.Component {
     Weapons.map((w) => w.image)
       .concat(
         Grenades.map((g) => g.image),
-        Ammunition.map((a) => a.image)
+        Ammunitions.map((a) => a.image)
       )
       .forEach((i) => {
         const image = new Image(300, 110);
         image.src = i;
-        image.loading = "eager";
       });
   };
 }

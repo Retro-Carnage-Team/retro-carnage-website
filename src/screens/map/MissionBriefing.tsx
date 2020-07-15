@@ -4,7 +4,11 @@ import Missions from "../../game/Missions";
 
 import styles from "./MissionBriefing.module.css";
 
-function MissionBriefing(props) {
+export interface MissionBriefingProps {
+  mission: string;
+}
+
+function MissionBriefing(props: MissionBriefingProps) {
   if (!props.mission) {
     return (
       <div className={styles.missionBriefingEmpty}>
@@ -16,8 +20,8 @@ function MissionBriefing(props) {
     const mission = Missions.find((m) => m.name === props.mission);
     return (
       <div className={styles.missionBriefingSelected}>
-        <img src={mission.client} alt="client" />
-        <p>{mission.briefing}</p>
+        <img src={mission?.client} alt="client" />
+        <p>{mission?.briefing}</p>
       </div>
     );
   }
