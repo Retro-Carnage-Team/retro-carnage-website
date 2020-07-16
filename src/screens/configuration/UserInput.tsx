@@ -64,6 +64,7 @@ export default class UserInput extends React.Component<
         <div className={styles.centered}>
           <div className={styles.playerInfoContainer}>
             <div>
+              <h1 className={styles.headline}>Player 1</h1>
               <img
                 className={styles.portrait}
                 src="/images/backgrounds/portrait-player-1.jpg"
@@ -77,6 +78,7 @@ export default class UserInput extends React.Component<
               </div>
             </div>
             <div>
+              <h1 className={styles.headline}>Player 2</h1>
               <img
                 className={styles.portrait}
                 src="/images/backgrounds/portrait-player-2.jpg"
