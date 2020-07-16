@@ -20,6 +20,11 @@
   width: 100%;
 }
 
+.headline {
+  color: #ee0;
+  text-transform: uppercase;
+}
+
 .portrait {
   max-height: 200px;
 }
