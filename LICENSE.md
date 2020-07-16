@@ -74,6 +74,7 @@ This game is based on the work of many great artists who share their work with u
 - Brown Camouflage Pattern 11 by [http://background-tiles.com](http://background-tiles.com) ([Link](https://background-tiles.com/overview/yellow/1011.php), [License](https://background-tiles.com/terms.pdf))
 - Camouflage Pattern 21 by [http://background-tiles.com](http://background-tiles.com) ([Link](https://background-tiles.com/overview/mixed-colors/1021.php), [License](https://background-tiles.com/terms.pdf))
 - Crosshair-9-svg by [iconmonstr.com](https://iconmonstr.com) ([Link](https://iconmonstr.com/crosshair-9-svg/), [License](https://iconmonstr.com/license/))
+- Location marker by Loading.IO ([Link](https://loading.io/spinner/dual-ring/-disqus-ring-donut-rotate), [License](https://loading.io/license/#free-license))
 
 ### Music
 

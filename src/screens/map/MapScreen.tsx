@@ -73,7 +73,7 @@ class MapScreen extends React.Component<MapScreenProps, MapScreenState> {
   render() {
     const widthOfGamepadPositionMarker = 48;
     const widthOfPositionMarker = 18;
-    const spots = this.missions.map((m) => (
+    const mouseActionElements = this.missions.map((m) => (
       <div
         className={styles.locationContainer}
         key={m.name}
@@ -89,9 +89,24 @@ class MapScreen extends React.Component<MapScreenProps, MapScreenState> {
             m.location.latitude * this.state.scalingFactor -
             widthOfPositionMarker / 2,
         }}
-      >
-        <div className={styles.locationMarker} />
-      </div>
+      />
+    ));
+
+    const locationAnimations = this.missions.map((m) => (
+      <img
+        alt={`location marker for ${m.name}`}
+        className={styles.locationMarker}
+        src="images/backgrounds/location-marker.gif"
+        style={{
+          left:
+            (window.innerWidth - this.state.imageSize) / 2 +
+            m.location.longitude * this.state.scalingFactor -
+            widthOfPositionMarker / 2,
+          top:
+            m.location.latitude * this.state.scalingFactor -
+            widthOfPositionMarker / 2,
+        }}
+      />
     ));
 
     const locationMarker = this.missions
@@ -123,7 +138,8 @@ class MapScreen extends React.Component<MapScreenProps, MapScreenState> {
             src="images/backgrounds/world-map.jpg"
             alt=""
           />
-          {spots}
+          {locationAnimations}
+          {mouseActionElements}
           {locationMarker}
         </div>
       </div>
