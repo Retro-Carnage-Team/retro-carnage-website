@@ -75,7 +75,7 @@ const Missions: Mission[] = [
         ],
         direction: Directions.Left,
         enemies: [],
-        goal: { x: 42, y: 42, width: 200, height: 200 },
+        goal: new Rectangle(42, 42, 200, 200),
         obstacles: [],
       },
     ],

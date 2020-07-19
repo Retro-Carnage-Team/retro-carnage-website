@@ -22,12 +22,21 @@ function buildAnimationSeries(
 
 interface TileSet {
   byDirection: Map<Directions, Tile[]>;
+  death: Tile[];
   idle: Map<Directions, Tile>;
 }
 
 function buildTileSetForPlayer1(): TileSet {
   const result: TileSet = {
     byDirection: new Map<Directions, Tile[]>(),
+    death: buildAnimationSeries(
+      26,
+      135,
+      200,
+      "images/tiles/player-1/death/",
+      -30,
+      0
+    ),
     idle: new Map<Directions, Tile>(),
   };
 
@@ -152,7 +161,7 @@ export default class PlayerTileSupplier {
     elapsedTimeInMs: number,
     playerBehavior: PlayerBehavior
   ): Tile | undefined => {
-    if (playerBehavior.moving) {
+    if (playerBehavior.dying || playerBehavior.moving) {
       let newTile = false;
       if (
         DURATION_OF_MOVEMENT_ANIMATION <=
@@ -163,12 +172,20 @@ export default class PlayerTileSupplier {
       } else {
         this.durationSinceLastTile += elapsedTimeInMs;
       }
-      if (this.directionOfLastTile !== playerBehavior.direction) {
-        this.directionOfLastTile = playerBehavior.direction;
-        this.tileGenerator = new GeneratorClass(
-          this.tileSet.byDirection.get(playerBehavior.direction)
-        );
-        newTile = true;
+      if (playerBehavior.dying) {
+        if (null !== this.directionOfLastTile) {
+          this.directionOfLastTile = null;
+          this.tileGenerator = new GeneratorClass(this.tileSet.death);
+          newTile = true;
+        }
+      } else {
+        if (this.directionOfLastTile !== playerBehavior.direction) {
+          this.directionOfLastTile = playerBehavior.direction;
+          this.tileGenerator = new GeneratorClass(
+            this.tileSet.byDirection.get(playerBehavior.direction)
+          );
+          newTile = true;
+        }
       }
       if (newTile) {
         this.lastTile = this.tileGenerator?.nextValue();

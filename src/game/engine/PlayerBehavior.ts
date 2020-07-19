@@ -2,18 +2,31 @@ import { Directions } from "./Directions";
 import { Player } from "../Player";
 import InputState from "../InputState";
 
+/**
+ * This class contains all player state that is valid for the duration of a single mission only.
+ */
 export default class PlayerBehavior {
   player: Player;
   direction: Directions;
-  moving: boolean;
+
+  dying: boolean;
+  dyingAnimationCountDown: number;
+  invincible: boolean;
+  invincibilityCountDown: number;
+
   firing: boolean; // will be true as long as the player keeps the trigger pressed
   triggeredFire: boolean; // will be true only when switching from "not firing" to "firing"
+  moving: boolean;
   nextWeapon: boolean;
   previousWeapon: boolean;
 
   constructor(player: Player) {
     this.player = player;
     this.direction = Directions.Up;
+    this.dying = false;
+    this.dyingAnimationCountDown = 0;
+    this.invincible = false;
+    this.invincibilityCountDown = 0;
     this.moving = false;
     this.firing = false;
     this.triggeredFire = false;

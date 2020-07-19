@@ -20,11 +20,12 @@ const SCROLL_MOVEMENT_PER_MS = 0.3; // Screen.width = 1500 / 5.000 milliseconds 
 
 export default class LevelController {
   private readonly segments: Segment[];
-  backgrounds: BackgroundTile[];
   private currentSegmentIdx: number;
   private distanceToScroll: number;
   private distanceScrolled: number;
   private segmentScrollLengthInPixels: number;
+
+  backgrounds: BackgroundTile[];
 
   constructor(missionSegments: Segment[]) {
     this.segments = missionSegments;
@@ -64,13 +65,16 @@ export default class LevelController {
     // TODO: This currently ignores the position of the second player. We should only scroll if we don't kick the other
     //       player out of the visible area
 
+    // How far is the player behind the scroll barrier?
     const scrollDistanceByPlayerPosition = this.getDistanceBehindScrollBarrier(
       playerPositions
-    ); // How far is the player behind the scroll barrier?
+    );
+
+    // Has he been further behind the barrier before?
     this.distanceToScroll = Math.max(
       scrollDistanceByPlayerPosition,
       this.distanceToScroll
-    ); // Has he been further behind the barrier before?
+    );
 
     const availablePixelsToScroll = Math.min(
       this.segmentScrollLengthInPixels - this.distanceScrolled, // number if pixels to scroll left for this segment

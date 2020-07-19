@@ -5,8 +5,10 @@ import PlayerInfo from "./PlayerInfo";
 import Engine, { SCREEN_SIZE } from "../../game/engine/Engine";
 import MissionController from "../../game/MissionController";
 import SoundBoard from "../../game/SoundBoard";
+import { MAP_SCREEN_NAME } from "../map/MapScreen";
 
 import styles from "./GameScreen.module.css";
+import { TITLE_SCREEN_NAME } from "../title/TitleScreen";
 
 export interface GameScreenProps {
   onScreenChangeRequired: (screenName: string) => void;
@@ -103,12 +105,38 @@ class GameScreen extends React.Component<GameScreenProps, GameScreenState> {
       if (this.engine && this.renderer) {
         this.engine.updateGameState(elapsedTimeInMs);
         this.renderer.render(elapsedTimeInMs);
+        this.running = !(this.engine.lost || this.engine.won);
       }
     }
 
-    this.lastFrame = timestamp;
     if (this.running) {
+      this.lastFrame = timestamp;
       window.requestAnimationFrame(this.renderGame);
+    } else {
+      if (this.engine && this.engine.won) {
+        this.handleMissionWon();
+      } else if (this.engine && this.engine.lost) {
+        this.handleGameLost();
+      }
+    }
+  };
+
+  handleGameLost = () => {
+    // TODO: show high score screen (https://github.com/huddeldaddel/retro-carnage/issues/26)
+    this.props.onScreenChangeRequired(TITLE_SCREEN_NAME);
+  };
+
+  handleMissionWon = () => {
+    this.running = false;
+    // TODO: Show level end animation (https://github.com/huddeldaddel/retro-carnage/issues/25)
+    const mission = MissionController.currentMission;
+    if (mission) {
+      MissionController.markMissionFinished(mission.name);
+      if (0 === MissionController.getRemainingMissions().length) {
+        // TODO: show high score screen (https://github.com/huddeldaddel/retro-carnage/issues/26)
+      } else {
+        this.props.onScreenChangeRequired(MAP_SCREEN_NAME);
+      }
     }
   };
 }

@@ -6,7 +6,11 @@ import Rectangle from "./Rectangle";
 import { updatePlayerMovement } from "./PlayerMovement";
 import Explosive from "./Explosive";
 import Explosion from "./Explosion";
-import SoundBoard, { FX_GRENADE_1 } from "../SoundBoard";
+import SoundBoard, {
+  FX_DEATH_PLAYER_1,
+  FX_DEATH_PLAYER_2,
+  FX_GRENADE_1,
+} from "../SoundBoard";
 import LevelController from "./LevelController";
 import { Mission } from "../Missions";
 import Offset from "./Offset";
@@ -19,17 +23,18 @@ export const PLAYER_HIT_RECT_WIDTH = 90;
 export const SCREEN_SIZE = 1500;
 
 export default class Engine {
-  backgroundController: LevelController;
   explosives: Explosive[];
   explosions: Explosion[];
+  levelController: LevelController;
+  lost: boolean;
   mission: Mission;
   playerBehaviors: PlayerBehavior[];
   playerPositions: Rectangle[];
+  won: boolean;
 
   constructor(mission: Mission) {
     this.mission = mission;
-    this.backgroundController = new LevelController(mission.segments);
-
+    this.levelController = new LevelController(mission.segments);
     this.playerBehaviors = PlayerController.getConfiguredPlayers().map(
       (p) => new PlayerBehavior(p)
     );
@@ -42,44 +47,71 @@ export default class Engine {
           PLAYER_HIT_RECT_HEIGHT
         )
     );
-
     this.explosives = [];
     this.explosions = [];
+    this.lost = false;
+    this.won = false;
   }
 
   initializeGameState = () => {};
 
   getBackgrounds = () => {
-    return this.backgroundController.getVisibleTiles();
+    return this.levelController.getVisibleTiles();
   };
 
   updateGameState = (elapsedTimeInMs: number) => {
-    this.updatePlayerBehaviorByInput(); // read controller state
-    this.updatePlayerPositionWithMovement(elapsedTimeInMs); // move player around
-    this.updateExplosions(elapsedTimeInMs); // animations
-    this.updateExplosives(elapsedTimeInMs); // movement of explosive objects
-    this.handleWeaponAction(elapsedTimeInMs); // fire / throw
+    this.updatePlayerBehavior(elapsedTimeInMs);
+    this.updatePlayerPositionWithMovement(elapsedTimeInMs);
+    this.updateExplosions(elapsedTimeInMs);
+    this.updateExplosives(elapsedTimeInMs);
+    this.handleWeaponAction(elapsedTimeInMs);
 
-    const scrollOffsets = this.backgroundController.updatePosition(
+    this.checkForDeadlyCollisions();
+    this.checkIfPlayerReachedLevelGoal();
+
+    const scrollOffsets = this.levelController.updatePosition(
       elapsedTimeInMs,
       this.playerPositions
-    ); // scroll the background
-    this.updateAllPositionsWithScrollOffset(scrollOffsets); // update positions of players, explosions etc. when scrolled
+    );
+    this.updateAllPositionsWithScrollOffset(scrollOffsets);
   };
 
-  updatePlayerBehaviorByInput = () => {
+  updatePlayerBehavior = (elapsedTimeInMs: number) => {
     PlayerController.getRemainingPlayers().forEach((p) => {
-      const inputState = InputController.inputProviders[p.index]();
-      if (inputState) {
-        this.playerBehaviors[p.index].update(inputState);
+      const behavior = this.playerBehaviors[p.index];
+      if (behavior.dying) {
+        behavior.dyingAnimationCountDown -= Math.floor(elapsedTimeInMs);
+        if (0 >= behavior.dyingAnimationCountDown) {
+          behavior.dying = false;
+          behavior.dyingAnimationCountDown = 0;
+          PlayerController.killPlayer(p.index);
+          if (p.isAlive()) {
+            behavior.invincible = true;
+            behavior.invincibilityCountDown = 1000;
+          }
+        }
+      } else {
+        if (behavior.invincible) {
+          behavior.invincibilityCountDown -= Math.floor(elapsedTimeInMs);
+          if (0 >= behavior.invincibilityCountDown) {
+            behavior.invincible = false;
+            behavior.invincibilityCountDown = 0;
+          }
+        }
+        const inputState = InputController.inputProviders[p.index]();
+        if (inputState && !behavior.dying) {
+          behavior.update(inputState);
+        }
       }
     });
+
+    this.lost = 0 === PlayerController.getRemainingPlayers().length;
   };
 
   updatePlayerPositionWithMovement = (elapsedTimeInMs: number) => {
     PlayerController.getRemainingPlayers().forEach((p) => {
       const behavior = this.playerBehaviors[p.index];
-      if (behavior.moving) {
+      if (!behavior.dying && behavior.moving) {
         const oldPosition = this.playerPositions[p.index];
         this.playerPositions[p.index] = updatePlayerMovement(
           elapsedTimeInMs,
@@ -127,6 +159,7 @@ export default class Engine {
     PlayerController.getRemainingPlayers().forEach((p) => {
       const behavior = this.playerBehaviors[p.index];
       if (
+        !behavior.dying &&
         behavior.triggeredFire &&
         (p.isGrenadeSelected() || p.isRpgSelected())
       ) {
@@ -137,9 +170,40 @@ export default class Engine {
             new Explosive(position, behavior, p.getSelectedWeapon() as Grenade)
           );
         }
-      } else {
+      } else if (!behavior.dying) {
         // TODO: handle fire arms
       }
     });
   };
+
+  // Check if players collide with explosions / bullets / enemies
+  checkForDeadlyCollisions = () => {
+    PlayerController.getRemainingPlayers().forEach((p) => {
+      const behavior = this.playerBehaviors[p.index];
+      if (!behavior.dying && !behavior.invincible) {
+        const playerPosition = this.playerPositions[p.index];
+        let death = false;
+
+        this.explosions.forEach((explosion) => {
+          death =
+            death ||
+            null !== playerPosition.getIntersection(explosion.position);
+        });
+
+        // TODO: check for collisions with enemy soldiers
+        // TODO: check for collisions with flying bullets
+
+        if (death) {
+          SoundBoard.play(
+            0 === p.index ? FX_DEATH_PLAYER_1 : FX_DEATH_PLAYER_2
+          );
+          behavior.dying = true;
+          behavior.dyingAnimationCountDown = 75 * 26; // 75 ms * 26 frames
+        }
+      }
+    });
+  };
+
+  // TODO: Check if players reached the level's goal area
+  checkIfPlayerReachedLevelGoal = () => {};
 }
