@@ -206,5 +206,9 @@ export default class Engine {
   };
 
   // TODO: Check if players reached the level's goal area
-  checkIfPlayerReachedLevelGoal = () => {};
+  checkIfPlayerReachedLevelGoal = () => {
+    if (this.levelController.isGoalReached(this.playerPositions)) {
+      this.won = true;
+    }
+  };
 }
