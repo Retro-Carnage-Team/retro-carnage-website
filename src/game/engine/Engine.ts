@@ -15,6 +15,7 @@ import LevelController from "./LevelController";
 import { Mission } from "../Missions";
 import Offset from "./Offset";
 import { Grenade } from "../Grenades";
+import { DURATION_OF_DEATH_ANIMATION } from "./PlayerTileSupplier";
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -87,7 +88,7 @@ export default class Engine {
           PlayerController.killPlayer(p.index);
           if (p.isAlive()) {
             behavior.invincible = true;
-            behavior.invincibilityCountDown = 1000;
+            behavior.invincibilityCountDown = 1500;
           }
         }
       } else {
@@ -198,7 +199,7 @@ export default class Engine {
             0 === p.index ? FX_DEATH_PLAYER_1 : FX_DEATH_PLAYER_2
           );
           behavior.dying = true;
-          behavior.dyingAnimationCountDown = 75 * 26; // 75 ms * 26 frames
+          behavior.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION;
         }
       }
     });
