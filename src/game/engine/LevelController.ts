@@ -19,10 +19,11 @@ const SCROLL_BARRIER_RIGHT = 500;
 const SCROLL_MOVEMENT_PER_MS = 0.3; // Screen.width = 1500 / 5.000 milliseconds = 0.2 px / ms
 
 export default class LevelController {
-  private readonly segments: Segment[];
   private currentSegmentIdx: number;
   private distanceToScroll: number;
   private distanceScrolled: number;
+  private goal: Rectangle | null;
+  private readonly segments: Segment[];
   private segmentScrollLengthInPixels: number;
 
   backgrounds: BackgroundTile[];
@@ -33,11 +34,13 @@ export default class LevelController {
     this.currentSegmentIdx = 0;
     this.distanceToScroll = 0;
     this.distanceScrolled = 0;
+    this.goal = null;
     this.segmentScrollLengthInPixels = 0;
     this.loadSegment(this.segments[this.currentSegmentIdx]);
   }
 
   loadSegment = (segment: Segment) => {
+    this.goal = segment.goal;
     this.backgrounds = segment.backgrounds.map((bg, idx) => {
       let offsets = BACKGROUND_OFFSETS.get(segment.direction);
       if (!offsets) {
@@ -104,6 +107,9 @@ export default class LevelController {
 
   scrollUp = (pixels: number): Offset => {
     this.backgrounds.forEach((bg) => (bg.offsetY += pixels));
+    if (this.goal) {
+      this.goal.y += pixels;
+    }
     if (0 <= this.backgrounds[this.backgrounds.length - 1].offsetY) {
       this.backgrounds[this.backgrounds.length - 1].offsetY = 0;
       this.progressToNextSegment();
@@ -113,6 +119,9 @@ export default class LevelController {
 
   scrollLeft = (pixels: number): Offset => {
     this.backgrounds.forEach((bg) => (bg.offsetX -= pixels));
+    if (this.goal) {
+      this.goal.x += pixels;
+    }
     if (0 >= this.backgrounds[this.backgrounds.length - 1].offsetX) {
       this.backgrounds[this.backgrounds.length - 1].offsetX = 0;
       this.progressToNextSegment();
@@ -122,6 +131,9 @@ export default class LevelController {
 
   scrollRight = (pixels: number): Offset => {
     this.backgrounds.forEach((bg) => (bg.offsetX += pixels));
+    if (this.goal) {
+      this.goal.x -= pixels;
+    }
     if (0 <= this.backgrounds[this.backgrounds.length - 1].offsetX) {
       this.backgrounds[this.backgrounds.length - 1].offsetX = 0;
       this.progressToNextSegment();
@@ -164,5 +176,17 @@ export default class LevelController {
       return rightMostPosition - SCROLL_BARRIER_RIGHT;
     }
     return 0; // should not happen
+  };
+
+  isGoalReached = (playerPositions: Rectangle[]): boolean => {
+    if (this.goal) {
+      return (
+        undefined !==
+        playerPositions.find(
+          (value) => null !== this.goal?.getIntersection(value)
+        )
+      );
+    }
+    return false;
   };
 }
