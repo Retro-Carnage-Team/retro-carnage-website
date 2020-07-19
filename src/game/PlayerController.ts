@@ -14,6 +14,11 @@ export class PlayerController {
   getRemainingPlayers = () => {
     return this.getConfiguredPlayers().filter((p) => p.isAlive());
   };
+
+  killPlayer = (playerIdx: number) => {
+    const player = Players[playerIdx];
+    player.setLives(player.lives - 1);
+  };
 }
 
 export default new PlayerController();

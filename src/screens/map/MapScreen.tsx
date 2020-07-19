@@ -96,6 +96,7 @@ class MapScreen extends React.Component<MapScreenProps, MapScreenState> {
       <img
         alt={`location marker for ${m.name}`}
         className={styles.locationMarker}
+        key={`location-animation-img-${m.name}`}
         src="images/backgrounds/location-marker.gif"
         style={{
           left:
