@@ -67,9 +67,7 @@ export default class PlayerInfo extends React.Component<
 
     const liveImages = [];
     for (let i = 0; i < this.state.lives; i++) {
-      const path = `images/backgrounds/life-player-${
-        this.props.player + 1
-      }.png`;
+      const path = `images/backgrounds/life-player-${this.props.player}.png`;
       liveImages.push(<img key={`life-${i}`} src={path} alt="" />);
     }
 
@@ -78,9 +76,7 @@ export default class PlayerInfo extends React.Component<
         <img
           alt={`Portrait of player ${this.props.player + 1}`}
           className={styles.playerPortrait}
-          src={`images/backgrounds/portrait-player-${
-            this.props.player + 1
-          }.jpg`}
+          src={`images/backgrounds/portrait-player-${this.props.player}.jpg`}
         />
 
         <div className={styles.scoreContainer}>
