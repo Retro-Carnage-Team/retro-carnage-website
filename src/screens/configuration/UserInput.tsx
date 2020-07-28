@@ -67,7 +67,7 @@ export default class UserInput extends React.Component<
               <h1 className={styles.headline}>Player 1</h1>
               <img
                 className={styles.portrait}
-                src="/images/backgrounds/portrait-player-1.jpg"
+                src="/images/backgrounds/portrait-player-0.jpg"
                 alt="Player 1"
               />
               <div className={styles.input}>
@@ -81,7 +81,7 @@ export default class UserInput extends React.Component<
               <h1 className={styles.headline}>Player 2</h1>
               <img
                 className={styles.portrait}
-                src="/images/backgrounds/portrait-player-2.jpg"
+                src="/images/backgrounds/portrait-player-1.jpg"
                 alt="Player 2"
               />
               <div className={styles.input}>
