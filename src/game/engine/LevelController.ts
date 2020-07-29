@@ -118,11 +118,11 @@ export default class LevelController {
   };
 
   scrollLeft = (pixels: number): Offset => {
-    this.backgrounds.forEach((bg) => (bg.offsetX -= pixels));
+    this.backgrounds.forEach((bg) => (bg.offsetX += pixels));
     if (this.goal) {
       this.goal.x += pixels;
     }
-    if (0 >= this.backgrounds[this.backgrounds.length - 1].offsetX) {
+    if (0 <= this.backgrounds[this.backgrounds.length - 1].offsetX) {
       this.backgrounds[this.backgrounds.length - 1].offsetX = 0;
       this.progressToNextSegment();
     }
@@ -130,11 +130,11 @@ export default class LevelController {
   };
 
   scrollRight = (pixels: number): Offset => {
-    this.backgrounds.forEach((bg) => (bg.offsetX += pixels));
+    this.backgrounds.forEach((bg) => (bg.offsetX -= pixels));
     if (this.goal) {
       this.goal.x -= pixels;
     }
-    if (0 <= this.backgrounds[this.backgrounds.length - 1].offsetX) {
+    if (0 >= this.backgrounds[this.backgrounds.length - 1].offsetX) {
       this.backgrounds[this.backgrounds.length - 1].offsetX = 0;
       this.progressToNextSegment();
     }
