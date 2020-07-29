@@ -32,7 +32,7 @@ const SEGMENTS = [
     backgrounds: ["bg-dummy-2.jpg", "bg-dummy-3.jpg", "bg-dummy-1.jpg"],
     direction: Directions.Right,
     enemies: [],
-    goal: { x: 42, y: 42, width: 200, height: 200 },
+    goal: new Rectangle(42, 42, 200, 200),
     obstacles: [],
   },
 ];
@@ -140,4 +140,64 @@ test("Should calculate how far a player is behind the scroll barrier for directi
 
   result = controller.getDistanceBehindScrollBarrier([posPlayerOne]);
   expect(result).toBe(90);
+});
+
+test("Should scroll up when direction is up and player is at the top", () => {
+  const controller = new LevelController(SEGMENTS);
+  const posPlayerOne = new Rectangle(500, 200, 90, 200);
+
+  let offset = controller.updatePosition(50, [posPlayerOne]);
+  expect(offset).toEqual({ x: 0, y: -15 });
+  expect(controller.backgrounds[0].offsetX).toBe(0);
+  expect(controller.backgrounds[0].offsetY).toBe(15);
+  expect(controller.backgrounds[1].offsetX).toBe(0);
+  expect(controller.backgrounds[1].offsetY).toBe(-1485);
+
+  offset = controller.updatePosition(90, [posPlayerOne]);
+  expect(offset).toEqual({ x: 0, y: -27 });
+  expect(controller.backgrounds[0].offsetX).toBe(0);
+  expect(controller.backgrounds[0].offsetY).toBe(42);
+  expect(controller.backgrounds[1].offsetX).toBe(0);
+  expect(controller.backgrounds[1].offsetY).toBe(-1458);
+});
+
+test("Should scroll left when direction is left and player is at the left", () => {
+  const controller = new LevelController(SEGMENTS);
+  controller.progressToNextSegment();
+  const posPlayerOne = new Rectangle(200, 500, 90, 200);
+
+  let offset = controller.updatePosition(50, [posPlayerOne]);
+  expect(offset).toEqual({ x: -15, y: 0 });
+  expect(controller.backgrounds[0].offsetX).toBe(15);
+  expect(controller.backgrounds[0].offsetY).toBe(0);
+  expect(controller.backgrounds[1].offsetX).toBe(-1485);
+  expect(controller.backgrounds[1].offsetY).toBe(0);
+
+  offset = controller.updatePosition(90, [posPlayerOne]);
+  expect(offset).toEqual({ x: -27, y: 0 });
+  expect(controller.backgrounds[0].offsetX).toBe(42);
+  expect(controller.backgrounds[0].offsetY).toBe(0);
+  expect(controller.backgrounds[1].offsetX).toBe(-1458);
+  expect(controller.backgrounds[1].offsetY).toBe(0);
+});
+
+test("Should scroll right when direction is right and player is at the right", () => {
+  const controller = new LevelController(SEGMENTS);
+  controller.progressToNextSegment();
+  controller.progressToNextSegment();
+  const posPlayerOne = new Rectangle(1300, 500, 90, 200);
+
+  let offset = controller.updatePosition(50, [posPlayerOne]);
+  expect(offset).toEqual({ x: 15, y: 0 });
+  expect(controller.backgrounds[0].offsetX).toBe(-15);
+  expect(controller.backgrounds[0].offsetY).toBe(0);
+  expect(controller.backgrounds[1].offsetX).toBe(1485);
+  expect(controller.backgrounds[1].offsetY).toBe(0);
+
+  offset = controller.updatePosition(90, [posPlayerOne]);
+  expect(offset).toEqual({ x: 27, y: 0 });
+  expect(controller.backgrounds[0].offsetX).toBe(-42);
+  expect(controller.backgrounds[0].offsetY).toBe(0);
+  expect(controller.backgrounds[1].offsetX).toBe(1458);
+  expect(controller.backgrounds[1].offsetY).toBe(0);
 });
