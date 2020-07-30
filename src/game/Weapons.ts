@@ -1,3 +1,5 @@
+import { FX_PISTOL_1, FX_PISTOL_2 } from "./SoundBoard";
+
 export interface Weapon {
   ammo: string;
   description: string;
@@ -7,6 +9,7 @@ export interface Weapon {
   name: string;
   price: number;
   range: number;
+  sound: string | null;
   speed: string;
   weight: string;
 }
@@ -21,7 +24,8 @@ export const Weapons: Weapon[] = [
     length: "17,1 cm",
     name: "P7",
     price: 200,
-    range: 0,
+    range: 350,
+    sound: FX_PISTOL_1,
     speed: "single shot",
     weight: "0.780 kg",
   },
@@ -34,7 +38,8 @@ export const Weapons: Weapon[] = [
     length: "21.5 cm",
     name: "P210",
     price: 220,
-    range: 0,
+    range: 350,
+    sound: FX_PISTOL_2,
     speed: "single shot",
     weight: "0.970 kg",
   },
@@ -48,6 +53,7 @@ export const Weapons: Weapon[] = [
     name: "Uzi",
     price: 1400,
     range: 0,
+    sound: null,
     speed: "600 rounds/min",
     weight: "3.6 kg",
   },
@@ -61,6 +67,7 @@ export const Weapons: Weapon[] = [
     name: "MP5",
     price: 1600,
     range: 0,
+    sound: null,
     speed: "900 rounds/min",
     weight: "2 kg",
   },
@@ -74,6 +81,7 @@ export const Weapons: Weapon[] = [
     name: "MP7",
     price: 2800,
     range: 0,
+    sound: null,
     speed: "950 rounds/min",
     weight: "1.9 kg",
   },
@@ -87,6 +95,7 @@ export const Weapons: Weapon[] = [
     name: "FN FAL",
     price: 1600,
     range: 0,
+    sound: null,
     speed: "700 rounds/min",
     weight: "4.25 kg",
   },
@@ -100,6 +109,7 @@ export const Weapons: Weapon[] = [
     name: "AR-10",
     price: 1800,
     range: 0,
+    sound: null,
     speed: "700 rounds/min",
     weight: "4.3 kg",
   },
@@ -113,6 +123,7 @@ export const Weapons: Weapon[] = [
     name: "AK-74",
     price: 3000,
     range: 0,
+    sound: null,
     speed: "600 rounds/min",
     weight: "3.3 kg",
   },
@@ -126,6 +137,7 @@ export const Weapons: Weapon[] = [
     name: "G36",
     price: 3000,
     range: 0,
+    sound: null,
     speed: "750 rounds/min",
     weight: "3.63 kg",
   },
@@ -139,6 +151,7 @@ export const Weapons: Weapon[] = [
     name: "G95K",
     price: 9800,
     range: 0,
+    sound: null,
     speed: "850 rounds/min",
     weight: "3.850 kg",
   },
@@ -152,6 +165,7 @@ export const Weapons: Weapon[] = [
     name: "B.A.R.",
     price: 11400,
     range: 0,
+    sound: null,
     speed: "650 rounds/min",
     weight: "7.25 kg",
   },
@@ -165,6 +179,7 @@ export const Weapons: Weapon[] = [
     name: "MG4",
     price: 12400,
     range: 0,
+    sound: null,
     speed: "890 rounds/min",
     weight: "7.35 kg",
   },
@@ -178,6 +193,7 @@ export const Weapons: Weapon[] = [
     name: "HK21",
     price: 15600,
     range: 0,
+    sound: null,
     speed: "900 rounds/min",
     weight: "7.92 kg",
   },
@@ -191,6 +207,7 @@ export const Weapons: Weapon[] = [
     name: "MG 42 (converted to NATO caliber)",
     price: 20800,
     range: 0,
+    sound: null,
     speed: "1500 rounds/min",
     weight: "10.6 kg",
   },
@@ -204,6 +221,7 @@ export const Weapons: Weapon[] = [
     name: 'M20A1B1 "Super Bazooka"',
     price: 5200,
     range: 0,
+    sound: null,
     speed: "single shot",
     weight: "5.9 kg",
   },
@@ -217,6 +235,7 @@ export const Weapons: Weapon[] = [
     name: "Panzerfaust 44",
     price: 5800,
     range: 0,
+    sound: null,
     speed: "single shot",
     weight: "7.8 kg",
   },
@@ -230,6 +249,7 @@ export const Weapons: Weapon[] = [
     name: "Panzerfaust 3",
     price: 4200,
     range: 0,
+    sound: null,
     speed: "single shot",
     weight: "12.9 kg",
   },
@@ -243,6 +263,7 @@ export const Weapons: Weapon[] = [
     name: "Flammenwerfer 41",
     price: 19800,
     range: 0,
+    sound: null,
     speed: "60 liters/min",
     weight: "22 kg",
   },

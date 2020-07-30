@@ -16,6 +16,8 @@ import { Mission } from "../Missions";
 import Offset from "./Offset";
 import { Grenade } from "../Grenades";
 import { DURATION_OF_DEATH_ANIMATION } from "./PlayerTileSupplier";
+import Bullet from "./Bullet";
+import { Weapon } from "../Weapons";
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -24,6 +26,7 @@ export const PLAYER_HIT_RECT_WIDTH = 90;
 export const SCREEN_SIZE = 1500;
 
 export default class Engine {
+  bullets: Bullet[];
   explosives: Explosive[];
   explosions: Explosion[];
   levelController: LevelController;
@@ -48,6 +51,7 @@ export default class Engine {
           PLAYER_HIT_RECT_HEIGHT
         )
     );
+    this.bullets = [];
     this.explosives = [];
     this.explosions = [];
     this.lost = false;
@@ -63,6 +67,7 @@ export default class Engine {
   updateGameState = (elapsedTimeInMs: number) => {
     this.updatePlayerBehavior(elapsedTimeInMs);
     this.updatePlayerPositionWithMovement(elapsedTimeInMs);
+    this.updateBullet(elapsedTimeInMs);
     this.updateExplosions(elapsedTimeInMs);
     this.updateExplosives(elapsedTimeInMs);
     this.handleWeaponAction(elapsedTimeInMs);
@@ -141,6 +146,12 @@ export default class Engine {
     });
   };
 
+  updateBullet = (elapsedTimeInMs: number) => {
+    this.bullets = this.bullets.filter(
+      (bullet) => !bullet.move(elapsedTimeInMs)
+    );
+  };
+
   updateAllPositionsWithScrollOffset = (scrollOffset: Offset) => {
     this.playerPositions.forEach((playerPosition) => {
       playerPosition.x -= scrollOffset.x;
@@ -172,7 +183,15 @@ export default class Engine {
           );
         }
       } else if (!behavior.dying) {
-        // TODO: handle fire arms
+        if (behavior.triggeredFire && p.isPistolSelected()) {
+          const weapon = p.getSelectedWeapon() as Weapon;
+          if (InventoryController.removeAmmunition(p.index)) {
+            const position = this.playerPositions[p.index];
+            this.bullets.push(new Bullet(position, behavior, weapon));
+          }
+        } else {
+          // TODO: handle automatic fire arms, flamethrowers and all the other fun items :)
+        }
       }
     });
   };

@@ -3,6 +3,8 @@ import PlayerTileSupplier from "./PlayerTileSupplier";
 import Rectangle from "./Rectangle";
 import Engine, { SCREEN_SIZE } from "./Engine";
 
+const BULLET_COLOR = "#FFFFFF";
+
 export default class Renderer {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D | null;
@@ -25,6 +27,7 @@ export default class Renderer {
 
       this.drawBackground();
       this.drawPlayers(elapsedTimeInMs);
+      this.drawBullets();
       this.drawExplosives();
       this.drawExplosions(elapsedTimeInMs);
 
@@ -63,6 +66,21 @@ export default class Renderer {
         }
       }
     });
+  };
+
+  drawBullets = () => {
+    const ctx = this.ctx;
+    if (ctx) {
+      ctx.fillStyle = BULLET_COLOR;
+      this.engine.bullets.forEach((bullet) => {
+        ctx.fillRect(
+          bullet.position.x,
+          bullet.position.y,
+          bullet.position.width,
+          bullet.position.height
+        );
+      });
+    }
   };
 
   drawExplosives = () => {
