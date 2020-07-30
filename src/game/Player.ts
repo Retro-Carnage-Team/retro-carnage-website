@@ -156,6 +156,15 @@ export class Player {
     return false;
   };
 
+  isPistolSelected = (): boolean => {
+    const selected = this.getSelectedWeapon();
+    if (undefined !== selected && "ammo" in selected) {
+      const weapon = selected as Weapon;
+      return "P7" === weapon.name || "P210" === weapon.name;
+    }
+    return false;
+  };
+
   getAmmunitionCountForSelectedWeapon = (): number => {
     if (null === this.selectedWeaponName) {
       return 0;

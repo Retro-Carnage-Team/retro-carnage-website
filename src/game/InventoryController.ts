@@ -59,9 +59,10 @@ class InventoryController {
         // There is no "out of ammo" sound fx for grenades
         return false;
       } else if ("ammo" in selectedWeapon) {
-        const ammo = selectedWeapon.ammo;
-        if (0 < player.getAmmunitionCount(ammo)) {
-          // TODO: play sound fx matching the current weapon
+        const ammoCount = player.getAmmunitionCount(selectedWeapon.ammo);
+        if (0 < ammoCount) {
+          player.setAmmunitionCount(selectedWeapon.ammo, ammoCount - 1);
+          if (selectedWeapon.sound) SoundBoard.play(selectedWeapon.sound);
           return true;
         } else {
           SoundBoard.play(FX_OUT_OF_AMMO);
