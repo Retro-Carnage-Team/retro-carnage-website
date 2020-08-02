@@ -81,6 +81,7 @@ export default class Renderer {
             translatedPosition.x,
             translatedPosition.y
           );
+          // this.drawDebugRect(positions[player.index]);
         }
       }
     });
@@ -118,5 +119,12 @@ export default class Renderer {
         this.ctx.drawImage(canvas, explosion.position.x, explosion.position.y);
       }
     });
+  };
+
+  drawDebugRect = (rect: Rectangle) => {
+    if (this.ctx) {
+      this.ctx.strokeStyle = "orange";
+      this.ctx.strokeRect(rect.x, rect.y, rect.width, rect.height);
+    }
   };
 }

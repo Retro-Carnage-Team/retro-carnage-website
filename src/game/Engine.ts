@@ -22,7 +22,7 @@ import { ActiveEnemy } from "./Enemy";
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
-export const PLAYER_HIT_RECT_HEIGHT = 200;
+export const PLAYER_HIT_RECT_HEIGHT = 150;
 export const PLAYER_HIT_RECT_WIDTH = 90;
 export const SCREEN_SIZE = 1500;
 
