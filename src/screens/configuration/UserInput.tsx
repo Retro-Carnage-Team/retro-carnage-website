@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 
 import ChangeListener from "../../game/ChangeListener";
-import { Directions } from "../../game/engine/Directions";
+import { Directions } from "../../game/Directions";
 import GamepadIcon from "../../components/GamepadIcon";
 import InputController, {
   PROP_BUTTON,

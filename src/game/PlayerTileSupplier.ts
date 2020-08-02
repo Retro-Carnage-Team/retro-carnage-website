@@ -1,7 +1,8 @@
 import Tile from "./Tile";
-import { Player } from "../Player";
+import { Player } from "./Player";
 import { Directions } from "./Directions";
 import PlayerBehavior from "./PlayerBehavior";
+import TileGenerator from "./TileGenerator";
 
 export const DURATION_OF_MOVEMENT_ANIMATION = 75; // in ms
 export const DURATION_OF_DEATH_ANIMATION = 75 * 26; // in ms
@@ -119,37 +120,12 @@ function buildTileSetForPlayer1(): TileSet {
 
 const TILES_PLAYER_1 = buildTileSetForPlayer1();
 
-class GeneratorClass {
-  private index: number;
-  private iterator: IterableIterator<Tile>;
-  private readonly tiles?: Tile[];
-
-  constructor(tiles?: Tile[]) {
-    this.tiles = tiles;
-    this.index = 0;
-    this.iterator = this.generator();
-  }
-
-  nextValue = (): Tile => {
-    return this.iterator.next().value;
-  };
-
-  *generator(): IterableIterator<Tile> {
-    if (this.tiles) {
-      while (true) {
-        yield this.tiles[this.index];
-        this.index = (this.index + 1) % this.tiles.length;
-      }
-    }
-  }
-}
-
 export default class PlayerTileSupplier {
   directionOfLastTile: Directions | null;
   durationSinceLastTile: number;
   invincibilityToggle: boolean;
   lastTile?: Tile;
-  tileGenerator: GeneratorClass | null;
+  tileGenerator: TileGenerator | null;
   tileSet: TileSet;
 
   constructor(player: Player) {
@@ -178,13 +154,13 @@ export default class PlayerTileSupplier {
       if (playerBehavior.dying) {
         if (null !== this.directionOfLastTile) {
           this.directionOfLastTile = null;
-          this.tileGenerator = new GeneratorClass(this.tileSet.death);
+          this.tileGenerator = new TileGenerator(this.tileSet.death);
           newTile = true;
         }
       } else {
         if (this.directionOfLastTile !== playerBehavior.direction) {
           this.directionOfLastTile = playerBehavior.direction;
-          this.tileGenerator = new GeneratorClass(
+          this.tileGenerator = new TileGenerator(
             this.tileSet.byDirection.get(playerBehavior.direction)
           );
           newTile = true;

@@ -1,6 +1,7 @@
-import { Directions } from "./engine/Directions";
-import Rectangle from "./engine/Rectangle";
-
+import { Directions } from "./Directions";
+import Rectangle from "./Rectangle";
+import { EnemySkins } from "./EnemySkins";
+import Enemy from "./Enemy";
 import {
   MUSIC_BACKGROUND_1,
   MUSIC_BACKGROUND_10,
@@ -16,6 +17,9 @@ import {
   MUSIC_BACKGROUND_9,
 } from "./SoundBoard";
 
+/**
+ * Location of a mission on the world map
+ */
 export interface Location {
   latitude: number;
   longitude: number;
@@ -24,7 +28,7 @@ export interface Location {
 export interface Segment {
   backgrounds: string[];
   direction: Directions;
-  enemies: any[];
+  enemies: Enemy[];
   goal: Rectangle | null;
   obstacles: any[];
 }
@@ -61,7 +65,22 @@ const Missions: Mission[] = [
           "bg-dummy-2.jpg",
         ],
         direction: Directions.Up,
-        enemies: [],
+        enemies: [
+          new Enemy(
+            250,
+            [
+              {
+                duration: 4375,
+                offsetXPerMs: 0,
+                offsetYPerMs: 0.4,
+                timeElapsed: 0,
+              },
+            ],
+            new Rectangle(300, -200, 90, 200),
+            EnemySkins.GREY_ONESIE_WITH_HELMET,
+            Directions.Down
+          ),
+        ],
         goal: null,
         obstacles: [],
       },

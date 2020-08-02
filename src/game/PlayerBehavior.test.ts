@@ -1,8 +1,8 @@
 import { Directions } from "./Directions";
-import { Player, PlayerProperties } from "../Player";
+import { Player, PlayerProperties } from "./Player";
 import PlayerBehavior from "./PlayerBehavior";
-import ChangeListener from "../ChangeListener";
-import InputState from "../InputState";
+import ChangeListener from "./ChangeListener";
+import InputState from "./InputState";
 
 test("Player in default state should be able to move up", () => {
   const player = new Player(0);

@@ -1,6 +1,8 @@
 import LevelController from "./LevelController";
 import Rectangle from "./Rectangle";
 import { Directions } from "./Directions";
+import Enemy from "./Enemy";
+import { EnemySkins } from "./EnemySkins";
 
 const SEGMENTS = [
   {
@@ -12,7 +14,22 @@ const SEGMENTS = [
       "bg-dummy-2.jpg",
     ],
     direction: Directions.Up,
-    enemies: [],
+    enemies: [
+      new Enemy(
+        550,
+        [
+          {
+            duration: 4375,
+            offsetXPerMs: 0,
+            offsetYPerMs: 0.4,
+            timeElapsed: 0,
+          },
+        ],
+        new Rectangle(300, -200, 90, 200),
+        EnemySkins.GREY_ONESIE_WITH_HELMET,
+        Directions.Down
+      ),
+    ],
     goal: null,
     obstacles: [],
   },
@@ -200,4 +217,19 @@ test("Should scroll right when direction is right and player is at the right", (
   expect(controller.backgrounds[0].offsetY).toBe(0);
   expect(controller.backgrounds[1].offsetX).toBe(1458);
   expect(controller.backgrounds[1].offsetY).toBe(0);
+});
+
+test("Should activate enemies when game scrolled far enough", () => {
+  const controller = new LevelController(SEGMENTS);
+  const posPlayerOne = new Rectangle(500, 200, 90, 200);
+
+  let offset = controller.updatePosition(2000, [posPlayerOne]);
+  let enemies = controller.getActivatedEnemies();
+  expect(offset).toEqual({ x: 0, y: -600 });
+  expect(enemies.length).toBe(1);
+
+  offset = controller.updatePosition(50, [posPlayerOne]);
+  enemies = controller.getActivatedEnemies();
+  expect(offset).toEqual({ x: 0, y: -15 });
+  expect(enemies.length).toBe(0);
 });

@@ -1,6 +1,6 @@
-import InputController from "../InputController";
-import InventoryController from "../InventoryController";
-import PlayerController from "../PlayerController";
+import InputController from "./InputController";
+import InventoryController from "./InventoryController";
+import PlayerController from "./PlayerController";
 import PlayerBehavior from "./PlayerBehavior";
 import Rectangle from "./Rectangle";
 import { updatePlayerMovement } from "./PlayerMovement";
@@ -10,14 +10,15 @@ import SoundBoard, {
   FX_DEATH_PLAYER_1,
   FX_DEATH_PLAYER_2,
   FX_GRENADE_1,
-} from "../SoundBoard";
+} from "./SoundBoard";
 import LevelController from "./LevelController";
-import { Mission } from "../Missions";
+import { Mission } from "./Missions";
 import Offset from "./Offset";
-import { Grenade } from "../Grenades";
+import { Grenade } from "./Grenades";
 import { DURATION_OF_DEATH_ANIMATION } from "./PlayerTileSupplier";
 import Bullet from "./Bullet";
-import { Weapon } from "../Weapons";
+import { Weapon } from "./Weapons";
+import { ActiveEnemy } from "./Enemy";
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -27,6 +28,7 @@ export const SCREEN_SIZE = 1500;
 
 export default class Engine {
   bullets: Bullet[];
+  enemies: ActiveEnemy[];
   explosives: Explosive[];
   explosions: Explosion[];
   levelController: LevelController;
@@ -52,6 +54,7 @@ export default class Engine {
         )
     );
     this.bullets = [];
+    this.enemies = [];
     this.explosives = [];
     this.explosions = [];
     this.lost = false;
@@ -67,6 +70,7 @@ export default class Engine {
   updateGameState = (elapsedTimeInMs: number) => {
     this.updatePlayerBehavior(elapsedTimeInMs);
     this.updatePlayerPositionWithMovement(elapsedTimeInMs);
+    this.updateEnemies(elapsedTimeInMs);
     this.updateBullet(elapsedTimeInMs);
     this.updateExplosions(elapsedTimeInMs);
     this.updateExplosives(elapsedTimeInMs);
@@ -80,6 +84,13 @@ export default class Engine {
       this.playerPositions
     );
     this.updateAllPositionsWithScrollOffset(scrollOffsets);
+
+    const activatedEnemies = this.levelController.getActivatedEnemies();
+    if (0 < activatedEnemies.length) {
+      this.enemies.push(
+        ...activatedEnemies.map((e) => new ActiveEnemy(e, e.viewingDirection))
+      );
+    }
   };
 
   updatePlayerBehavior = (elapsedTimeInMs: number) => {
@@ -128,6 +139,33 @@ export default class Engine {
     });
   };
 
+  updateEnemies = (elapsedTimeInMs: number) => {
+    this.enemies.forEach((activeEnemy) => {
+      let remaining = elapsedTimeInMs;
+      let currentMovement = activeEnemy.enemy.movements.find(
+        (m) => m.timeElapsed < m.duration
+      );
+      while (currentMovement && 0 < remaining) {
+        const duration = Math.min(
+          remaining,
+          currentMovement.duration - currentMovement.timeElapsed
+        );
+        console.log(remaining, duration, activeEnemy.enemy.position);
+        activeEnemy.enemy.position.add({
+          x: duration * currentMovement.offsetXPerMs,
+          y: duration * currentMovement.offsetYPerMs,
+        });
+        remaining -= duration;
+        currentMovement.timeElapsed += duration;
+        if (0 < remaining) {
+          currentMovement = activeEnemy.enemy.movements.find(
+            (m) => m.timeElapsed < m.duration
+          );
+        }
+      }
+    });
+  };
+
   updateExplosions = (elapsedTimeInMs: number) => {
     this.explosions = this.explosions.filter((explosion) => {
       explosion.duration += elapsedTimeInMs;
@@ -153,18 +191,11 @@ export default class Engine {
   };
 
   updateAllPositionsWithScrollOffset = (scrollOffset: Offset) => {
-    this.playerPositions.forEach((playerPosition) => {
-      playerPosition.x -= scrollOffset.x;
-      playerPosition.y -= scrollOffset.y;
-    });
-    this.explosives.forEach((explosive) => {
-      explosive.position.x -= scrollOffset.x;
-      explosive.position.y -= scrollOffset.y;
-    });
-    this.explosions.forEach((explosion) => {
-      explosion.position.x -= scrollOffset.x;
-      explosion.position.y -= scrollOffset.y;
-    });
+    this.playerPositions.forEach((pos) => pos.subtract(scrollOffset));
+    this.explosives.forEach((exp) => exp.position.subtract(scrollOffset));
+    this.explosions.forEach((exp) => exp.position.subtract(scrollOffset));
+    this.enemies.forEach((anmy) => anmy.enemy.position.subtract(scrollOffset));
+    this.bullets.forEach((bul) => bul.position.subtract(scrollOffset));
   };
 
   handleWeaponAction = (elapsedTimeInMs: number) => {

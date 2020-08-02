@@ -1,4 +1,4 @@
-import PlayerController from "../PlayerController";
+import PlayerController from "./PlayerController";
 import PlayerTileSupplier from "./PlayerTileSupplier";
 import Rectangle from "./Rectangle";
 import Engine, { SCREEN_SIZE } from "./Engine";
@@ -26,6 +26,7 @@ export default class Renderer {
       this.ctx.clearRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
 
       this.drawBackground();
+      this.drawEnemies(elapsedTimeInMs);
       this.drawPlayers(elapsedTimeInMs);
       this.drawBullets();
       this.drawExplosives();
@@ -42,6 +43,23 @@ export default class Renderer {
       const canvas = bg.getCanvas();
       if (canvas && this.ctx) {
         this.ctx.drawImage(canvas, translatedPosition.x, translatedPosition.y);
+      }
+    });
+  };
+
+  drawEnemies = (elapsedTimeInMs: number) => {
+    this.engine.enemies.forEach((enemy) => {
+      const tile = enemy.tileSupplier.getTile(elapsedTimeInMs);
+      if (tile) {
+        const translatedPosition = tile.translate(enemy.enemy.position);
+        const canvas = tile.getCanvas();
+        if (canvas && this.ctx) {
+          this.ctx.drawImage(
+            canvas,
+            translatedPosition.x,
+            translatedPosition.y
+          );
+        }
       }
     });
   };
