@@ -5,8 +5,8 @@ import Offset from "./Offset";
 import PlayerBehavior from "./PlayerBehavior";
 import { Weapon } from "../Weapons";
 
-export const BULLET_HEIGHT = 2;
-export const BULLET_WIDTH = 2;
+export const BULLET_HEIGHT = 5;
+export const BULLET_WIDTH = 5;
 const BULLET_SPEED = 1.2;
 
 const Offsets = new Map<Directions, Offset>();
