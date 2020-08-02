@@ -2,7 +2,6 @@ import { getMovementDistance, getMovementX, getMovementY } from "./Movement";
 import Rectangle from "./Rectangle";
 import { Directions } from "./Directions";
 import Offset from "./Offset";
-import PlayerBehavior from "./PlayerBehavior";
 import { Weapon } from "./Weapons";
 
 export const BULLET_HEIGHT = 5;
@@ -24,17 +23,20 @@ export default class Bullet {
   distanceMoved: number;
   distanceToTarget: number;
   direction: Directions;
+  playerIdx: number | null;
   position: Rectangle;
 
   constructor(
+    playerIdx: number | null,
     playerPosition: Rectangle,
-    playerBehavior: PlayerBehavior,
+    direction: Directions,
     selectedWeapon: Weapon
   ) {
     this.distanceMoved = 0;
     this.distanceToTarget = selectedWeapon.range;
-    this.direction = playerBehavior.direction;
-    const offset = Offsets.get(this.direction);
+    this.direction = direction;
+    const offset = Offsets.get(direction);
+    this.playerIdx = playerIdx;
     this.position = new Rectangle(
       playerPosition.x + (offset ? offset.x : 0),
       playerPosition.y + (offset ? offset.y : 0),

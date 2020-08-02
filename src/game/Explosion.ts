@@ -5,11 +5,13 @@ import Explosive, { GRENADE_HEIGHT, GRENADE_WIDTH } from "./Explosive";
 
 export default class Explosion {
   duration: number;
+  readonly playerIdx: number | null;
   position: Rectangle;
-  tileSupplier: ExplosionTileSupplier;
+  readonly tileSupplier: ExplosionTileSupplier;
 
   constructor(explosive: Explosive) {
     this.duration = 0;
+    this.playerIdx = explosive.playerIdx;
     this.position = new Rectangle(
       Math.round(
         explosive.position.x + GRENADE_WIDTH / 2 - EXPLOSION_HIT_RECT_WIDTH / 2

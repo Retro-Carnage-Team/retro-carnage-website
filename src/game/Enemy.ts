@@ -16,7 +16,8 @@ interface EnemyMovement {
 
 export default class Enemy {
   activationDistance: number;
-  readonly dying: boolean;
+  dying: boolean;
+  dyingAnimationCountDown: number;
   movements: EnemyMovement[];
   position: Rectangle;
   readonly skin: EnemySkins;
@@ -31,6 +32,7 @@ export default class Enemy {
   ) {
     this.activationDistance = activationDistance;
     this.dying = false;
+    this.dyingAnimationCountDown = 0;
     this.movements = movements;
     this.position = position;
     this.skin = skin;

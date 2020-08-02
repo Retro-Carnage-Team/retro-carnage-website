@@ -3,7 +3,6 @@ import Rectangle from "./Rectangle";
 import Tile from "./Tile";
 import { Directions } from "./Directions";
 import Offset from "./Offset";
-import PlayerBehavior from "./PlayerBehavior";
 import { Grenade } from "./Grenades";
 
 export const GRENADE_HEIGHT = 17;
@@ -24,18 +23,21 @@ export default class Explosive {
   distanceMoved: number;
   distanceToTarget: number;
   direction: Directions;
-  speed: number;
+  playerIdx: number | null;
   position: Rectangle;
+  speed: number;
   tile: Tile;
 
   constructor(
+    playerIdx: number | null,
     playerPosition: Rectangle,
-    playerBehavior: PlayerBehavior,
+    direction: Directions,
     selectedWeapon: Grenade
   ) {
     this.distanceMoved = 0;
     this.distanceToTarget = selectedWeapon.range;
-    this.direction = playerBehavior.direction;
+    this.direction = direction;
+    this.playerIdx = playerIdx;
     this.speed = selectedWeapon.speed;
     const offset = Offsets.get(this.direction);
     this.position = new Rectangle(

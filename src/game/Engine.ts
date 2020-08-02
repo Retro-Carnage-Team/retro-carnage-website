@@ -7,6 +7,7 @@ import { updatePlayerMovement } from "./PlayerMovement";
 import Explosive from "./Explosive";
 import Explosion from "./Explosion";
 import SoundBoard, {
+  FX_DEATH_ENEMIES,
   FX_DEATH_PLAYER_1,
   FX_DEATH_PLAYER_2,
   FX_GRENADE_1,
@@ -31,6 +32,7 @@ export default class Engine {
   enemies: ActiveEnemy[];
   explosives: Explosive[];
   explosions: Explosion[];
+  kills: number[];
   levelController: LevelController;
   lost: boolean;
   mission: Mission;
@@ -57,6 +59,7 @@ export default class Engine {
     this.enemies = [];
     this.explosives = [];
     this.explosions = [];
+    this.kills = PlayerController.getConfiguredPlayers().map(() => 0);
     this.lost = false;
     this.won = false;
   }
@@ -76,7 +79,8 @@ export default class Engine {
     this.updateExplosives(elapsedTimeInMs);
     this.handleWeaponAction(elapsedTimeInMs);
 
-    this.checkForDeadlyCollisions();
+    this.checkPlayersForDeadlyCollisions();
+    this.checkEnemiesForDeadlyCollisions();
     this.checkIfPlayerReachedLevelGoal();
 
     const scrollOffsets = this.levelController.updatePosition(
@@ -140,27 +144,38 @@ export default class Engine {
   };
 
   updateEnemies = (elapsedTimeInMs: number) => {
+    this.enemies = this.enemies.filter(
+      (activeEnemy) =>
+        !activeEnemy.enemy.dying ||
+        0 >= activeEnemy.enemy.dyingAnimationCountDown
+    );
+
     this.enemies.forEach((activeEnemy) => {
-      let remaining = elapsedTimeInMs;
-      let currentMovement = activeEnemy.enemy.movements.find(
-        (m) => m.timeElapsed < m.duration
-      );
-      while (currentMovement && 0 < remaining) {
-        const duration = Math.min(
-          remaining,
-          currentMovement.duration - currentMovement.timeElapsed
+      if (activeEnemy.enemy.dying) {
+        activeEnemy.enemy.dyingAnimationCountDown -= Math.floor(
+          elapsedTimeInMs
         );
-        console.log(remaining, duration, activeEnemy.enemy.position);
-        activeEnemy.enemy.position.add({
-          x: duration * currentMovement.offsetXPerMs,
-          y: duration * currentMovement.offsetYPerMs,
-        });
-        remaining -= duration;
-        currentMovement.timeElapsed += duration;
-        if (0 < remaining) {
-          currentMovement = activeEnemy.enemy.movements.find(
-            (m) => m.timeElapsed < m.duration
+      } else {
+        let remaining = elapsedTimeInMs;
+        let currentMovement = activeEnemy.enemy.movements.find(
+          (m) => m.timeElapsed < m.duration
+        );
+        while (currentMovement && 0 < remaining) {
+          const duration = Math.min(
+            remaining,
+            currentMovement.duration - currentMovement.timeElapsed
           );
+          activeEnemy.enemy.position.add({
+            x: duration * currentMovement.offsetXPerMs,
+            y: duration * currentMovement.offsetYPerMs,
+          });
+          remaining -= duration;
+          currentMovement.timeElapsed += duration;
+          if (0 < remaining) {
+            currentMovement = activeEnemy.enemy.movements.find(
+              (m) => m.timeElapsed < m.duration
+            );
+          }
         }
       }
     });
@@ -210,7 +225,12 @@ export default class Engine {
         if (InventoryController.removeAmmunition(p.index)) {
           const position = this.playerPositions[p.index];
           this.explosives.push(
-            new Explosive(position, behavior, p.getSelectedWeapon() as Grenade)
+            new Explosive(
+              p.index,
+              position,
+              behavior.direction,
+              p.getSelectedWeapon() as Grenade
+            )
           );
         }
       } else if (!behavior.dying) {
@@ -218,7 +238,9 @@ export default class Engine {
           const weapon = p.getSelectedWeapon() as Weapon;
           if (InventoryController.removeAmmunition(p.index)) {
             const position = this.playerPositions[p.index];
-            this.bullets.push(new Bullet(position, behavior, weapon));
+            this.bullets.push(
+              new Bullet(p.index, position, behavior.direction, weapon)
+            );
           }
         } else {
           // TODO: handle automatic fire arms, flamethrowers and all the other fun items :)
@@ -228,22 +250,21 @@ export default class Engine {
   };
 
   // Check if players collide with explosions / bullets / enemies
-  checkForDeadlyCollisions = () => {
+  checkPlayersForDeadlyCollisions = () => {
     PlayerController.getRemainingPlayers().forEach((p) => {
       const behavior = this.playerBehaviors[p.index];
       if (!behavior.dying && !behavior.invincible) {
-        const playerPosition = this.playerPositions[p.index];
+        const rect = this.playerPositions[p.index];
         let death = false;
-
-        this.explosions.forEach((explosion) => {
-          death =
-            death ||
-            null !== playerPosition.getIntersection(explosion.position);
+        this.enemies.forEach((enemy) => {
+          death = death || null !== rect.getIntersection(enemy.enemy.position);
         });
-
-        // TODO: check for collisions with enemy soldiers
-        // TODO: check for collisions with flying bullets
-
+        this.explosions.forEach((explosion) => {
+          death = death || null !== rect.getIntersection(explosion.position);
+        });
+        this.bullets.forEach((bullet) => {
+          death = death || null !== rect.getIntersection(bullet.position);
+        });
         if (death) {
           SoundBoard.play(
             0 === p.index ? FX_DEATH_PLAYER_1 : FX_DEATH_PLAYER_2
@@ -255,7 +276,42 @@ export default class Engine {
     });
   };
 
-  // TODO: Check if players reached the level's goal area
+  // Check if players collide with explosions / bullets / enemies
+  checkEnemiesForDeadlyCollisions = () => {
+    this.enemies.forEach((enemy) => {
+      if (!enemy.enemy.dying) {
+        let death = false;
+        let killer = null;
+        this.explosions.forEach((explosion) => {
+          const deadlyExplosion =
+            null !== enemy.enemy.position.getIntersection(explosion.position);
+          if (deadlyExplosion) {
+            killer = explosion.playerIdx;
+          }
+          death = death || deadlyExplosion;
+        });
+        this.bullets.forEach((bullet) => {
+          const deadlyShot =
+            null !== enemy.enemy.position.getIntersection(bullet.position);
+          if (deadlyShot) {
+            killer = bullet.playerIdx;
+          }
+          death = death || deadlyShot;
+        });
+        if (death) {
+          SoundBoard.play(
+            FX_DEATH_ENEMIES[Math.floor(Math.random() * Math.floor(8))]
+          );
+          enemy.enemy.dying = true;
+          enemy.enemy.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION;
+          if (killer) {
+            this.kills[killer] += 1;
+          }
+        }
+      }
+    });
+  };
+
   checkIfPlayerReachedLevelGoal = () => {
     if (this.levelController.isGoalReached(this.playerPositions)) {
       this.won = true;
