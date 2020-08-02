@@ -1,7 +1,7 @@
 import Missions, { Mission } from "./Missions";
 import PlayerController from "./PlayerController";
 
-export type NavigatableMission = Pick<Mission, "location">;
+export type MissionLocation = Pick<Mission, "location">;
 
 export class MissionController {
   currentMission: Mission | null;
@@ -17,36 +17,28 @@ export class MissionController {
     this.finishedMissions = [];
   };
 
-  getNextMissionNorth = (
-    relativeTo: NavigatableMission
-  ): Mission | undefined => {
+  getNextMissionNorth = (relativeTo: MissionLocation): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.latitude < relativeTo.location.latitude)
       .sort((a, b) => a.location.latitude - b.location.latitude)
       .pop();
   };
 
-  getNextMissionSouth = (
-    relativeTo: NavigatableMission
-  ): Mission | undefined => {
+  getNextMissionSouth = (relativeTo: MissionLocation): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.latitude > relativeTo.location.latitude)
       .sort((a, b) => a.location.latitude - b.location.latitude)
       .shift();
   };
 
-  getNextMissionWest = (
-    relativeTo: NavigatableMission
-  ): Mission | undefined => {
+  getNextMissionWest = (relativeTo: MissionLocation): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.longitude < relativeTo.location.longitude)
       .sort((a, b) => a.location.longitude - b.location.longitude)
       .pop();
   };
 
-  getNextMissionEast = (
-    relativeTo: NavigatableMission
-  ): Mission | undefined => {
+  getNextMissionEast = (relativeTo: MissionLocation): Mission | undefined => {
     return this.getRemainingMissions()
       .filter((m) => m.location.longitude > relativeTo.location.longitude)
       .sort((a, b) => a.location.longitude - b.location.longitude)

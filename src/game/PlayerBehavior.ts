@@ -1,6 +1,6 @@
 import { Directions } from "./Directions";
-import { Player } from "../Player";
-import InputState from "../InputState";
+import { Player } from "./Player";
+import InputState from "./InputState";
 
 /**
  * This class contains all player state that is valid for the duration of a single mission only.

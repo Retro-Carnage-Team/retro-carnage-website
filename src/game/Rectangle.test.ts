@@ -25,3 +25,21 @@ test("Should return intersection when rectangle contains other rectangle", () =>
   expect(result?.width).toBe(3);
   expect(result?.height).toBe(3);
 });
+
+test("Should add offsets correctly", () => {
+  const r1 = new Rectangle(1, 1, 10, 10);
+  r1.add({ x: 2, y: 3 });
+  expect(r1.x).toBe(3);
+  expect(r1.y).toBe(4);
+  expect(r1.width).toBe(10);
+  expect(r1.height).toBe(10);
+});
+
+test("Should subtract offsets correctly", () => {
+  const r1 = new Rectangle(1, 1, 10, 10);
+  r1.subtract({ x: 2, y: 3 });
+  expect(r1.x).toBe(-1);
+  expect(r1.y).toBe(-2);
+  expect(r1.width).toBe(10);
+  expect(r1.height).toBe(10);
+});

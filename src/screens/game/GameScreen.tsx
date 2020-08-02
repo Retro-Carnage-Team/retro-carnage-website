@@ -1,8 +1,8 @@
 import React from "react";
 
-import Renderer from "../../game/engine/Renderer";
+import Renderer from "../../game/Renderer";
 import PlayerInfo from "./PlayerInfo";
-import Engine, { SCREEN_SIZE } from "../../game/engine/Engine";
+import Engine, { SCREEN_SIZE } from "../../game/Engine";
 import MissionController from "../../game/MissionController";
 import SoundBoard from "../../game/SoundBoard";
 import { MAP_SCREEN_NAME } from "../map/MapScreen";

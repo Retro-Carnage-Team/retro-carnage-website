@@ -1,7 +1,7 @@
 import PlayerTileSupplier, {
   DURATION_OF_MOVEMENT_ANIMATION,
 } from "./PlayerTileSupplier";
-import { Player } from "../Player";
+import { Player } from "./Player";
 import PlayerBehavior from "./PlayerBehavior";
 import { Directions } from "./Directions";
 

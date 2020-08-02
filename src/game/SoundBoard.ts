@@ -12,6 +12,16 @@ export const FX_DEATH_ENEMY_4 = "enemy-death-4.mp3";
 export const FX_DEATH_ENEMY_5 = "enemy-death-5.mp3";
 export const FX_DEATH_ENEMY_6 = "enemy-death-6.mp3";
 export const FX_DEATH_ENEMY_7 = "enemy-death-7.mp3";
+export const FX_DEATH_ENEMIES = [
+  FX_DEATH_ENEMY_0,
+  FX_DEATH_ENEMY_1,
+  FX_DEATH_ENEMY_2,
+  FX_DEATH_ENEMY_3,
+  FX_DEATH_ENEMY_4,
+  FX_DEATH_ENEMY_5,
+  FX_DEATH_ENEMY_6,
+  FX_DEATH_ENEMY_7,
+];
 export const FX_DEATH_PLAYER_1 = "death-player-1.mp3";
 export const FX_DEATH_PLAYER_2 = "death-player-2.mp3";
 export const FX_GRENADE_1 = "grenade.mp3";

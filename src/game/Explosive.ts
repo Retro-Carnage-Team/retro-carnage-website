@@ -1,70 +1,82 @@
 import { getMovementDistance, getMovementX, getMovementY } from "./Movement";
 import Rectangle from "./Rectangle";
+import Tile from "./Tile";
 import { Directions } from "./Directions";
 import Offset from "./Offset";
-import PlayerBehavior from "./PlayerBehavior";
-import { Weapon } from "../Weapons";
+import { Grenade } from "./Grenades";
 
-export const BULLET_HEIGHT = 2;
-export const BULLET_WIDTH = 2;
-const BULLET_SPEED = 1.2;
+export const GRENADE_HEIGHT = 17;
+export const GRENADE_WIDTH = 32;
 
 const Offsets = new Map<Directions, Offset>();
-Offsets.set(Directions.Up, { x: 45, y: -BULLET_HEIGHT });
-Offsets.set(Directions.UpRight, { x: 45, y: -BULLET_HEIGHT });
+Offsets.set(Directions.Up, { x: 45, y: -GRENADE_HEIGHT });
+Offsets.set(Directions.UpRight, { x: 45, y: -GRENADE_HEIGHT });
 Offsets.set(Directions.Right, { x: 90, y: 100 });
 Offsets.set(Directions.DownRight, { x: 90, y: 100 });
 Offsets.set(Directions.Down, { x: 45, y: 200 });
-Offsets.set(Directions.DownLeft, { x: -BULLET_WIDTH, y: 100 });
-Offsets.set(Directions.Left, { x: -BULLET_WIDTH, y: 100 });
-Offsets.set(Directions.UpLeft, { x: 0, y: -BULLET_HEIGHT });
+Offsets.set(Directions.DownLeft, { x: -GRENADE_WIDTH, y: 100 });
+Offsets.set(Directions.Left, { x: -GRENADE_WIDTH, y: 100 });
+Offsets.set(Directions.UpLeft, { x: 0, y: -GRENADE_HEIGHT });
 
 // Explosives are Grenades and RPG ammo that has been fired by the player.
-export default class Bullet {
+export default class Explosive {
   distanceMoved: number;
   distanceToTarget: number;
   direction: Directions;
+  playerIdx: number | null;
   position: Rectangle;
+  speed: number;
+  tile: Tile;
 
   constructor(
+    playerIdx: number | null,
     playerPosition: Rectangle,
-    playerBehavior: PlayerBehavior,
-    selectedWeapon: Weapon
+    direction: Directions,
+    selectedWeapon: Grenade
   ) {
     this.distanceMoved = 0;
     this.distanceToTarget = selectedWeapon.range;
-    this.direction = playerBehavior.direction;
+    this.direction = direction;
+    this.playerIdx = playerIdx;
+    this.speed = selectedWeapon.speed;
     const offset = Offsets.get(this.direction);
     this.position = new Rectangle(
       playerPosition.x + (offset ? offset.x : 0),
       playerPosition.y + (offset ? offset.y : 0),
-      BULLET_WIDTH,
-      BULLET_HEIGHT
+      GRENADE_WIDTH,
+      GRENADE_HEIGHT
+    );
+    this.tile = new Tile(
+      "images/tiles/weapons/grenade.png",
+      GRENADE_WIDTH,
+      GRENADE_HEIGHT,
+      0,
+      0
     );
   }
 
   /*
-      Moves the explosive.
-      Returns true if the explosive reached it's destination
-     */
+    Moves the explosive.
+    Returns true if the explosive reached it's destination
+   */
   move = (elapsedTimeInMs: number): boolean => {
     if (this.distanceMoved < this.distanceToTarget) {
       const maxDistance = this.distanceToTarget - this.distanceMoved;
       this.distanceMoved += getMovementDistance(
         elapsedTimeInMs,
-        BULLET_SPEED,
+        this.speed,
         maxDistance
       );
       this.position.x += getMovementX(
         elapsedTimeInMs,
         this.direction,
-        BULLET_SPEED,
+        this.speed,
         maxDistance
       );
       this.position.y += getMovementY(
         elapsedTimeInMs,
         this.direction,
-        BULLET_SPEED,
+        this.speed,
         maxDistance
       );
     }

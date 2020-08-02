@@ -1,7 +1,8 @@
 import Tile from "./Tile";
-import { Player } from "../Player";
+import { Player } from "./Player";
 import { Directions } from "./Directions";
 import PlayerBehavior from "./PlayerBehavior";
+import TileGenerator from "./TileGenerator";
 
 export const DURATION_OF_MOVEMENT_ANIMATION = 75; // in ms
 export const DURATION_OF_DEATH_ANIMATION = 75 * 26; // in ms
@@ -36,14 +37,14 @@ function buildTileSetForPlayer1(): TileSet {
       200,
       "images/tiles/player-1/death/",
       -30,
-      0
+      -50
     ),
     idle: new Map<Directions, Tile>(),
   };
 
   result.byDirection.set(
     Directions.Down,
-    buildAnimationSeries(6, 94, 200, "images/tiles/player-1/down/", -2, 0)
+    buildAnimationSeries(6, 94, 200, "images/tiles/player-1/down/", -2, -50)
   );
   result.byDirection.set(
     Directions.DownLeft,
@@ -53,65 +54,72 @@ function buildTileSetForPlayer1(): TileSet {
       200,
       "images/tiles/player-1/down_left/",
       -48,
-      0
+      -50
     )
   );
   result.byDirection.set(
     Directions.DownRight,
-    buildAnimationSeries(6, 88, 200, "images/tiles/player-1/down_right/", 1, 0)
+    buildAnimationSeries(
+      6,
+      88,
+      200,
+      "images/tiles/player-1/down_right/",
+      1,
+      -50
+    )
   );
   result.byDirection.set(
     Directions.Left,
-    buildAnimationSeries(6, 160, 200, "images/tiles/player-1/left/", -33, 0)
+    buildAnimationSeries(6, 160, 200, "images/tiles/player-1/left/", -33, -50)
   );
   result.byDirection.set(
     Directions.Right,
-    buildAnimationSeries(6, 155, 200, "images/tiles/player-1/right/", 0, 0)
+    buildAnimationSeries(6, 155, 200, "images/tiles/player-1/right/", 0, -50)
   );
   result.byDirection.set(
     Directions.Up,
-    buildAnimationSeries(6, 85, 200, "images/tiles/player-1/up/", 2, 0)
+    buildAnimationSeries(6, 85, 200, "images/tiles/player-1/up/", 2, -50)
   );
   result.byDirection.set(
     Directions.UpLeft,
-    buildAnimationSeries(6, 100, 200, "images/tiles/player-1/up_left/", 0, 0)
+    buildAnimationSeries(6, 100, 200, "images/tiles/player-1/up_left/", 0, -50)
   );
   result.byDirection.set(
     Directions.UpRight,
-    buildAnimationSeries(6, 126, 200, "images/tiles/player-1/up_right/", 0, 0)
+    buildAnimationSeries(6, 126, 200, "images/tiles/player-1/up_right/", 0, -50)
   );
 
   result.idle.set(
     Directions.Down,
-    new Tile("images/tiles/player-1/idle/down.png", 100, 200, -5, 0)
+    new Tile("images/tiles/player-1/idle/down.png", 100, 200, -5, -50)
   );
   result.idle.set(
     Directions.DownLeft,
-    new Tile("images/tiles/player-1/idle/down_left.png", 127, 200, -37, 0)
+    new Tile("images/tiles/player-1/idle/down_left.png", 127, 200, -37, -50)
   );
   result.idle.set(
     Directions.DownRight,
-    new Tile("images/tiles/player-1/idle/down_right.png", 108, 200, 6, 0)
+    new Tile("images/tiles/player-1/idle/down_right.png", 108, 200, 6, -50)
   );
   result.idle.set(
     Directions.Left,
-    new Tile("images/tiles/player-1/idle/left.png", 112, 200, -22, 0)
+    new Tile("images/tiles/player-1/idle/left.png", 112, 200, -22, -50)
   );
   result.idle.set(
     Directions.Right,
-    new Tile("images/tiles/player-1/idle/right.png", 131, 200, 0, 0)
+    new Tile("images/tiles/player-1/idle/right.png", 131, 200, 0, -50)
   );
   result.idle.set(
     Directions.Up,
-    new Tile("images/tiles/player-1/idle/up.png", 94, 200, -2, 0)
+    new Tile("images/tiles/player-1/idle/up.png", 94, 200, -2, -50)
   );
   result.idle.set(
     Directions.UpLeft,
-    new Tile("images/tiles/player-1/idle/up_left.png", 85, 200, 2, 0)
+    new Tile("images/tiles/player-1/idle/up_left.png", 85, 200, 2, -50)
   );
   result.idle.set(
     Directions.UpRight,
-    new Tile("images/tiles/player-1/idle/up_right.png", 125, 200, 0, 0)
+    new Tile("images/tiles/player-1/idle/up_right.png", 125, 200, 0, -50)
   );
 
   return result;
@@ -119,37 +127,12 @@ function buildTileSetForPlayer1(): TileSet {
 
 const TILES_PLAYER_1 = buildTileSetForPlayer1();
 
-class GeneratorClass {
-  private index: number;
-  private iterator: IterableIterator<Tile>;
-  private readonly tiles?: Tile[];
-
-  constructor(tiles?: Tile[]) {
-    this.tiles = tiles;
-    this.index = 0;
-    this.iterator = this.generator();
-  }
-
-  nextValue = (): Tile => {
-    return this.iterator.next().value;
-  };
-
-  *generator(): IterableIterator<Tile> {
-    if (this.tiles) {
-      while (true) {
-        yield this.tiles[this.index];
-        this.index = (this.index + 1) % this.tiles.length;
-      }
-    }
-  }
-}
-
 export default class PlayerTileSupplier {
   directionOfLastTile: Directions | null;
   durationSinceLastTile: number;
   invincibilityToggle: boolean;
   lastTile?: Tile;
-  tileGenerator: GeneratorClass | null;
+  tileGenerator: TileGenerator | null;
   tileSet: TileSet;
 
   constructor(player: Player) {
@@ -178,13 +161,13 @@ export default class PlayerTileSupplier {
       if (playerBehavior.dying) {
         if (null !== this.directionOfLastTile) {
           this.directionOfLastTile = null;
-          this.tileGenerator = new GeneratorClass(this.tileSet.death);
+          this.tileGenerator = new TileGenerator(this.tileSet.death);
           newTile = true;
         }
       } else {
         if (this.directionOfLastTile !== playerBehavior.direction) {
           this.directionOfLastTile = playerBehavior.direction;
-          this.tileGenerator = new GeneratorClass(
+          this.tileGenerator = new TileGenerator(
             this.tileSet.byDirection.get(playerBehavior.direction)
           );
           newTile = true;

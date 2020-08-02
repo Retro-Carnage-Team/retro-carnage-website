@@ -1,5 +1,5 @@
 import ChangeListener from "./ChangeListener";
-import { Directions } from "./engine/Directions";
+import { Directions } from "./Directions";
 import GamepadController from "./GamepadController";
 import KeyboardController from "./KeyboardController";
 import InputState from "./InputState";

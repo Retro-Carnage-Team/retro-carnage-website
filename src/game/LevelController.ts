@@ -1,8 +1,9 @@
 import BackgroundTile from "./BackgroundTile";
 import { Directions } from "./Directions";
-import { Segment } from "../Missions";
+import { Segment } from "./Missions";
 import Rectangle from "./Rectangle";
 import Offset from "./Offset";
+import Enemy from "./Enemy";
 
 const BACKGROUND_OFFSETS: Map<Directions, Offset> = new Map<
   Directions,
@@ -22,6 +23,7 @@ export default class LevelController {
   private currentSegmentIdx: number;
   private distanceToScroll: number;
   private distanceScrolled: number;
+  private enemies: Enemy[];
   private goal: Rectangle | null;
   private readonly segments: Segment[];
   private segmentScrollLengthInPixels: number;
@@ -34,6 +36,7 @@ export default class LevelController {
     this.currentSegmentIdx = 0;
     this.distanceToScroll = 0;
     this.distanceScrolled = 0;
+    this.enemies = [];
     this.goal = null;
     this.segmentScrollLengthInPixels = 0;
     this.loadSegment(this.segments[this.currentSegmentIdx]);
@@ -53,6 +56,7 @@ export default class LevelController {
       );
     });
     this.segmentScrollLengthInPixels = 1500 * (this.backgrounds.length - 1);
+    this.enemies = [...segment.enemies];
     this.distanceScrolled = 0;
     this.distanceToScroll = 0;
   };
@@ -62,6 +66,19 @@ export default class LevelController {
       this.currentSegmentIdx++;
       this.loadSegment(this.segments[this.currentSegmentIdx]);
     }
+  };
+
+  /**
+   * Returns the enemies that have been activated since the last scroll movement
+   */
+  getActivatedEnemies = () => {
+    const result = this.enemies.filter(
+      (enemy) => this.distanceScrolled >= enemy.activationDistance
+    );
+    this.enemies = this.enemies.filter(
+      (enemy) => this.distanceScrolled < enemy.activationDistance
+    );
+    return result;
   };
 
   updatePosition = (elapsedTimeInMs: number, playerPositions: Rectangle[]) => {

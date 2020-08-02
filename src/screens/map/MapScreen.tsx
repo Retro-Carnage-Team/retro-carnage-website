@@ -1,7 +1,7 @@
 import React from "react";
 
 import ChangeListener from "../../game/ChangeListener";
-import { Directions } from "../../game/engine/Directions";
+import { Directions } from "../../game/Directions";
 import GamepadLocationMarker from "./GamepadLocationMarker";
 import InputController, {
   PROP_BUTTON,
@@ -9,7 +9,7 @@ import InputController, {
 } from "../../game/InputController";
 import MissionBriefing from "./MissionBriefing";
 import MissionController, {
-  NavigatableMission,
+  MissionLocation,
 } from "../../game/MissionController";
 import { SHOPPING_FLOW_NAME } from "../shopping-flow/ShoppingFlow";
 
@@ -186,7 +186,7 @@ class MapScreen extends React.Component<MapScreenProps, MapScreenState> {
     if (PROP_DIRECTION === property) {
       const missionResolver = new Map<
         string,
-        (mission: NavigatableMission) => Mission | undefined
+        (mission: MissionLocation) => Mission | undefined
       >();
       missionResolver.set(Directions.Up, MissionController.getNextMissionNorth);
       missionResolver.set(
