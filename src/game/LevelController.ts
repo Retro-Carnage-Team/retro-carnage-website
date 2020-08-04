@@ -25,6 +25,7 @@ export default class LevelController {
   private distanceScrolled: number;
   private enemies: Enemy[];
   private goal: Rectangle | null;
+  private obstacles: Rectangle[];
   private readonly segments: Segment[];
   private segmentScrollLengthInPixels: number;
 
@@ -38,6 +39,7 @@ export default class LevelController {
     this.distanceScrolled = 0;
     this.enemies = [];
     this.goal = null;
+    this.obstacles = [];
     this.segmentScrollLengthInPixels = 0;
     this.loadSegment(this.segments[this.currentSegmentIdx]);
   }
@@ -57,6 +59,7 @@ export default class LevelController {
     });
     this.segmentScrollLengthInPixels = 1500 * (this.backgrounds.length - 1);
     this.enemies = [...segment.enemies];
+    this.obstacles = segment.obstacles;
     this.distanceScrolled = 0;
     this.distanceToScroll = 0;
   };
@@ -205,5 +208,32 @@ export default class LevelController {
       );
     }
     return false;
+  };
+
+  getObstaclesOnScreen = (): Rectangle[] => {
+    const screenRect = new Rectangle(0, 0, 1500, 1500);
+    const direction = this.segments[this.currentSegmentIdx].direction;
+
+    let scrollAdjustment: Offset = { x: 0, y: 0 };
+    switch (direction) {
+      case Directions.Up:
+        scrollAdjustment = { x: 0, y: this.distanceScrolled };
+        break;
+      case Directions.Left:
+        scrollAdjustment = { x: this.distanceScrolled, y: 0 };
+        break;
+      case Directions.Right:
+        scrollAdjustment = { x: -1 * this.distanceScrolled, y: 0 };
+        break;
+    }
+
+    return this.obstacles
+      .map((obstacle) => {
+        const { x, y, width, height } = obstacle;
+        const result = new Rectangle(x, y, width, height);
+        result.add(scrollAdjustment);
+        return result;
+      })
+      .filter((obstacle) => null !== obstacle.getIntersection(screenRect));
   };
 }
