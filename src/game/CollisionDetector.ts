@@ -18,48 +18,77 @@ export default class CollisionDetector {
    * @param stillRect another rectangle that doesn't move
    * @param direction direction of movement of movingRect
    * @param distance distance of movement of movingRect
-   * @returns in case of a collision this method will return the max distance that will not cause a collision. It will
-   *          return null of there is no collision of the two given Rectangles.
+   * @returns in case of a collision this method will return the movingRect moved for the max distance that will not
+   *          cause a collision. It will return null of there is no collision of the two given Rectangles.
    */
-  static getCollision = (
+  static stopMovementOnCollision = (
     movingRect: Rectangle,
     stillRect: Rectangle,
     direction: Directions,
     distance: Point
-  ): Point | null => {
+  ): Rectangle | null => {
+    let collision: Point | null;
     switch (direction) {
       case Directions.Up:
-        // TODO: Calculate and return the max distance instead of the collision point
         // TODO: When stillRect.width < movingRect.width: do reverse check
-        return CollisionDetector.getCollisionForMovementUp(
+        collision = CollisionDetector.getCollisionForMovementUp(
           movingRect,
           stillRect,
           distance
         );
+        return collision
+          ? new Rectangle(
+              movingRect.x,
+              collision.y,
+              movingRect.width,
+              movingRect.height
+            )
+          : null;
       case Directions.Down:
-        // TODO: Calculate and return the max distance instead of the collision point
         // TODO: When stillRect.width < movingRect.width: do reverse check
-        return CollisionDetector.getCollisionForMovementDown(
+        collision = CollisionDetector.getCollisionForMovementDown(
           movingRect,
           stillRect,
           distance
         );
+        return collision
+          ? new Rectangle(
+              movingRect.x,
+              collision.y - movingRect.height,
+              movingRect.width,
+              movingRect.height
+            )
+          : null;
       case Directions.Left:
-        // TODO: Calculate and return the max distance instead of the collision point
         // TODO: When stillRect.width < movingRect.width: do reverse check
-        return CollisionDetector.getCollisionForMovementLeft(
+        collision = CollisionDetector.getCollisionForMovementLeft(
           movingRect,
           stillRect,
           distance
         );
+        return collision
+          ? new Rectangle(
+              collision.x,
+              movingRect.y,
+              movingRect.width,
+              movingRect.height
+            )
+          : null;
       case Directions.Right:
-        // TODO: Calculate and return the max distance instead of the collision point
         // TODO: When stillRect.width < movingRect.width: do reverse check
-        return CollisionDetector.getCollisionForMovementRight(
+        collision = CollisionDetector.getCollisionForMovementRight(
           movingRect,
           stillRect,
           distance
         );
+        return collision
+          ? new Rectangle(
+              collision.x - movingRect.width,
+              movingRect.y,
+              movingRect.width,
+              movingRect.height
+            )
+          : null;
       default:
         return null;
     }
