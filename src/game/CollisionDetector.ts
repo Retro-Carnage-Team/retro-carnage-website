@@ -30,65 +30,137 @@ export default class CollisionDetector {
     let collision: Point | null;
     switch (direction) {
       case Directions.Up:
-        // TODO: When stillRect.width < movingRect.width: do reverse check
         collision = CollisionDetector.getCollisionForMovementUp(
           movingRect,
           stillRect,
           distance
         );
-        return collision
-          ? new Rectangle(
-              movingRect.x,
-              collision.y,
-              movingRect.width,
-              movingRect.height
-            )
-          : null;
+
+        if (collision) {
+          return new Rectangle(
+            movingRect.x,
+            collision.y,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        if (
+          stillRect.width < movingRect.width &&
+          CollisionDetector.getCollisionForMovementDown(stillRect, movingRect, {
+            x: 0,
+            y: -1 * distance.y,
+          })
+        ) {
+          return new Rectangle(
+            movingRect.x,
+            stillRect.y + stillRect.height,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        return null;
       case Directions.Down:
-        // TODO: When stillRect.width < movingRect.width: do reverse check
         collision = CollisionDetector.getCollisionForMovementDown(
           movingRect,
           stillRect,
           distance
         );
-        return collision
-          ? new Rectangle(
-              movingRect.x,
-              collision.y - movingRect.height,
-              movingRect.width,
-              movingRect.height
-            )
-          : null;
+
+        if (collision) {
+          return new Rectangle(
+            movingRect.x,
+            collision.y - movingRect.height,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        if (
+          stillRect.width < movingRect.width &&
+          CollisionDetector.getCollisionForMovementUp(stillRect, movingRect, {
+            x: 0,
+            y: -1 * distance.y,
+          })
+        ) {
+          return new Rectangle(
+            movingRect.x,
+            stillRect.y - movingRect.height,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        return null;
       case Directions.Left:
-        // TODO: When stillRect.width < movingRect.width: do reverse check
         collision = CollisionDetector.getCollisionForMovementLeft(
           movingRect,
           stillRect,
           distance
         );
-        return collision
-          ? new Rectangle(
-              collision.x,
-              movingRect.y,
-              movingRect.width,
-              movingRect.height
-            )
-          : null;
+
+        if (collision) {
+          return new Rectangle(
+            collision.x,
+            movingRect.y,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        if (
+          stillRect.height < movingRect.height &&
+          CollisionDetector.getCollisionForMovementRight(
+            stillRect,
+            movingRect,
+            {
+              x: -1 * distance.x,
+              y: 0,
+            }
+          )
+        ) {
+          return new Rectangle(
+            stillRect.x + stillRect.width,
+            movingRect.y,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        return null;
       case Directions.Right:
-        // TODO: When stillRect.width < movingRect.width: do reverse check
         collision = CollisionDetector.getCollisionForMovementRight(
           movingRect,
           stillRect,
           distance
         );
-        return collision
-          ? new Rectangle(
-              collision.x - movingRect.width,
-              movingRect.y,
-              movingRect.width,
-              movingRect.height
-            )
-          : null;
+
+        if (collision) {
+          return new Rectangle(
+            collision.x - movingRect.width,
+            movingRect.y,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        if (
+          stillRect.height < movingRect.height &&
+          CollisionDetector.getCollisionForMovementLeft(stillRect, movingRect, {
+            x: -1 * distance.x,
+            y: 0,
+          })
+        ) {
+          return new Rectangle(
+            stillRect.x - movingRect.width,
+            movingRect.y,
+            movingRect.width,
+            movingRect.height
+          );
+        }
+
+        return null;
       default:
         return null;
     }
