@@ -3,6 +3,12 @@ import Point from "./Point";
 import { Directions } from "./Directions";
 import Line from "./Line";
 
+interface CollisionCheckForCardinalDirection {
+  getLine(): Line;
+  getFirstVector(): Line;
+  getSecondVector(): Line;
+}
+
 export default class CollisionDetector {
   /**
    * Checks for a possible collision of rectangles movingRect and stillRect when movingRect gets moved into direction by
@@ -59,32 +65,41 @@ export default class CollisionDetector {
     }
   };
 
+  private static checkCollisionOnCardinalDirection(
+    provider: CollisionCheckForCardinalDirection
+  ): Point | null {
+    let collision: Point | null;
+    const line = provider.getLine();
+    collision = line.getIntersection(provider.getFirstVector());
+    if (!collision) {
+      collision = line.getIntersection(provider.getSecondVector());
+    }
+    return collision;
+  }
+
   static getCollisionForMovementUp = (
     movingRect: Rectangle,
     stillRect: Rectangle,
     distance: Point
   ): Point | null => {
-    let collision: Point | null;
-    const bottomBorder = stillRect.getBottomBorder();
-
-    const leftVector = new Line(
-      { x: movingRect.x, y: movingRect.y },
-      { x: movingRect.x, y: movingRect.y + distance.y }
-    );
-    collision = bottomBorder.getIntersection(leftVector);
-
-    if (!collision) {
-      const rightVector = new Line(
-        { x: movingRect.x + movingRect.width, y: movingRect.y },
-        {
-          x: movingRect.x + movingRect.width + distance.x,
-          y: movingRect.y + distance.y,
-        }
-      );
-      collision = bottomBorder.getIntersection(rightVector);
-    }
-
-    return collision;
+    return CollisionDetector.checkCollisionOnCardinalDirection({
+      getLine: stillRect.getBottomBorder,
+      getFirstVector(): Line {
+        return new Line(
+          { x: movingRect.x, y: movingRect.y },
+          { x: movingRect.x, y: movingRect.y + distance.y }
+        );
+      },
+      getSecondVector(): Line {
+        return new Line(
+          { x: movingRect.x + movingRect.width, y: movingRect.y },
+          {
+            x: movingRect.x + movingRect.width + distance.x,
+            y: movingRect.y + distance.y,
+          }
+        );
+      },
+    });
   };
 
   static getCollisionForMovementDown = (
@@ -92,33 +107,30 @@ export default class CollisionDetector {
     stillRect: Rectangle,
     distance: Point
   ): Point | null => {
-    let collision: Point | null;
-    const topBorder = stillRect.getTopBorder();
-
-    const leftVector = new Line(
-      { x: movingRect.x, y: movingRect.y + movingRect.height },
-      {
-        x: movingRect.x + distance.x,
-        y: movingRect.y + movingRect.height + distance.y,
-      }
-    );
-    collision = topBorder.getIntersection(leftVector);
-
-    if (!collision) {
-      const rightVector = new Line(
-        {
-          x: movingRect.x + movingRect.width,
-          y: movingRect.y + movingRect.height,
-        },
-        {
-          x: movingRect.x + movingRect.width + distance.x,
-          y: movingRect.y + movingRect.height + distance.y,
-        }
-      );
-      collision = topBorder.getIntersection(rightVector);
-    }
-
-    return collision;
+    return CollisionDetector.checkCollisionOnCardinalDirection({
+      getLine: stillRect.getTopBorder,
+      getFirstVector(): Line {
+        return new Line(
+          { x: movingRect.x, y: movingRect.y + movingRect.height },
+          {
+            x: movingRect.x + distance.x,
+            y: movingRect.y + movingRect.height + distance.y,
+          }
+        );
+      },
+      getSecondVector(): Line {
+        return new Line(
+          {
+            x: movingRect.x + movingRect.width,
+            y: movingRect.y + movingRect.height,
+          },
+          {
+            x: movingRect.x + movingRect.width + distance.x,
+            y: movingRect.y + movingRect.height + distance.y,
+          }
+        );
+      },
+    });
   };
 
   static getCollisionForMovementLeft = (
@@ -126,27 +138,24 @@ export default class CollisionDetector {
     stillRect: Rectangle,
     distance: Point
   ): Point | null => {
-    let collision: Point | null;
-    const rightBorder = stillRect.getRightBorder();
-
-    const topVector = new Line(
-      { x: movingRect.x, y: movingRect.y },
-      { x: movingRect.x + distance.x, y: movingRect.y }
-    );
-    collision = rightBorder.getIntersection(topVector);
-
-    if (!collision) {
-      const bottomVector = new Line(
-        { x: movingRect.x, y: movingRect.y + movingRect.height },
-        {
-          x: movingRect.x + distance.x,
-          y: movingRect.y + movingRect.height,
-        }
-      );
-      collision = rightBorder.getIntersection(bottomVector);
-    }
-
-    return collision;
+    return CollisionDetector.checkCollisionOnCardinalDirection({
+      getLine: stillRect.getRightBorder,
+      getFirstVector(): Line {
+        return new Line(
+          { x: movingRect.x, y: movingRect.y },
+          { x: movingRect.x + distance.x, y: movingRect.y }
+        );
+      },
+      getSecondVector(): Line {
+        return new Line(
+          { x: movingRect.x, y: movingRect.y + movingRect.height },
+          {
+            x: movingRect.x + distance.x,
+            y: movingRect.y + movingRect.height,
+          }
+        );
+      },
+    });
   };
 
   static getCollisionForMovementRight = (
@@ -154,29 +163,26 @@ export default class CollisionDetector {
     stillRect: Rectangle,
     distance: Point
   ): Point | null => {
-    let collision: Point | null;
-    const leftBorder = stillRect.getLeftBorder();
-
-    const topVector = new Line(
-      { x: movingRect.x + movingRect.width, y: movingRect.y },
-      { x: movingRect.x + movingRect.width + distance.x, y: movingRect.y }
-    );
-    collision = leftBorder.getIntersection(topVector);
-
-    if (!collision) {
-      const bottomVector = new Line(
-        {
-          x: movingRect.x + movingRect.width,
-          y: movingRect.y + movingRect.height,
-        },
-        {
-          x: movingRect.x + movingRect.width + distance.x,
-          y: movingRect.y + movingRect.height,
-        }
-      );
-      collision = leftBorder.getIntersection(bottomVector);
-    }
-
-    return collision;
+    return CollisionDetector.checkCollisionOnCardinalDirection({
+      getLine: stillRect.getLeftBorder,
+      getFirstVector(): Line {
+        return new Line(
+          { x: movingRect.x + movingRect.width, y: movingRect.y },
+          { x: movingRect.x + movingRect.width + distance.x, y: movingRect.y }
+        );
+      },
+      getSecondVector(): Line {
+        return new Line(
+          {
+            x: movingRect.x + movingRect.width,
+            y: movingRect.y + movingRect.height,
+          },
+          {
+            x: movingRect.x + movingRect.width + distance.x,
+            y: movingRect.y + movingRect.height,
+          }
+        );
+      },
+    });
   };
 }
