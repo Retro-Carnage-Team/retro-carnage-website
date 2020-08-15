@@ -1,14 +1,14 @@
 import { getMovementDistance, getMovementX, getMovementY } from "./Movement";
 import Rectangle from "./Rectangle";
 import { Directions } from "./Directions";
-import Offset from "./Offset";
+import Point from "./Point";
 import { Weapon } from "./Weapons";
 
 export const BULLET_HEIGHT = 5;
 export const BULLET_WIDTH = 5;
 const BULLET_SPEED = 1.2;
 
-const Offsets = new Map<Directions, Offset>();
+const Offsets = new Map<Directions, Point>();
 Offsets.set(Directions.Up, { x: 45, y: -BULLET_HEIGHT });
 Offsets.set(Directions.UpRight, { x: 45, y: -BULLET_HEIGHT });
 Offsets.set(Directions.Right, { x: 90, y: 100 });

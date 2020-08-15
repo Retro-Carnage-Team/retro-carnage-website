@@ -14,7 +14,7 @@ import SoundBoard, {
 } from "./SoundBoard";
 import LevelController from "./LevelController";
 import { Mission } from "./Missions";
-import Offset from "./Offset";
+import Point from "./Point";
 import { Grenade } from "./Grenades";
 import { DURATION_OF_DEATH_ANIMATION } from "./PlayerTileSupplier";
 import Bullet from "./Bullet";
@@ -210,7 +210,7 @@ export default class Engine {
     );
   };
 
-  updateAllPositionsWithScrollOffset = (scrollOffset: Offset) => {
+  updateAllPositionsWithScrollOffset = (scrollOffset: Point) => {
     this.playerPositions.forEach((pos) => pos.subtract(scrollOffset));
     this.explosives.forEach((exp) => exp.position.subtract(scrollOffset));
     this.explosions.forEach((exp) => exp.position.subtract(scrollOffset));

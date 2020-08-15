@@ -2,13 +2,13 @@ import { getMovementDistance, getMovementX, getMovementY } from "./Movement";
 import Rectangle from "./Rectangle";
 import Tile from "./Tile";
 import { Directions } from "./Directions";
-import Offset from "./Offset";
+import Point from "./Point";
 import { Grenade } from "./Grenades";
 
 export const GRENADE_HEIGHT = 17;
 export const GRENADE_WIDTH = 32;
 
-const Offsets = new Map<Directions, Offset>();
+const Offsets = new Map<Directions, Point>();
 Offsets.set(Directions.Up, { x: 45, y: -GRENADE_HEIGHT });
 Offsets.set(Directions.UpRight, { x: 45, y: -GRENADE_HEIGHT });
 Offsets.set(Directions.Right, { x: 90, y: 100 });

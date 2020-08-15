@@ -1,4 +1,5 @@
-import Offset from "./Offset";
+import Point from "./Point";
+import Line from "./Line";
 
 export default class Rectangle {
   constructor(
@@ -13,12 +14,12 @@ export default class Rectangle {
     this.height = height;
   }
 
-  add = (offset: Offset) => {
+  add = (offset: Point) => {
     this.x += offset.x;
     this.y += offset.y;
   };
 
-  subtract = (offset: Offset) => {
+  subtract = (offset: Point) => {
     this.x -= offset.x;
     this.y -= offset.y;
   };
@@ -32,5 +33,33 @@ export default class Rectangle {
       return new Rectangle(leftX, topY, rightX - leftX, bottomY - topY);
     }
     return null;
+  };
+
+  getLeftBorder = (): Line => {
+    return new Line(
+      { x: this.x, y: this.y },
+      { x: this.x, y: this.y + this.height }
+    );
+  };
+
+  getRightBorder = (): Line => {
+    return new Line(
+      { x: this.x + this.width, y: this.y },
+      { x: this.x + this.width, y: this.y + this.height }
+    );
+  };
+
+  getTopBorder = (): Line => {
+    return new Line(
+      { x: this.x, y: this.y },
+      { x: this.x + this.width, y: this.y }
+    );
+  };
+
+  getBottomBorder = (): Line => {
+    return new Line(
+      { x: this.x, y: this.y + this.height },
+      { x: this.x + this.width, y: this.y + this.height }
+    );
   };
 }
