@@ -38,6 +38,22 @@ export default class CollisionDetector {
           stillRect,
           distance
         );
+      case Directions.Left:
+        // TODO: Calculate and return the max distance instead of the collision point
+        // TODO: When stillRect.width < movingRect.width: do reverse check
+        return CollisionDetector.getCollisionForMovementLeft(
+          movingRect,
+          stillRect,
+          distance
+        );
+      case Directions.Right:
+        // TODO: Calculate and return the max distance instead of the collision point
+        // TODO: When stillRect.width < movingRect.width: do reverse check
+        return CollisionDetector.getCollisionForMovementRight(
+          movingRect,
+          stillRect,
+          distance
+        );
       default:
         return null;
     }
@@ -53,7 +69,7 @@ export default class CollisionDetector {
 
     const leftVector = new Line(
       { x: movingRect.x, y: movingRect.y },
-      { x: movingRect.x + distance.x, y: movingRect.y + distance.y }
+      { x: movingRect.x, y: movingRect.y + distance.y }
     );
     collision = bottomBorder.getIntersection(leftVector);
 
@@ -100,6 +116,65 @@ export default class CollisionDetector {
         }
       );
       collision = topBorder.getIntersection(rightVector);
+    }
+
+    return collision;
+  };
+
+  static getCollisionForMovementLeft = (
+    movingRect: Rectangle,
+    stillRect: Rectangle,
+    distance: Point
+  ): Point | null => {
+    let collision: Point | null;
+    const rightBorder = stillRect.getRightBorder();
+
+    const topVector = new Line(
+      { x: movingRect.x, y: movingRect.y },
+      { x: movingRect.x + distance.x, y: movingRect.y }
+    );
+    collision = rightBorder.getIntersection(topVector);
+
+    if (!collision) {
+      const bottomVector = new Line(
+        { x: movingRect.x, y: movingRect.y + movingRect.height },
+        {
+          x: movingRect.x + distance.x,
+          y: movingRect.y + movingRect.height,
+        }
+      );
+      collision = rightBorder.getIntersection(bottomVector);
+    }
+
+    return collision;
+  };
+
+  static getCollisionForMovementRight = (
+    movingRect: Rectangle,
+    stillRect: Rectangle,
+    distance: Point
+  ): Point | null => {
+    let collision: Point | null;
+    const leftBorder = stillRect.getLeftBorder();
+
+    const topVector = new Line(
+      { x: movingRect.x + movingRect.width, y: movingRect.y },
+      { x: movingRect.x + movingRect.width + distance.x, y: movingRect.y }
+    );
+    collision = leftBorder.getIntersection(topVector);
+
+    if (!collision) {
+      const bottomVector = new Line(
+        {
+          x: movingRect.x + movingRect.width,
+          y: movingRect.y + movingRect.height,
+        },
+        {
+          x: movingRect.x + movingRect.width + distance.x,
+          y: movingRect.y + movingRect.height,
+        }
+      );
+      collision = leftBorder.getIntersection(bottomVector);
     }
 
     return collision;
