@@ -381,3 +381,147 @@ test("Should stop the → movement of a rect against center of smaller rect", ()
   expect(result?.width).toBe(2);
   expect(result?.height).toBe(9);
 });
+
+//--- Up Right -------------------------------------------------------------------------------------------------------//
+
+test("Should stop the ↗ movement of a rect against center of larger rect", () => {
+  const movingRect = new Rectangle(1, 6, 1, 1);
+  const stillRect = new Rectangle(3, 1, 4, 4);
+
+  const result = CollisionDetector.stopUpRightMovement(movingRect, stillRect, {
+    x: 3,
+    y: -3,
+  });
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(2);
+  expect(result?.y).toBe(5);
+  expect(result?.width).toBe(1);
+  expect(result?.height).toBe(1);
+});
+
+test("Should stop the ↗ movement of a rect against center of smaller rect", () => {
+  const movingRect = new Rectangle(1, 4, 6, 6);
+  const stillRect = new Rectangle(4, 2, 1, 1);
+
+  const result = CollisionDetector.stopUpRightMovement(movingRect, stillRect, {
+    x: 2,
+    y: -3,
+  });
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBeCloseTo(1.666, 2);
+  expect(result?.y).toBe(3);
+  expect(result?.width).toBe(6);
+  expect(result?.height).toBe(6);
+});
+
+//--- Down Right -----------------------------------------------------------------------------------------------------//
+
+test("Should stop the ↘ movement of a rect against center of larger rect", () => {
+  const movingRect = new Rectangle(1, 1, 1, 1);
+  const stillRect = new Rectangle(3, 3, 4, 4);
+
+  const result = CollisionDetector.stopDownRightMovement(
+    movingRect,
+    stillRect,
+    {
+      x: 3,
+      y: 3,
+    }
+  );
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(2);
+  expect(result?.y).toBe(2);
+  expect(result?.width).toBe(1);
+  expect(result?.height).toBe(1);
+});
+
+test("Should stop the ↘ movement of a rect against center of smaller rect", () => {
+  const movingRect = new Rectangle(1, 1, 4, 4);
+  const stillRect = new Rectangle(4, 6, 1, 1);
+
+  const result = CollisionDetector.stopDownRightMovement(
+    movingRect,
+    stillRect,
+    {
+      x: 3,
+      y: 3,
+    }
+  );
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(2);
+  expect(result?.y).toBe(2);
+  expect(result?.width).toBe(4);
+  expect(result?.height).toBe(4);
+});
+
+//--- Up Left --------------------------------------------------------------------------------------------------------//
+
+test("Should stop the ↖ movement of a rect against center of larger rect", () => {
+  const movingRect = new Rectangle(6, 4, 1, 1);
+  const stillRect = new Rectangle(1, 1, 4, 4);
+
+  const result = CollisionDetector.stopDownLeftMovement(movingRect, stillRect, {
+    x: -2,
+    y: -2,
+  });
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(5);
+  expect(result?.y).toBe(3);
+  expect(result?.width).toBe(1);
+  expect(result?.height).toBe(1);
+});
+
+test("Should stop the ↖ movement of a rect against center of smaller rect", () => {
+  const movingRect = new Rectangle(1, 3, 4, 4);
+  const stillRect = new Rectangle(1, 1, 1, 1);
+
+  const result = CollisionDetector.stopUpLeftMovement(movingRect, stillRect, {
+    x: -3,
+    y: -3,
+  });
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(0);
+  expect(result?.y).toBe(2);
+  expect(result?.width).toBe(4);
+  expect(result?.height).toBe(4);
+});
+
+//--- Down Left ------------------------------------------------------------------------------------------------------//
+
+test("Should stop the ↙ movement of a rect against center of larger rect", () => {
+  const movingRect = new Rectangle(4, 3, 1, 1);
+  const stillRect = new Rectangle(1, 5, 4, 4);
+
+  const result = CollisionDetector.stopDownLeftMovement(movingRect, stillRect, {
+    x: -3,
+    y: 3,
+  });
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(3);
+  expect(result?.y).toBe(4);
+  expect(result?.width).toBe(1);
+  expect(result?.height).toBe(1);
+});
+
+test("Should stop the ↙ movement of a rect against center of smaller rect", () => {
+  const movingRect = new Rectangle(4, 1, 4, 4);
+  const stillRect = new Rectangle(4, 6, 1, 1);
+
+  const result = CollisionDetector.stopDownLeftMovement(movingRect, stillRect, {
+    x: -2,
+    y: 2,
+  });
+
+  expect(result).toBeTruthy();
+  expect(result?.x).toBe(3);
+  expect(result?.y).toBe(2);
+  expect(result?.width).toBe(4);
+  expect(result?.height).toBe(4);
+});

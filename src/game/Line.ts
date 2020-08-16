@@ -28,12 +28,6 @@ export default class Line {
     return null;
   };
 
-  getLengthFromStartToPoint = (point: Point): number => {
-    const a = Math.abs(this.start.x - point.x);
-    const b = Math.abs(this.start.y - point.y);
-    return Math.sqrt(a * a + b * b);
-  };
-
   // Lines do not have a direction: check both possibilities
   equals = (other: Line): boolean => {
     function pointToString(p: Point): string {

@@ -14,14 +14,16 @@ export default class Rectangle {
     this.height = height;
   }
 
-  add = (offset: Point) => {
+  add = (offset: Point): Rectangle => {
     this.x += offset.x;
     this.y += offset.y;
+    return this;
   };
 
-  subtract = (offset: Point) => {
+  subtract = (offset: Point): Rectangle => {
     this.x -= offset.x;
     this.y -= offset.y;
+    return this;
   };
 
   getIntersection = (other: Rectangle): Rectangle | null => {
