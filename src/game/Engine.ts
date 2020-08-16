@@ -14,7 +14,7 @@ import SoundBoard, {
 } from "./SoundBoard";
 import LevelController from "./LevelController";
 import { Mission } from "./Missions";
-import Offset from "./Offset";
+import Point from "./Point";
 import { Grenade } from "./Grenades";
 import { DURATION_OF_DEATH_ANIMATION } from "./PlayerTileSupplier";
 import Bullet from "./Bullet";
@@ -72,7 +72,8 @@ export default class Engine {
 
   updateGameState = (elapsedTimeInMs: number) => {
     this.updatePlayerBehavior(elapsedTimeInMs);
-    this.updatePlayerPositionWithMovement(elapsedTimeInMs);
+    const obstacles = this.levelController.getObstaclesOnScreen();
+    this.updatePlayerPositionWithMovement(elapsedTimeInMs, obstacles);
     this.updateEnemies(elapsedTimeInMs);
     this.updateBullet(elapsedTimeInMs);
     this.updateExplosions(elapsedTimeInMs);
@@ -129,7 +130,10 @@ export default class Engine {
     this.lost = 0 === PlayerController.getRemainingPlayers().length;
   };
 
-  updatePlayerPositionWithMovement = (elapsedTimeInMs: number) => {
+  updatePlayerPositionWithMovement = (
+    elapsedTimeInMs: number,
+    obstacles: Rectangle[]
+  ) => {
     PlayerController.getRemainingPlayers().forEach((p) => {
       const behavior = this.playerBehaviors[p.index];
       if (!behavior.dying && behavior.moving) {
@@ -137,7 +141,8 @@ export default class Engine {
         this.playerPositions[p.index] = updatePlayerMovement(
           elapsedTimeInMs,
           behavior.direction,
-          oldPosition
+          oldPosition,
+          obstacles
         );
       }
     });
@@ -205,7 +210,7 @@ export default class Engine {
     );
   };
 
-  updateAllPositionsWithScrollOffset = (scrollOffset: Offset) => {
+  updateAllPositionsWithScrollOffset = (scrollOffset: Point) => {
     this.playerPositions.forEach((pos) => pos.subtract(scrollOffset));
     this.explosives.forEach((exp) => exp.position.subtract(scrollOffset));
     this.explosions.forEach((exp) => exp.position.subtract(scrollOffset));

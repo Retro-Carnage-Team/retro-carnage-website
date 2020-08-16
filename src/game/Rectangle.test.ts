@@ -1,4 +1,5 @@
 import Rectangle from "./Rectangle";
+import Line from "./Line";
 
 test("Should return no intersection when rectangles don't overlap", () => {
   const r1 = new Rectangle(1, 1, 1, 1);
@@ -42,4 +43,32 @@ test("Should subtract offsets correctly", () => {
   expect(r1.y).toBe(-2);
   expect(r1.width).toBe(10);
   expect(r1.height).toBe(10);
+});
+
+test("Should return left border as Line object", () => {
+  const r1 = new Rectangle(3, 3, 2, 2);
+  const border = r1.getLeftBorder();
+  const expected = new Line({ x: 3, y: 3 }, { x: 3, y: 5 });
+  expect(border.equals(expected)).toBeTruthy();
+});
+
+test("Should return right border as Line object", () => {
+  const r1 = new Rectangle(3, 3, 2, 2);
+  const border = r1.getRightBorder();
+  const expected = new Line({ x: 5, y: 3 }, { x: 5, y: 5 });
+  expect(border.equals(expected)).toBeTruthy();
+});
+
+test("Should return top border as Line object", () => {
+  const r1 = new Rectangle(3, 3, 2, 2);
+  const border = r1.getTopBorder();
+  const expected = new Line({ x: 3, y: 3 }, { x: 5, y: 3 });
+  expect(border.equals(expected)).toBeTruthy();
+});
+
+test("Should return bottom border as Line object", () => {
+  const r1 = new Rectangle(3, 3, 2, 2);
+  const border = r1.getBottomBorder();
+  const expected = new Line({ x: 3, y: 5 }, { x: 5, y: 5 });
+  expect(border.equals(expected)).toBeTruthy();
 });

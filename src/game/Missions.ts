@@ -30,7 +30,7 @@ export interface Segment {
   direction: Directions;
   enemies: Enemy[];
   goal: Rectangle | null;
-  obstacles: any[];
+  obstacles: Rectangle[];
 }
 
 export interface Mission {
@@ -82,7 +82,7 @@ const Missions: Mission[] = [
           ),
         ],
         goal: null,
-        obstacles: [],
+        obstacles: [new Rectangle(400, -2700, 200, 200)],
       },
       {
         backgrounds: [

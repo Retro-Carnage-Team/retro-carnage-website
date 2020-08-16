@@ -31,7 +31,7 @@ const SEGMENTS = [
       ),
     ],
     goal: null,
-    obstacles: [],
+    obstacles: [new Rectangle(400, -300, 200, 200)],
   },
   {
     backgrounds: [
@@ -229,7 +229,24 @@ test("Should activate enemies when game scrolled far enough", () => {
   expect(enemies.length).toBe(1);
 
   offset = controller.updatePosition(50, [posPlayerOne]);
-  enemies = controller.getActivatedEnemies();
   expect(offset).toEqual({ x: 0, y: -15 });
+  enemies = controller.getActivatedEnemies();
   expect(enemies.length).toBe(0);
+});
+
+test("Should return obstacles when they scroll into the visible area", () => {
+  const controller = new LevelController(SEGMENTS);
+  let obstacles = controller.getObstaclesOnScreen();
+  expect(obstacles.length).toBe(0);
+
+  const posPlayerOne = new Rectangle(500, 200, 90, 200);
+  let offset = controller.updatePosition(2000, [posPlayerOne]);
+  expect(offset).toEqual({ x: 0, y: -600 });
+
+  obstacles = controller.getObstaclesOnScreen();
+  expect(obstacles.length).toBe(1);
+  expect(obstacles[0].x).toBe(400);
+  expect(obstacles[0].y).toBe(300);
+  expect(obstacles[0].width).toBe(200);
+  expect(obstacles[0].height).toBe(200);
 });
