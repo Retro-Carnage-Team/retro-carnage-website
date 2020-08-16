@@ -30,141 +30,185 @@ export default class CollisionDetector {
     let collision: Point | null;
     switch (direction) {
       case Directions.Up:
-        collision = CollisionDetector.getCollisionForMovementUp(
+        return CollisionDetector.stopUpMovement(
           movingRect,
           stillRect,
           distance
         );
-
-        if (collision) {
-          return new Rectangle(
-            movingRect.x,
-            collision.y,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        if (
-          stillRect.width < movingRect.width &&
-          CollisionDetector.getCollisionForMovementDown(stillRect, movingRect, {
-            x: 0,
-            y: -1 * distance.y,
-          })
-        ) {
-          return new Rectangle(
-            movingRect.x,
-            stillRect.y + stillRect.height,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        return null;
       case Directions.Down:
-        collision = CollisionDetector.getCollisionForMovementDown(
+        return CollisionDetector.stopDownMovement(
           movingRect,
           stillRect,
           distance
         );
-
-        if (collision) {
-          return new Rectangle(
-            movingRect.x,
-            collision.y - movingRect.height,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        if (
-          stillRect.width < movingRect.width &&
-          CollisionDetector.getCollisionForMovementUp(stillRect, movingRect, {
-            x: 0,
-            y: -1 * distance.y,
-          })
-        ) {
-          return new Rectangle(
-            movingRect.x,
-            stillRect.y - movingRect.height,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        return null;
       case Directions.Left:
-        collision = CollisionDetector.getCollisionForMovementLeft(
+        return CollisionDetector.stopLeftMovement(
           movingRect,
           stillRect,
           distance
         );
-
-        if (collision) {
-          return new Rectangle(
-            collision.x,
-            movingRect.y,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        if (
-          stillRect.height < movingRect.height &&
-          CollisionDetector.getCollisionForMovementRight(
-            stillRect,
-            movingRect,
-            {
-              x: -1 * distance.x,
-              y: 0,
-            }
-          )
-        ) {
-          return new Rectangle(
-            stillRect.x + stillRect.width,
-            movingRect.y,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        return null;
       case Directions.Right:
-        collision = CollisionDetector.getCollisionForMovementRight(
+        return CollisionDetector.stopRightMovement(
           movingRect,
           stillRect,
           distance
         );
-
-        if (collision) {
-          return new Rectangle(
-            collision.x - movingRect.width,
-            movingRect.y,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        if (
-          stillRect.height < movingRect.height &&
-          CollisionDetector.getCollisionForMovementLeft(stillRect, movingRect, {
-            x: -1 * distance.x,
-            y: 0,
-          })
-        ) {
-          return new Rectangle(
-            stillRect.x - movingRect.width,
-            movingRect.y,
-            movingRect.width,
-            movingRect.height
-          );
-        }
-
-        return null;
       default:
         return null;
     }
   };
+
+  private static stopUpMovement(
+    movingRect: Rectangle,
+    stillRect: Rectangle,
+    distance: Point
+  ): Rectangle | null {
+    let collision = CollisionDetector.getCollisionForMovementUp(
+      movingRect,
+      stillRect,
+      distance
+    );
+
+    if (collision) {
+      return new Rectangle(
+        movingRect.x,
+        collision.y,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    if (
+      stillRect.width < movingRect.width &&
+      CollisionDetector.getCollisionForMovementDown(stillRect, movingRect, {
+        x: 0,
+        y: -1 * distance.y,
+      })
+    ) {
+      return new Rectangle(
+        movingRect.x,
+        stillRect.y + stillRect.height,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    return null;
+  }
+
+  private static stopDownMovement(
+    movingRect: Rectangle,
+    stillRect: Rectangle,
+    distance: Point
+  ): Rectangle | null {
+    let collision = CollisionDetector.getCollisionForMovementDown(
+      movingRect,
+      stillRect,
+      distance
+    );
+
+    if (collision) {
+      return new Rectangle(
+        movingRect.x,
+        collision.y - movingRect.height,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    if (
+      stillRect.width < movingRect.width &&
+      CollisionDetector.getCollisionForMovementUp(stillRect, movingRect, {
+        x: 0,
+        y: -1 * distance.y,
+      })
+    ) {
+      return new Rectangle(
+        movingRect.x,
+        stillRect.y - movingRect.height,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    return null;
+  }
+
+  private static stopLeftMovement(
+    movingRect: Rectangle,
+    stillRect: Rectangle,
+    distance: Point
+  ): Rectangle | null {
+    let collision = CollisionDetector.getCollisionForMovementLeft(
+      movingRect,
+      stillRect,
+      distance
+    );
+
+    if (collision) {
+      return new Rectangle(
+        collision.x,
+        movingRect.y,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    if (
+      stillRect.height < movingRect.height &&
+      CollisionDetector.getCollisionForMovementRight(stillRect, movingRect, {
+        x: -1 * distance.x,
+        y: 0,
+      })
+    ) {
+      return new Rectangle(
+        stillRect.x + stillRect.width,
+        movingRect.y,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    return null;
+  }
+
+  private static stopRightMovement(
+    movingRect: Rectangle,
+    stillRect: Rectangle,
+    distance: Point
+  ): Rectangle | null {
+    let collision = CollisionDetector.getCollisionForMovementRight(
+      movingRect,
+      stillRect,
+      distance
+    );
+
+    if (collision) {
+      return new Rectangle(
+        collision.x - movingRect.width,
+        movingRect.y,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    if (
+      stillRect.height < movingRect.height &&
+      CollisionDetector.getCollisionForMovementLeft(stillRect, movingRect, {
+        x: -1 * distance.x,
+        y: 0,
+      })
+    ) {
+      return new Rectangle(
+        stillRect.x - movingRect.width,
+        movingRect.y,
+        movingRect.width,
+        movingRect.height
+      );
+    }
+
+    return null;
+  }
 
   private static checkCollisionOnCardinalDirection(
     provider: CollisionCheckForCardinalDirection
