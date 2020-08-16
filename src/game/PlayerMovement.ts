@@ -7,6 +7,7 @@ import { getMovementX, getMovementY } from "./Movement";
 import Rectangle from "./Rectangle";
 import { Directions } from "./Directions";
 import Point from "./Point";
+import CollisionDetector from "./CollisionDetector";
 
 export const MIN_PLAYER_DISTANCE_TO_BORDER = 25;
 const PLAYER_MOVEMENT_PER_MS = 0.75; // Screen.width = 1500 / 2.000 milliseconds = 0.75 px / ms
@@ -31,7 +32,6 @@ function getMovementVector(
   };
 }
 
-/*
 function limitPlayerMovementToScreenArea(position: Rectangle): Rectangle {
   if (position.x < MIN_PLAYER_DISTANCE_TO_BORDER) {
     position.x = MIN_PLAYER_DISTANCE_TO_BORDER;
@@ -50,7 +50,6 @@ function limitPlayerMovementToScreenArea(position: Rectangle): Rectangle {
   }
   return position;
 }
-*/
 
 export function updatePlayerMovement(
   elapsedTimeInMs: number,
@@ -59,30 +58,23 @@ export function updatePlayerMovement(
   obstacles: Rectangle[]
 ): Rectangle {
   const movement = getMovementVector(elapsedTimeInMs, direction);
-  const restrictedMovement = calculateRestrictedMovement(
-    oldPosition,
-    movement,
-    obstacles
-  );
 
-  /*
-  const positionWithMovement = getNewPlayerPosition(
-    elapsedTimeInMs,
-    direction,
-    oldPosition
+  let updated = false;
+  let updatedPosition = oldPosition;
+  obstacles.forEach((obstacle) => {
+    const restrictedMovement = CollisionDetector.stopMovementOnCollision(
+      updatedPosition,
+      obstacle,
+      direction,
+      movement
+    );
+    if (restrictedMovement) {
+      updated = true;
+      updatedPosition = restrictedMovement;
+    }
+  });
+
+  return limitPlayerMovementToScreenArea(
+    updated ? updatedPosition : oldPosition.add(movement)
   );
-  const corrected = limitPlayerMovementToUnobstructedArea(
-    direction,
-    positionWithMovement,
-    obstacles
-  );
-  return limitPlayerMovementToScreenArea(corrected);
-  */
-  return oldPosition;
 }
-
-export function calculateRestrictedMovement(
-  oldPosition: Rectangle,
-  movement: Point,
-  obstacles: Rectangle[]
-) {}

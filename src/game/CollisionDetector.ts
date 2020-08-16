@@ -278,11 +278,15 @@ export default class CollisionDetector {
         }
       });
       if (collision) {
-        const a = Math.abs(v.start.x - collision.x);
-        const b = Math.abs(v.start.y - collision.y);
+        const collisionPoint = collision as Point;
+        const a = Math.abs(v.start.x - collisionPoint.x);
+        const b = Math.abs(v.start.y - collisionPoint.y);
         const length = Math.sqrt(a * a + b * b);
         collisions.push({
-          distance: { x: collision.x - v.start.x, y: collision.y - v.start.y },
+          distance: {
+            x: collisionPoint.x - v.start.x,
+            y: collisionPoint.y - v.start.y,
+          },
           length,
         });
       }
