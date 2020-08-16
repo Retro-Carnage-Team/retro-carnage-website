@@ -1,5 +1,5 @@
-.idea
-build
-coverage
-node_modules
-dogs-of-war-1
+backend/.idea
+frontend/.idea
+frontend/build
+frontend/coverage
+frontend/node_modules
