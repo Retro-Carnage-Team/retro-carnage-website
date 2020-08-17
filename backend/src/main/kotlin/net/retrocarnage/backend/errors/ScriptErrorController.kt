@@ -12,6 +12,12 @@ class ScriptErrorController(
 ) {
 
     @PostMapping("/")
+    @CrossOrigin(origins = [
+        "http://retro-carnage.net",
+        "http://www.retro-carnage.net",
+        "https://retro-carnage.net",
+        "https://www.retro-carnage.net"
+    ])
     @ResponseStatus(HttpStatus.CREATED)
     fun addScriptError(@RequestBody scriptError: ScriptError) {
         scriptError.timeStamp = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME)

@@ -28,9 +28,9 @@ class App extends React.Component<Readonly<{}>, AppState> {
     this.state = { screen: LOADING_SCREEN_NAME };
   }
 
-  handleScreenChangeRequired = (screenName: string) => {
-    this.setState({ screen: screenName });
-  };
+  componentDidMount() {
+    window.addEventListener("error", this.handleErrorEvent);
+  }
 
   render() {
     let screen;
@@ -99,6 +99,37 @@ class App extends React.Component<Readonly<{}>, AppState> {
     }
     return <div className={styles.app}>{screen}</div>;
   }
+
+  handleErrorEvent = (error: ErrorEvent) => {
+    error.preventDefault();
+
+    const data = JSON.stringify({
+      message: error.message,
+      source: error.filename,
+      lineno: error.lineno,
+      colno: error.colno,
+      stack: error.error?.toString(),
+    });
+
+    console.error("Oh no! Sorry, that shouldn't have happened :'(");
+    console.error(`Error: ${data}`);
+
+    const backend = "http://backend.retro-carnage.net";
+    fetch(`${backend}/script-errors/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    })
+      .then((response) => response.json())
+      .then(() => console.log("Error has been reported"))
+      .catch((error) => console.error("Failed to report the error:", error));
+  };
+
+  handleScreenChangeRequired = (screenName: string) => {
+    this.setState({ screen: screenName });
+  };
 }
 
 export default App;
