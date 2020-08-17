@@ -1,5 +1,7 @@
-.idea
-build
-coverage
-node_modules
-dogs-of-war-1
+backend/.idea
+backend/target
+backend/src/main/resources/application-local.properties
+frontend/.idea
+frontend/build
+frontend/coverage
+frontend/node_modules

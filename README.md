@@ -6,8 +6,29 @@ The goal of this project is to build a modern multi-directional scrolling shoote
 1989 video game [Dogs of War](https://gamesdb.launchbox-app.com/games/details/41090) by
 [Elite Systems](http://www.elite-systems.co.uk).
 
-This game is currently under development. You can find a recent development snapshot on the official homepage:
-[http://www.retro-carnage.net](http://www.retro-carnage.net). Development news will be announced here. Additional
-martial can be found on my Youtube channel.
+## Status
 
+This game is currently under active development. At the moment you can test different concepts of the game. But there 
+is no gripping gameplay at the moment. 
+
+## Try it out
+
+An unfinished game does not deter you? Then you can find the current state of development on the official homepage of 
+the game: [http://www.retro-carnage.net](http://www.retro-carnage.net). 
+
+From time to time there is also a new video on Youtube that demonstrates the new features:
 [![Watch the video](images/youtube-first-impression.png)](https://youtu.be/W5dJvoZUGt8)
+
+## Contribute
+
+Currently, the development of retro-carnage is a one-man project. If you have time and desire to help, you are warmly
+invited to do so. For example, I am happy about
+
+* Error reports
+* Support for graphics
+* Creation of levels
+* Review of code
+* Patches for bugs
+* New code for cool features
+
+Have fun!
