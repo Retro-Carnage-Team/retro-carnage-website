@@ -23,12 +23,11 @@ class DailyUsageService(
             dailyUsageRepository.deleteAll(dailyUsage)
 
         val numberOfGamesPlayedYesterday = usageRepository.countByStart(dateString)
-        if(0 < numberOfGamesPlayedYesterday)
-            dailyUsageRepository.save(DailyUsage(
-                    id = null,
-                    date = dateString,
-                    games = numberOfGamesPlayedYesterday
-            ))
+        dailyUsageRepository.save(DailyUsage(
+                id = null,
+                date = dateString,
+                games = numberOfGamesPlayedYesterday
+        ))
         usageChart = buildUsageChart()
     }
 
