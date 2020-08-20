@@ -15,6 +15,12 @@ class UsageController(
 
     @PostMapping("/start-game")
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin(origins = [
+        "http://retro-carnage.net",
+        "http://www.retro-carnage.net",
+        "https://retro-carnage.net",
+        "https://www.retro-carnage.net"
+    ])
     fun startGame(): Usage {
         val usage = Usage(
                 id = null,
@@ -28,6 +34,12 @@ class UsageController(
 
     @PostMapping("/{id}/next-screen/{screen}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = [
+        "http://retro-carnage.net",
+        "http://www.retro-carnage.net",
+        "https://retro-carnage.net",
+        "https://www.retro-carnage.net"
+    ])
     fun nextScreen(
             @PathVariable(value = "id") gameId: String,
             @PathVariable(value = "screen") screenName: String
