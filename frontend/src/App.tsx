@@ -19,16 +19,23 @@ import StartScreen, { START_SCREEN_NAME } from "./screens/start/StartScreen";
 import TitleScreen, { TITLE_SCREEN_NAME } from "./screens/title/TitleScreen";
 
 interface AppState {
+  gameId: string | null;
   screen: string;
 }
+
+const backend = "http://backend.retro-carnage.net";
 
 class App extends React.Component<Readonly<{}>, AppState> {
   constructor(props: Readonly<{}>) {
     super(props);
-    this.state = { screen: LOADING_SCREEN_NAME };
+    this.state = {
+      gameId: null,
+      screen: LOADING_SCREEN_NAME,
+    };
   }
 
   componentDidMount() {
+    this.startGameSession();
     window.addEventListener("error", this.handleErrorEvent);
   }
 
@@ -114,7 +121,6 @@ class App extends React.Component<Readonly<{}>, AppState> {
     console.error("Oh no! Sorry, that shouldn't have happened :'(");
     console.error(`Error: ${data}`);
 
-    const backend = "http://backend.retro-carnage.net";
     fetch(`${backend}/script-errors/`, {
       method: "POST",
       headers: {
@@ -128,7 +134,35 @@ class App extends React.Component<Readonly<{}>, AppState> {
   };
 
   handleScreenChangeRequired = (screenName: string) => {
-    this.setState({ screen: screenName });
+    if (this.state.screen !== screenName) {
+      this.setState({ screen: screenName });
+      const gameId = this.state.gameId;
+      if (null !== gameId) {
+        fetch(`${backend}/usage/${gameId}/next-screen/${screenName}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).catch((error) =>
+          console.error("Failed to notify server about game progress", error)
+        );
+      }
+    }
+  };
+
+  startGameSession = () => {
+    const _this = this;
+    fetch(`${backend}/usage/start-game`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => _this.setState({ gameId: data.gameId }))
+      .catch((error) =>
+        console.error("Failed to notify server about start", error)
+      );
   };
 }
 
