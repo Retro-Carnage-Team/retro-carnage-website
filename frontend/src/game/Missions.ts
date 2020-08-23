@@ -41,6 +41,7 @@ export interface Mission {
   name: string;
   reward: number;
   segments: Segment[];
+  unfinished: boolean;
 }
 
 const Missions: Mission[] = [
@@ -98,6 +99,7 @@ const Missions: Mission[] = [
         obstacles: [],
       },
     ],
+    unfinished: false,
   },
   {
     briefing:
@@ -111,6 +113,7 @@ const Missions: Mission[] = [
     name: "Minsk",
     reward: 8000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -124,6 +127,7 @@ const Missions: Mission[] = [
     name: "Istanbul",
     reward: 8000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -138,6 +142,7 @@ const Missions: Mission[] = [
     name: "Tripolis",
     reward: 12000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -151,6 +156,7 @@ const Missions: Mission[] = [
     name: "Mogadischu",
     reward: 15000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -164,6 +170,7 @@ const Missions: Mission[] = [
     name: "Mumbai",
     reward: 11000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -178,6 +185,7 @@ const Missions: Mission[] = [
     name: "Bischkek",
     reward: 5000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -191,6 +199,7 @@ const Missions: Mission[] = [
     name: "Myanmar",
     reward: 10000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -204,6 +213,7 @@ const Missions: Mission[] = [
     name: "Ho-Chi-Minh City",
     reward: 8000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -217,6 +227,7 @@ const Missions: Mission[] = [
     name: "Mexico City",
     reward: 12000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -230,6 +241,7 @@ const Missions: Mission[] = [
     name: "San Antonio",
     reward: 9000,
     segments: [],
+    unfinished: true,
   },
   {
     briefing:
@@ -244,6 +256,7 @@ const Missions: Mission[] = [
     name: "Amazonas",
     reward: 5000,
     segments: [],
+    unfinished: true,
   },
 ];
 
