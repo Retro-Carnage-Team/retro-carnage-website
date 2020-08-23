@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.heavenhr</groupId>
 	<artifactId>retro-carnage-backend</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>Retro Carnage backend</name>
 	<description>Backend that collects anonymous usage data and connects players for multiplayer games</description>
 
