@@ -46,7 +46,7 @@ export class MissionController {
   };
 
   getRemainingMissions = (): Mission[] => {
-    return Missions.filter(
+    return Missions.filter((m) => !m.unfinished).filter(
       (m) => !this.finishedMissions.find((e) => e === m.name)
     );
   };
