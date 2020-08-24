@@ -60,7 +60,22 @@ tileSetsByEnemySkin.set(
   buildTileSetForEnemy1()
 );
 
-export default class EnemyTileSupplier {
+export interface TileSupplier {
+  getTile(elapsedTimeInMs: number): Tile | undefined;
+}
+
+export class LandmineTileSupplier implements TileSupplier {
+  private readonly tile = new Tile(
+    "images/tiles/environment/Tellermine-43.png",
+    50,
+    44,
+    0,
+    0
+  );
+  getTile = (): Tile | undefined => this.tile;
+}
+
+export default class EnemyTileSupplier implements TileSupplier {
   direction: Directions;
   durationSinceLastTile: number;
   lastTile?: Tile;
