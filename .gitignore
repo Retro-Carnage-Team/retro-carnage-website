@@ -1,4 +1,5 @@
 backend/.idea
+backend/retro-carnage-backend.iml
 backend/target
 backend/src/main/resources/application-local.properties
 frontend/.idea

@@ -1,7 +1,7 @@
 import { Directions } from "./Directions";
 import Rectangle from "./Rectangle";
 import { EnemySkins } from "./EnemySkins";
-import Enemy from "./Enemy";
+import Enemy, { EnemyType } from "./Enemy";
 import {
   MUSIC_BACKGROUND_1,
   MUSIC_BACKGROUND_10,
@@ -79,7 +79,16 @@ const Missions: Mission[] = [
             ],
             new Rectangle(300, -200, 90, 200),
             EnemySkins.GREY_ONESIE_WITH_HELMET,
-            Directions.Down
+            Directions.Down,
+            EnemyType.Person
+          ),
+          new Enemy(
+            0,
+            [],
+            new Rectangle(600, -1200, 50, 44),
+            EnemySkins.GREY_ONESIE_WITH_HELMET,
+            null,
+            EnemyType.Landmine
           ),
         ],
         goal: null,
