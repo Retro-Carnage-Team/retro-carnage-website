@@ -10,12 +10,14 @@ This game is currently under active development. At the moment you can test diff
 
 ## Try it out
 
-An unfinished game does not deter you? Then you can find the current state of development on the official homepage of the game:  
-[http://www.retro-carnage.net](http://www.retro-carnage.net). 
+An unfinished game does not deter you? Then you can find the current state of development on the official homepage of the game: [http://www.retro-carnage.net](http://www.retro-carnage.net). 
 
-From time to time there is also a new video on Youtube that demonstrates the new features: [![Watch the video](images/youtube-first-impression.png)](https://youtu.be/W5dJvoZUGt8)
+[![Watch the video](images/youtube-2020-08-25.png)](https://youtu.be/IeUowwMaIB4)
+Development status 2020-08-25  
+
+[![Watch the video](images/youtube-first-impression.png)](https://youtu.be/W5dJvoZUGt8)
+Development status 2020-04-17
 
 ## Usage statistics
 
 ![Usage statistics](http://backend.retro-carnage.net/usage/chart "Usage statistics")
-
