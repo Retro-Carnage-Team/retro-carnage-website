@@ -23,7 +23,7 @@ interface AppState {
   screen: string;
 }
 
-const backend = "http://backend.retro-carnage.net";
+const backend = "https://backend.retro-carnage.net";
 
 class App extends React.Component<Readonly<{}>, AppState> {
   constructor(props: Readonly<{}>) {
