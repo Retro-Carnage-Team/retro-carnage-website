@@ -1,4 +1,5 @@
 ![Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiTTZlN3NMalI1M3FkTTVnQldDeVl0ZHYyY1V5RS9XVVJ6MWxjdmV3V1pqR3hWc3BYVnVuZkxCTGs1TGNXQ25lbkl1eW82ODE3OWxFMU53TlloRzdIM0lzPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBOWkFndTBRZ2hOd2o4NXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Dependency Status](https://david-dm.org/huddeldaddel/retro-carnage.svg)](https://david-dm.org/huddeldaddel/retro-carnage) [![devDependency Status](https://david-dm.org/huddeldaddel/retro-carnage/dev-status.svg)](https://david-dm.org/huddeldaddel/retro-carnage?type=dev)
 
 # RETRO CARNAGE
 
