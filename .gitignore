@@ -1,8 +1,4 @@
-backend/.idea
-backend/retro-carnage-backend.iml
-backend/target
-backend/src/main/resources/application-local.properties
-frontend/.idea
-frontend/build
-frontend/coverage
-frontend/node_modules
+.idea
+build
+coverage
+node_modules
