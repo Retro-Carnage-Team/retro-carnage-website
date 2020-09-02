@@ -8,8 +8,9 @@ phases:
     commands: 
       - npm install
   build:
-    commands: npm run build
-      npm run test -- --watchAll=false
+    commands:
+      - npm run build
+      - npm run test -- --watchAll=false
 
 artifacts:
   files:
