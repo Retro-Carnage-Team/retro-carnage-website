@@ -3,18 +3,22 @@
 
 # RETRO CARNAGE
 
-The goal of this project is to build a modern multi-directional scrolling shooter - a worthy successor of the classic 1989 video game [Dogs of War](https://gamesdb.launchbox-app.com/games/details/41090) by [Elite Systems](http://www.elite-systems.co.uk).
+The goal of this project is to build a modern multi-directional scrolling shooter - a worthy successor of the classic
+1989 video game [Dogs of War](https://gamesdb.launchbox-app.com/games/details/41090) by
+[Elite Systems](http://www.elite-systems.co.uk).
 
 ## Status
 
-This game is currently under active development. At the moment you can test different concepts of the game. But there is no gripping gameplay at the moment. 
+This game is currently under active development. At the moment you can test different concepts of the game but there is
+no gripping gameplay.
 
 ## Try it out
 
-An unfinished game does not deter you? Then you can find the current state of development on the official homepage of the game: [http://www.retro-carnage.net](http://www.retro-carnage.net). 
+An unfinished game does not deter you? Then you can find the current state of development on the official homepage of
+the game: [http://www.retro-carnage.net](http://www.retro-carnage.net).
 
 [![Watch the video](docs/images/youtube-2020-08-25.png)](https://youtu.be/IeUowwMaIB4)
-Development status 2020-08-25  
+Development status 2020-08-25
 
 [![Watch the video](docs/images/youtube-first-impression.png)](https://youtu.be/W5dJvoZUGt8)
 Development status 2020-04-17
