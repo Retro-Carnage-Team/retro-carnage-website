@@ -1,0 +1,8 @@
+site_name: Retro Carnage
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: readthedocs
+  highlightjs: true
+  prev_next_buttons_location: none
