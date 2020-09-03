@@ -28,7 +28,7 @@ graphics.
 - Make sure to have a recent version of [Node.js](https://nodejs.org) installed. Development of the game happens on
   v10.19.0 - so this should work for sure.
 - Get the latest source code from [GitHub](https://github.com/huddeldaddel/retro-carnage).
-- Open you command line, navigate to the project folder.
+- Open your command line, navigate to the project folder.
 - Run `npm install` to download and install all required dependencies.
 - Run `npm run build` to create a production build of the source code. This will result in a bunch of static files and
   assets in **./build**. Copy this folder to a web server, and you're ready to go.

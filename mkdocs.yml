@@ -3,7 +3,6 @@ nav:
   - Home: index.md
   - Frontend: frontend.md
   - Backend: backend.md
-  - About: about.md
   - License: license.md
 theme:
   name: readthedocs
