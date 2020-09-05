@@ -44,7 +44,6 @@ class App extends React.Component<Readonly<{}>, AppState> {
   }
 
   componentDidMount() {
-    this.startGameSession();
     window.addEventListener("error", this.handleErrorEvent);
   }
 
@@ -165,6 +164,10 @@ class App extends React.Component<Readonly<{}>, AppState> {
 
   handleScreenChangeRequired = (screenName: string) => {
     if (this.state.screen !== screenName) {
+      if (LOADING_SCREEN_NAME === screenName) {
+        this.startGameSession();
+      }
+
       this.setState({ screen: screenName });
       const gameId = this.state.gameId;
       if (null !== gameId) {
