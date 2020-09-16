@@ -2,130 +2,16 @@ import Tile from "./Tile";
 import { Player } from "./Player";
 import { Directions } from "./Directions";
 import PlayerBehavior from "./PlayerBehavior";
+import {
+  PlayerTileSet,
+  TileSetForPlayer0,
+  TileSetForPlayer1,
+} from "./PlayerTileSets";
 import TileGenerator from "./TileGenerator";
 
 export const DURATION_OF_MOVEMENT_ANIMATION = 75; // in ms
-export const DURATION_OF_DEATH_ANIMATION = 75 * 26; // in ms
-
-function buildAnimationSeries(
-  count: number,
-  w: number,
-  h: number,
-  folder: string,
-  offsetX: number,
-  offsetY: number
-): Tile[] {
-  let result: Tile[] = [];
-  for (let i = 0; i < count; i++) {
-    result.push(new Tile(`${folder}${i + 1}.png`, w, h, offsetX, offsetY));
-  }
-  return result;
-}
-
-interface TileSet {
-  byDirection: Map<Directions, Tile[]>;
-  death: Tile[];
-  idle: Map<Directions, Tile>;
-}
-
-function buildTileSetForPlayer1(): TileSet {
-  const result: TileSet = {
-    byDirection: new Map<Directions, Tile[]>(),
-    death: buildAnimationSeries(
-      26,
-      135,
-      200,
-      "images/tiles/player-1/death/",
-      -30,
-      -50
-    ),
-    idle: new Map<Directions, Tile>(),
-  };
-
-  result.byDirection.set(
-    Directions.Down,
-    buildAnimationSeries(6, 94, 200, "images/tiles/player-1/down/", -2, -50)
-  );
-  result.byDirection.set(
-    Directions.DownLeft,
-    buildAnimationSeries(
-      6,
-      154,
-      200,
-      "images/tiles/player-1/down_left/",
-      -48,
-      -50
-    )
-  );
-  result.byDirection.set(
-    Directions.DownRight,
-    buildAnimationSeries(
-      6,
-      88,
-      200,
-      "images/tiles/player-1/down_right/",
-      1,
-      -50
-    )
-  );
-  result.byDirection.set(
-    Directions.Left,
-    buildAnimationSeries(6, 160, 200, "images/tiles/player-1/left/", -33, -50)
-  );
-  result.byDirection.set(
-    Directions.Right,
-    buildAnimationSeries(6, 155, 200, "images/tiles/player-1/right/", 0, -50)
-  );
-  result.byDirection.set(
-    Directions.Up,
-    buildAnimationSeries(6, 85, 200, "images/tiles/player-1/up/", 2, -50)
-  );
-  result.byDirection.set(
-    Directions.UpLeft,
-    buildAnimationSeries(6, 100, 200, "images/tiles/player-1/up_left/", 0, -50)
-  );
-  result.byDirection.set(
-    Directions.UpRight,
-    buildAnimationSeries(6, 126, 200, "images/tiles/player-1/up_right/", 0, -50)
-  );
-
-  result.idle.set(
-    Directions.Down,
-    new Tile("images/tiles/player-1/idle/down.png", 100, 200, -5, -50)
-  );
-  result.idle.set(
-    Directions.DownLeft,
-    new Tile("images/tiles/player-1/idle/down_left.png", 127, 200, -37, -50)
-  );
-  result.idle.set(
-    Directions.DownRight,
-    new Tile("images/tiles/player-1/idle/down_right.png", 108, 200, 6, -50)
-  );
-  result.idle.set(
-    Directions.Left,
-    new Tile("images/tiles/player-1/idle/left.png", 112, 200, -22, -50)
-  );
-  result.idle.set(
-    Directions.Right,
-    new Tile("images/tiles/player-1/idle/right.png", 131, 200, 0, -50)
-  );
-  result.idle.set(
-    Directions.Up,
-    new Tile("images/tiles/player-1/idle/up.png", 94, 200, -2, -50)
-  );
-  result.idle.set(
-    Directions.UpLeft,
-    new Tile("images/tiles/player-1/idle/up_left.png", 85, 200, 2, -50)
-  );
-  result.idle.set(
-    Directions.UpRight,
-    new Tile("images/tiles/player-1/idle/up_right.png", 125, 200, 0, -50)
-  );
-
-  return result;
-}
-
-const TILES_PLAYER_1 = buildTileSetForPlayer1();
+export const DURATION_OF_DEATH_ANIMATION_PLAYER_0 = 75 * 21; // in ms
+export const DURATION_OF_DEATH_ANIMATION_PLAYER_1 = 75 * 26; // in ms
 
 export default class PlayerTileSupplier {
   directionOfLastTile: Directions | null;
@@ -133,14 +19,14 @@ export default class PlayerTileSupplier {
   invincibilityToggle: boolean;
   lastTile?: Tile;
   tileGenerator: TileGenerator | null;
-  tileSet: TileSet;
+  tileSet: PlayerTileSet;
 
   constructor(player: Player) {
     this.directionOfLastTile = null;
     this.durationSinceLastTile = 0;
     this.invincibilityToggle = true;
     this.tileGenerator = null;
-    this.tileSet = 0 === player.index ? TILES_PLAYER_1 : TILES_PLAYER_1; // TODO: Create tileSet for player 2
+    this.tileSet = 0 === player.index ? TileSetForPlayer0 : TileSetForPlayer1;
   }
 
   getTile = (
@@ -175,10 +61,6 @@ export default class PlayerTileSupplier {
       }
       if (newTile) {
         this.lastTile = this.tileGenerator?.nextValue();
-      }
-      if (playerBehavior.invincible) {
-        this.invincibilityToggle = !this.invincibilityToggle;
-        return this.invincibilityToggle ? this.lastTile : undefined;
       }
       return this.lastTile;
     } else {
