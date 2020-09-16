@@ -6,7 +6,7 @@ import PlayerBehavior from "./PlayerBehavior";
 import { Directions } from "./Directions";
 
 test("Returns correct tile for idle player", () => {
-  const player = new Player(0);
+  const player = new Player(1);
   const playerBehavior = new PlayerBehavior(player);
   playerBehavior.moving = false;
   playerBehavior.direction = Directions.Right;
@@ -16,7 +16,7 @@ test("Returns correct tile for idle player", () => {
 });
 
 test("Starts movement animation tile #0 for player starting to move", () => {
-  const player = new Player(0);
+  const player = new Player(1);
   const playerBehavior = new PlayerBehavior(player);
   playerBehavior.moving = false;
   playerBehavior.direction = Directions.Right;
@@ -41,7 +41,7 @@ test("Starts movement animation tile #0 for player starting to move", () => {
 });
 
 test("Does not play the animation without delay", () => {
-  const player = new Player(0);
+  const player = new Player(1);
   const playerBehavior = new PlayerBehavior(player);
   playerBehavior.moving = true;
   playerBehavior.direction = Directions.Up;
@@ -55,7 +55,7 @@ test("Does not play the animation without delay", () => {
 });
 
 test("Plays animation in loop", () => {
-  const player = new Player(0);
+  const player = new Player(1);
   const playerBehavior = new PlayerBehavior(player);
   playerBehavior.moving = true;
   playerBehavior.direction = Directions.Up;
