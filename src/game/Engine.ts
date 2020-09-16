@@ -17,7 +17,10 @@ import LevelController from "./LevelController";
 import { Mission } from "./Missions";
 import Point from "./Point";
 import { Grenade } from "./Grenades";
-import { DURATION_OF_DEATH_ANIMATION } from "./PlayerTileSupplier";
+import {
+  DURATION_OF_DEATH_ANIMATION_PLAYER_0,
+  DURATION_OF_DEATH_ANIMATION_PLAYER_1,
+} from "./PlayerTileSupplier";
 import Bullet from "./Bullet";
 import { Weapon } from "./Weapons";
 import { ActiveEnemy, EnemyType } from "./Enemy";
@@ -293,7 +296,10 @@ export default class Engine {
             0 === p.index ? FX_DEATH_PLAYER_1 : FX_DEATH_PLAYER_2
           );
           behavior.dying = true;
-          behavior.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION;
+          behavior.dyingAnimationCountDown =
+            0 === p.index
+              ? DURATION_OF_DEATH_ANIMATION_PLAYER_0
+              : DURATION_OF_DEATH_ANIMATION_PLAYER_1;
         }
       }
     });
@@ -333,7 +339,8 @@ export default class Engine {
             );
           }
           enemy.enemy.dying = true;
-          enemy.enemy.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION;
+          // TODO: Death animations for enemies still have to be implemented
+          enemy.enemy.dyingAnimationCountDown = 25;
           if (killer) {
             this.kills[killer] += 1;
           }
