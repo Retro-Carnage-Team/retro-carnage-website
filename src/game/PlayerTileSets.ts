@@ -190,7 +190,7 @@ function buildTileSetForPlayer1(): PlayerTileSet {
   );
   result.idle.set(
     Directions.DownRight,
-    new Tile("images/tiles/player-1/idle/down_right.png", 108, 200, 6, -50)
+    new Tile("images/tiles/player-1/idle/down_right.png", 92, 200, 6, -50)
   );
   result.idle.set(
     Directions.Left,
@@ -198,7 +198,7 @@ function buildTileSetForPlayer1(): PlayerTileSet {
   );
   result.idle.set(
     Directions.Right,
-    new Tile("images/tiles/player-1/idle/right.png", 131, 200, 0, -50)
+    new Tile("images/tiles/player-1/idle/right.png", 133, 200, 0, -50)
   );
   result.idle.set(
     Directions.Up,

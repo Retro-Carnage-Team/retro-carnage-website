@@ -21,17 +21,16 @@ function buildBulletOffsetForPlayer0(): Map<Directions, Point> {
   return result;
 }
 
-// TODO: Fix offsets
 function buildBulletOffsetForPlayer1(): Map<Directions, Point> {
   const result = new Map<Directions, Point>();
-  result.set(Directions.Up, { x: 45, y: -BULLET_HEIGHT });
-  result.set(Directions.UpRight, { x: 45, y: -BULLET_HEIGHT });
-  result.set(Directions.Right, { x: 90, y: 100 });
-  result.set(Directions.DownRight, { x: 90, y: 100 });
-  result.set(Directions.Down, { x: 45, y: 200 });
-  result.set(Directions.DownLeft, { x: -BULLET_WIDTH, y: 100 });
-  result.set(Directions.Left, { x: -BULLET_WIDTH, y: 100 });
-  result.set(Directions.UpLeft, { x: 0, y: -BULLET_HEIGHT });
+  result.set(Directions.Up, { x: 87, y: -(BULLET_HEIGHT + 40) });
+  result.set(Directions.UpRight, { x: 116, y: 9 });
+  result.set(Directions.Right, { x: 135, y: 52 });
+  result.set(Directions.DownRight, { x: 98, y: 100 });
+  result.set(Directions.Down, { x: 16, y: 160 });
+  result.set(Directions.DownLeft, { x: -(BULLET_WIDTH + 20), y: 57 });
+  result.set(Directions.Left, { x: -BULLET_WIDTH, y: 12 });
+  result.set(Directions.UpLeft, { x: -BULLET_WIDTH, y: -13 });
   return result;
 }
 
