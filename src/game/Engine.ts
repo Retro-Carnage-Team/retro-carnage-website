@@ -21,7 +21,10 @@ import {
   DURATION_OF_DEATH_ANIMATION_PLAYER_0,
   DURATION_OF_DEATH_ANIMATION_PLAYER_1,
 } from "./PlayerTileSupplier";
-import Bullet from "./Bullet";
+import Bullet, {
+  BulletOffsetForPlayer0,
+  BulletOffsetForPlayer1,
+} from "./Bullet";
 import { Weapon } from "./Weapons";
 import { ActiveEnemy, EnemyType } from "./Enemy";
 
@@ -252,9 +255,16 @@ export default class Engine {
           const weapon = p.getSelectedWeapon() as Weapon;
           if (InventoryController.removeAmmunition(p.index)) {
             const position = this.playerPositions[p.index];
-            this.bullets.push(
-              new Bullet(p.index, position, behavior.direction, weapon)
+            const bullet = new Bullet(
+              p.index,
+              position,
+              behavior.direction,
+              weapon
             );
+            bullet.applyOffset(
+              0 === p.index ? BulletOffsetForPlayer0 : BulletOffsetForPlayer1
+            );
+            this.bullets.push(bullet);
           }
         } else {
           // TODO: handle automatic fire arms, flamethrowers and all the other fun items :)
