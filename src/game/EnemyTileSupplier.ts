@@ -4,6 +4,7 @@ import { EnemySkins } from "./EnemySkins";
 import TileGenerator from "./TileGenerator";
 
 export const DURATION_OF_MOVEMENT_ANIMATION = 75; // in ms
+export const DURATION_OF_DEATH_ANIMATION_ENEMY = 75 * 20; // in ms
 
 function buildAnimationSeries(
   count: number,
@@ -11,52 +12,90 @@ function buildAnimationSeries(
   h: number,
   folder: string,
   offsetX: number,
-  offsetY: number
+  offsetY: number,
+  direction: Directions
 ): Tile[] {
   let result: Tile[] = [];
   for (let i = 0; i < count; i++) {
-    result.push(new Tile(`${folder}${i + 1}.png`, w, h, offsetX, offsetY));
+    result.push(
+      new Tile(`${folder}/${direction}/${i + 1}.png`, w, h, offsetX, offsetY)
+    );
   }
   return result;
 }
 
-interface TileSet {
-  byDirection: Map<Directions, Tile[]>;
-  death: Tile[];
-}
-
-function buildTileSetForEnemy1(): TileSet {
-  const result: TileSet = {
-    byDirection: new Map<Directions, Tile[]>(),
-    death: buildAnimationSeries(
-      26,
-      135,
-      200,
-      "images/tiles/enemy-1/death/",
-      -30,
-      0
-    ),
-  };
-
-  result.byDirection.set(
+function buildTileSetForEnemy0(): Map<Directions, Tile[]> {
+  const result = new Map<Directions, Tile[]>();
+  const folder = "images/tiles/enemy-0";
+  result.set(
     Directions.Down,
-    buildAnimationSeries(6, 94, 200, "images/tiles/enemy-1/down/", -2, 0)
+    buildAnimationSeries(6, 94, 200, folder, -2, -30, Directions.Down)
   );
-  result.byDirection.set(
+  result.set(
+    Directions.DownLeft,
+    buildAnimationSeries(6, 162, 200, folder, -40, -30, Directions.DownLeft)
+  );
+  result.set(
+    Directions.DownRight,
+    buildAnimationSeries(6, 142, 200, folder, -45, -30, Directions.DownRight)
+  );
+  result.set(
     Directions.Left,
-    buildAnimationSeries(6, 160, 200, "images/tiles/enemy-1/left/", -33, 0)
+    buildAnimationSeries(6, 151, 200, folder, -30, -30, Directions.Left)
   );
-  result.byDirection.set(
+  result.set(
     Directions.Right,
-    buildAnimationSeries(6, 155, 200, "images/tiles/enemy-1/right/", 0, 0)
+    buildAnimationSeries(6, 192, 200, folder, -63, -30, Directions.Right)
   );
-
+  result.set(
+    Directions.UpLeft,
+    buildAnimationSeries(6, 105, 200, folder, -10, -30, Directions.UpLeft)
+  );
+  result.set(
+    Directions.UpRight,
+    buildAnimationSeries(6, 148, 200, folder, -30, -30, Directions.UpRight)
+  );
   return result;
 }
 
-const tileSetsByEnemySkin: Map<EnemySkins, TileSet> = new Map();
+function buildTileSetForEnemy1(): Map<Directions, Tile[]> {
+  const result = new Map<Directions, Tile[]>();
+  const folder = "images/tiles/enemy-1";
+  result.set(
+    Directions.Down,
+    buildAnimationSeries(6, 85, 200, folder, -3, -30, Directions.Down)
+  );
+  result.set(
+    Directions.DownLeft,
+    buildAnimationSeries(6, 159, 200, folder, -55, -34, Directions.DownLeft)
+  );
+  result.set(
+    Directions.DownRight,
+    buildAnimationSeries(6, 94, 200, folder, -5, -30, Directions.DownRight)
+  );
+  result.set(
+    Directions.Left,
+    buildAnimationSeries(6, 174, 200, folder, -55, -30, Directions.Left)
+  );
+  result.set(
+    Directions.Right,
+    buildAnimationSeries(6, 163, 200, folder, -30, -30, Directions.Right)
+  );
+  result.set(
+    Directions.UpLeft,
+    buildAnimationSeries(6, 101, 200, folder, -5, -30, Directions.UpLeft)
+  );
+  result.set(
+    Directions.UpRight,
+    buildAnimationSeries(6, 150, 200, folder, -20, -30, Directions.UpRight)
+  );
+  return result;
+}
+
+const tileSetsByEnemySkin: Map<EnemySkins, Map<Directions, Tile[]>> = new Map();
+tileSetsByEnemySkin.set(EnemySkins.WOODLAND_WITH_SMG, buildTileSetForEnemy0());
 tileSetsByEnemySkin.set(
-  EnemySkins.GREY_ONESIE_WITH_HELMET,
+  EnemySkins.GREY_ONESIE_WITH_RIFLE,
   buildTileSetForEnemy1()
 );
 
@@ -80,7 +119,7 @@ export default class EnemyTileSupplier implements TileSupplier {
   durationSinceLastTile: number;
   lastTile?: Tile;
   tileGenerator: TileGenerator | null;
-  tileSet: TileSet | undefined;
+  tileSet: Map<Directions, Tile[]> | undefined;
 
   constructor(skin: EnemySkins, direction: Directions) {
     this.direction = direction;
@@ -91,9 +130,7 @@ export default class EnemyTileSupplier implements TileSupplier {
 
   getTile = (elapsedTimeInMs: number): Tile | undefined => {
     if (null === this.tileGenerator && this.tileSet) {
-      this.tileGenerator = new TileGenerator(
-        this.tileSet.byDirection.get(this.direction)
-      );
+      this.tileGenerator = new TileGenerator(this.tileSet.get(this.direction));
     }
 
     let newTile = false;

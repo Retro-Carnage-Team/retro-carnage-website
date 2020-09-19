@@ -77,8 +77,8 @@ const Missions: Mission[] = [
                 timeElapsed: 0,
               },
             ],
-            new Rectangle(300, -200, 90, 200),
-            EnemySkins.GREY_ONESIE_WITH_HELMET,
+            new Rectangle(300, -200, 90, 150),
+            EnemySkins.GREY_ONESIE_WITH_RIFLE,
             Directions.Down,
             EnemyType.Person
           ),
@@ -86,7 +86,7 @@ const Missions: Mission[] = [
             0,
             [],
             new Rectangle(600, -1200, 50, 44),
-            EnemySkins.GREY_ONESIE_WITH_HELMET,
+            null,
             null,
             EnemyType.Landmine
           ),

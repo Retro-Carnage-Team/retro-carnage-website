@@ -21,6 +21,7 @@ import {
   DURATION_OF_DEATH_ANIMATION_PLAYER_0,
   DURATION_OF_DEATH_ANIMATION_PLAYER_1,
 } from "./PlayerTileSupplier";
+import { DURATION_OF_DEATH_ANIMATION_ENEMY } from "./EnemyTileSupplier";
 import Bullet, {
   BulletOffsetForPlayer0,
   BulletOffsetForPlayer1,
@@ -343,16 +344,16 @@ export default class Engine {
         }
 
         if (death) {
+          enemy.enemy.dying = true;
+          enemy.enemy.dyingAnimationCountDown = 1;
+          if (null !== killer) {
+            this.kills[killer] += 1;
+          }
           if (EnemyType.Person === enemy.enemy.type) {
             SoundBoard.play(
               FX_DEATH_ENEMIES[Math.floor(Math.random() * Math.floor(8))]
             );
-          }
-          enemy.enemy.dying = true;
-          // TODO: Death animations for enemies still have to be implemented
-          enemy.enemy.dyingAnimationCountDown = 25;
-          if (killer) {
-            this.kills[killer] += 1;
+            enemy.enemy.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION_ENEMY;
           }
         }
       }

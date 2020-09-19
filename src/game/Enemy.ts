@@ -29,7 +29,7 @@ export default class Enemy {
   dyingAnimationCountDown: number;
   movements: EnemyMovement[];
   position: Rectangle;
-  readonly skin: EnemySkins;
+  readonly skin: EnemySkins | null;
   readonly viewingDirection: Directions | null;
   readonly type: EnemyType;
 
@@ -37,7 +37,7 @@ export default class Enemy {
     activationDistance: number,
     movements: EnemyMovement[],
     position: Rectangle,
-    skin: EnemySkins,
+    skin: EnemySkins | null,
     viewingDirection: Directions | null,
     type: EnemyType
   ) {
@@ -64,7 +64,7 @@ export class ActiveEnemy {
 
     if (null !== enemy.viewingDirection && EnemyType.Person === enemy.type) {
       this.tileSupplier = new EnemyTileSupplier(
-        enemy.skin,
+        enemy.skin!,
         enemy.viewingDirection
       );
     }
