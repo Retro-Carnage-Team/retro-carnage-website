@@ -92,11 +92,87 @@ function buildTileSetForEnemy1(): Map<Directions, Tile[]> {
   return result;
 }
 
+function buildTileSetForEnemy2(): Map<Directions, Tile[]> {
+  const result = new Map<Directions, Tile[]>();
+  const folder = "images/tiles/enemy-2";
+  result.set(
+    Directions.Down,
+    buildAnimationSeries(9, 88, 200, folder, -4, -30, Directions.Down)
+  );
+  result.set(
+    Directions.DownLeft,
+    buildAnimationSeries(8, 136, 200, folder, -23, -31, Directions.DownLeft)
+  );
+  result.set(
+    Directions.DownRight,
+    buildAnimationSeries(8, 128, 200, folder, -30, -30, Directions.DownRight)
+  );
+  result.set(
+    Directions.Left,
+    buildAnimationSeries(7, 136, 200, folder, -10, -30, Directions.Left)
+  );
+  result.set(
+    Directions.Right,
+    buildAnimationSeries(6, 163, 200, folder, -60, -30, Directions.Right)
+  );
+  result.set(
+    Directions.UpLeft,
+    buildAnimationSeries(6, 101, 200, folder, -20, -30, Directions.UpLeft)
+  );
+  result.set(
+    Directions.UpRight,
+    buildAnimationSeries(7, 155, 200, folder, -50, -30, Directions.UpRight)
+  );
+  return result;
+}
+
+function buildTileSetForEnemy3(): Map<Directions, Tile[]> {
+  const result = new Map<Directions, Tile[]>();
+  const folder = "images/tiles/enemy-3";
+  result.set(
+    Directions.Down,
+    buildAnimationSeries(7, 93, 200, folder, -6, -30, Directions.Down)
+  );
+  result.set(
+    Directions.DownLeft,
+    buildAnimationSeries(8, 135, 200, folder, -23, -31, Directions.DownLeft)
+  );
+  result.set(
+    Directions.DownRight,
+    buildAnimationSeries(6, 106, 200, folder, -15, -30, Directions.DownRight)
+  );
+  result.set(
+    Directions.Left,
+    buildAnimationSeries(8, 139, 200, folder, -10, -30, Directions.Left)
+  );
+  result.set(
+    Directions.Right,
+    buildAnimationSeries(7, 140, 200, folder, -45, -30, Directions.Right)
+  );
+  result.set(
+    Directions.UpLeft,
+    buildAnimationSeries(9, 104, 200, folder, -5, -30, Directions.UpLeft)
+  );
+  result.set(
+    Directions.UpRight,
+    buildAnimationSeries(7, 125, 200, folder, -30, -30, Directions.UpRight)
+  );
+  return result;
+}
+
 const tileSetsByEnemySkin: Map<EnemySkins, Map<Directions, Tile[]>> = new Map();
 tileSetsByEnemySkin.set(EnemySkins.WOODLAND_WITH_SMG, buildTileSetForEnemy0());
 tileSetsByEnemySkin.set(
   EnemySkins.GREY_ONESIE_WITH_RIFLE,
   buildTileSetForEnemy1()
+);
+tileSetsByEnemySkin.set(
+  EnemySkins.DIGITAL_WITH_PISTOLS,
+  buildTileSetForEnemy2()
+);
+tileSetsByEnemySkin.set(
+  EnemySkins.WOODLAND_WITH_BULLETPROOF_VEST,
+  buildTileSetForEnemy3()
 );
 
 export interface TileSupplier {
