@@ -157,20 +157,20 @@ export default class Engine {
   updateEnemies = (elapsedTimeInMs: number) => {
     this.enemies = this.enemies.filter(
       (activeEnemy) =>
-        !activeEnemy.enemy.dying ||
-        0 >= activeEnemy.enemy.dyingAnimationCountDown
+        !activeEnemy.dying ||
+        0 >= activeEnemy.dyingAnimationCountDown
     );
 
     this.enemies
-      .filter((activeEnemy) => EnemyType.Person === activeEnemy.enemy.type)
+      .filter((activeEnemy) => EnemyType.Person === activeEnemy.type)
       .forEach((activeEnemy) => {
-        if (activeEnemy.enemy.dying) {
-          activeEnemy.enemy.dyingAnimationCountDown -= Math.floor(
+        if (activeEnemy.dying) {
+          activeEnemy.dyingAnimationCountDown -= Math.floor(
             elapsedTimeInMs
           );
         } else {
           let remaining = elapsedTimeInMs;
-          let currentMovement = activeEnemy.enemy.movements.find(
+          let currentMovement = activeEnemy.movements.find(
             (m) => m.timeElapsed < m.duration
           );
           while (currentMovement && 0 < remaining) {
@@ -178,14 +178,14 @@ export default class Engine {
               remaining,
               currentMovement.duration - currentMovement.timeElapsed
             );
-            activeEnemy.enemy.position.add({
+            activeEnemy.position.add({
               x: duration * currentMovement.offsetXPerMs,
               y: duration * currentMovement.offsetYPerMs,
             });
             remaining -= duration;
             currentMovement.timeElapsed += duration;
             if (0 < remaining) {
-              currentMovement = activeEnemy.enemy.movements.find(
+              currentMovement = activeEnemy.movements.find(
                 (m) => m.timeElapsed < m.duration
               );
             }
@@ -222,7 +222,7 @@ export default class Engine {
     this.playerPositions.forEach((pos) => pos.subtract(scrollOffset));
     this.explosives.forEach((exp) => exp.position.subtract(scrollOffset));
     this.explosions.forEach((exp) => exp.position.subtract(scrollOffset));
-    this.enemies.forEach((anmy) => anmy.enemy.position.subtract(scrollOffset));
+    this.enemies.forEach((anmy) => anmy.position.subtract(scrollOffset));
     this.bullets.forEach((bul) => bul.position.subtract(scrollOffset));
   };
 
@@ -282,13 +282,13 @@ export default class Engine {
         const rect = this.playerPositions[p.index];
         let death = false;
         this.enemies.forEach((enemy) => {
-          const collisionWithEnemy = rect.getIntersection(enemy.enemy.position);
+          const collisionWithEnemy = rect.getIntersection(enemy.position);
           if (collisionWithEnemy) {
-            if (EnemyType.Landmine === enemy.enemy.type) {
+            if (EnemyType.Landmine === enemy.type) {
               this.explosions.push(
                 new Explosion({
                   playerIdx: null,
-                  position: enemy.enemy.position,
+                  position: enemy.position,
                 })
               );
               SoundBoard.play(FX_GRENADE_2);
@@ -319,12 +319,12 @@ export default class Engine {
   // Check if players collide with explosions / bullets / enemies
   checkEnemiesForDeadlyCollisions = () => {
     this.enemies.forEach((enemy) => {
-      if (!enemy.enemy.dying) {
+      if (!enemy.dying) {
         let death = false;
         let killer = null;
         this.explosions.forEach((explosion) => {
           const deadlyExplosion =
-            null !== enemy.enemy.position.getIntersection(explosion.position);
+            null !== enemy.position.getIntersection(explosion.position);
           if (deadlyExplosion) {
             killer = explosion.playerIdx;
           }
@@ -332,10 +332,10 @@ export default class Engine {
         });
 
         // Bullets are useful only against persons
-        if (EnemyType.Person === enemy.enemy.type) {
+        if (EnemyType.Person === enemy.type) {
           this.bullets.forEach((bullet) => {
             const deadlyShot =
-              null !== enemy.enemy.position.getIntersection(bullet.position);
+              null !== enemy.position.getIntersection(bullet.position);
             if (deadlyShot) {
               killer = bullet.playerIdx;
             }
@@ -344,16 +344,16 @@ export default class Engine {
         }
 
         if (death) {
-          enemy.enemy.dying = true;
-          enemy.enemy.dyingAnimationCountDown = 1;
+          enemy.dying = true;
+          enemy.dyingAnimationCountDown = 1;
           if (null !== killer) {
             this.kills[killer] += 1;
           }
-          if (EnemyType.Person === enemy.enemy.type) {
+          if (EnemyType.Person === enemy.type) {
             SoundBoard.play(
               FX_DEATH_ENEMIES[Math.floor(Math.random() * Math.floor(8))]
             );
-            enemy.enemy.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION_ENEMY;
+            enemy.dyingAnimationCountDown = DURATION_OF_DEATH_ANIMATION_ENEMY;
           }
         }
       }

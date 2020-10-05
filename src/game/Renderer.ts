@@ -51,7 +51,7 @@ export default class Renderer {
     this.engine.enemies.forEach((enemy) => {
       const tile = enemy.tileSupplier.getTile(elapsedTimeInMs);
       if (tile) {
-        const translatedPosition = tile.translate(enemy.enemy.position);
+        const translatedPosition = tile.translate(enemy.position);
         const canvas = tile.getCanvas();
         if (canvas && this.ctx) {
           this.ctx.drawImage(

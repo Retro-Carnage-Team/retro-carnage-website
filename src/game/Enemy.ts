@@ -52,20 +52,22 @@ export default class Enemy {
   }
 }
 
-export class ActiveEnemy {
-  readonly enemy: Enemy;
+export class ActiveEnemy extends Enemy {
+
   readonly tileSupplier: TileSupplier;
 
   constructor(enemy: Enemy) {
-    this.enemy = enemy;
+    super(enemy.activationDistance, enemy.movements, enemy.position, enemy.skin, enemy.viewingDirection, enemy.type);
+    this.dying = enemy.dying;
+    this.dyingAnimationCountDown = enemy.dyingAnimationCountDown;
     this.tileSupplier = {
       getTile: (): Tile | undefined => undefined,
     };
 
-    if (null !== enemy.viewingDirection && EnemyType.Person === enemy.type) {
+    if (null !== this.viewingDirection && EnemyType.Person === enemy.type) {
       this.tileSupplier = new EnemyTileSupplier(
         enemy.skin!,
-        enemy.viewingDirection
+        this.viewingDirection
       );
     }
 
