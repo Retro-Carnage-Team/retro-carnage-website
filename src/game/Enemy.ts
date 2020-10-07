@@ -29,7 +29,7 @@ export default class Enemy {
   dyingAnimationCountDown: number;
   movements: EnemyMovement[];
   position: Rectangle;
-  readonly skin: EnemySkins;
+  readonly skin: EnemySkins | null;
   readonly viewingDirection: Directions | null;
   readonly type: EnemyType;
 
@@ -37,7 +37,7 @@ export default class Enemy {
     activationDistance: number,
     movements: EnemyMovement[],
     position: Rectangle,
-    skin: EnemySkins,
+    skin: EnemySkins | null,
     viewingDirection: Directions | null,
     type: EnemyType
   ) {
@@ -52,20 +52,22 @@ export default class Enemy {
   }
 }
 
-export class ActiveEnemy {
-  readonly enemy: Enemy;
+export class ActiveEnemy extends Enemy {
+
   readonly tileSupplier: TileSupplier;
 
   constructor(enemy: Enemy) {
-    this.enemy = enemy;
+    super(enemy.activationDistance, enemy.movements, enemy.position, enemy.skin, enemy.viewingDirection, enemy.type);
+    this.dying = enemy.dying;
+    this.dyingAnimationCountDown = enemy.dyingAnimationCountDown;
     this.tileSupplier = {
       getTile: (): Tile | undefined => undefined,
     };
 
-    if (null !== enemy.viewingDirection && EnemyType.Person === enemy.type) {
+    if (null !== this.viewingDirection && EnemyType.Person === enemy.type) {
       this.tileSupplier = new EnemyTileSupplier(
-        enemy.skin,
-        enemy.viewingDirection
+        enemy.skin!,
+        this.viewingDirection
       );
     }
 

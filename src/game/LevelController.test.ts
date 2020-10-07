@@ -1,7 +1,7 @@
 import LevelController from "./LevelController";
 import Rectangle from "./Rectangle";
 import { Directions } from "./Directions";
-import Enemy from "./Enemy";
+import Enemy, { EnemyType } from "./Enemy";
 import { EnemySkins } from "./EnemySkins";
 
 const SEGMENTS = [
@@ -26,8 +26,9 @@ const SEGMENTS = [
           },
         ],
         new Rectangle(300, -200, 90, 200),
-        EnemySkins.GREY_ONESIE_WITH_HELMET,
-        Directions.Down
+        EnemySkins.GREY_ONESIE_WITH_RIFLE,
+        Directions.Down,
+        EnemyType.Person
       ),
     ],
     goal: null,
