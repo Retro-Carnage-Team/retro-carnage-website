@@ -157,17 +157,14 @@ export default class Engine {
   updateEnemies = (elapsedTimeInMs: number) => {
     this.enemies = this.enemies.filter(
       (activeEnemy) =>
-        !activeEnemy.dying ||
-        0 >= activeEnemy.dyingAnimationCountDown
+        !activeEnemy.dying || 0 <= activeEnemy.dyingAnimationCountDown
     );
 
     this.enemies
       .filter((activeEnemy) => EnemyType.Person === activeEnemy.type)
       .forEach((activeEnemy) => {
         if (activeEnemy.dying) {
-          activeEnemy.dyingAnimationCountDown -= Math.floor(
-            elapsedTimeInMs
-          );
+          activeEnemy.dyingAnimationCountDown -= Math.floor(elapsedTimeInMs);
         } else {
           let remaining = elapsedTimeInMs;
           let currentMovement = activeEnemy.movements.find(

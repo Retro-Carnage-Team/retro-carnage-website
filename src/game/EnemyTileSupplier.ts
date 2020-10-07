@@ -1,7 +1,8 @@
-import Tile from "./Tile";
+import Tile, { ComputedTile } from "./Tile";
 import { Directions } from "./Directions";
 import { EnemySkins } from "./EnemySkins";
 import TileGenerator from "./TileGenerator";
+import { ActiveEnemy } from "./Enemy";
 
 export const DURATION_OF_MOVEMENT_ANIMATION = 75; // in ms
 export const DURATION_OF_DEATH_ANIMATION_ENEMY = 75 * 20; // in ms
@@ -176,7 +177,7 @@ tileSetsByEnemySkin.set(
 );
 
 export interface TileSupplier {
-  getTile(elapsedTimeInMs: number): Tile | undefined;
+  getTile(elapsedTimeInMs: number, enemy: ActiveEnemy): Tile | undefined;
 }
 
 export class LandmineTileSupplier implements TileSupplier {
@@ -204,24 +205,64 @@ export default class EnemyTileSupplier implements TileSupplier {
     this.tileGenerator = null;
   }
 
-  getTile = (elapsedTimeInMs: number): Tile | undefined => {
-    if (null === this.tileGenerator && this.tileSet) {
-      this.tileGenerator = new TileGenerator(this.tileSet.get(this.direction));
-    }
-
-    let newTile = false;
-    if (
-      DURATION_OF_MOVEMENT_ANIMATION <=
-      this.durationSinceLastTile + elapsedTimeInMs
-    ) {
-      this.durationSinceLastTile = 0;
-      newTile = true;
+  getTile = (elapsedTimeInMs: number, enemy: ActiveEnemy): Tile | undefined => {
+    if (enemy.dying) {
+      const frameNumber =
+        (DURATION_OF_DEATH_ANIMATION_ENEMY - enemy.dyingAnimationCountDown) /
+        75;
+      return this.buildDeathAnimationTile(frameNumber);
     } else {
-      this.durationSinceLastTile += elapsedTimeInMs;
+      if (null === this.tileGenerator && this.tileSet) {
+        this.tileGenerator = new TileGenerator(
+          this.tileSet.get(this.direction)
+        );
+      }
+
+      let newTile = false;
+      if (
+        DURATION_OF_MOVEMENT_ANIMATION <=
+        this.durationSinceLastTile + elapsedTimeInMs
+      ) {
+        this.durationSinceLastTile = 0;
+        newTile = true;
+      } else {
+        this.durationSinceLastTile += elapsedTimeInMs;
+      }
+      if (newTile) {
+        this.lastTile = this.tileGenerator?.nextValue();
+      }
+
+      return this.lastTile;
     }
-    if (newTile) {
-      this.lastTile = this.tileGenerator?.nextValue();
-    }
-    return this.lastTile;
   };
+
+  buildDeathAnimationTile(frame: number): Tile | undefined {
+    const tileSet = this.tileSet?.get(Directions.Down);
+    if (tileSet) {
+      const sourceTile = tileSet[0];
+
+      const canvas = window.document.createElement("canvas");
+      canvas.width = sourceTile.imageWidth;
+      canvas.height = sourceTile.imageHeight;
+
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        let region = new Path2D();
+        region.rect(0, 0, sourceTile.imageWidth, sourceTile.imageHeight);
+        region.ellipse(
+          -1 * sourceTile.offsetX + 45,
+          100,
+          Math.ceil((frame * 13) / 2),
+          Math.ceil((frame * 13) / 2),
+          0,
+          0,
+          2 * Math.PI
+        );
+        ctx.clip(region, "evenodd");
+        ctx.drawImage(sourceTile.getCanvas()!, 0, 0);
+      }
+
+      return new ComputedTile(sourceTile, canvas);
+    }
+  }
 }
