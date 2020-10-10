@@ -1,3 +1,0 @@
-# About
-
-Whoo ho!

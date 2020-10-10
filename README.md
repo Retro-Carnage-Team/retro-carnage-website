@@ -7,8 +7,6 @@ The goal of this project is to build a modern multi-directional scrolling shoote
 1989 video game [Dogs of War](https://gamesdb.launchbox-app.com/games/details/41090) by
 [Elite Systems](http://www.elite-systems.co.uk).
 
-## Status
-
 This game is currently under active development. At the moment you can test different concepts of the game but there is
 no gripping gameplay.
 
