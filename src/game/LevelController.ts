@@ -1,4 +1,4 @@
-import BackgroundTile from "./BackgroundTile";
+import { BackgroundTile } from "./Tile";
 import { Directions } from "./Directions";
 import { Segment } from "./Missions";
 import Rectangle from "./Rectangle";
