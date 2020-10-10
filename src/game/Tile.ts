@@ -1,49 +1,11 @@
 import Rectangle from "./Rectangle";
 
-// TODO: clean up. Tile should become an interface with two implementations: ImageTile and ComputedTile
+export const SCREEN_SIZE = 1500;
 
-export default class Tile {
-  path: string;
-  offsetX: number;
-  offsetY: number;
-  imageHeight: number;
-  imageWidth: number;
-  image: HTMLImageElement | null;
-  offScreenCanvas: HTMLCanvasElement | null;
+export default abstract class Tile {
+  protected constructor(public offsetX: number, public offsetY: number) {}
 
-  constructor(
-    path: string,
-    imageWidth: number,
-    imageHeight: number,
-    offsetX: number,
-    offsetY: number
-  ) {
-    this.path = path;
-    this.offsetX = offsetX;
-    this.offsetY = offsetY;
-    this.imageHeight = imageHeight;
-    this.imageWidth = imageWidth;
-    if ("" !== path) {
-      this.image = new Image(imageWidth, imageHeight);
-      this.image.src = this.path;
-    } else {
-      this.image = null;
-    }
-    this.offScreenCanvas = null;
-  }
-
-  getCanvas = () => {
-    if (!this.offScreenCanvas && this.image?.complete) {
-      this.offScreenCanvas = window.document.createElement("canvas");
-      this.offScreenCanvas.width = this.imageWidth;
-      this.offScreenCanvas.height = this.imageHeight;
-      const context = this.offScreenCanvas.getContext("2d");
-      if (context) {
-        context.drawImage(this.image, 0, 0);
-      }
-    }
-    return this.offScreenCanvas;
-  };
+  abstract getCanvas(): HTMLCanvasElement | null;
 
   translate = (position: Rectangle): Rectangle => {
     return new Rectangle(
@@ -55,20 +17,63 @@ export default class Tile {
   };
 }
 
-export class ComputedTile extends Tile {
-  constructor(baseTile: Tile, private canvas: HTMLCanvasElement) {
-    super(
-      "",
-      baseTile.imageWidth,
-      baseTile.imageHeight,
-      baseTile.offsetX,
-      baseTile.offsetY
-    );
-    this.image = null;
+export class ImageTile extends Tile {
+  public readonly path: string;
+  public readonly imageHeight: number;
+  public readonly imageWidth: number;
+  private readonly image: HTMLImageElement | null;
+  private offScreenCanvas: HTMLCanvasElement | null;
+
+  constructor(
+    path: string,
+    imageWidth: number,
+    imageHeight: number,
+    offsetX: number,
+    offsetY: number
+  ) {
+    super(offsetX, offsetY);
+
+    this.path = path;
+    this.imageHeight = imageHeight;
+    this.imageWidth = imageWidth;
+    if ("" !== path) {
+      this.image = new Image(imageWidth, imageHeight);
+      this.image.src = this.path;
+    } else {
+      this.image = null;
+    }
     this.offScreenCanvas = null;
   }
 
-  getCanvas = () => {
+  getCanvas = (): HTMLCanvasElement | null => {
+    if (!this.offScreenCanvas && this.image?.complete) {
+      this.offScreenCanvas = window.document.createElement("canvas");
+      this.offScreenCanvas.width = this.imageWidth;
+      this.offScreenCanvas.height = this.imageHeight;
+      const context = this.offScreenCanvas.getContext("2d");
+      if (context) {
+        context.drawImage(this.image, 0, 0);
+      }
+    }
+    return this.offScreenCanvas;
+  };
+}
+
+export class BackgroundTile extends ImageTile {
+  constructor(path: string, offsetX: number, offsetY: number) {
+    super(path, SCREEN_SIZE, SCREEN_SIZE, offsetX, offsetY);
+  }
+}
+
+export class ComputedTile extends Tile {
+  private readonly canvas: HTMLCanvasElement;
+
+  constructor(baseTile: Tile, canvas: HTMLCanvasElement) {
+    super(baseTile.offsetX, baseTile.offsetY);
+    this.canvas = canvas;
+  }
+
+  getCanvas = (): HTMLCanvasElement | null => {
     return this.canvas;
   };
 }

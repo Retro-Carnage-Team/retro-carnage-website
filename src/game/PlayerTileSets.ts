@@ -1,10 +1,10 @@
 import { Directions } from "./Directions";
-import Tile from "./Tile";
+import { ImageTile } from "./Tile";
 
 export interface PlayerTileSet {
-  byDirection: Map<Directions, Tile[]>;
-  death: Tile[];
-  idle: Map<Directions, Tile>;
+  byDirection: Map<Directions, ImageTile[]>;
+  death: ImageTile[];
+  idle: Map<Directions, ImageTile>;
 }
 
 function buildAnimationSeries(
@@ -14,17 +14,17 @@ function buildAnimationSeries(
   folder: string,
   offsetX: number,
   offsetY: number
-): Tile[] {
-  let result: Tile[] = [];
+): ImageTile[] {
+  let result: ImageTile[] = [];
   for (let i = 0; i < count; i++) {
-    result.push(new Tile(`${folder}${i + 1}.png`, w, h, offsetX, offsetY));
+    result.push(new ImageTile(`${folder}${i + 1}.png`, w, h, offsetX, offsetY));
   }
   return result;
 }
 
 function buildTileSetForPlayer0(): PlayerTileSet {
   const result: PlayerTileSet = {
-    byDirection: new Map<Directions, Tile[]>(),
+    byDirection: new Map<Directions, ImageTile[]>(),
     death: buildAnimationSeries(
       21,
       135,
@@ -33,7 +33,7 @@ function buildTileSetForPlayer0(): PlayerTileSet {
       -30,
       -50
     ),
-    idle: new Map<Directions, Tile>(),
+    idle: new Map<Directions, ImageTile>(),
   };
 
   result.byDirection.set(
@@ -85,35 +85,41 @@ function buildTileSetForPlayer0(): PlayerTileSet {
 
   result.idle.set(
     Directions.Down,
-    new Tile("images/tiles/player-0/idle/down.png", 96, 200, -5, -50)
+    new ImageTile("images/tiles/player-0/idle/down.png", 96, 200, -5, -50)
   );
   result.idle.set(
     Directions.DownLeft,
-    new Tile("images/tiles/player-0/idle/down_left.png", 128, 200, -37, -50)
+    new ImageTile(
+      "images/tiles/player-0/idle/down_left.png",
+      128,
+      200,
+      -37,
+      -50
+    )
   );
   result.idle.set(
     Directions.DownRight,
-    new Tile("images/tiles/player-0/idle/down_right.png", 99, 200, 6, -50)
+    new ImageTile("images/tiles/player-0/idle/down_right.png", 99, 200, 6, -50)
   );
   result.idle.set(
     Directions.Left,
-    new Tile("images/tiles/player-0/idle/left.png", 105, 200, -22, -50)
+    new ImageTile("images/tiles/player-0/idle/left.png", 105, 200, -22, -50)
   );
   result.idle.set(
     Directions.Right,
-    new Tile("images/tiles/player-0/idle/right.png", 121, 200, 0, -50)
+    new ImageTile("images/tiles/player-0/idle/right.png", 121, 200, 0, -50)
   );
   result.idle.set(
     Directions.Up,
-    new Tile("images/tiles/player-0/idle/up.png", 85, 200, -2, -50)
+    new ImageTile("images/tiles/player-0/idle/up.png", 85, 200, -2, -50)
   );
   result.idle.set(
     Directions.UpLeft,
-    new Tile("images/tiles/player-0/idle/up_left.png", 75, 200, 2, -50)
+    new ImageTile("images/tiles/player-0/idle/up_left.png", 75, 200, 2, -50)
   );
   result.idle.set(
     Directions.UpRight,
-    new Tile("images/tiles/player-0/idle/up_right.png", 118, 200, 0, -50)
+    new ImageTile("images/tiles/player-0/idle/up_right.png", 118, 200, 0, -50)
   );
 
   return result;
@@ -121,7 +127,7 @@ function buildTileSetForPlayer0(): PlayerTileSet {
 
 function buildTileSetForPlayer1(): PlayerTileSet {
   const result: PlayerTileSet = {
-    byDirection: new Map<Directions, Tile[]>(),
+    byDirection: new Map<Directions, ImageTile[]>(),
     death: buildAnimationSeries(
       26,
       135,
@@ -130,7 +136,7 @@ function buildTileSetForPlayer1(): PlayerTileSet {
       -30,
       -50
     ),
-    idle: new Map<Directions, Tile>(),
+    idle: new Map<Directions, ImageTile>(),
   };
 
   result.byDirection.set(
@@ -182,35 +188,41 @@ function buildTileSetForPlayer1(): PlayerTileSet {
 
   result.idle.set(
     Directions.Down,
-    new Tile("images/tiles/player-1/idle/down.png", 100, 200, -5, -50)
+    new ImageTile("images/tiles/player-1/idle/down.png", 100, 200, -5, -50)
   );
   result.idle.set(
     Directions.DownLeft,
-    new Tile("images/tiles/player-1/idle/down_left.png", 127, 200, -37, -50)
+    new ImageTile(
+      "images/tiles/player-1/idle/down_left.png",
+      127,
+      200,
+      -37,
+      -50
+    )
   );
   result.idle.set(
     Directions.DownRight,
-    new Tile("images/tiles/player-1/idle/down_right.png", 92, 200, 6, -50)
+    new ImageTile("images/tiles/player-1/idle/down_right.png", 92, 200, 6, -50)
   );
   result.idle.set(
     Directions.Left,
-    new Tile("images/tiles/player-1/idle/left.png", 112, 200, -22, -50)
+    new ImageTile("images/tiles/player-1/idle/left.png", 112, 200, -22, -50)
   );
   result.idle.set(
     Directions.Right,
-    new Tile("images/tiles/player-1/idle/right.png", 133, 200, 0, -50)
+    new ImageTile("images/tiles/player-1/idle/right.png", 133, 200, 0, -50)
   );
   result.idle.set(
     Directions.Up,
-    new Tile("images/tiles/player-1/idle/up.png", 94, 200, -2, -50)
+    new ImageTile("images/tiles/player-1/idle/up.png", 94, 200, -2, -50)
   );
   result.idle.set(
     Directions.UpLeft,
-    new Tile("images/tiles/player-1/idle/up_left.png", 85, 200, 2, -50)
+    new ImageTile("images/tiles/player-1/idle/up_left.png", 85, 200, 2, -50)
   );
   result.idle.set(
     Directions.UpRight,
-    new Tile("images/tiles/player-1/idle/up_right.png", 125, 200, 0, -50)
+    new ImageTile("images/tiles/player-1/idle/up_right.png", 125, 200, 0, -50)
   );
 
   return result;

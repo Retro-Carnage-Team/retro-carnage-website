@@ -1,4 +1,4 @@
-import Tile, { ComputedTile } from "./Tile";
+import Tile, { ComputedTile, ImageTile } from "./Tile";
 import { Directions } from "./Directions";
 import { EnemySkins } from "./EnemySkins";
 import TileGenerator from "./TileGenerator";
@@ -15,18 +15,24 @@ function buildAnimationSeries(
   offsetX: number,
   offsetY: number,
   direction: Directions
-): Tile[] {
-  let result: Tile[] = [];
+): ImageTile[] {
+  let result: ImageTile[] = [];
   for (let i = 0; i < count; i++) {
     result.push(
-      new Tile(`${folder}/${direction}/${i + 1}.png`, w, h, offsetX, offsetY)
+      new ImageTile(
+        `${folder}/${direction}/${i + 1}.png`,
+        w,
+        h,
+        offsetX,
+        offsetY
+      )
     );
   }
   return result;
 }
 
-function buildTileSetForEnemy0(): Map<Directions, Tile[]> {
-  const result = new Map<Directions, Tile[]>();
+function buildTileSetForEnemy0(): Map<Directions, ImageTile[]> {
+  const result = new Map<Directions, ImageTile[]>();
   const folder = "images/tiles/enemy-0";
   result.set(
     Directions.Down,
@@ -59,8 +65,8 @@ function buildTileSetForEnemy0(): Map<Directions, Tile[]> {
   return result;
 }
 
-function buildTileSetForEnemy1(): Map<Directions, Tile[]> {
-  const result = new Map<Directions, Tile[]>();
+function buildTileSetForEnemy1(): Map<Directions, ImageTile[]> {
+  const result = new Map<Directions, ImageTile[]>();
   const folder = "images/tiles/enemy-1";
   result.set(
     Directions.Down,
@@ -93,8 +99,8 @@ function buildTileSetForEnemy1(): Map<Directions, Tile[]> {
   return result;
 }
 
-function buildTileSetForEnemy2(): Map<Directions, Tile[]> {
-  const result = new Map<Directions, Tile[]>();
+function buildTileSetForEnemy2(): Map<Directions, ImageTile[]> {
+  const result = new Map<Directions, ImageTile[]>();
   const folder = "images/tiles/enemy-2";
   result.set(
     Directions.Down,
@@ -127,8 +133,8 @@ function buildTileSetForEnemy2(): Map<Directions, Tile[]> {
   return result;
 }
 
-function buildTileSetForEnemy3(): Map<Directions, Tile[]> {
-  const result = new Map<Directions, Tile[]>();
+function buildTileSetForEnemy3(): Map<Directions, ImageTile[]> {
+  const result = new Map<Directions, ImageTile[]>();
   const folder = "images/tiles/enemy-3";
   result.set(
     Directions.Down,
@@ -161,7 +167,10 @@ function buildTileSetForEnemy3(): Map<Directions, Tile[]> {
   return result;
 }
 
-const tileSetsByEnemySkin: Map<EnemySkins, Map<Directions, Tile[]>> = new Map();
+const tileSetsByEnemySkin: Map<
+  EnemySkins,
+  Map<Directions, ImageTile[]>
+> = new Map();
 tileSetsByEnemySkin.set(EnemySkins.WOODLAND_WITH_SMG, buildTileSetForEnemy0());
 tileSetsByEnemySkin.set(
   EnemySkins.GREY_ONESIE_WITH_RIFLE,
@@ -181,7 +190,7 @@ export interface TileSupplier {
 }
 
 export class LandmineTileSupplier implements TileSupplier {
-  private readonly tile = new Tile(
+  private readonly tile = new ImageTile(
     "images/tiles/environment/Tellermine-43.png",
     50,
     44,
@@ -196,7 +205,7 @@ export default class EnemyTileSupplier implements TileSupplier {
   durationSinceLastTile: number;
   lastTile?: Tile;
   tileGenerator: TileGenerator | null;
-  tileSet: Map<Directions, Tile[]> | undefined;
+  tileSet: Map<Directions, ImageTile[]> | undefined;
 
   constructor(skin: EnemySkins, direction: Directions) {
     this.direction = direction;

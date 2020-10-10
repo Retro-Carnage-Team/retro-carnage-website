@@ -1,6 +1,6 @@
 import { getMovementDistance, getMovementX, getMovementY } from "./Movement";
 import Rectangle from "./Rectangle";
-import Tile from "./Tile";
+import Tile, { ImageTile } from "./Tile";
 import { Directions } from "./Directions";
 import Point from "./Point";
 import { Grenade } from "./Grenades";
@@ -46,7 +46,7 @@ export default class Explosive {
       GRENADE_WIDTH,
       GRENADE_HEIGHT
     );
-    this.tile = new Tile(
+    this.tile = new ImageTile(
       "images/tiles/weapons/grenade.png",
       GRENADE_WIDTH,
       GRENADE_HEIGHT,
