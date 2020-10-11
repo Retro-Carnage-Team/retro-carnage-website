@@ -7,7 +7,6 @@ export interface Grenade {
   name: string;
   packageSize: number;
   price: number;
-  radius: number;
   range: number;
   speed: number;
   weight: string;
@@ -24,9 +23,8 @@ export const Grenades: Grenade[] = [
     name: "DM41",
     packageSize: 5,
     price: 500,
-    radius: 0,
     range: 450,
-    speed: 0.85,
+    speed: 0.8,
     weight: "0.450 kg",
   },
   {
@@ -39,9 +37,8 @@ export const Grenades: Grenade[] = [
     name: "Stielhandgranate 24",
     packageSize: 5,
     price: 600,
-    radius: 0,
     range: 550,
-    speed: 0.95,
+    speed: 0.85,
     weight: "0.595 kg",
   },
 ];

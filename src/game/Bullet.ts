@@ -6,7 +6,7 @@ import { Weapon } from "./Weapons";
 
 export const BULLET_HEIGHT = 5;
 export const BULLET_WIDTH = 5;
-const BULLET_SPEED = 1.2;
+const BULLET_SPEED = 1.2; // TODO: get bullet speed from weapon
 
 function buildBulletOffsetForPlayer0(): Map<Directions, Point> {
   const result = new Map<Directions, Point>();

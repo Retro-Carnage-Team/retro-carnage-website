@@ -104,7 +104,7 @@ export default class Renderer {
 
   drawExplosives = () => {
     this.engine.explosives.forEach((explosive) => {
-      const canvas = explosive.tile.getCanvas();
+      const canvas = explosive.tileSupplier.getTile().getCanvas();
       if (canvas && this.ctx) {
         this.ctx.drawImage(canvas, explosive.position.x, explosive.position.y);
       }
