@@ -5,7 +5,7 @@ export const SCREEN_SIZE = 1500;
 export default abstract class Tile {
   protected constructor(public offsetX: number, public offsetY: number) {}
 
-  abstract getCanvas(): HTMLCanvasElement | null;
+  abstract getCanvas(): CanvasImageSource | null;
 
   translate = (position: Rectangle): Rectangle => {
     return new Rectangle(
@@ -45,7 +45,7 @@ export class ImageTile extends Tile {
     this.offScreenCanvas = null;
   }
 
-  getCanvas = (): HTMLCanvasElement | null => {
+  getCanvas = (): CanvasImageSource | null => {
     if (!this.offScreenCanvas && this.image?.complete) {
       this.offScreenCanvas = window.document.createElement("canvas");
       this.offScreenCanvas.width = this.imageWidth;
@@ -66,14 +66,14 @@ export class BackgroundTile extends ImageTile {
 }
 
 export class ComputedTile extends Tile {
-  private readonly canvas: HTMLCanvasElement;
+  private readonly canvas: OffscreenCanvas;
 
-  constructor(baseTile: Tile, canvas: HTMLCanvasElement) {
+  constructor(baseTile: Tile, canvas: OffscreenCanvas) {
     super(baseTile.offsetX, baseTile.offsetY);
     this.canvas = canvas;
   }
 
-  getCanvas = (): HTMLCanvasElement | null => {
+  getCanvas = (): CanvasImageSource | null => {
     return this.canvas;
   };
 }

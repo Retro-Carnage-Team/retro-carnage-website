@@ -250,10 +250,10 @@ export default class EnemyTileSupplier implements TileSupplier {
     if (tileSet) {
       const sourceTile = tileSet[0];
 
-      const canvas = window.document.createElement("canvas");
-      canvas.width = sourceTile.imageWidth;
-      canvas.height = sourceTile.imageHeight;
-
+      const canvas = new OffscreenCanvas(
+        sourceTile.imageWidth,
+        sourceTile.imageHeight
+      );
       const ctx = canvas.getContext("2d");
       if (ctx) {
         let region = new Path2D();
