@@ -92,7 +92,7 @@ export default class Engine {
     this.updateEnemies(elapsedTimeInMs);
     this.updateBullet(elapsedTimeInMs);
     this.updateExplosions(elapsedTimeInMs);
-    this.updateExplosives(elapsedTimeInMs);
+    this.updateExplosives(elapsedTimeInMs, obstacles);
     this.handleWeaponAction();
 
     this.checkPlayersForDeadlyCollisions();
@@ -205,16 +205,25 @@ export default class Engine {
     });
   };
 
-  updateExplosives = (elapsedTimeInMs: number) => {
-    // TODO: RPGs have to explode when they hit obstacles
+  updateExplosives = (elapsedTimeInMs: number, obstacles: Rectangle[]) => {
     this.explosives = this.explosives.filter((explosive) => {
-      const done = explosive.move(elapsedTimeInMs);
+      let done = explosive.move(elapsedTimeInMs);
+      if (!done && explosive.explodesOnContact) {
+        const collision = obstacles.find((obstacle) =>
+          obstacle.getIntersection(explosive.position)
+        );
+        done = !!collision;
+      }
       if (done) {
-        this.explosions.push(new Explosion(explosive));
-        SoundBoard.play(FX_GRENADE_1);
+        this.detonateExplosive(explosive);
       }
       return !done;
     });
+  };
+
+  detonateExplosive = (explosive: Explosive) => {
+    this.explosions.push(new Explosion(explosive));
+    SoundBoard.play(FX_GRENADE_1);
   };
 
   updateBullet = (elapsedTimeInMs: number) => {
@@ -353,8 +362,8 @@ export default class Engine {
           death = death || deadlyExplosion;
         });
 
-        // Bullets are useful only against persons
         if (EnemyType.Person === enemy.type) {
+          // Bullets, flamethrowers and RPGs are useful only against persons
           this.bullets.forEach((bullet) => {
             const deadlyShot =
               null !== enemy.position.getIntersection(bullet.position);
@@ -363,9 +372,18 @@ export default class Engine {
             }
             death = death || deadlyShot;
           });
-        }
 
-        // TODO: Enemies die when hit by RPG
+          this.explosives = this.explosives.filter((explosive) => {
+            let explode =
+              explosive.explodesOnContact &&
+              explosive.position.getIntersection(enemy.position);
+            if (explode) {
+              this.detonateExplosive(explosive);
+              death = true;
+            }
+            return !explode;
+          });
+        }
 
         if (death) {
           enemy.dying = true;

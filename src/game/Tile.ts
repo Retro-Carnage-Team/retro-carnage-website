@@ -66,9 +66,9 @@ export class BackgroundTile extends ImageTile {
 }
 
 export class ComputedTile extends Tile {
-  private readonly canvas: OffscreenCanvas;
+  private readonly canvas: CanvasImageSource;
 
-  constructor(baseTile: Tile, canvas: OffscreenCanvas) {
+  constructor(baseTile: Tile, canvas: CanvasImageSource) {
     super(baseTile.offsetX, baseTile.offsetY);
     this.canvas = canvas;
   }

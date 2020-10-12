@@ -24,7 +24,8 @@ export default abstract class Explosive {
     public readonly playerIdx: number | null,
     public readonly position: Rectangle,
     private readonly speed: number,
-    public readonly tileSupplier: ExplosiveTileSupplier
+    public readonly tileSupplier: ExplosiveTileSupplier,
+    public readonly explodesOnContact: boolean
   ) {}
 
   /*
@@ -102,7 +103,8 @@ export class ExplosiveGrenade extends Explosive {
         GRENADE_HEIGHT
       ),
       selectedWeapon.speed,
-      new GrenadeTileSupplier()
+      new GrenadeTileSupplier(),
+      false
     );
   }
 }
@@ -209,7 +211,8 @@ export class ExplosiveRPG extends Explosive {
         RPG_HEIGHT
       ),
       selectedWeapon.bulletSpeed,
-      new RPGTileSupplier(direction)
+      new RPGTileSupplier(direction),
+      true
     );
   }
 
