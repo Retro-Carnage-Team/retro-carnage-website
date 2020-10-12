@@ -28,11 +28,9 @@ export default function DetailGrenade(props: DetailGrenadeProps) {
             <td className={styles.detailsGrenadeValue}>
               {props.grenade.range}
             </td>
-            <td className={styles.detailsGrenadeSpacer} />
-            <td>Radius:</td>
-            <td className={styles.detailsGrenadeValue}>
-              {props.grenade.radius}
-            </td>
+            <td />
+            <td />
+            <td />
           </tr>
         </tbody>
       </table>

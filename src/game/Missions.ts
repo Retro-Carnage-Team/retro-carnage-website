@@ -55,7 +55,7 @@ const Missions: Mission[] = [
     },
     music: MUSIC_BACKGROUND_1,
     name: "Berlin",
-    reward: 10000,
+    reward: 100000,
     segments: [
       {
         backgrounds: [

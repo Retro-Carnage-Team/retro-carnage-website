@@ -913,6 +913,25 @@ function LicenseAttributionScreen(props: LicenseAttributionScreenProps) {
           </a>
           )
         </li>
+        <li>
+          RPG 7 detached noBG by Michal Maňas (
+          <a
+            href="https://commons.wikimedia.org/wiki/File:RPG_7_detached_noBG.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://creativecommons.org/licenses/by-sa/2.5/deed.en"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
       </ul>
 
       <h3>Other</h3>

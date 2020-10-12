@@ -64,4 +64,8 @@ export default class Rectangle {
       { x: this.x + this.width, y: this.y + this.height }
     );
   };
+
+  toString = (): string => {
+    return `Rectangle[x: ${this.x}, y: ${this.y}, width: ${this.width}, height: ${this.height}]`;
+  };
 }
