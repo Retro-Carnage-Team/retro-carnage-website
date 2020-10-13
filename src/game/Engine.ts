@@ -90,7 +90,7 @@ export default class Engine {
     const obstacles = this.levelController.getObstaclesOnScreen();
     this.updatePlayerPositionWithMovement(elapsedTimeInMs, obstacles);
     this.updateEnemies(elapsedTimeInMs);
-    this.updateBullet(elapsedTimeInMs);
+    this.updateBullets(elapsedTimeInMs, obstacles);
     this.updateExplosions(elapsedTimeInMs);
     this.updateExplosives(elapsedTimeInMs, obstacles);
     this.handleWeaponAction();
@@ -162,37 +162,39 @@ export default class Engine {
   };
 
   updateEnemies = (elapsedTimeInMs: number) => {
-    this.enemies = this.enemies.filter(
-      (activeEnemy) =>
-        !activeEnemy.dying || 0 <= activeEnemy.dyingAnimationCountDown
-    );
+    function updateDeathAnimationCountDown(enemy: ActiveEnemy): ActiveEnemy {
+      if (enemy.dying) {
+        enemy.dyingAnimationCountDown -= Math.floor(elapsedTimeInMs);
+      }
+      return enemy;
+    }
+
+    this.enemies = this.enemies
+      .map(updateDeathAnimationCountDown)
+      .filter((enemy) => !enemy.dying || 0 <= enemy.dyingAnimationCountDown);
 
     this.enemies
-      .filter((activeEnemy) => EnemyType.Person === activeEnemy.type)
-      .forEach((activeEnemy) => {
-        if (activeEnemy.dying) {
-          activeEnemy.dyingAnimationCountDown -= Math.floor(elapsedTimeInMs);
-        } else {
-          let remaining = elapsedTimeInMs;
-          let currentMovement = activeEnemy.movements.find(
-            (m) => m.timeElapsed < m.duration
+      .filter((e) => !e.dying && EnemyType.Person === e.type)
+      .forEach((enemy) => {
+        let remaining = elapsedTimeInMs;
+        let currentMovement = enemy.movements.find(
+          (m) => m.timeElapsed < m.duration
+        );
+        while (currentMovement && 0 < remaining) {
+          const duration = Math.min(
+            remaining,
+            currentMovement.duration - currentMovement.timeElapsed
           );
-          while (currentMovement && 0 < remaining) {
-            const duration = Math.min(
-              remaining,
-              currentMovement.duration - currentMovement.timeElapsed
+          enemy.position.add({
+            x: duration * currentMovement.offsetXPerMs,
+            y: duration * currentMovement.offsetYPerMs,
+          });
+          remaining -= duration;
+          currentMovement.timeElapsed += duration;
+          if (0 < remaining) {
+            currentMovement = enemy.movements.find(
+              (m) => m.timeElapsed < m.duration
             );
-            activeEnemy.position.add({
-              x: duration * currentMovement.offsetXPerMs,
-              y: duration * currentMovement.offsetYPerMs,
-            });
-            remaining -= duration;
-            currentMovement.timeElapsed += duration;
-            if (0 < remaining) {
-              currentMovement = activeEnemy.movements.find(
-                (m) => m.timeElapsed < m.duration
-              );
-            }
           }
         }
       });
@@ -226,10 +228,14 @@ export default class Engine {
     SoundBoard.play(FX_GRENADE_1);
   };
 
-  updateBullet = (elapsedTimeInMs: number) => {
-    this.bullets = this.bullets.filter(
-      (bullet) => !bullet.move(elapsedTimeInMs)
-    );
+  updateBullets = (elapsedTimeInMs: number, obstacles: Rectangle[]) => {
+    this.bullets = this.bullets.filter((bullet) => {
+      const reachedRange = bullet.move(elapsedTimeInMs);
+      const hitObstacle = !!obstacles.find((o) =>
+        o.getIntersection(bullet.position)
+      );
+      return !(reachedRange || hitObstacle);
+    });
   };
 
   updateAllPositionsWithScrollOffset = (scrollOffset: Point) => {
@@ -360,6 +366,9 @@ export default class Engine {
             killer = explosion.playerIdx;
           }
           death = death || deadlyExplosion;
+          if (death) {
+            console.log("Enemy killed by explosion");
+          }
         });
 
         if (EnemyType.Person === enemy.type) {
