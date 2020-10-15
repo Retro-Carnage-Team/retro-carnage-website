@@ -263,7 +263,7 @@ export default class Engine {
       const behavior = this.playerBehaviors[p.index];
       if (!behavior.dying) {
         const playerPosition = this.playerPositions[p.index];
-        if (behavior.triggeredFire) {
+        if (behavior.triggerPressed) {
           if (
             p.isGrenadeSelected() &&
             InventoryController.removeAmmunition(p.index)
@@ -323,7 +323,7 @@ export default class Engine {
             behavior.timeSinceLastBullet = 0;
             fireBullet(p, behavior);
           }
-        } else if (behavior.untriggeredFire && p.isAutomaticWeaponSelected()) {
+        } else if (behavior.triggerReleased && p.isAutomaticWeaponSelected()) {
           const weapon = p.getSelectedWeapon() as Weapon;
           SoundBoard.stop(weapon.sound!);
         }

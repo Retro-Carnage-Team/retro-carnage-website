@@ -123,3 +123,30 @@ test("isRpgSelected should return true if the selected weapon fires rockets", ()
   player.selectedWeaponName = "Panzerfaust 44";
   expect(player.isRpgSelected()).toBeTruthy();
 });
+
+test("isPistolSelected should return whether or not a pistol has been selected", () => {
+  const player = Players[0];
+  player.reset();
+  player.setWeaponInInventory("P210", true);
+  player.setWeaponInInventory("Uzi", true);
+
+  player.selectedWeaponName = "Uzi";
+  expect(player.isPistolSelected()).toBeFalsy();
+  player.selectedWeaponName = "P210";
+  expect(player.isPistolSelected()).toBeTruthy();
+});
+
+test("isAutomaticWeaponSelected should return whether or not a machine pistol or machine gun has been selected", () => {
+  const player = Players[0];
+  player.reset();
+  player.setWeaponInInventory("P210", true);
+  player.setWeaponInInventory("Uzi", true);
+  player.setWeaponInInventory("AR-10", true);
+
+  player.selectedWeaponName = "P210";
+  expect(player.isAutomaticWeaponSelected()).toBeFalsy();
+  player.selectedWeaponName = "Uzi";
+  expect(player.isAutomaticWeaponSelected()).toBeTruthy();
+  player.selectedWeaponName = "AR-10";
+  expect(player.isAutomaticWeaponSelected()).toBeTruthy();
+});
