@@ -165,6 +165,15 @@ export class Player {
     return false;
   };
 
+  isAutomaticWeaponSelected = (): boolean => {
+    const selected = this.getSelectedWeapon();
+    return (
+      undefined !== selected &&
+      "bulletInterval" in selected &&
+      "number" === typeof selected.bulletInterval
+    );
+  };
+
   getAmmunitionCountForSelectedWeapon = (): number => {
     if (null === this.selectedWeaponName) {
       return 0;

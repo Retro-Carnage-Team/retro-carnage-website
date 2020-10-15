@@ -63,10 +63,10 @@ class NamedAudio {
   name: string;
   audio: HTMLAudioElement;
 
-  constructor(name: string, type: string) {
+  constructor(name: string, type: string, loop: boolean = false) {
     this.name = name;
     this.audio = new Audio(`sounds/${type}/${name}`);
-    this.audio.loop = TYPE_MUSIC === type;
+    this.audio.loop = loop || TYPE_MUSIC === type;
   }
 }
 
@@ -77,9 +77,9 @@ class SoundBoard {
     this.sounds = [];
 
     // sound effects
-    this.sounds.push(new NamedAudio(FX_AK47, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_AR10, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_BAR, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_AK47, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_AR10, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_BAR, TYPE_FX, true));
     this.sounds.push(new NamedAudio(FX_CASH, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_0, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_DEATH_ENEMY_1, TYPE_FX));
@@ -92,24 +92,24 @@ class SoundBoard {
     this.sounds.push(new NamedAudio(FX_DEATH_PLAYER_1, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_DEATH_PLAYER_2, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_ERROR, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_FNFAL, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_G36, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_G95K, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_FNFAL, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_G36, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_G95K, TYPE_FX, true));
     this.sounds.push(new NamedAudio(FX_GRENADE_1, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_GRENADE_2, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_GRENADE_3, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_HK21, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_HK21, TYPE_FX, true));
     this.sounds.push(new NamedAudio(FX_LOADING, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_MG4, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_MG42, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_MP5, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_MP7, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_MG4, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_MG42, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_MP5, TYPE_FX, true));
+    this.sounds.push(new NamedAudio(FX_MP7, TYPE_FX, true));
     this.sounds.push(new NamedAudio(FX_OUT_OF_AMMO, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_PISTOL_1, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_PISTOL_2, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_ROCKET_LAUNCHER, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_TITLE_RIFLE, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_UZI, TYPE_FX));
+    this.sounds.push(new NamedAudio(FX_UZI, TYPE_FX, true));
 
     // music
     this.sounds.push(new NamedAudio(MUSIC_BACKGROUND_1, TYPE_MUSIC));
