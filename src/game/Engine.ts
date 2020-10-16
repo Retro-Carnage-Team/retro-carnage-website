@@ -257,6 +257,7 @@ export default class Engine {
         0 === p.index ? BulletOffsetForPlayer0 : BulletOffsetForPlayer1
       );
       _this.bullets.push(bullet);
+      behavior.timeSinceLastBullet = 0;
     }
 
     PlayerController.getRemainingPlayers().forEach((p) => {
@@ -307,7 +308,6 @@ export default class Engine {
             const weapon = p.getSelectedWeapon() as Weapon;
             if (weapon.sound) SoundBoard.play(weapon.sound);
             fireBullet(p, behavior);
-            behavior.timeSinceLastBullet = 0;
           }
         } else if (
           behavior.firing &&
@@ -316,14 +316,12 @@ export default class Engine {
         ) {
           behavior.timeSinceLastBullet += elapsedTimeInMs;
           const weapon = p.getSelectedWeapon() as Weapon;
-          if (
-            null !== weapon.bulletInterval &&
-            weapon.bulletInterval >= behavior.timeSinceLastBullet
-          ) {
-            behavior.timeSinceLastBullet = 0;
+          if (weapon.bulletInterval! <= behavior.timeSinceLastBullet) {
             fireBullet(p, behavior);
           }
-        } else if (behavior.triggerReleased && p.isAutomaticWeaponSelected()) {
+        }
+
+        if (behavior.triggerReleased && p.isAutomaticWeaponSelected()) {
           const weapon = p.getSelectedWeapon() as Weapon;
           SoundBoard.stop(weapon.sound!);
         }
@@ -360,6 +358,9 @@ export default class Engine {
           death = death || null !== rect.getIntersection(bullet.position);
         });
         if (death) {
+          if (p.isAutomaticWeaponSelected() && behavior.firing) {
+            SoundBoard.stop((p.getSelectedWeapon() as Weapon).sound!);
+          }
           SoundBoard.play(
             0 === p.index ? FX_DEATH_PLAYER_1 : FX_DEATH_PLAYER_2
           );
@@ -386,9 +387,6 @@ export default class Engine {
             killer = explosion.playerIdx;
           }
           death = death || deadlyExplosion;
-          if (death) {
-            console.log("Enemy killed by explosion");
-          }
         });
 
         if (EnemyType.Person === enemy.type) {
