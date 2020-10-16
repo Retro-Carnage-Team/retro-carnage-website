@@ -47,6 +47,10 @@ class App extends React.Component<Readonly<{}>, AppState> {
     window.addEventListener("error", this.handleErrorEvent);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("error", this.handleErrorEvent);
+  }
+
   render() {
     let screen;
     switch (this.state.screen) {
