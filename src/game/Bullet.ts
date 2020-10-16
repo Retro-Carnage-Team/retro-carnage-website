@@ -6,7 +6,6 @@ import { Weapon } from "./Weapons";
 
 export const BULLET_HEIGHT = 5;
 export const BULLET_WIDTH = 5;
-const BULLET_SPEED = 1.2; // TODO: get bullet speed from weapon
 
 function buildBulletOffsetForPlayer0(): Map<Directions, Point> {
   const result = new Map<Directions, Point>();
@@ -44,6 +43,7 @@ export default class Bullet {
   direction: Directions;
   playerIdx: number | null;
   position: Rectangle;
+  readonly speed: number;
 
   constructor(
     playerIdx: number | null,
@@ -61,6 +61,7 @@ export default class Bullet {
       BULLET_WIDTH,
       BULLET_HEIGHT
     );
+    this.speed = selectedWeapon.bulletSpeed;
   }
 
   applyOffset = (offset: Map<Directions, Point>) => {
@@ -79,19 +80,19 @@ export default class Bullet {
       const maxDistance = this.distanceToTarget - this.distanceMoved;
       this.distanceMoved += getMovementDistance(
         elapsedTimeInMs,
-        BULLET_SPEED,
+        this.speed,
         maxDistance
       );
       this.position.x += getMovementX(
         elapsedTimeInMs,
         this.direction,
-        BULLET_SPEED,
+        this.speed,
         maxDistance
       );
       this.position.y += getMovementY(
         elapsedTimeInMs,
         this.direction,
-        BULLET_SPEED,
+        this.speed,
         maxDistance
       );
     }

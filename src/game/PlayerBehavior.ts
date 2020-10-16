@@ -13,9 +13,11 @@ export default class PlayerBehavior {
   dyingAnimationCountDown: number;
   invincible: boolean;
   invincibilityCountDown: number;
+  timeSinceLastBullet: number;
 
   firing: boolean; // will be true as long as the player keeps the trigger pressed
-  triggeredFire: boolean; // will be true only when switching from "not firing" to "firing"
+  triggerPressed: boolean; // will be true only when switching from "not firing" to "firing"
+  triggerReleased: boolean; // will be true only when switching from "firing" to "not firing"
   moving: boolean;
   nextWeapon: boolean;
   previousWeapon: boolean;
@@ -29,9 +31,11 @@ export default class PlayerBehavior {
     this.invincibilityCountDown = 0;
     this.moving = false;
     this.firing = false;
-    this.triggeredFire = false;
+    this.triggerPressed = false;
+    this.triggerReleased = false;
     this.nextWeapon = false;
     this.previousWeapon = false;
+    this.timeSinceLastBullet = 0;
   }
 
   update = (userInput: InputState) => {
@@ -45,7 +49,8 @@ export default class PlayerBehavior {
       userInput.moveLeft ||
       userInput.moveRight;
     this.moving = playerWantsToMove && !(!this.moving && this.firing);
-    this.triggeredFire = !this.firing && userInput.fire;
+    this.triggerPressed = !this.firing && userInput.fire;
+    this.triggerReleased = this.firing && !userInput.fire;
     this.firing = userInput.fire;
     if (playerWantsToMove) {
       this.direction = this.getDirection(

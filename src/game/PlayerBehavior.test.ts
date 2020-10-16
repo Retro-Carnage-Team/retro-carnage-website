@@ -132,7 +132,7 @@ test("triggeredFire gets set when firing and unset when held down", () => {
   const inputState = new InputState();
   inputState.fire = true;
   playerBehavior.update(inputState);
-  expect(playerBehavior.triggeredFire).toBeTruthy();
+  expect(playerBehavior.triggerPressed).toBeTruthy();
   playerBehavior.update(inputState);
-  expect(playerBehavior.triggeredFire).toBeFalsy();
+  expect(playerBehavior.triggerPressed).toBeFalsy();
 });

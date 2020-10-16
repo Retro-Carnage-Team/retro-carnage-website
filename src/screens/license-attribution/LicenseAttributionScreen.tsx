@@ -1643,6 +1643,322 @@ function LicenseAttributionScreen(props: LicenseAttributionScreenProps) {
           </a>
           )
         </li>
+        <li>
+          gun_submachine_auto_shot_00_automatic_preview_01.wav (
+          <a
+            href="https://gamesounds.xyz/?dir=Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle/Gamemaster%20Audio%20-%20%20Gun%20Sound%20Pack"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://gamesounds.xyz/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle/README.txt"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          LightMachineGun1.wav by SuperPhat (
+          <a
+            href="https://freesound.org/people/SuperPhat/sounds/417688/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="http://creativecommons.org/publicdomain/zero/1.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          Gunfire: Machine Gun burst. copyright by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07027158#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          Gunfire: Machine Gun burst. copyright by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07027159#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          Sten Gun, firing in bursts. (Used during World War II.) copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07034205#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          7.62mm tank machine gun firing. (Recorded inside tank.) copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07034209#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          7.62mm tank machine gun firing. (Recorded outside tank.) copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07034210#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          Tank Guns, .3 machine gun firing. (Recorded inside tank.) copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07034215#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          Tank Guns, .3 machine gun firing. (Recorded outside tank.) copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07034216#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          General purpose machine gun, surface fire from close left. copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07043188#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          General purpose machine gun firing from behind & above. copyright
+          by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07043191#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
+        <li>
+          General purpose machine gun pimple & turret mounted firing in turn.
+          copyright by&nbsp;
+          <a
+            href="http://www.bbc.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BBC
+          </a>
+          &nbsp;(
+          <a
+            href="http://bbcsfx.acropolis.org.uk/07043192#id"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+          ,&nbsp;
+          <a
+            href="https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            License
+          </a>
+          )
+        </li>
       </ul>
 
       <button

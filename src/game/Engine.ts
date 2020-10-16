@@ -35,6 +35,7 @@ import Bullet, {
 } from "./Bullet";
 import { Weapon } from "./Weapons";
 import { ActiveEnemy, EnemyType } from "./Enemy";
+import { Player } from "./Player";
 
 export const EXPLOSION_HIT_RECT_HEIGHT = 200;
 export const EXPLOSION_HIT_RECT_WIDTH = 200;
@@ -93,7 +94,7 @@ export default class Engine {
     this.updateBullets(elapsedTimeInMs, obstacles);
     this.updateExplosions(elapsedTimeInMs);
     this.updateExplosives(elapsedTimeInMs, obstacles);
-    this.handleWeaponAction();
+    this.handleWeaponAction(elapsedTimeInMs);
 
     this.checkPlayersForDeadlyCollisions();
     this.checkEnemiesForDeadlyCollisions();
@@ -246,68 +247,85 @@ export default class Engine {
     this.bullets.forEach((bul) => bul.position.subtract(scrollOffset));
   };
 
-  handleWeaponAction = () => {
+  handleWeaponAction = (elapsedTimeInMs: number) => {
+    const _this = this;
+    function fireBullet(p: Player, behavior: PlayerBehavior): void {
+      const weapon = p.getSelectedWeapon() as Weapon;
+      const position = _this.playerPositions[p.index];
+      const bullet = new Bullet(p.index, position, behavior.direction, weapon);
+      bullet.applyOffset(
+        0 === p.index ? BulletOffsetForPlayer0 : BulletOffsetForPlayer1
+      );
+      _this.bullets.push(bullet);
+      behavior.timeSinceLastBullet = 0;
+    }
+
     PlayerController.getRemainingPlayers().forEach((p) => {
       const behavior = this.playerBehaviors[p.index];
-      if (!behavior.dying && behavior.triggeredFire) {
+      if (!behavior.dying) {
         const playerPosition = this.playerPositions[p.index];
-
-        if (
-          p.isGrenadeSelected() &&
+        if (behavior.triggerPressed) {
+          if (
+            p.isGrenadeSelected() &&
+            InventoryController.removeAmmunition(p.index)
+          ) {
+            this.explosives.push(
+              new ExplosiveGrenade(
+                p.index,
+                new Rectangle(
+                  playerPosition.x,
+                  playerPosition.y,
+                  GRENADE_WIDTH,
+                  GRENADE_HEIGHT
+                ),
+                behavior.direction,
+                p.getSelectedWeapon() as Grenade
+              )
+            );
+          } else if (
+            p.isRpgSelected() &&
+            InventoryController.removeAmmunition(p.index)
+          ) {
+            const weapon = p.getSelectedWeapon() as Weapon;
+            if (weapon.sound) SoundBoard.play(weapon.sound);
+            this.explosives.push(
+              new ExplosiveRPG(
+                p.index,
+                new Rectangle(
+                  playerPosition.x,
+                  playerPosition.y,
+                  RPG_WIDTH,
+                  RPG_HEIGHT
+                ),
+                behavior.direction,
+                p.getSelectedWeapon() as Weapon
+              )
+            );
+          } else if (
+            (p.isPistolSelected() || p.isAutomaticWeaponSelected()) &&
+            InventoryController.removeAmmunition(p.index)
+          ) {
+            const weapon = p.getSelectedWeapon() as Weapon;
+            if (weapon.sound) SoundBoard.play(weapon.sound);
+            fireBullet(p, behavior);
+          }
+        } else if (
+          behavior.firing &&
+          p.isAutomaticWeaponSelected() &&
           InventoryController.removeAmmunition(p.index)
         ) {
-          this.explosives.push(
-            new ExplosiveGrenade(
-              p.index,
-              new Rectangle(
-                playerPosition.x,
-                playerPosition.y,
-                GRENADE_WIDTH,
-                GRENADE_HEIGHT
-              ),
-              behavior.direction,
-              p.getSelectedWeapon() as Grenade
-            )
-          );
-        }
-        if (
-          p.isRpgSelected() &&
-          InventoryController.removeAmmunition(p.index)
-        ) {
-          this.explosives.push(
-            new ExplosiveRPG(
-              p.index,
-              new Rectangle(
-                playerPosition.x,
-                playerPosition.y,
-                RPG_WIDTH,
-                RPG_HEIGHT
-              ),
-              behavior.direction,
-              p.getSelectedWeapon() as Weapon
-            )
-          );
-        }
-
-        if (
-          p.isPistolSelected() &&
-          InventoryController.removeAmmunition(p.index)
-        ) {
+          behavior.timeSinceLastBullet += elapsedTimeInMs;
           const weapon = p.getSelectedWeapon() as Weapon;
-          const position = this.playerPositions[p.index];
-          const bullet = new Bullet(
-            p.index,
-            position,
-            behavior.direction,
-            weapon
-          );
-          bullet.applyOffset(
-            0 === p.index ? BulletOffsetForPlayer0 : BulletOffsetForPlayer1
-          );
-          this.bullets.push(bullet);
+          if (weapon.bulletInterval! <= behavior.timeSinceLastBullet) {
+            fireBullet(p, behavior);
+          }
+        }
+
+        if (behavior.triggerReleased && p.isAutomaticWeaponSelected()) {
+          const weapon = p.getSelectedWeapon() as Weapon;
+          SoundBoard.stop(weapon.sound!);
         }
       }
-      // TODO: handle automatic fire arms, flamethrowers and all the other fun items :)
     });
   };
 
@@ -340,6 +358,9 @@ export default class Engine {
           death = death || null !== rect.getIntersection(bullet.position);
         });
         if (death) {
+          if (p.isAutomaticWeaponSelected() && behavior.firing) {
+            SoundBoard.stop((p.getSelectedWeapon() as Weapon).sound!);
+          }
           SoundBoard.play(
             0 === p.index ? FX_DEATH_PLAYER_1 : FX_DEATH_PLAYER_2
           );
@@ -366,9 +387,6 @@ export default class Engine {
             killer = explosion.playerIdx;
           }
           death = death || deadlyExplosion;
-          if (death) {
-            console.log("Enemy killed by explosion");
-          }
         });
 
         if (EnemyType.Person === enemy.type) {

@@ -62,9 +62,9 @@ class InventoryController {
         const ammoCount = player.getAmmunitionCount(selectedWeapon.ammo);
         if (0 < ammoCount) {
           player.setAmmunitionCount(selectedWeapon.ammo, ammoCount - 1);
-          if (selectedWeapon.sound) SoundBoard.play(selectedWeapon.sound);
           return true;
         } else {
+          SoundBoard.stop(selectedWeapon.sound!);
           SoundBoard.play(FX_OUT_OF_AMMO);
           return false;
         }

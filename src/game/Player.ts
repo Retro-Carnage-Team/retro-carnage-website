@@ -2,6 +2,7 @@ import { Ammunitions } from "./Ammunition";
 import { Grenade, Grenades } from "./Grenades";
 import { Weapon, Weapons } from "./Weapons";
 import ChangeListener from "./ChangeListener";
+import SoundBoard from "./SoundBoard";
 
 export enum PlayerProperties {
   Ammunition = "ammunition",
@@ -165,6 +166,15 @@ export class Player {
     return false;
   };
 
+  isAutomaticWeaponSelected = (): boolean => {
+    const selected = this.getSelectedWeapon();
+    return (
+      undefined !== selected &&
+      "bulletInterval" in selected &&
+      "number" === typeof selected.bulletInterval
+    );
+  };
+
   getAmmunitionCountForSelectedWeapon = (): number => {
     if (null === this.selectedWeaponName) {
       return 0;
@@ -198,21 +208,30 @@ export class Player {
   selectNextWeapon = () => {
     const items = this.getNamesOfWeaponsAndGrenadesInInventory();
     const idx = items.findIndex((i) => i === this.selectedWeaponName);
-    this.selectedWeaponName =
+    const newWeaponName =
       -1 < idx && idx + 1 < items.length ? items[idx + 1] : items[0];
-    this.changeListeners.forEach((listener) =>
-      listener.call(this.selectedWeaponName, PlayerProperties.SelectedWeapon)
-    );
+    this.selectOtherWeapon(newWeaponName);
   };
 
   selectPreviousWeapon = () => {
     const items = this.getNamesOfWeaponsAndGrenadesInInventory();
     const idx = items.findIndex((i) => i === this.selectedWeaponName);
-    this.selectedWeaponName =
+    const newWeaponName =
       -1 < idx && idx - 1 >= 0 ? items[idx - 1] : items[items.length - 1];
-    this.changeListeners.forEach((listener) =>
-      listener.call(this.selectedWeaponName, PlayerProperties.SelectedWeapon)
-    );
+    this.selectOtherWeapon(newWeaponName);
+  };
+
+  private selectOtherWeapon = (newWeaponName: string) => {
+    if (newWeaponName !== this.selectedWeaponName) {
+      if (this.isAutomaticWeaponSelected()) {
+        const weapon = Weapons.find((w) => w.name === this.selectedWeaponName);
+        SoundBoard.stop(weapon!.sound!);
+      }
+      this.selectedWeaponName = newWeaponName;
+      this.changeListeners.forEach((listener) =>
+        listener.call(this.selectedWeaponName, PlayerProperties.SelectedWeapon)
+      );
+    }
   };
 
   reset = () => {
