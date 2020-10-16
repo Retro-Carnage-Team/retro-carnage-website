@@ -7,12 +7,7 @@ export default class Rectangle {
     public y: number,
     public width: number,
     public height: number
-  ) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-  }
+  ) {}
 
   add = (offset: Point): Rectangle => {
     this.x += offset.x;
