@@ -5,12 +5,6 @@ import ConfigurationScreen, {
   CONFIGURATION_SCREEN_NAME,
 } from "./screens/configuration/ConfigurationScreen";
 import GameScreen, { GAME_SCREEN_NAME } from "./screens/game/GameScreen";
-import ImprintScreen, {
-  IMPRINT_SCREEN_NAME,
-} from "./screens/imprint/ImprintScreen";
-import LandingPageScreen, {
-  LANDING_PAGE_SCREEN_NAME,
-} from "./screens/landing-page/LandingPageScreen";
 import LetsBeginScreen, {
   LETS_BEGIN_MESSAGE_SCREEN_NAME,
 } from "./screens/lets-begin/LetsBeginScreen";
@@ -23,9 +17,6 @@ import ShoppingFlow, {
 } from "./screens/shopping-flow/ShoppingFlow";
 import StartScreen, { START_SCREEN_NAME } from "./screens/start/StartScreen";
 import TitleScreen, { TITLE_SCREEN_NAME } from "./screens/title/TitleScreen";
-import LicenseAttributionScreen, {
-  LICENSE_ATTRIBUTION_SCREEN_NAME,
-} from "./screens/license-attribution/LicenseAttributionScreen";
 
 interface AppState {
   gameId: string | null;
@@ -39,7 +30,7 @@ class App extends React.Component<Readonly<{}>, AppState> {
     super(props);
     this.state = {
       gameId: null,
-      screen: LANDING_PAGE_SCREEN_NAME,
+      screen: LOADING_SCREEN_NAME,
     };
   }
 
@@ -68,30 +59,9 @@ class App extends React.Component<Readonly<{}>, AppState> {
           />
         );
         break;
-      case IMPRINT_SCREEN_NAME:
-        screen = (
-          <ImprintScreen
-            onScreenChangeRequired={this.handleScreenChangeRequired}
-          />
-        );
-        break;
-      case LANDING_PAGE_SCREEN_NAME:
-        screen = (
-          <LandingPageScreen
-            onScreenChangeRequired={this.handleScreenChangeRequired}
-          />
-        );
-        break;
       case LETS_BEGIN_MESSAGE_SCREEN_NAME:
         screen = (
           <LetsBeginScreen
-            onScreenChangeRequired={this.handleScreenChangeRequired}
-          />
-        );
-        break;
-      case LICENSE_ATTRIBUTION_SCREEN_NAME:
-        screen = (
-          <LicenseAttributionScreen
             onScreenChangeRequired={this.handleScreenChangeRequired}
           />
         );
