@@ -3,7 +3,9 @@
   height: 100%;
 }
 
-.muzzleFlash {
-  position: fixed;
-  transform: rotate(-5deg);
+.screen img {
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  width: 100%;
 }
