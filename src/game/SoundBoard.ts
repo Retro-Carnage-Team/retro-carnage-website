@@ -42,7 +42,6 @@ export const FX_OUT_OF_AMMO = "outofammo.mp3";
 export const FX_PISTOL_1 = "pistol.mp3";
 export const FX_PISTOL_2 = "pistol2.mp3";
 export const FX_ROCKET_LAUNCHER = "rlauncher.mp3";
-export const FX_TITLE_RIFLE = "title-rifle.mp3";
 export const FX_UZI = "UZI.mp3";
 
 export const MUSIC_BACKGROUND_1 = "All-We-Ever-See-of-Stars.mp3";
@@ -108,7 +107,6 @@ class SoundBoard {
     this.sounds.push(new NamedAudio(FX_PISTOL_1, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_PISTOL_2, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_ROCKET_LAUNCHER, TYPE_FX));
-    this.sounds.push(new NamedAudio(FX_TITLE_RIFLE, TYPE_FX));
     this.sounds.push(new NamedAudio(FX_UZI, TYPE_FX, true));
 
     // music
