@@ -1,94 +1,6 @@
-import { Directions } from "./Directions";
+import { Directions, getDirectionForCardinals } from "./Directions";
 import { Player } from "./Player";
 import InputState from "./InputState";
-
-interface DirectionCheck {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean;
-  getDirection(): Directions;
-}
-
-const DirectionCheckUp: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return up && !down && !left && !right;
-  },
-  getDirection(): Directions {
-    return Directions.Up;
-  },
-};
-
-const DirectionCheckUpLeft: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return up && !down && left && !right;
-  },
-  getDirection(): Directions {
-    return Directions.UpLeft;
-  },
-};
-
-const DirectionCheckUpRight: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return up && !down && !left && right;
-  },
-  getDirection(): Directions {
-    return Directions.UpRight;
-  },
-};
-
-const DirectionCheckDown: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return !up && down && !left && !right;
-  },
-  getDirection(): Directions {
-    return Directions.Down;
-  },
-};
-
-const DirectionCheckDownLeft: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return !up && down && left && !right;
-  },
-  getDirection(): Directions {
-    return Directions.DownLeft;
-  },
-};
-
-const DirectionCheckDownRight: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return !up && down && !left && right;
-  },
-  getDirection(): Directions {
-    return Directions.DownRight;
-  },
-};
-
-const DirectionCheckLeft: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return !up && !down && left && !right;
-  },
-  getDirection(): Directions {
-    return Directions.Left;
-  },
-};
-
-const DirectionCheckRight: DirectionCheck = {
-  check(up: boolean, down: boolean, left: boolean, right: boolean): boolean {
-    return !up && !down && !left && right;
-  },
-  getDirection(): Directions {
-    return Directions.Right;
-  },
-};
-
-const DirectionChecks: DirectionCheck[] = [
-  DirectionCheckUp,
-  DirectionCheckUpLeft,
-  DirectionCheckUpRight,
-  DirectionCheckDown,
-  DirectionCheckDownLeft,
-  DirectionCheckDownRight,
-  DirectionCheckLeft,
-  DirectionCheckRight,
-];
 
 /**
  * This class contains all player state that is valid for the duration of a single mission only.
@@ -166,9 +78,6 @@ export default class PlayerBehavior {
     left: boolean,
     right: boolean
   ): Directions => {
-    const direction = DirectionChecks.find((check) =>
-      check.check(up, down, left, right)
-    )?.getDirection();
-    return direction ? direction : this.direction;
+    return getDirectionForCardinals(up, down, left, right) || this.direction;
   };
 }

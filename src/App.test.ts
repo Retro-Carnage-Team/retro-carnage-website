@@ -4,6 +4,6 @@ import App from "./App";
 
 test("renders start screen with game title", () => {
   const { getByText } = render(React.createElement(App));
-  const linkElement = getByText(/Start Game/i);
+  const linkElement = getByText(/is loading/i);
   expect(linkElement).toBeInTheDocument();
 });
