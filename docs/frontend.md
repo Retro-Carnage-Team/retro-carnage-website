@@ -57,3 +57,12 @@ solution, e.g.:
 
 - [Amazon - AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
 - [Microsoft - Azure Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
+
+### Default Root Object
+
+The frontend can be configured with two different
+[Default Root Objects](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html) (the
+HTML page displayed per default):
+
+- Use `home.html` when you want the home page to be displayed
+- Use `index.html` when you want to skip to the start the game directly.
