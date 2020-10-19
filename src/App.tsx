@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./App.module.css";
 
+import Backend from "./game/Backend";
 import ConfigurationScreen, {
   CONFIGURATION_SCREEN_NAME,
 } from "./screens/configuration/ConfigurationScreen";
@@ -18,28 +18,27 @@ import ShoppingFlow, {
 import StartScreen, { START_SCREEN_NAME } from "./screens/start/StartScreen";
 import TitleScreen, { TITLE_SCREEN_NAME } from "./screens/title/TitleScreen";
 
+import styles from "./App.module.css";
+
 interface AppState {
-  gameId: string | null;
   screen: string;
 }
-
-const backend = "https://backend.retro-carnage.net";
 
 class App extends React.Component<Readonly<{}>, AppState> {
   constructor(props: Readonly<{}>) {
     super(props);
     this.state = {
-      gameId: null,
       screen: LOADING_SCREEN_NAME,
     };
   }
 
   componentDidMount() {
-    window.addEventListener("error", this.handleErrorEvent);
+    window.addEventListener("error", Backend.reportError);
+    Backend.startGameSession();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("error", this.handleErrorEvent);
+    window.removeEventListener("error", Backend.reportError);
   }
 
   render() {
@@ -110,66 +109,11 @@ class App extends React.Component<Readonly<{}>, AppState> {
     return <div className={styles.app}>{screen}</div>;
   }
 
-  handleErrorEvent = (error: ErrorEvent) => {
-    error.preventDefault();
-
-    const data = JSON.stringify({
-      message: error.message,
-      source: error.filename,
-      lineno: error.lineno,
-      colno: error.colno,
-      stack: error.error?.toString(),
-    });
-
-    console.error("Oh no! Sorry, that shouldn't have happened :'(");
-    console.error(`Error: ${data}`);
-
-    fetch(`${backend}/script-errors/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: data,
-    })
-      .then((response) => response.json())
-      .then(() => console.log("Error has been reported"))
-      .catch((error) => console.error("Failed to report the error:", error));
-  };
-
   handleScreenChangeRequired = (screenName: string) => {
     if (this.state.screen !== screenName) {
-      if (LOADING_SCREEN_NAME === screenName) {
-        this.startGameSession();
-      }
-
       this.setState({ screen: screenName });
-      const gameId = this.state.gameId;
-      if (null !== gameId) {
-        fetch(`${backend}/usage/${gameId}/next-screen/${screenName}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).catch((error) =>
-          console.error("Failed to notify server about game progress", error)
-        );
-      }
+      Backend.reportGameState(screenName);
     }
-  };
-
-  startGameSession = () => {
-    const _this = this;
-    fetch(`${backend}/usage/start-game`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => _this.setState({ gameId: data.gameId }))
-      .catch((error) =>
-        console.error("Failed to notify server about start", error)
-      );
   };
 }
 
