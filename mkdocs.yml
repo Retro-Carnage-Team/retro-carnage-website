@@ -1,4 +1,5 @@
 site_name: Retro Carnage
+site_url: http://docs.retro-carnage.net/
 nav:
   - Home: index.md
   - Frontend: frontend.md
