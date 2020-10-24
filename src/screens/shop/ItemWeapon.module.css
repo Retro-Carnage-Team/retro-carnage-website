@@ -1,16 +1,13 @@
 .itemWeapon img {
   background-color: black;
+  border: 3px solid black;
   border-radius: 30px;
+  cursor: pointer;
   width: 100%;
 }
 
-.itemWeapon:hover img {
-  background-color: #34bd5b;
-  cursor: pointer;
-}
-
-.itemWeapon img.compatible {
-  background-color: #ffee93;
+.itemWeapon.selected img {
+  border: 3px solid #ee0;
 }
 
 .itemWeapon svg {
@@ -27,22 +24,7 @@
   fill: black;
 }
 
-.itemWeapon:hover svg path {
-  fill: #34bd5b;
-}
-
-.itemWeapon svg.compatible path {
-  fill: #ffee93;
-}
-
 .itemWeapon svg.purchased path {
   fill: #34bd5b;
 }
 
-.itemWeapon svg.compatible.purchased path {
-  fill: black;
-}
-
-.itemWeapon:hover svg.purchased path {
-  fill: black;
-}

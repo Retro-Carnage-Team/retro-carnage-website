@@ -9,7 +9,6 @@ export interface DetailWeaponProps {
 export default function DetailWeapon(props: DetailWeaponProps) {
   return (
     <div className={styles.detailsWeaponInner}>
-      <h2>{props.weapon.name}</h2>
       <table>
         <tbody>
           <tr>

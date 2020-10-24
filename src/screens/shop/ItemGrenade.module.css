@@ -1,10 +1,11 @@
 .itemGrenade .itemGrenadeImage {
   background-color: black;
+  border: 3px solid black;
   border-radius: 30px;
+  cursor: pointer;
   width: 100%;
 }
 
-.itemGrenade:hover .itemGrenadeImage {
-  background-color: #34bd5b;
-  cursor: pointer;
+.itemGrenade.selected .itemGrenadeImage {
+  border: 3px solid #ee0;
 }

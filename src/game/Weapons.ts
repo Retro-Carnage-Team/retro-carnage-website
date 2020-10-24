@@ -30,6 +30,7 @@ export interface Weapon {
   sound: string | null;
   speed: string;
   weight: string;
+  youtubeLink: string | undefined;
 }
 
 export const Weapons: Weapon[] = [
@@ -48,6 +49,8 @@ export const Weapons: Weapon[] = [
     sound: FX_PISTOL_1,
     speed: "single shot",
     weight: "0.780 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/zq7_w6FWenY?controls=0",
   },
   {
     ammo: "9 x 19 mm",
@@ -64,6 +67,8 @@ export const Weapons: Weapon[] = [
     sound: FX_PISTOL_2,
     speed: "single shot",
     weight: "0.970 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/sobqLCqXiiE?controls=0",
   },
   {
     ammo: "9 x 19 mm",
@@ -80,6 +85,8 @@ export const Weapons: Weapon[] = [
     sound: FX_UZI,
     speed: "600 rounds/min",
     weight: "3.6 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/MTL8-cVoP64?controls=0",
   },
   {
     ammo: "9 x 19 mm",
@@ -96,6 +103,8 @@ export const Weapons: Weapon[] = [
     sound: FX_MP5,
     speed: "900 rounds/min",
     weight: "2 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/vkzelAfhsvA?controls=0",
   },
   {
     ammo: "4.6 x 30 mm",
@@ -112,6 +121,8 @@ export const Weapons: Weapon[] = [
     sound: FX_MP7,
     speed: "950 rounds/min",
     weight: "1.9 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/gJp7a_muHs0?controls=0",
   },
   {
     ammo: "7.62 x 51 mm",
@@ -128,6 +139,8 @@ export const Weapons: Weapon[] = [
     sound: FX_FNFAL,
     speed: "700 rounds/min",
     weight: "4.25 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/i7sQL9Rx4io?controls=0",
   },
   {
     ammo: "7.62 x 51 mm",
@@ -144,6 +157,8 @@ export const Weapons: Weapon[] = [
     sound: FX_AR10,
     speed: "700 rounds/min",
     weight: "4.3 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/8FXt5md6jPk?controls=0",
   },
   {
     ammo: "5.45 x 39 mm",
@@ -160,6 +175,7 @@ export const Weapons: Weapon[] = [
     sound: FX_AK47,
     speed: "600 rounds/min",
     weight: "3.3 kg",
+    youtubeLink: undefined,
   },
   {
     ammo: "5.56 x 45 mm",
@@ -176,6 +192,8 @@ export const Weapons: Weapon[] = [
     sound: FX_G36,
     speed: "750 rounds/min",
     weight: "3.63 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/qQNsZ8Qbd8A?controls=0",
   },
   {
     ammo: "5.56 x 45 mm",
@@ -192,6 +210,7 @@ export const Weapons: Weapon[] = [
     sound: FX_G95K,
     speed: "850 rounds/min",
     weight: "3.850 kg",
+    youtubeLink: undefined,
   },
   {
     ammo: "7.62 x 63 mm",
@@ -208,6 +227,8 @@ export const Weapons: Weapon[] = [
     sound: FX_BAR,
     speed: "650 rounds/min",
     weight: "7.25 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/S0YfOPrE3u0?controls=0",
   },
   {
     ammo: "5.56 x 45 mm",
@@ -224,6 +245,7 @@ export const Weapons: Weapon[] = [
     sound: FX_MG4,
     speed: "890 rounds/min",
     weight: "7.35 kg",
+    youtubeLink: undefined,
   },
   {
     ammo: "7.62 x 51 mm",
@@ -240,6 +262,8 @@ export const Weapons: Weapon[] = [
     sound: FX_HK21,
     speed: "900 rounds/min",
     weight: "7.92 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/u6STTZr4GoU?controls=0",
   },
   {
     ammo: "7.62 x 51 mm",
@@ -256,6 +280,8 @@ export const Weapons: Weapon[] = [
     sound: FX_MG42,
     speed: "1500 rounds/min",
     weight: "10.6 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/kFza-dZ02aw?controls=0",
   },
   {
     ammo: "89 mm",
@@ -272,6 +298,8 @@ export const Weapons: Weapon[] = [
     sound: FX_ROCKET_LAUNCHER,
     speed: "single shot",
     weight: "5.9 kg",
+    youtubeLink:
+      "https://www.youtube-nocookie.com/embed/8DEGci1uAUc?controls=0",
   },
   {
     ammo: "60 mm",
@@ -288,6 +316,7 @@ export const Weapons: Weapon[] = [
     sound: FX_ROCKET_LAUNCHER,
     speed: "single shot",
     weight: "7.8 kg",
+    youtubeLink: undefined,
   },
   {
     ammo: "110 mm",
@@ -304,6 +333,7 @@ export const Weapons: Weapon[] = [
     sound: FX_ROCKET_LAUNCHER,
     speed: "single shot",
     weight: "12.9 kg",
+    youtubeLink: undefined,
   },
   {
     ammo: "Tar and petrol mixture",
@@ -320,5 +350,6 @@ export const Weapons: Weapon[] = [
     sound: null,
     speed: "60 liters/min",
     weight: "22 kg",
+    youtubeLink: undefined,
   },
 ];

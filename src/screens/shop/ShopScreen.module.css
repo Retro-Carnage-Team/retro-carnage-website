@@ -1,7 +1,7 @@
 .screen {
   background-color: black;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 70px;
   height: 100%;
 }
 
@@ -10,8 +10,11 @@
   background-size: cover;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 3px 3px;
+  grid-gap: 5px 5px;
+  overflow-block: auto;
   padding: 3px;
+  scrollbar-color: #ee0 black;
+  scrollbar-width: thin;
 }
 
 .details {
@@ -19,4 +22,12 @@
   flex-shrink: 100000;
   height: 100%;
   overflow-y: auto;
+}
+
+.modalVisible {
+  display: block;
+}
+
+.wide {
+  max-width: 70%;
 }

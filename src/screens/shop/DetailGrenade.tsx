@@ -9,7 +9,6 @@ export interface DetailGrenadeProps {
 export default function DetailGrenade(props: DetailGrenadeProps) {
   return (
     <div className={styles.detailsGrenadeInner}>
-      <h2>{props.grenade.name}</h2>
       <table>
         <tbody>
           <tr>
