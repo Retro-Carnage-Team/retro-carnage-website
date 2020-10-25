@@ -41,3 +41,10 @@
   font-size: 40px;
   text-transform: uppercase;
 }
+
+.selected {
+  background-color: #ee0;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

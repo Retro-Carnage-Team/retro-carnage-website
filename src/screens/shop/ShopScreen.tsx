@@ -45,6 +45,7 @@ export interface ShopScreenState {
 class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
   changeListener: ChangeListener<any>;
   inputControllerListener: ChangeListener<any>;
+  uiElements: (() => void)[];
 
   constructor(props: ShopScreenProps) {
     super(props);
@@ -63,6 +64,16 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
     this.inputControllerListener = new ChangeListener(
       this.handleInputControllerInput
     );
+
+    this.uiElements = Weapons.map((weapon) => () =>
+      this.handleItemWeaponSelected(weapon)
+    )
+      .concat(
+        Grenades.map((grenade) => () => this.handleItemGrenadeSelected(grenade))
+      )
+      .concat(
+        Ammunitions.map((ammo) => () => this.handleItemAmmunitionSelected(ammo))
+      );
   }
 
   componentDidMount() {
@@ -229,22 +240,29 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
         this.props.player,
         this.state.selectedWeapon.name
       );
-    } else if (this.state.selectedGrenade) {
-      InventoryController.buyGrenade(
-        this.props.player,
-        this.state.selectedGrenade.name
-      );
-    } else if (this.state.selectedAmmunition) {
-      InventoryController.buyAmmunition(
-        this.props.player,
-        this.state.selectedAmmunition.name
-      );
+      this.setState({
+        selectedModalButton: this.canBuyAmmoForSelectedWeapon()
+          ? ModalButtons.BuyAmmo
+          : ModalButtons.Close,
+      });
+    } else {
+      if (this.state.selectedGrenade) {
+        InventoryController.buyGrenade(
+          this.props.player,
+          this.state.selectedGrenade.name
+        );
+      } else if (this.state.selectedAmmunition) {
+        InventoryController.buyAmmunition(
+          this.props.player,
+          this.state.selectedAmmunition.name
+        );
+      }
+      this.setState({
+        selectedModalButton: this.canBuySelectedItem()
+          ? ModalButtons.BuyItem
+          : ModalButtons.Close,
+      });
     }
-    this.setState({
-      selectedModalButton: this.canBuyAmmoForSelectedWeapon()
-        ? ModalButtons.BuyAmmo
-        : ModalButtons.Close,
-    });
   };
 
   buyAmmoForSelectedWeapon = () => {
@@ -298,7 +316,7 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
     this.forceUpdate();
   };
 
-  buildAmmunitionItem = (ammo: Ammunition) => {
+  buildAmmunitionItem = (ammo: Ammunition): JSX.Element => {
     return (
       <ItemAmmunition
         ammunition={ammo}
@@ -313,7 +331,7 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
     );
   };
 
-  buildGrenadeItem = (grenade: Grenade) => {
+  buildGrenadeItem = (grenade: Grenade): JSX.Element => {
     return (
       <ItemGrenade
         key={grenade.name}
@@ -328,7 +346,7 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
     );
   };
 
-  buildWeaponItem = (weapon: Weapon) => {
+  buildWeaponItem = (weapon: Weapon): JSX.Element => {
     return (
       <ItemWeapon
         key={weapon.name}
@@ -374,37 +392,115 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
 
   handleInputControllerInput = (value: any, property: string) => {
     if (PROP_BUTTON === property) {
-      if (this.state.modalVisible) {
-        switch (this.state.selectedModalButton) {
-          case ModalButtons.BuyItem:
-            this.buySelectedItem();
-            break;
-          case ModalButtons.BuyAmmo:
-            this.buyAmmoForSelectedWeapon();
-            break;
-          case ModalButtons.Close:
-            this.closeModal();
-            break;
-        }
-      } else {
-        this.setState({
-          modalVisible: true,
-          selectedModalButton: this.getDefaultModalButtonSelection(),
-        });
-      }
+      this.handleControllerButtonPressed();
     }
     if (PROP_DIRECTION === property) {
-      if (
-        this.state.modalVisible &&
-        (Directions.Left === value || Directions.Right === value)
-      ) {
-        this.setState({
-          selectedModalButton:
-            Directions.Left === value
-              ? this.getNextModalButtonLeft()
-              : this.getNextModalButtonRight(),
-        });
+      if (this.state.modalVisible) {
+        if (Directions.Left === value || Directions.Right === value) {
+          this.setState({
+            selectedModalButton:
+              Directions.Left === value
+                ? this.getNextModalButtonLeft()
+                : this.getNextModalButtonRight(),
+          });
+        }
+      } else {
+        const selectedItemIndex = this.getSelectedUiElementIndex();
+        switch (value) {
+          case Directions.Left:
+            if (-1 !== selectedItemIndex) {
+              if (0 === selectedItemIndex % 5) {
+                this.uiElements[selectedItemIndex + 4]();
+              } else {
+                this.uiElements[selectedItemIndex - 1]();
+              }
+            }
+            break;
+          case Directions.Right:
+            if (-1 !== selectedItemIndex) {
+              if (4 === selectedItemIndex % 5) {
+                this.uiElements[selectedItemIndex - 4]();
+              } else {
+                this.uiElements[selectedItemIndex + 1]();
+              }
+            }
+            break;
+          case Directions.Up:
+            if (-1 !== selectedItemIndex) {
+              if (1 >= selectedItemIndex / 5) {
+                this.setState({
+                  selectedGrenade: null,
+                  selectedAmmunition: null,
+                  selectedWeapon: null,
+                });
+              } else {
+                this.uiElements[selectedItemIndex - 5]();
+              }
+            } else {
+              this.uiElements[this.uiElements.length - 1]();
+            }
+            break;
+          case Directions.Down:
+            if (-1 !== selectedItemIndex) {
+              if (5 <= selectedItemIndex / 5) {
+                this.setState({
+                  selectedGrenade: null,
+                  selectedAmmunition: null,
+                  selectedWeapon: null,
+                });
+              } else {
+                this.uiElements[selectedItemIndex + 5]();
+              }
+            } else {
+              this.uiElements[4]();
+            }
+            break;
+        }
       }
+    }
+  };
+
+  getSelectedUiElementIndex = (): number => {
+    let result = -1;
+    for (let i = 0; i < Weapons.length; i++) {
+      result++;
+      if (this.state.selectedWeapon?.name === Weapons[i].name) {
+        return result;
+      }
+    }
+    for (let i = 0; i < Grenades.length; i++) {
+      result++;
+      if (this.state.selectedGrenade?.name === Grenades[i].name) {
+        return result;
+      }
+    }
+    for (let i = 0; i < Ammunitions.length; i++) {
+      result++;
+      if (this.state.selectedAmmunition?.name === Ammunitions[i].name) {
+        return result;
+      }
+    }
+    return -1;
+  };
+
+  handleControllerButtonPressed = () => {
+    if (this.state.modalVisible) {
+      switch (this.state.selectedModalButton) {
+        case ModalButtons.BuyItem:
+          this.buySelectedItem();
+          break;
+        case ModalButtons.BuyAmmo:
+          this.buyAmmoForSelectedWeapon();
+          break;
+        case ModalButtons.Close:
+          this.closeModal();
+          break;
+      }
+    } else {
+      this.setState({
+        modalVisible: true,
+        selectedModalButton: this.getDefaultModalButtonSelection(),
+      });
     }
   };
 
