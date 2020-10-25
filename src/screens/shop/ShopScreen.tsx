@@ -14,8 +14,20 @@ import ItemWeapon from "./ItemWeapon";
 import DetailAmmunition from "./DetailAmmunition";
 import DetailGrenade from "./DetailGrenade";
 import DetailWeapon from "./DetailWeapon";
+import InputController, {
+  CONTROLLER_STATUS_GAMEPAD,
+  PROP_BUTTON,
+  PROP_DIRECTION,
+} from "../../game/InputController";
 
 import styles from "./ShopScreen.module.css";
+import { Directions } from "../../game/Directions";
+
+enum ModalButtons {
+  BuyItem,
+  BuyAmmo,
+  Close,
+}
 
 export interface ShopScreenProps {
   onScreenChangeRequired: () => void;
@@ -27,10 +39,12 @@ export interface ShopScreenState {
   selectedGrenade: Grenade | null;
   selectedWeapon: Weapon | null;
   modalVisible: boolean;
+  selectedModalButton: ModalButtons | null;
 }
 
 class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
   changeListener: ChangeListener<any>;
+  inputControllerListener: ChangeListener<any>;
 
   constructor(props: ShopScreenProps) {
     super(props);
@@ -38,17 +52,29 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
     this.state = {
       selectedAmmunition: null,
       selectedGrenade: null,
-      selectedWeapon: null,
+      selectedWeapon:
+        CONTROLLER_STATUS_GAMEPAD ===
+        InputController.getControllerStatus()[props.player]
+          ? Weapons[0]
+          : null,
       modalVisible: false,
+      selectedModalButton: ModalButtons.BuyItem,
     };
+    this.inputControllerListener = new ChangeListener(
+      this.handleInputControllerInput
+    );
   }
 
   componentDidMount() {
     Players[this.props.player].addChangeListener(this.changeListener);
+    InputController.startGuiMode();
+    InputController.addChangeListener(this.inputControllerListener);
   }
 
   componentWillUnmount() {
     Players[this.props.player].removeChangeListener(this.changeListener);
+    InputController.removeChangeListener(this.inputControllerListener);
+    InputController.stopGuiMode();
   }
 
   render() {
@@ -75,13 +101,16 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
       this.state.selectedAmmunition?.packageSize;
 
     const buttonBuySelectedItem = this.canBuySelectedItem() ? (
-      <button
-        type="button"
-        className="btn btn-primary"
+      <div
+        className={cn(
+          this.state.selectedModalButton === ModalButtons.BuyItem
+            ? styles.modalButtonSelected
+            : styles.modalButton
+        )}
         onClick={this.buySelectedItem}
       >
         Buy {count} for $ {price}
-      </button>
+      </div>
     ) : undefined;
 
     let buttonBuyAmmo = undefined;
@@ -90,16 +119,32 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
         (a) => a.name === this.state.selectedWeapon?.ammo
       );
       buttonBuyAmmo = (
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() =>
-            InventoryController.buyAmmunition(this.props.player, ammo!.name)
-          }
+        <div
+          className={cn(
+            this.state.selectedModalButton === ModalButtons.BuyAmmo
+              ? styles.modalButtonSelected
+              : styles.modalButton
+          )}
+          onClick={this.buyAmmoForSelectedWeapon}
         >
           Buy {ammo!.packageSize} for $ {ammo!.price}
-        </button>
+        </div>
       );
+    }
+
+    let bullets = 0;
+    let maxBullets = 0;
+    if (this.state.selectedWeapon) {
+      const ammo = Ammunitions.find(
+        (a) => a.name === this.state.selectedWeapon?.ammo
+      );
+      if (ammo) {
+        bullets = InventoryController.getAmmunitionCount(
+          this.props.player,
+          ammo.name
+        );
+        maxBullets = ammo.maxCount;
+      }
     }
 
     return (
@@ -122,7 +167,7 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
         >
           <div className={cn("modal-dialog", styles.wide)} role="document">
             <div className="modal-content">
-              <div className="modal-header">
+              <div className={cn("modal-header", styles.dialogHeader)}>
                 <h3 className="modal-title">
                   {this.state.selectedAmmunition?.name}
                   {this.state.selectedGrenade?.name}
@@ -139,17 +184,33 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
                 </button>
               </div>
               <div className="modal-body">{detail}</div>
-              <div className="modal-footer">
-                {buttonBuySelectedItem}
-                {buttonBuyAmmo}
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
+              <div className={cn("modal-footer", styles.dialogFooter)}>
+                <span
+                  className={cn(
+                    this.state.selectedWeapon &&
+                      InventoryController.isWeaponInInventory(
+                        this.props.player,
+                        this.state.selectedWeapon.name
+                      )
+                      ? styles.inPossession
+                      : styles.notInPossession
+                  )}
+                >
+                  You own this weapon and {bullets} of {maxBullets} bullets.
+                </span>
+
+                <div
+                  className={cn(
+                    this.state.selectedModalButton === ModalButtons.Close
+                      ? styles.modalButtonSelected
+                      : styles.modalButton
+                  )}
                   onClick={this.closeModal}
                 >
                   Close
-                </button>
+                </div>
+                {buttonBuyAmmo}
+                {buttonBuySelectedItem}
               </div>
             </div>
           </div>
@@ -178,6 +239,26 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
         this.props.player,
         this.state.selectedAmmunition.name
       );
+    }
+    this.setState({
+      selectedModalButton: this.canBuyAmmoForSelectedWeapon()
+        ? ModalButtons.BuyAmmo
+        : ModalButtons.Close,
+    });
+  };
+
+  buyAmmoForSelectedWeapon = () => {
+    const ammo = Ammunitions.find(
+      (a) => a.name === this.state.selectedWeapon?.ammo
+    );
+    if (ammo) {
+      InventoryController.buyAmmunition(this.props.player, ammo.name);
+    }
+    if (!this.canBuyAmmoForSelectedWeapon()) {
+      console.log("buyAmmoForSelectedWeapon: isch over");
+      this.setState({ selectedModalButton: ModalButtons.Close });
+    } else {
+      console.log("buyAmmoForSelectedWeapon: can buy more");
     }
   };
 
@@ -289,6 +370,75 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
   handleExitClicked = () => {
     Players[this.props.player].selectFirstWeapon();
     this.props.onScreenChangeRequired();
+  };
+
+  handleInputControllerInput = (value: any, property: string) => {
+    if (PROP_BUTTON === property) {
+      if (this.state.modalVisible) {
+        switch (this.state.selectedModalButton) {
+          case ModalButtons.BuyItem:
+            this.buySelectedItem();
+            break;
+          case ModalButtons.BuyAmmo:
+            this.buyAmmoForSelectedWeapon();
+            break;
+          case ModalButtons.Close:
+            this.closeModal();
+            break;
+        }
+      } else {
+        this.setState({
+          modalVisible: true,
+          selectedModalButton: this.getDefaultModalButtonSelection(),
+        });
+      }
+    }
+    if (PROP_DIRECTION === property) {
+      if (
+        this.state.modalVisible &&
+        (Directions.Left === value || Directions.Right === value)
+      ) {
+        this.setState({
+          selectedModalButton:
+            Directions.Left === value
+              ? this.getNextModalButtonLeft()
+              : this.getNextModalButtonRight(),
+        });
+      }
+    }
+  };
+
+  getDefaultModalButtonSelection = (): ModalButtons => {
+    if (this.canBuySelectedItem()) return ModalButtons.BuyItem;
+    if (this.canBuyAmmoForSelectedWeapon()) return ModalButtons.BuyAmmo;
+    return ModalButtons.Close;
+  };
+
+  getNextModalButtonLeft = (): ModalButtons => {
+    switch (this.state.selectedModalButton) {
+      case ModalButtons.Close:
+        if (this.canBuyAmmoForSelectedWeapon()) return ModalButtons.BuyAmmo;
+        if (this.canBuySelectedItem()) return ModalButtons.BuyItem;
+        return ModalButtons.Close;
+      case ModalButtons.BuyAmmo:
+        return this.canBuySelectedItem()
+          ? ModalButtons.BuyItem
+          : ModalButtons.BuyAmmo;
+      case ModalButtons.BuyItem:
+        return ModalButtons.BuyItem;
+      default:
+        return ModalButtons.Close;
+    }
+  };
+
+  getNextModalButtonRight = (): ModalButtons => {
+    if (ModalButtons.BuyItem === this.state.selectedModalButton)
+      return this.canBuyAmmoForSelectedWeapon()
+        ? ModalButtons.BuyAmmo
+        : ModalButtons.Close;
+    if (ModalButtons.BuyAmmo === this.state.selectedModalButton)
+      return ModalButtons.Close;
+    return ModalButtons.Close;
   };
 }
 

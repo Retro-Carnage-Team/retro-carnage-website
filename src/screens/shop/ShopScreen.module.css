@@ -31,3 +31,49 @@
 .wide {
   max-width: 70%;
 }
+
+.inPossession {
+  color: #897c2a;
+  float: left;
+  font-size: 20px;
+  padding: 5px 0;
+}
+
+.notInPossession {
+  display: none;
+}
+
+.dialogHeader {
+  background-color: darkslategray;
+}
+
+.dialogFooter {
+  background-color: darkslategray;
+  display: initial;
+}
+
+.modalButton {
+  background-color: black;
+  border: 3px solid black;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  display: initial;
+  float: right;
+  font-size: 16px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
+.modalButtonSelected {
+  background-color: black;
+  border: 3px solid #ee0;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  display: initial;
+  float: right;
+  font-size: 16px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}

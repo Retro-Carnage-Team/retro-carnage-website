@@ -1,7 +1,5 @@
 .detailsWeaponInner p {
-  padding-left: 25px;
-  padding-right: 25px;
-  text-align: initial;
+  text-align: justify;
 }
 
 .detailsWeaponInner table {

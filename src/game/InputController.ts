@@ -4,6 +4,8 @@ import GamepadController from "./GamepadController";
 import KeyboardController from "./KeyboardController";
 import InputState from "./InputState";
 
+export const CONTROLLER_STATUS_GAMEPAD = "G";
+export const CONTROLLER_STATUS_KEYBOARD = "K";
 export const PROP_DIRECTION = "direction";
 export const PROP_BUTTON = "button";
 
@@ -89,9 +91,9 @@ export class InputController {
   getControllerStatus = (): string[] => {
     let result = [];
     for (let i = 0; i < this.gamepadController.getControllerCount(); i++) {
-      result.push("G");
+      result.push(CONTROLLER_STATUS_GAMEPAD);
     }
-    result.push("K");
+    result.push(CONTROLLER_STATUS_KEYBOARD);
     return result;
   };
 

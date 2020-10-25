@@ -1,7 +1,5 @@
 .detailsGrenadeInner p {
-  padding-left: 25px;
-  padding-right: 25px;
-  text-align: initial;
+  text-align: justify;
 }
 
 .detailsGrenadeInner table {
