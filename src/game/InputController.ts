@@ -9,6 +9,50 @@ export const CONTROLLER_STATUS_KEYBOARD = "K";
 export const PROP_DIRECTION = "direction";
 export const PROP_BUTTON = "button";
 
+class RapidFireState {
+  private pressedSince: number | null = null;
+  private reachedThreshold = false;
+
+  update(inputState: InputState): boolean {
+    if (RapidFireState.isButtonPressed(inputState)) {
+      if (null == this.pressedSince) {
+        this.pressedSince = Date.now();
+        return true;
+      } else {
+        if (
+          !this.reachedThreshold &&
+          this.pressedSince + RapidFireState.RAPID_FIRE_THRESHOLD < Date.now()
+        ) {
+          this.reachedThreshold = true;
+          this.pressedSince = Date.now();
+          return true;
+        } else if (
+          this.reachedThreshold &&
+          this.pressedSince + RapidFireState.RAPID_FIRE_OFFSET < Date.now()
+        ) {
+          this.pressedSince = Date.now();
+          return true;
+        } else return false;
+      }
+    } else {
+      this.pressedSince = null;
+      return false;
+    }
+  }
+
+  static isButtonPressed(inputState: InputState): boolean {
+    return (
+      inputState.fire ||
+      inputState.grenade ||
+      inputState.toggleUp ||
+      inputState.toggleDown
+    );
+  }
+
+  private static RAPID_FIRE_THRESHOLD = 750;
+  private static RAPID_FIRE_OFFSET = 300;
+}
+
 export class InputController {
   gamepadController: GamepadController;
   keyboardController: KeyboardController;
@@ -16,6 +60,7 @@ export class InputController {
   intervalId: number | null;
   changeListeners: ChangeListener<any>[];
   gamepadState: (InputState | null)[];
+  rapidFireState: (RapidFireState | null)[];
 
   constructor() {
     this.gamepadController = new GamepadController();
@@ -24,6 +69,7 @@ export class InputController {
     this.intervalId = null;
     this.changeListeners = [];
     this.gamepadState = [null, null, null, null];
+    this.rapidFireState = [null, null, null, null];
   }
 
   addChangeListener = (listener: ChangeListener<any>) => {
@@ -66,12 +112,8 @@ export class InputController {
               listener.call(Directions.Right, PROP_DIRECTION)
             );
           }
-          if (
-            (!oldState.fire && newState.fire) ||
-            (!oldState.grenade && newState.grenade) ||
-            (!oldState.toggleUp && newState.toggleUp) ||
-            (!oldState.toggleDown && newState.toggleDown)
-          ) {
+
+          if (_this.rapidFireState[idx]?.update(newState)) {
             _this.changeListeners.forEach((listener) =>
               listener.call(true, PROP_BUTTON)
             );
@@ -80,6 +122,12 @@ export class InputController {
         return newState;
       });
     }
+    this.rapidFireState = [
+      new RapidFireState(),
+      new RapidFireState(),
+      new RapidFireState(),
+      new RapidFireState(),
+    ];
     this.intervalId = window.setInterval(updateControllerStatus.bind(this), 25);
   };
 
@@ -87,6 +135,7 @@ export class InputController {
     if (null !== this.intervalId) {
       window.clearInterval(this.intervalId);
       this.intervalId = null;
+      this.rapidFireState = [null, null, null, null];
     }
   };
 
