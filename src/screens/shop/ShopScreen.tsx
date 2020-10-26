@@ -273,10 +273,7 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
       InventoryController.buyAmmunition(this.props.player, ammo.name);
     }
     if (!this.canBuyAmmoForSelectedWeapon()) {
-      console.log("buyAmmoForSelectedWeapon: isch over");
       this.setState({ selectedModalButton: ModalButtons.Close });
-    } else {
-      console.log("buyAmmoForSelectedWeapon: can buy more");
     }
   };
 
@@ -408,54 +405,70 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
         const selectedItemIndex = this.getSelectedUiElementIndex();
         switch (value) {
           case Directions.Left:
-            if (-1 !== selectedItemIndex) {
-              if (0 === selectedItemIndex % 5) {
-                this.uiElements[selectedItemIndex + 4]();
-              } else {
-                this.uiElements[selectedItemIndex - 1]();
-              }
-            }
+            this.shopItemNavigationLeft(selectedItemIndex);
             break;
           case Directions.Right:
-            if (-1 !== selectedItemIndex) {
-              if (4 === selectedItemIndex % 5) {
-                this.uiElements[selectedItemIndex - 4]();
-              } else {
-                this.uiElements[selectedItemIndex + 1]();
-              }
-            }
+            this.shopItemNavigationRight(selectedItemIndex);
             break;
           case Directions.Up:
-            if (-1 !== selectedItemIndex) {
-              if (1 >= selectedItemIndex / 5) {
-                this.setState({
-                  selectedGrenade: null,
-                  selectedAmmunition: null,
-                  selectedWeapon: null,
-                });
-              } else {
-                this.uiElements[selectedItemIndex - 5]();
-              }
-            } else {
-              this.uiElements[this.uiElements.length - 1]();
-            }
+            this.shopItemNavigationUp(selectedItemIndex);
             break;
           case Directions.Down:
-            if (-1 !== selectedItemIndex) {
-              if (5 <= selectedItemIndex / 5) {
-                this.setState({
-                  selectedGrenade: null,
-                  selectedAmmunition: null,
-                  selectedWeapon: null,
-                });
-              } else {
-                this.uiElements[selectedItemIndex + 5]();
-              }
-            } else {
-              this.uiElements[4]();
-            }
+            this.shopItemNavigationDown(selectedItemIndex);
             break;
         }
+      }
+    }
+  };
+
+  private shopItemNavigationDown = (selectedItemIndex: number) => {
+    if (-1 !== selectedItemIndex) {
+      if (5 <= selectedItemIndex / 5) {
+        this.setState({
+          selectedGrenade: null,
+          selectedAmmunition: null,
+          selectedWeapon: null,
+        });
+      } else {
+        this.uiElements[selectedItemIndex + 5]();
+      }
+    } else {
+      this.uiElements[4]();
+    }
+  };
+
+  private shopItemNavigationUp = (selectedItemIndex: number) => {
+    if (-1 !== selectedItemIndex) {
+      if (1 >= selectedItemIndex / 5) {
+        this.setState({
+          selectedGrenade: null,
+          selectedAmmunition: null,
+          selectedWeapon: null,
+        });
+      } else {
+        this.uiElements[selectedItemIndex - 5]();
+      }
+    } else {
+      this.uiElements[this.uiElements.length - 1]();
+    }
+  };
+
+  private shopItemNavigationRight = (selectedItemIndex: number) => {
+    if (-1 !== selectedItemIndex) {
+      if (4 === selectedItemIndex % 5) {
+        this.uiElements[selectedItemIndex - 4]();
+      } else {
+        this.uiElements[selectedItemIndex + 1]();
+      }
+    }
+  };
+
+  private shopItemNavigationLeft = (selectedItemIndex: number) => {
+    if (-1 !== selectedItemIndex) {
+      if (0 === selectedItemIndex % 5) {
+        this.uiElements[selectedItemIndex + 4]();
+      } else {
+        this.uiElements[selectedItemIndex - 1]();
       }
     }
   };
@@ -497,10 +510,19 @@ class ShopScreen extends React.Component<ShopScreenProps, ShopScreenState> {
           break;
       }
     } else {
-      this.setState({
-        modalVisible: true,
-        selectedModalButton: this.getDefaultModalButtonSelection(),
-      });
+      const itemSelected =
+        null !== this.state.selectedAmmunition ||
+        null !== this.state.selectedGrenade ||
+        null !== this.state.selectedWeapon;
+
+      if (itemSelected) {
+        this.setState({
+          modalVisible: true,
+          selectedModalButton: this.getDefaultModalButtonSelection(),
+        });
+      } else {
+        this.handleExitClicked();
+      }
     }
   };
 
