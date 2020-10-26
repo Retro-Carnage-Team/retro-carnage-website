@@ -4,6 +4,8 @@ import GamepadController from "./GamepadController";
 import KeyboardController from "./KeyboardController";
 import InputState from "./InputState";
 
+export const CONTROLLER_STATUS_GAMEPAD = "G";
+export const CONTROLLER_STATUS_KEYBOARD = "K";
 export const PROP_DIRECTION = "direction";
 export const PROP_BUTTON = "button";
 
@@ -42,22 +44,24 @@ export class InputController {
         const oldState = _this.gamepadState[idx];
         const newState = _this.gamepadController.getInputState(idx);
         if (oldState && newState) {
-          if (!oldState.moveUp && newState.moveUp) {
+          const horizontal = newState.moveLeft || newState.moveRight;
+          const vertical = newState.moveUp || newState.moveDown;
+          if (!oldState.moveUp && newState.moveUp && !horizontal) {
             _this.changeListeners.forEach((listener) =>
               listener.call(Directions.Up, PROP_DIRECTION)
             );
           }
-          if (!oldState.moveDown && newState.moveDown) {
+          if (!oldState.moveDown && newState.moveDown && !horizontal) {
             _this.changeListeners.forEach((listener) =>
               listener.call(Directions.Down, PROP_DIRECTION)
             );
           }
-          if (!oldState.moveLeft && newState.moveLeft) {
+          if (!oldState.moveLeft && newState.moveLeft && !vertical) {
             _this.changeListeners.forEach((listener) =>
               listener.call(Directions.Left, PROP_DIRECTION)
             );
           }
-          if (!oldState.moveRight && newState.moveRight) {
+          if (!oldState.moveRight && newState.moveRight && !vertical) {
             _this.changeListeners.forEach((listener) =>
               listener.call(Directions.Right, PROP_DIRECTION)
             );
@@ -89,9 +93,9 @@ export class InputController {
   getControllerStatus = (): string[] => {
     let result = [];
     for (let i = 0; i < this.gamepadController.getControllerCount(); i++) {
-      result.push("G");
+      result.push(CONTROLLER_STATUS_GAMEPAD);
     }
-    result.push("K");
+    result.push(CONTROLLER_STATUS_KEYBOARD);
     return result;
   };
 

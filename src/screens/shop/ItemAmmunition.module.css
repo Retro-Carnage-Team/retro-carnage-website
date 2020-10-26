@@ -1,14 +1,12 @@
 .itemAmmunition img.itemAmmunitionImage {
   background-color: black;
+  border: 3px solid black;
   border-radius: 30px;
+  cursor: pointer;
   width: 100%;
 }
 
-.itemAmmunition:hover img.itemAmmunitionImage {
-  background-color: #34bd5b;
-  cursor: pointer;
+.itemAmmunition.selected img.itemAmmunitionImage {
+  border: 3px solid #ee0;
 }
 
-.itemAmmunition img.itemAmmunitionImage.compatible {
-  background-color: #ffee93;
-}

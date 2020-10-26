@@ -9,7 +9,6 @@ export interface DetailAmmunitionProps {
 export default function DetailAmmunition(props: DetailAmmunitionProps) {
   return (
     <div className={styles.detailsAmmunitionInner}>
-      <h2>{props.ammunition.name}</h2>
       <table>
         <tbody>
           <tr>
