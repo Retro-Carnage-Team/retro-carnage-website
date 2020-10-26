@@ -28,7 +28,7 @@ class App extends React.Component<Readonly<{}>, AppState> {
   constructor(props: Readonly<{}>) {
     super(props);
     this.state = {
-      screen: CONFIGURATION_SCREEN_NAME,
+      screen: LOADING_SCREEN_NAME,
     };
   }
 
