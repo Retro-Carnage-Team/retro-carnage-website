@@ -1,6 +1,6 @@
 ![Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiTTZlN3NMalI1M3FkTTVnQldDeVl0ZHYyY1V5RS9XVVJ6MWxjdmV3V1pqR3hWc3BYVnVuZkxCTGs1TGNXQ25lbkl1eW82ODE3OWxFMU53TlloRzdIM0lzPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBOWkFndTBRZ2hOd2o4NXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
-[![Code Inspector](https://www.code-inspector.com/project/14972/score/svg)](https://frontend.code-inspector.com/public/project/14972/retro-carnage/dashboard)
-[![DeepScan grade](https://deepscan.io/api/teams/11360/projects/14267/branches/261018/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=11360&pid=14267&bid=261018)
+[![Code Quality Score](https://api.codiga.io/project/14972/score/svg)](https://app.codiga.io/public/project/14972/retro-carnage-website/dashboard)
+[![Code Grade](https://api.codiga.io/project/14972/status/svg)](https://app.codiga.io/public/project/14972/retro-carnage-website/dashboard)
 
 # RETRO CARNAGE
 
