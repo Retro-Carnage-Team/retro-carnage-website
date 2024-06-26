@@ -2,8 +2,10 @@ site_name: Retro Carnage
 site_url: http://docs.retro-carnage.net/
 nav:
   - Home: index.md
-  - Frontend: frontend.md
-  - Backend: backend.md
+  - Development:
+    - development/index.md
+  - Download:
+    - downloads/index.md     
   - License: license.md
 theme:
   name: readthedocs
