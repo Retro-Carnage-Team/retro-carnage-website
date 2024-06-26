@@ -1,13 +1,12 @@
 site_name: Retro Carnage
-site_url: http://docs.retro-carnage.net/
+site_url: http://www.retro-carnage.net/
 nav:
   - Home: index.md
   - Development:
-    - development/index.md
-  - Download:
-    - downloads/index.md
+    - Overview: development/index.md
+  - Download: downloads/index.md
   - License: license.md
 theme:
-  name: readthedocs
+  name: material
   highlightjs: true
   prev_next_buttons_location: none

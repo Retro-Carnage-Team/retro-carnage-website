@@ -8,7 +8,7 @@ This repository contains the [website](https://www.retro-carnage.net) of the [Re
 
 * Python
 * [MkDocs](https://www.mkdocs.org)
-
+* [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
 
 ### Building
 
