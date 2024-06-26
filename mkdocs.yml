@@ -5,7 +5,7 @@ nav:
   - Development:
     - development/index.md
   - Download:
-    - downloads/index.md     
+    - downloads/index.md
   - License: license.md
 theme:
   name: readthedocs
