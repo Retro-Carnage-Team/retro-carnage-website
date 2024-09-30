@@ -8,12 +8,13 @@ here. We look forward to your feedback, suggestions for improvement and - most i
 
 ## Latest release
 
-- [Source Code](http://www.retro-carnage.net/releases/v2024.08/Retro-Carnage-v2024.08-Code.zip)
-- [Linux (x64)](http://www.retro-carnage.net/releases/v2024.08/Retro-Carnage-v2024.08-Linux.zip)
-- [Windows (x64)](http://www.retro-carnage.net/releases/v2024.08/Retro-Carnage-v2024.08-Windows.zip)
+- [Source Code](http://www.retro-carnage.net/releases/v2024.09/Retro-Carnage-v2024.09-Code.zip)
+- [Linux (x64)](http://www.retro-carnage.net/releases/v2024.09/Retro-Carnage-v2024.09-Linux.zip)
+- [Windows (x64)](http://www.retro-carnage.net/releases/v2024.09/Retro-Carnage-v2024.09-Windows.zip)
 
 ## All releases
 
+- [v2024.09](v2024.09.md) **(pre-release of September 2024)**
 - [v2024.08](v2024.08.md) **(pre-release of August 2024)**
 - [v2024.07](v2024.07.md) **(pre-release of July 2024)**
 - [v2024.06](v2024.06.md) **(pre-release of June 2024)**
