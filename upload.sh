@@ -1,12 +1,10 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 FTP_HOST=$1
 FTP_USER=$2
 FTP_PASS=$3
 LCD="./site"
 RCD="/"
-
-echo $FTP_HOST
 
 lftp -f "
 open $FTP_HOST
