@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install toolchain
-        run: apt-get -y install pip mkdocs git
+        run: sudo apt-get -y install pip mkdocs git
 
       - name: Build website
         run: mkdocs build -v -s
