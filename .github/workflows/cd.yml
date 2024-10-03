@@ -24,4 +24,5 @@ jobs:
         run: chmod +x ./upload.sh
 
       - name: Upload website
-        run: ./upload.sh
+        run: ./upload.sh ${{env.FTP_HOST}} ${{secrets.FTP_USER}} ${{secrets.FTP_PASS}}
+
