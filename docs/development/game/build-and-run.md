@@ -22,7 +22,7 @@ Install the required libraries:
 
 Install [tdm-gcc](https://jmeubank.github.io/tdm-gcc/) so that various go-bindings can be compiled. A installation with default option will do fine.
 
-## Installing
+## Get and build the source code
 
 Get the code and assets
 

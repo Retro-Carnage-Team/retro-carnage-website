@@ -6,6 +6,8 @@ nav:
     - Overview: development/index.md
     - Game:
       - Build and run: development/game/build-and-run.md
+    - Editor:
+      - Build and run: development/editor/build-and-run.md
   - Download: downloads/index.md
   - License: license.md
 theme:
