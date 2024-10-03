@@ -17,5 +17,8 @@ jobs:
       - name: Install toolchain
         run: sudo apt-get -y install pip mkdocs git
 
+      - name: Install theme
+        run: pip install mkdocs-material
+
       - name: Build website
         run: mkdocs build -v -s
