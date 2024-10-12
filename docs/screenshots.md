@@ -1,16 +1,5 @@
 # Screenshots
 
-<link rel="stylesheet" href="/css/photoswipe.css">
-<script type="module">
-    import PhotoSwipeLightbox from '/js/photoswipe-lightbox.esm.js';
-    const lightbox = new PhotoSwipeLightbox({
-    gallery: '#game-gallery',
-    children: 'a',
-    pswpModule: () => import('/js/photoswipe.esm.js')
-    });
-    lightbox.init();
-</script>
-
 ## Retro-Carnage
 
 <div class="pswp-gallery pswp-gallery--single-column" id="game-gallery">
@@ -123,3 +112,41 @@
     <img src="/media/screenshot-demo-mission-2-small.png" alt="Mission screen demo" style="width: 250px" title="Mission screen demo"/>
   </a>
 </div>
+
+## Retro-Carnage-Editor
+
+<div class="pswp-gallery pswp-gallery--single-column" id="editor-gallery">
+  <a href="/media/screenshot-editor-gameplay.png" 
+    data-pswp-width="1845" 
+    data-pswp-height="1190" 
+    target="_blank">
+    <img src="/media/screenshot-editor-gameplay-small.png" alt="Level editor" style="width: 250px" title="Level editor" />
+  </a>
+  <a href="/media/screenshot-editor-mission-manager.png" 
+    data-pswp-width="1845" 
+    data-pswp-height="1190" 
+    target="_blank">
+    <img src="/media/screenshot-editor-mission-manager-small.png" alt="Mission manager" style="width: 250px" title="Mission manager"/>
+  </a>
+  <a href="/media/screenshot-editor-asset-manager.png" 
+    data-pswp-width="1845" 
+    data-pswp-height="1190" 
+    target="_blank">
+    <img src="/media/screenshot-editor-asset-manager-small.png" alt="Asset manager" style="width: 250px" title="Asset manager"/>
+  </a>
+</div>
+
+<link rel="stylesheet" href="/css/photoswipe.css">
+<script type="module">
+    import PhotoSwipeLightbox from '/js/photoswipe-lightbox.esm.js';
+    new PhotoSwipeLightbox({
+      gallery: '#game-gallery',
+      children: 'a',
+      pswpModule: () => import('/js/photoswipe.esm.js')
+    }).init();
+    new PhotoSwipeLightbox({
+      gallery: '#editor-gallery',
+      children: 'a',
+      pswpModule: () => import('/js/photoswipe.esm.js')
+    }).init();
+</script>
