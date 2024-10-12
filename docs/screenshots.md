@@ -11,7 +11,7 @@
     lightbox.init();
 </script>
 
-# Retro-Carnage
+## Retro-Carnage
 
 <div class="pswp-gallery pswp-gallery--single-column" id="game-gallery">
   <a href="/media/screenshot-loading.png" 
