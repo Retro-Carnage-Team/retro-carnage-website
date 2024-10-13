@@ -7,8 +7,8 @@ games like [Ikari Warriors](https://en.wikipedia.org/wiki/Ikari_Warriors) by [SN
 [Dogs of War](https://en.wikipedia.org/wiki/Dogs_of_War_(1989_video_game))
 by [Elite Systems](http://www.elite-systems.co.uk).
 
-[![Watch the video](media/youtube-2021-06-03.png)](https://youtu.be/PqWghPZvIy4)
-Development status as of 2021-08-09
+[![Watch the video](media/youtube-2021-06-03.png)](https://youtu.be/1hznukfynLM)
+Development status as of 2024-10-13
 
 This documentation provides an overview about the structure of the project and its building blocks. Building and running
 the game on your own infrastructure is easy - this document explains how.
