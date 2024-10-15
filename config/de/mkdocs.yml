@@ -1,0 +1,44 @@
+site_name: Retro Carnage
+site_url: http://www.retro-carnage.net/
+site_dir: '../../generated/de'                      # Where to put the German HTML files
+docs_dir: '../../docs/de'                           # Where to find the German markdown files
+
+theme:
+  custom_dir: '../../overrides/'                    # This is where the customization of the theme lives
+  favicon: assets/images/favicon.ico                # The favicon is shared by all languages
+  highlightjs: true
+  language: de
+  name: material  
+  prev_next_buttons_location: none
+
+extra:
+  alternate:
+    - name: Deutsch
+      link: /de/
+      lang: de
+    - name: English
+      link: /en/
+      lang: en    
+
+extra_css:
+  - assets/css/photoswipe.css                       # CSS is shared by all languages
+
+extra_javascript:
+  - path: explicitly_as_module.mjs # <script src="explicitly_as_module.mjs" type="module"></script>
+    type: module
+
+plugins:
+  - search:                                         
+      lang: de                                      # Set language for search
+
+nav:
+  - Home: index.md
+  - Download: downloads/index.md
+  - Screenshots: screenshots.md
+  - Entwicklung:
+    - Overview: /../en/development/index.md
+    - Game:
+      - Build and run: /../en/development/game/build-and-run.md
+    - Editor:
+      - Build and run: /../en/development/editor/build-and-run.md
+  - Lizenz: license.md
