@@ -10,9 +10,6 @@ by [Elite Systems](http://www.elite-systems.co.uk).
 [![Watch the video](media/youtube-2021-06-03.png)](https://youtu.be/1hznukfynLM)
 Development status as of 2024-10-13
 
-This documentation provides an overview about the structure of the project and its building blocks. Building and running
-the game on your own infrastructure is easy - this document explains how.
-
 ## Getting the game
 
 Retro Carnage is free and available for Windows and Linux. You can find the latest release in the [Download](downloads/index.md) section.

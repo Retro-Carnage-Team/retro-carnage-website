@@ -1,23 +1,22 @@
 # Download
 
-This game is currently in development and not ready to get played, yet. 
+Dieses Spiel befindet sich derzeit in der Entwicklung und kann noch nicht gespielt werden.
 
-If you would like to try out an early development version, you can find the current pre-release and previous versions
-here. We look forward to your feedback, suggestions for improvement and - most importantly -
-[feedback on bugs](https://github.com/Retro-Carnage-Team/retro-carnage/issues).
+Wenn Du eine frühe Entwicklungsversion ausprobieren möchtest, findest Du hier die aktuelle Vorabversion - und auch ältere Versionen zum Vergleich. 
+Wir freuen uns auf Dein Feedback, Verbesserungsvorschläge und - ganz wichtig - [Rückmeldungen zu Fehlern](https://github.com/Retro-Carnage-Team/retro-carnage/issues).
 
-## Latest release
+## Aktuelle Version
 
 - [Source Code](http://www.retro-carnage.net/releases/v2024.09/Retro-Carnage-v2024.09-Code.zip)
 - [Linux (x64)](http://www.retro-carnage.net/releases/v2024.09/Retro-Carnage-v2024.09-Linux.zip)
 - [Windows (x64)](http://www.retro-carnage.net/releases/v2024.09/Retro-Carnage-v2024.09-Windows.zip)
 
-## All releases
+## Alle Releases
 
-- [v2024.09](v2024.09.md) **(pre-release of September 2024)**
-- [v2024.08](v2024.08.md) **(pre-release of August 2024)**
-- [v2024.07](v2024.07.md) **(pre-release of July 2024)**
-- [v2024.06](v2024.06.md) **(pre-release of June 2024)**
-- [v2024.05](v2024.05.md) **(pre-release of May 2024)**
-- [v2024.04](v2024.04.md) **(pre-release of April 2024)**
-- [v2024.03](v2024.03.md) **(pre-release of March 2024)**
+- [v2024.09](v2024.09.md) **(Vorab-Release vom September 2024)**
+- [v2024.08](v2024.08.md) **(Vorab-Release vom August 2024)**
+- [v2024.07](v2024.07.md) **(Vorab-Release vom Juli 2024)**
+- [v2024.06](v2024.06.md) **(Vorab-Release vom Juni 2024)**
+- [v2024.05](v2024.05.md) **(Vorab-Release vom Mai 2024)**
+- [v2024.04](v2024.04.md) **(Vorab-Release vom April 2024)**
+- [v2024.03](v2024.03.md) **(Vorab-Release vom März 2024)**

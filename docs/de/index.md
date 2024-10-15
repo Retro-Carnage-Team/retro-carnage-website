@@ -1,19 +1,14 @@
 # Retro Carnage
 
-The goal of this project is to take you back to the best part of your childhood. To do this, we are building a modern
-multidirectional scrolling shooter. Once finished, Retro Carnage is going to be a worthy successor of classic video
-games like [Ikari Warriors](https://en.wikipedia.org/wiki/Ikari_Warriors) by [SNK](http://www.snk-corp.co.jp/),
-[War Zone](https://core-design.com/warzone.html) by [Core Design](https://core-design.com/), or
-[Dogs of War](https://en.wikipedia.org/wiki/Dogs_of_War_(1989_video_game))
-by [Elite Systems](http://www.elite-systems.co.uk).
+Das Ziel dieses Projekts ist es, Dich in die beste Zeit deiner Kindheit zurückzubringen. Um dies zu erreichen, bauen wir einen modernen multidirektionalen Scrolling-Shooter.
+Damit wird Retro Carnage ein würdiger Nachfolger von Videospielklassikern wie [Ikari Warriors](https://en.wikipedia.org/wiki/Ikari_Warriors) von [SNK](http://www.snk-corp.co.jp/), 
+[War Zone](https://core-design.com/warzone.html) von [Core Design](https://core-design.com/), oder [Dogs of War](https://en.wikipedia.org/wiki/Dogs_of_War_(1989_video_game))
+von [Elite Systems](http://www.elite-systems.co.uk) sein.
 
+Dieses Video zeigt den Entwicklungsstand vom 2024-10-13:
 [![Watch the video](media/youtube-2021-06-03.png)](https://youtu.be/1hznukfynLM)
-Development status as of 2024-10-13
+ 
+## Das Spiel erhalten
 
-This documentation provides an overview about the structure of the project and its building blocks. Building and running
-the game on your own infrastructure is easy - this document explains how.
-
-## Getting the game
-
-Retro Carnage is free and available for Windows and Linux. You can find the latest release in the [Download](downloads/index.md) section.
-Give it a try!
+Retro Carnage ist kostenlos und für Windows und Linux erhältlich. Die neueste Version finden Sie im [Download](downloads/index.md)-Bereich. 
+Probier' es aus!
