@@ -3,9 +3,15 @@ site_url: http://www.retro-carnage.net/
 site_dir: '../../generated/en'                      # Where to put the English HTML files
 docs_dir: '../../docs/en'                           # Where to find the English markdown files
 
+repo_url: https://github.com/Retro-Carnage-Team/retro-carnage-website
+edit_uri: edit/master/docs/en/
+
 theme:
   custom_dir: '../../overrides/'                    # This is where the customization of the theme lives
   favicon: assets/images/favicon.ico                # The favicon is shared by all languages
+  features:
+    - content.action.edit
+    - content.action.view
   highlightjs: true
   language: en  
   name: material  
@@ -19,6 +25,7 @@ extra:
     - name: English
       link: /en/
       lang: en
+  generator: false
 
 plugins:
   - search:                                         

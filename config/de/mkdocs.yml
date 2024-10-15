@@ -3,9 +3,15 @@ site_url: http://www.retro-carnage.net/
 site_dir: '../../generated/de'                      # Where to put the German HTML files
 docs_dir: '../../docs/de'                           # Where to find the German markdown files
 
+repo_url: https://github.com/Retro-Carnage-Team/retro-carnage-website
+edit_uri: edit/master/docs/de/
+
 theme:
   custom_dir: '../../overrides/'                    # This is where the customization of the theme lives
   favicon: assets/images/favicon.ico                # The favicon is shared by all languages
+  features:
+    - content.action.edit
+    - content.action.view
   highlightjs: true
   language: de
   name: material  
@@ -19,13 +25,7 @@ extra:
     - name: English
       link: /en/
       lang: en    
-
-extra_css:
-  - assets/css/photoswipe.css                       # CSS is shared by all languages
-
-extra_javascript:
-  - path: explicitly_as_module.mjs # <script src="explicitly_as_module.mjs" type="module"></script>
-    type: module
+  generator: false
 
 plugins:
   - search:                                         
