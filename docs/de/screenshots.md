@@ -1,138 +1,138 @@
 # Screenshots
 
-## Retro-Carnage
+## Retro Carnage
 
 <div class="pswp-gallery pswp-gallery--single-column" id="game-gallery">
   <a href="/de/media/screenshot-loading.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-loading-small.png" alt="Loading screen" style="width: 250px" title="Loading screen" />
+    <img src="/de/media/screenshot-loading-small.png" alt="Bildschirm: Loading" style="width: 250px" title="Bildschirm: Loading" />
   </a>
   <a href="/de/media/screenshot-start.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-start-small.png" alt="Start screen" style="width: 250px" title="Start screen"/>
+    <img src="/de/media/screenshot-start-small.png" alt="Bildschirm: Start" style="width: 250px" title="Bildschirm: Start"/>
   </a>
   <a href="/de/media/screenshot-title.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-title-small.png" alt="Title screen" style="width: 250px" title="Title screen"/>
+    <img src="/de/media/screenshot-title-small.png" alt="Bildschirm:Title" style="width: 250px" title="Bildschirm:Title"/>
   </a>
   <a href="/de/media/screenshot-select.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-select-small.png" alt="Select screen" style="width: 250px" title="Select screen"/>
+    <img src="/de/media/screenshot-select-small.png" alt="Bildschirm: Select" style="width: 250px" title="Bildschirm: Select"/>
   </a>
   <a href="/de/media/screenshot-options.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-options-small.png" alt="Options screen" style="width: 250px" title="Options screen"/>
+    <img src="/de/media/screenshot-options-small.png" alt="Bildschirm: Options" style="width: 250px" title="Bildschirm: Options"/>
   </a>
   <a href="/de/media/screenshot-options-audio.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-options-audio-small.png" alt="Audio options screen" style="width: 250px" title="Audio options screen"/>
+    <img src="/de/media/screenshot-options-audio-small.png" alt="Bildschirm: Audio options" style="width: 250px" title="Bildschirm: Audio options"/>
   </a>  
   <a href="/de/media/screenshot-options-video.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-options-video-small.png" alt="Video options screen" style="width: 250px" title="Video options screen"/>
+    <img src="/de/media/screenshot-options-video-small.png" alt="Bildschirm: Video options" style="width: 250px" title="Bildschirm: Video options"/>
   </a>  
   <a href="/de/media/screenshot-options-input.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-options-input-small.png" alt="Input options screen" style="width: 250px" title="Input options screen"/>
+    <img src="/de/media/screenshot-options-input-small.png" alt="Bildschirm: Input options" style="width: 250px" title="Bildschirm: Input options"/>
   </a>
   <a href="/de/media/screenshot-options-controller.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-options-controller-small.png" alt="Controller options screen" style="width: 250px" title="Controller options screen"/>
+    <img src="/de/media/screenshot-options-controller-small.png" alt="Bildschirm: Controller options" style="width: 250px" title="Bildschirm: Controller options"/>
   </a>
   <a href="/de/media/screenshot-select-results.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-select-results-small.png" alt="Selection results screen" style="width: 250px" title="Selection results screen"/>
+    <img src="/de/media/screenshot-select-results-small.png" alt="Bildschirm: Selection results" style="width: 250px" title="Bildschirm: Selection results"/>
   </a>
   <a href="/de/media/screenshot-mission-1.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-mission-1-small.png" alt="Mission screen" style="width: 250px" title="Mission screen"/>
+    <img src="/de/media/screenshot-mission-1-small.png" alt="Bildschirm: Mission" style="width: 250px" title="Bildschirm: Mission"/>
   </a>
   <a href="/de/media/screenshot-mission-2.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-mission-2-small.png" alt="Mission screen" style="width: 250px" title="Mission screen"/>
+    <img src="/de/media/screenshot-mission-2-small.png" alt="Bildschirm: Mission" style="width: 250px" title="Bildschirm: Mission"/>
   </a>
   <a href="/de/media/screenshot-buy-your-weapons.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-buy-your-weapons-small.png" alt="Buy your weapons screen" style="width: 250px" title="Buy your weapons screen"/>
+    <img src="/de/media/screenshot-buy-your-weapons-small.png" alt="Bildschirm: Buy your weapons" style="width: 250px" title="Bildschirm: Buy your weapons"/>
   </a>
   <a href="/de/media/screenshot-shop.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-shop-small.png" alt="Shop screen" style="width: 250px" title="Shop screen"/>
+    <img src="/de/media/screenshot-shop-small.png" alt="Bildschirm: Shop" style="width: 250px" title="Bildschirm: Shop"/>
   </a>
   <a href="/de/media/screenshot-shop-modal.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-shop-modal-small.png" alt="Shop screen with selection" style="width: 250px" title="Shop screen with selection"/>
+    <img src="/de/media/screenshot-shop-modal-small.png" alt="Bildschirm: Shop mit Auswahl" style="width: 250px" title="Bildschirm: Shop mit Auswahl"/>
   </a>
   <a href="/de/media/screenshot-lets-begin.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-lets-begin-small.png" alt="Lets begin screen" style="width: 250px" title="Lets begin screen"/>
+    <img src="/de/media/screenshot-lets-begin-small.png" alt="Bildschirm: Lets begin" style="width: 250px" title="Bildschirm: Lets begin"/>
   </a>
   <a href="/de/media/screenshot-demo-mission-1.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-demo-mission-1-small.png" alt="Mission screen demo" style="width: 250px" title="Mission screen demo"/>
+    <img src="/de/media/screenshot-demo-mission-1-small.png" alt="Bildschirm: Missions-Demo" style="width: 250px" title="Bildschirm: Missions-Demo"/>
   </a>
   <a href="/de/media/screenshot-demo-mission-2.png" 
     data-pswp-width="2419" 
     data-pswp-height="1358" 
     target="_blank">
-    <img src="/de/media/screenshot-demo-mission-2-small.png" alt="Mission screen demo" style="width: 250px" title="Mission screen demo"/>
+    <img src="/de/media/screenshot-demo-mission-2-small.png" alt="Bildschirm: Missions-Demo" style="width: 250px" title="Bildschirm: Missions-Demo"/>
   </a>
 </div>
 
-## Retro-Carnage-Editor
+## Retro Carnage-Editor
 
 <div class="pswp-gallery pswp-gallery--single-column" id="editor-gallery">
   <a href="/de/media/screenshot-editor-gameplay.png" 
     data-pswp-width="1845" 
     data-pswp-height="1190" 
     target="_blank">
-    <img src="/de/media/screenshot-editor-gameplay-small.png" alt="Level editor" style="width: 250px" title="Level editor" />
+    <img src="/de/media/screenshot-editor-gameplay-small.png" alt="Level-Editor" style="width: 250px" title="Level-Editor" />
   </a>
   <a href="/de/media/screenshot-editor-mission-manager.png" 
     data-pswp-width="1845" 
     data-pswp-height="1190" 
     target="_blank">
-    <img src="/de/media/screenshot-editor-mission-manager-small.png" alt="Mission manager" style="width: 250px" title="Mission manager"/>
+    <img src="/de/media/screenshot-editor-mission-manager-small.png" alt="Missions-Manager" style="width: 250px" title="Missions-Manager"/>
   </a>
   <a href="/de/media/screenshot-editor-asset-manager.png" 
     data-pswp-width="1845" 
     data-pswp-height="1190" 
     target="_blank">
-    <img src="/de/media/screenshot-editor-asset-manager-small.png" alt="Asset manager" style="width: 250px" title="Asset manager"/>
+    <img src="/de/media/screenshot-editor-asset-manager-small.png" alt="Asset-Manager" style="width: 250px" title="Asset-Manager"/>
   </a>
 </div>
 

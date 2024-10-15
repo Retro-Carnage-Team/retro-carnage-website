@@ -10,19 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Install toolchain
-        run: sudo apt-get -y install pip mkdocs git lftp
-
-      - name: Install theme
-        run: pip install mkdocs-material
-
-      - name: Build website
-        run: mkdocs build -v -s
-
+        run: sudo apt-get -y install pip mkdocs mkdocs-material mkdocs-material-extensions git
       - name: Make the script files executable
-        run: chmod +x ./upload.sh
-
+        run: chmod +x ./build.sh ./upload.sh
+      - name: Build website
+        run: ./build.sh
       - name: Upload website
         run: ./upload.sh ${{vars.FTP_HOST}} ${{secrets.FTP_USER}} ${{secrets.FTP_PASS}}
 
