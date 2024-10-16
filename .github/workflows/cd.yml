@@ -11,7 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install toolchain
-        run: sudo apt-get -y install mkdocs mkdocs-material mkdocs-material-extensions git lftp
+        run: sudo apt-get -y install mkdocs git lftp
+      - name: Install theme
+        run: pip install mkdocs-material
       - name: Make the script files executable
         run: chmod +x ./build.sh ./upload.sh
       - name: Build website
