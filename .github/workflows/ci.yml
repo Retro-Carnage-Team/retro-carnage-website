@@ -14,5 +14,7 @@ jobs:
         run: sudo apt-get -y install pip mkdocs git
       - name: Install theme
         run: pip install mkdocs-material
+      - name: Make the script files executable
+        run: chmod +x ./build.sh
       - name: Build website
-        run: mkdocs build -v -s
+        run: ./build.sh
