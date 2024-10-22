@@ -41,4 +41,4 @@ nav:
       - Build and run: development/game/build-and-run.md
     - Editor:
       - Build and run: development/editor/build-and-run.md
-  - License: license.md
+  - Imprint: /de/imprint/index.html

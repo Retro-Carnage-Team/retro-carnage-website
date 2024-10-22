@@ -2,8 +2,9 @@
 
 Dieses Spiel befindet sich derzeit in der Entwicklung und kann noch nicht gespielt werden.
 
-Wenn Du eine frühe Entwicklungsversion ausprobieren möchtest, findest Du hier die aktuelle Vorabversion - und auch ältere Versionen zum Vergleich. 
-Wir freuen uns auf Dein Feedback, Verbesserungsvorschläge und - ganz wichtig - [Rückmeldungen zu Fehlern](https://github.com/Retro-Carnage-Team/retro-carnage/issues).
+Wenn Du eine frühe Entwicklungsversion ausprobieren möchtest, findest Du hier die aktuelle Vorabversion - und auch 
+ältere Versionen zum Vergleich. Wir freuen uns auf Dein Feedback, Verbesserungsvorschläge und - ganz wichtig - 
+[Rückmeldungen zu Fehlern](https://github.com/Retro-Carnage-Team/retro-carnage/issues).
 
 ## Aktuelle Version
 
