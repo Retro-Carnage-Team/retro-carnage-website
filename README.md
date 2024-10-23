@@ -16,7 +16,7 @@ To build the page you just need to clone the repo and invoke MkDocs:
 
 `git clone git@github.com:Retro-Carnage-Team/retro-carnage-website.git`  
 `cd retro-carnage-website`  
-`mkdocs build`  
+`./build.sh`  
 
 ## Authors
 
