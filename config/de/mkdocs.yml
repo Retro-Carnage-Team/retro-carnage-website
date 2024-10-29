@@ -36,10 +36,10 @@ nav:
   - Blog: blog/index.md
   - Download: download.md
   - Screenshots: screenshots.md
-  - Entwicklung:
-    - Overview: /../en/development/index.md
+  - Development (🇬🇧):
+    - Overview: /en/development/index.html
     - Game:
-      - Build and run: /../en/development/game/build-and-run.md
+      - Build and run: /en/development/game/build-and-run/index.html
     - Editor:
-      - Build and run: /../en/development/editor/build-and-run.md
+      - Build and run: /en/development/editor/build-and-run/index.html
   - Impressum: impressum.md
