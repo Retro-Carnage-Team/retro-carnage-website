@@ -6,6 +6,6 @@ findest Du hier die aktuelle Vorabversion. Wir freuen uns auf Dein Feedback, Ver
 
 ## Aktuelle Vorabversion
 
-- [Linux)](http://www.retro-carnage.net/releases/Retro-Carnage-Linux.zip)
+- [Linux](http://www.retro-carnage.net/releases/Retro-Carnage-Linux.zip)
 - [Windows](http://www.retro-carnage.net/releases/Retro-Carnage-Windows.zip)
 - [Source Code](http://www.retro-carnage.net/releases/Retro-Carnage-Code.zip)

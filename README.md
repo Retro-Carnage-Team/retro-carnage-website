@@ -12,7 +12,7 @@ This repository contains the [website](https://www.retro-carnage.net) of the [Re
 
 ### Building
 
-To build the page you just need to clone the repo and invoke MkDocs:
+To build the page you just need to clone the repo and run the build script:
 
 `git clone git@github.com:Retro-Carnage-Team/retro-carnage-website.git`  
 `cd retro-carnage-website`  
