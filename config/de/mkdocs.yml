@@ -34,7 +34,7 @@ plugins:
 nav:
   - Home: index.md
   - Blog: blog/index.md
-  - Download: downloads/index.md
+  - Download: download.md
   - Screenshots: screenshots.md
   - Entwicklung:
     - Overview: /../en/development/index.md

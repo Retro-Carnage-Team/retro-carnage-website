@@ -12,5 +12,5 @@ Development status as of 2024-10-13
 
 ## Getting the game
 
-Retro Carnage is free and available for Windows and Linux. You can find the latest release in the [Download](downloads/index.md) section.
+Retro Carnage is free and available for Windows and Linux. You can find the latest release in the [Download](download.md) section.
 Give it a try!
