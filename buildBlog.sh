@@ -26,6 +26,9 @@ do
                 headline="## [${headline}](./${articleFile:15})" 
                 echo "" >> "$search_dir/index.md"
                 echo "$headline" >> "$search_dir/index.md"
+            elif [[ ${line::1} -eq "#" ]]
+            then
+                echo "#$line" >> "$search_dir/index.md"
             else
                 echo "$line" >> "$search_dir/index.md"
             fi
