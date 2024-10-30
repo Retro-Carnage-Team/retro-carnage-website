@@ -15,7 +15,7 @@ articleNum=0
 for articleFile in $(cat articles.txt | tac) 
 do
     echo "Processing $articleFile"
-    if [[ "$articleNum" -lt 10 ]]   # first 10 articles will be placed directly on blog page ---------------------------
+    if [[ "$articleNum" -lt 5 ]]   # first 5 articles will be placed directly on blog page ---------------------------
     then
         lineNum=0
         while IFS= read -r line
@@ -35,10 +35,10 @@ do
             lineNum=$((lineNum+1))
         done < "$articleFile"
     else                            # Older articles will be linked on blog archive page
-        if [[ "$articleNum" -eq 10 ]]
+        if [[ "$articleNum" -eq 5 ]]
         then
             echo "$line" >> "$search_dir/index.md"
-            echo "Weitere Artikel befinden sich im [Blog-Archiv](./blog-archive.md)" >> "$search_dir/index.md"
+            echo "Ältere Artikel sind im [Blog-Archiv](./blog-archive.md)" >> "$search_dir/index.md"
             
             echo "# Blog-Archiv" > "$search_dir/blog-archive.md"
             echo "" >> "$search_dir/blog-archive.md"
@@ -49,9 +49,8 @@ do
         do
             if [[ "$lineNum" -eq 0 ]]
             then
-                headline="${line:2}"
-                headline="${headline::-1}"
-                headline="## [${headline}](./${articleFile:5})"
+                headline="${line:2}"                
+                headline="## [${headline}](./${articleFile:15})"
                 echo "$headline" >> "$search_dir/blog-archive.md"
                 echo "" >> "$search_dir/blog-archive.md"
             elif [[ "$lineNum" -eq 2 ]]
