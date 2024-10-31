@@ -21,5 +21,5 @@ This is the latest pre-release of the level editor. The editor is based on Java 
 
 Here you can get the source code for both the game and the level editor. You can always find the latest version of the project on GitHub.
 
-- [Retro Carnage](http://www.retro-carnage.net/releases/Retro-Carnage-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage-editor))
-- [Retro Carnage Editor](http://www.retro-carnage.net/releases/Retro-Carnage-Editor-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage))
+- [Retro Carnage](http://www.retro-carnage.net/releases/Retro-Carnage-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage))
+- [Retro Carnage Editor](http://www.retro-carnage.net/releases/Retro-Carnage-Editor-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage-editor))

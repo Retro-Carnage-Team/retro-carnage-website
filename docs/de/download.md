@@ -19,5 +19,5 @@ Dies ist die aktuelle Vorabversion des Level-Editors. Der Level-Editor benötigt
 
 Dies ist der Quelltext des Spiels und des Level-Editors. Den jeweils letzten Stand der Projekte findest Du auf GitHub.
 
-- [Retro Carnage](http://www.retro-carnage.net/releases/Retro-Carnage-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage-editor))
-- [Retro Carnage Editor](http://www.retro-carnage.net/releases/Retro-Carnage-Editor-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage))
+- [Retro Carnage](http://www.retro-carnage.net/releases/Retro-Carnage-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage))
+- [Retro Carnage Editor](http://www.retro-carnage.net/releases/Retro-Carnage-Editor-Code.zip) ([GitHub](https://github.com/Retro-Carnage-Team/retro-carnage-editor))
