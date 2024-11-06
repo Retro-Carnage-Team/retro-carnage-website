@@ -15,6 +15,6 @@ jobs:
       - name: Install theme
         run: pip install mkdocs-material
       - name: Make the script files executable
-        run: chmod +x ./build.sh ./buildBlog.sh
+        run: chmod +x ./build.sh ./buildBlog.sh ./buildFeed.sh
       - name: Build website
         run: ./build.sh
