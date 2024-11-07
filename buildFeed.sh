@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+echo "Building RSS feed"
+
 search_dir=./docs/de/blog
 rss_file=./generated/feed.xml
 
@@ -11,8 +13,7 @@ do
 done
 
 # Create RSS feed-----------------------------------------------------------------------------------------------------
-
-echo '<?xml version="1.0" encoding="utf-8"?>' >> $rss_file
+echo '<?xml version="1.0" encoding="utf-8"?>' > $rss_file
 echo '<rss version="2.0">' >> $rss_file
 echo '  <channel>' >> $rss_file
 echo '    <title>Retro Carnage-Blog</title>' >> $rss_file
@@ -31,7 +32,7 @@ echo '    </image>' >> $rss_file
 articleNum=0
 for articleFile in $(cat articles.txt | tac) 
 do
-    echo "Processing $articleFile"
+    echo "Adding blog article $articleFile"
     lineNum=0    
     articleTitle=""
     articleDescription=""

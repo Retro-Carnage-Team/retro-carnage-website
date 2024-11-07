@@ -1,10 +1,12 @@
 #!/usr/bin/bash
 
+echo "Building blog pages"
+
 search_dir=./docs/de/blog
 
 # Get list of blog articles in articles.txt ----------------------------------------------------------------------------
 echo "Searching blog articles"
-for file in "$search_dir"/*.md
+for file in "$search_dir"/????-??-??.md
 do
   echo $file >> articles.txt
 done
@@ -14,7 +16,7 @@ echo "# Blog" > "$search_dir/index.md"
 articleNum=0
 for articleFile in $(cat articles.txt | tac) 
 do
-    echo "Processing $articleFile"
+    echo "Adding blog article $articleFile"
     if [[ "$articleNum" -lt 5 ]]   # first 5 articles will be placed directly on blog page ---------------------------
     then
         lineNum=0
