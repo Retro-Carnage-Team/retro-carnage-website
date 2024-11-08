@@ -47,7 +47,7 @@ do
         if [[ "$lineNum" -eq 0 ]]
         then
             articleTitle="${line:2}"
-        elif [[ "$lineNum" -eq 2 ]]
+        elif [[ "$lineNum" -eq 4 ]]
         then
             lineLen=${#line} 
             if [[ "$lineLen" -gt 240 ]]

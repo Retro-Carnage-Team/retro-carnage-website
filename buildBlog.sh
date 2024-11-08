@@ -55,7 +55,7 @@ do
                 headline="## [${headline}](./${articleFile:15})"
                 echo "$headline" >> "$search_dir/blog-archive.md"
                 echo "" >> "$search_dir/blog-archive.md"
-            elif [[ "$lineNum" -eq 2 ]]
+            elif [[ "$lineNum" -eq 4 ]]
             then
                 lineLen=${#line} 
                 if [[ "$lineLen" -gt 240 ]]
