@@ -27,6 +27,11 @@ extra:
       lang: en
   generator: false
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 plugins:
   - search:                                         
       lang: en                                      # Set language for search
@@ -40,6 +45,8 @@ nav:
     - Overview: development/index.md
     - Game:
       - Build and run: development/game/build-and-run.md
+      - Assets:
+        - Shop items: development/game/assets/shop-items.md
     - Editor:
       - Build and run: development/editor/build-and-run.md
   - Imprint: /de/impressum/index.html
