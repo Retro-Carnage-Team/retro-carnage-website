@@ -46,7 +46,8 @@ nav:
     - Game:
       - Build and run: development/game/build-and-run.md
       - Assets:
-        - Shop items: development/game/assets/shop-items.md
+        - Weapon images: development/game/assets/weapon-images.md
+        - Weapons: development/game/assets/weapons.md
     - Editor:
       - Build and run: development/editor/build-and-run.md
   - Imprint: /de/impressum/index.html
