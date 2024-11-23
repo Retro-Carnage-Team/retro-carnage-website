@@ -1,14 +1,14 @@
 site_name: Retro Carnage
 site_url: http://www.retro-carnage.net/
-site_dir: '../../generated/en'                      # Where to put the English HTML files
-docs_dir: '../../docs/en'                           # Where to find the English markdown files
+site_dir: '../../generated/en'
+docs_dir: '../../docs/en'
 
 repo_url: https://github.com/Retro-Carnage-Team/retro-carnage-website
 edit_uri: edit/master/docs/en/
 
 theme:
-  custom_dir: '../../overrides/'                    # This is where the customization of the theme lives
-  favicon: assets/images/favicon.ico                # The favicon is shared by all languages
+  custom_dir: '../../overrides/'
+  favicon: assets/images/favicon.ico
   features:
     - content.action.edit
     - content.action.view
@@ -34,7 +34,7 @@ markdown_extensions:
 
 plugins:
   - search:                                         
-      lang: en                                      # Set language for search
+      lang: en
 
 nav:
   - Home: index.md
@@ -46,7 +46,8 @@ nav:
     - Game:
       - Build and run: development/game/build-and-run.md
       - Assets:
-        - Shop items: development/game/assets/shop-items.md
+        - Weapon images: development/game/assets/weapon-images.md
+        - Weapons: development/game/assets/weapons.md
     - Editor:
       - Build and run: development/editor/build-and-run.md
   - Imprint: /de/impressum/index.html

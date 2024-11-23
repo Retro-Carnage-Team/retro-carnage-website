@@ -1,8 +1,8 @@
-# Images for shop articles
+# Weapon images
 
 ## Overview
 
-This article describes the workflow used to create the images for items in the store. 
+This article describes the workflow used to create the images for weapons. These images are used to display the weapons in the store and the sidebars of the game screen.
 
 ![Shop](/en/media/screenshot-shop.png)
 
