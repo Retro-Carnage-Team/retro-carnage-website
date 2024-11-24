@@ -66,12 +66,42 @@ Example:
 
 ![870 SBS shotgun](/en/media/development/weapon-40.png "870 SBS")
 
-### Sturmgewehre und Maschinengewehre
+### Assault rifles and machine guns
 
-### Scharfschützengewehre
+The category of assault rifles and machine guns has the most elements. All of these heavy rifles are automatic and have a good range and medium prices for ammunition in common. The number of bullets fired per minute and the speed of bullets is the main difference between these weapons.
 
-### Granatwerfer
+Example:
+
+![M134 machine gun](/en/media/development/weapon-01.png "M134")
+
+### Sniper rifles
+
+The category of sniper rifles has the second largest group of elements. Sniper rifles are non-automatic weapons with very long range. The best sniper rifles are expensive and use expensive ammunition. Other than in the real world sniper rifles in Retro Carnage have no effect on armored vehicles and fortifications. 
+
+Example:
+
+![M82 m sniper rifle](/en/media/development/weapon-06.png "M82")
+
+### Grenade launchers
+
+Grenade launchers are non-automatic weapons that fire 40 mm explosive projectiles. These projectiles behave like other bullets in the way that they share the same behavior with obstacles. Other than grenades these 40 mm projectiles collide with the most obstacles of the game. The main difference of weapons of this category is range.
+
+Example:
+
+![MGL grenade launcher](/en/media/development/weapon-47.png "MGL")
 
 ### Anti-tank rocket launcher
 
-### Granaten
+Currently this category contains a single weapon only, the RPG-7. The RPG-7 is a non-automatic weapon that fires massive 85 mm projectiles that have the fire power required to destroy tanks. The ammunition is very expensive. But there are situations where such fire power is without alternatives.
+
+Example:
+
+![RPG-7 anti-tank rocket launcher](/en/media/development/weapon-10.png "RPG-7")
+
+### Hand grenades
+
+Hand grenades are explosive devices that need no weapon to be used. Hand grenade have a limited range and are relatively expensive. They explode on contact with enemies or when they reach their maximum range - causing damage to a big area on screen. 
+
+Example:
+
+![M67 hand grenade](/en/media/development/weapon-43.png "M67")
