@@ -1,4 +1,4 @@
-# Weapons
+# Weapon configurations
 
 ## Overview
 
@@ -16,7 +16,7 @@ Here the configuration files are sorted again into three subdirectories:
 - [/items/grenades](https://github.com/Retro-Carnage-Team/retro-carnage-assets/tree/main/items/grenades): Contains configuration files for grenades
 - [/items/weapons](https://github.com/Retro-Carnage-Team/retro-carnage-assets/tree/main/items/weapons): Contains configuration files for weapons
 
-### Configurations for weapons
+## Configurations for weapons
 
 Weapons are each configured using a file in the */items/weapons* directory. Retro Carnage reads the files in the order specified by the alphanumeric sorting of their name. To achieve a specific order of weapons in the shop, the files have a numerical prefix, for example ***02**-P30.json*.
 
@@ -58,7 +58,7 @@ This example is based on the [P30 pistol](https://github.com/Retro-Carnage-Team/
 | **weaponType**     | number (int)   | Enum value: **0** = NonAutomatic, **1** = Automatic, **2** = RPG                                                                         |
 | **weight**         | string         | Value to be shown as property in the popup window of the shop. Serves no additional purpose.                                             |
 
-### Configurations for ammunition
+## Configurations for ammunition
 
 Types of ammunition are each configured using a file in the */items/ammunition* directory. Ammunition is not displayed - so no specific order is necessary.
 There has to be a type of ammunition for each weapon. The name of the type of ammunition has to be exactly as used in the configuration file of that weapon.
@@ -87,7 +87,7 @@ This example is based on the [9 x 19 mm ammunition](https://github.com/Retro-Car
 | **price**       | string       | Price of a pack of this type of ammunition. Used in the store.                                          |
 | **scattering**  | number (int) | **true** for shotgun cartridge only (not slugs).                                                        |
 
-### Configurations for grenades
+## Configurations for grenades
 
 Grenades can be used without weapons. They are thrown - thus have a limited range. They cause explosions when hitting an enemy or when they reached their destination.
 Grenades are each configured using a file in the */items/grenade* directory. Retro Carnage reads the files in the order specified by the alphanumeric sorting of their name. To achieve a specific order of weapons in the shop, the files have a numerical prefix, for example ***01**-M67.json*.
