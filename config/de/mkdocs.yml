@@ -46,8 +46,9 @@ nav:
     - Game:
       - Build and run: /en/development/game/build-and-run/index.html
       - Assets:
+        - Weapon configurations: /en/development/game/assets/weapons-configurations/index.html
         - Weapon images: /en/development/game/assets/weapon-images/index.html
-        - Weapons: /en/development/game/assets/weapons/index.html
+        - Weapon types and categories: /en/development/game/assets/weapons-types-categories/index.html
     - Editor:
       - Build and run: /en/development/editor/build-and-run/index.html
   - Impressum: impressum.md
