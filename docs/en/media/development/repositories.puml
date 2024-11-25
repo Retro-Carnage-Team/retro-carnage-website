@@ -1,0 +1,24 @@
+@startuml "Repositories"
+
+folder "retro-carnage-editor" as RCESource {
+
+}
+
+rectangle "Retro-Carnage-Editor" as RCE {
+    component "editor binary" as EA
+    folder "editor-workspace" as EW
+}
+
+RCESource ..> EA
+
+folder "retro-carnage" as RCSource 
+
+rectangle "Retro-Carnage" {
+    component "game binary" as RC
+    folder "retro-carnage-assets" as RCA
+}
+
+RCSource ..> RC
+RCE ..> RCA : Use editor to\ncreate levels
+
+@enduml
