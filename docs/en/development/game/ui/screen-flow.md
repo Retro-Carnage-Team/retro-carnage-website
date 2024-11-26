@@ -29,7 +29,7 @@ flowchart TB
 
     loading --> start --> title --> select --> select-results --> mission --> buy-your-weapons --> shop --> lets-begin --> game
     game-- game over -->title
-    game-- game won -->enter-name --> highscore
+    game-- game won -->enter-name --> highscore --> title
     game-- mission won -->mission
     select --> options
     options <--> options-audio
