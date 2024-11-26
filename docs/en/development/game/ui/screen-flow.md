@@ -37,5 +37,6 @@ flowchart TB
     select --> select-results --> mission --> buy-your-weapons --> shop --> lets-begin --> game
     game-- game over -->title
     game-- mission won -->mission
-    game-- game won -->enter-name --> highscore
+    game-- game won -->enter-name
+    enter-name --> highscore --> title
 ```
