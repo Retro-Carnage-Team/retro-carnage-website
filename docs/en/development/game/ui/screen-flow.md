@@ -5,6 +5,8 @@ hide:
 
 # Screen flow
 
+The following screen flow diagram shows the possible screen sequences that a user can navigate through.
+
 ```mermaid
 flowchart TB
     loading("Loading <img src='/en/media/screenshot-loading-small.png'; width='30' />")
@@ -25,12 +27,15 @@ flowchart TB
     enter-name("Enter name <img src='/en/media/screenshot-missing-small.png'; width='30' />")  
     highscore("Highscore <img src='/en/media/screenshot-missing-small.png'; width='30' />")  
 
-    loading --> start --> title --> select --> options
+    loading --> start
+    start --> title
+    title --> select
+    select --> options
     options <--> options-audio
     options <--> options-video
     options <--> options-input <--> options-controller
-    options --> select-results --> mission --> buy-your-weapons --> shop --> lets-begin --> game
-    game --> title
-    game --> mission
-    game --> enter-name --> highscore
-```    
+    select --> select-results --> mission --> buy-your-weapons --> shop --> lets-begin --> game
+    game-- game over -->title
+    game-- mission won -->mission
+    game-- game won -->enter-name --> highscore
+```
