@@ -27,12 +27,13 @@ flowchart TB
     enter-name("Enter name <img src='/en/media/screenshot-missing-small.png'; width='30' />")  
     highscore("Highscore <img src='/en/media/screenshot-missing-small.png'; width='30' />")  
 
-    loading --> start --> title --> select --> select-results --> mission --> buy-your-weapons --> shop --> lets-begin --> game
-    game-- game over -->title
-    game-- game won -->enter-name --> highscore --> title
-    game-- mission won -->mission
-    select --> options
+    loading --> start --> title --> select --> options
     options <--> options-audio
     options <--> options-video
     options <--> options-input <--> options-controller
+    select --> select-results --> mission --> buy-your-weapons --> shop --> lets-begin --> game
+    game-- game over -->title
+    game-- game won -->enter-name --> highscore --> title
+    game-- mission won -->mission
+    
 ```
