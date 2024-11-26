@@ -30,7 +30,11 @@ extra:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search:                                         
@@ -44,11 +48,13 @@ nav:
   - Development:
     - Overview: development/index.md
     - Game:
-      - Build and run: development/game/build-and-run.md
       - Assets:
         - Weapon configurations: development/game/assets/weapon-configurations.md
         - Weapon images: development/game/assets/weapon-images.md
         - Weapon types and categories: development/game/assets/weapon-types-categories.md
+      - User interface:
+        - Screen flow: development/game/ui/screen-flow.md
+      - Build and run: development/game/build-and-run.md
     - Editor:
       - Build and run: development/editor/build-and-run.md
   - Imprint: /de/impressum/index.html
