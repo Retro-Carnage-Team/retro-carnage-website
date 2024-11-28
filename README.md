@@ -1,4 +1,4 @@
-# RETRO CARNAGE
+# Retro Carnage Website
 
 This repository contains the [website](https://www.retro-carnage.net) of the [Retro-Carnage project](https://github.com/Retro-Carnage-Team).
 
