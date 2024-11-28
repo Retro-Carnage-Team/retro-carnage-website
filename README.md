@@ -2,11 +2,13 @@
 
 This repository contains the [website](https://www.retro-carnage.net) of the [Retro-Carnage project](https://github.com/Retro-Carnage-Team).
 
+![Screenshot](./screenshot.png)
+
 ## Getting started
 
 ### Prerequisites
 
-* Python
+* [Python](https://www.python.org/)
 * [MkDocs](https://www.mkdocs.org)
 * [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
 
@@ -20,7 +22,7 @@ To build the page you just need to clone the repo and run the build script:
 
 ## Authors
 
-* [Thomas Werner](https://github.com/huddeldaddel)
+- [Thomas Werner](https://github.com/huddeldaddel)
 
 ## License
 
