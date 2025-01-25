@@ -3,15 +3,9 @@ site_url: https://www.retro-carnage.net/
 site_dir: '../../generated/en'
 docs_dir: '../../docs/en'
 
-repo_url: https://github.com/Retro-Carnage-Team/retro-carnage-website
-edit_uri: edit/master/docs/en/
-
 theme:
   custom_dir: '../../overrides/'
   favicon: assets/images/favicon.ico
-  features:
-    - content.action.edit
-    - content.action.view
   highlightjs: true
   language: en  
   name: material  
