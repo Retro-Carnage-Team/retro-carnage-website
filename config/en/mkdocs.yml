@@ -46,6 +46,7 @@ nav:
         - Weapon configurations: development/game/assets/weapon-configurations.md
         - Weapon images: development/game/assets/weapon-images.md
         - Weapon types and categories: development/game/assets/weapon-types-categories.md
+        - Weapons compared: development/game/assets/weapons-compared.md
       - User interface:
         - Screen flow: development/game/ui/screen-flow.md
       - Build and run: development/game/build-and-run.md
