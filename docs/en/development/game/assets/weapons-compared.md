@@ -206,7 +206,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">submachine gun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 10%, white 10%);" 
+                        title="2500"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 37.5%, white 37.5%);"
+                        title="600"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 42.1%, white 42.1%);"
+                        title="8.33 bullets / second"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td><img src="/en/media/development/weapon-34.png"></img></td>
@@ -215,7 +240,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">submachine gun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 10%, white 10%);" 
+                        title="2500"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 39.375%, white 39.375%);"
+                        title="630"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 42.1%, white 42.1%);"
+                        title="8.33 bullets / second"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td><img src="/en/media/development/weapon-07.png"></img></td>
@@ -224,7 +274,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">non-automatic</span><br />
                 <span class="weapon-category">shotgun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 4.8%, white 4.8%);" 
+                        title="1200"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 18.75%, white 18.75%);"
+                        title="300"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
+                        title="Rate of fire depends on speed of user input"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td><img src="/en/media/development/weapon-40.png"></img></td>
@@ -233,7 +308,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">non-automatic</span><br />
                 <span class="weapon-category">shotgun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 5.4%, white 5.4%);" 
+                        title="1350"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 28.125%, white 28.125%);"
+                        title="450"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
+                        title="Rate of fire depends on speed of user input"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td><img src="/en/media/development/weapon-51.png"></img></td>
@@ -242,7 +342,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">shotgun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 22.4%, white 22.4%);" 
+                        title="5600"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 36.25%, white 36.25%);"
+                        title="580"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 15.8%, white 15.8%);"
+                        title="5.88 bullets / second"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td><img src="/en/media/development/weapon-18.png"></img></td>
