@@ -10,6 +10,6 @@ lftp -f "
 set sftp:auto-confirm yes
 open $FTP_HOST
 user $FTP_USER $FTP_PASS
-mirror --continue --reverse --parallel=3 --verbose $LCD $RCD
+mirror --continue --reverse --parallel=5 --verbose $LCD $RCD
 bye
 "
