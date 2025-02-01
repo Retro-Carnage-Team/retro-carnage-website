@@ -537,7 +537,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-name">M67</span><br />
                 <span class="weapon-category">hand grenade</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 2%, white 2%);" 
+                        title="500"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 28.125%, white 28.125%);"
+                        title="450"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
+                        title="Rate of fire depends on speed of user input"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td><img src="/en/media/development/weapon-44.png"></img></td>
@@ -545,7 +570,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-name">DM51</span><br />
                 <span class="weapon-category">hand grenade</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 2.4%, white 2.4%);" 
+                        title="600"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 34.375%, white 34.375%);"
+                        title="550"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
+                        title="Rate of fire depends on speed of user input"
+                    />
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>
