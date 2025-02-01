@@ -42,6 +42,7 @@ nav:
         - Weapon configurations: /en/development/game/assets/weapon-configurations/index.html
         - Weapon images: /en/development/game/assets/weapon-images/index.html
         - Weapon types and categories: /en/development/game/assets/weapon-types-categories/index.html
+        - Weapons compared: /en/development/game/assets/weapons-compared/index.html
       - User interface:
         - Screen flow: /en/development/game/ui/screen-flow/index.html
       - Build and run: /en/development/game/build-and-run/index.html
