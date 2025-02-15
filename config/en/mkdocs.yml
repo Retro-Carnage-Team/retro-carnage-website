@@ -2,6 +2,7 @@ site_name: Retro Carnage
 site_url: https://www.retro-carnage.net/en/
 site_dir: '../../generated/en'
 docs_dir: '../../docs/en'
+use_directory_urls: false
 
 theme:
   custom_dir: '../../overrides/'
@@ -53,4 +54,4 @@ nav:
       - Build and run: development/game/build-and-run.md
     - Editor:
       - Build and run: development/editor/build-and-run.md
-  - Imprint: /de/impressum/index.html
+  - Imprint: /de/impressum.html

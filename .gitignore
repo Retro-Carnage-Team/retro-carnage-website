@@ -3,3 +3,5 @@ build
 coverage
 node_modules
 generated
+docs/de/blog/index.md
+docs/de/blog/blog-archive.md

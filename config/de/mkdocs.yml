@@ -2,6 +2,7 @@ site_name: Retro Carnage
 site_url: https://www.retro-carnage.net/de/
 site_dir: '../../generated/de'
 docs_dir: '../../docs/de'
+use_directory_urls: false
 
 theme:
   custom_dir: '../../overrides/'
@@ -39,14 +40,14 @@ nav:
     - Overview: /en/development/index.html
     - Game:
       - Assets:
-        - Music and sound effects: /en/development/game/assets/sound-effects/index.html
-        - Weapon configurations: /en/development/game/assets/weapon-configurations/index.html
-        - Weapon images: /en/development/game/assets/weapon-images/index.html
-        - Weapon types and categories: /en/development/game/assets/weapon-types-categories/index.html
-        - Weapons compared: /en/development/game/assets/weapons-compared/index.html
+        - Music and sound effects: /en/development/game/assets/sound-effects.html
+        - Weapon configurations: /en/development/game/assets/weapon-configurations.html
+        - Weapon images: /en/development/game/assets/weapon-images.html
+        - Weapon types and categories: /en/development/game/assets/weapon-types-categories.html
+        - Weapons compared: /en/development/game/assets/weapons-compared.html
       - User interface:
-        - Screen flow: /en/development/game/ui/screen-flow/index.html
-      - Build and run: /en/development/game/build-and-run/index.html
+        - Screen flow: /en/development/game/ui/screen-flow.html
+      - Build and run: /en/development/game/build-and-run.html
     - Editor:
-      - Build and run: /en/development/editor/build-and-run/index.html
+      - Build and run: /en/development/editor/build-and-run.html
   - Impressum: impressum.md
