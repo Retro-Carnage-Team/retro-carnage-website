@@ -28,7 +28,7 @@ select the export option from the menu and set the export settings as shown here
 
 ## References to sound effects
 
-Sound effects and background music is managed in 
+Sound effects and background music are managed in 
 [sounds.go](https://github.com/Retro-Carnage-Team/retro-carnage/blob/main/assets/sounds.go). This file contains references 
 to the sound files so that they can be used via constants in the source code. The file references are relative to their 
 respective folder.

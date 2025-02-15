@@ -2,7 +2,7 @@
 
 ## Install toolchain
 
-First of all, you should install the necessary tools on your computer to be able to work with the source code. You will need [git](https://git-scm.com/), [Java](https://openjdk.org/), and [NetBeans](https://netbeans.apache.org). 
+First of all, you should install the necessary tools on your computer to be able to work with the source code. You will need [git](https://git-scm.com/), [Java](https://openjdk.org/), and [NetBeans](https://netbeans.apache.org/front/main/index.html). 
 
 ## Get and build the source code
 
