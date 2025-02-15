@@ -1,3 +1,5 @@
+[![CD](https://github.com/Retro-Carnage-Team/retro-carnage-website/actions/workflows/cd.yml/badge.svg)](https://github.com/Retro-Carnage-Team/retro-carnage-website/actions/workflows/cd.yml) [![CD](https://img.shields.io/badge/W3C%20Link%20Checker-Run-f39f37)](https://validator.w3.org/checklink?uri=https%3A%2F%2Fretro-carnage.net%2F&summary=on&hide_type=all&recursive=on&depth=5&cookie=nochanges&check=Check)
+
 # Retro Carnage Website
 
 This repository contains the [website](https://www.retro-carnage.net) of the [Retro-Carnage project](https://github.com/Retro-Carnage-Team).
