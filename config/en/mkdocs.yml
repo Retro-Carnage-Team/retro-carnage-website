@@ -43,6 +43,7 @@ nav:
     - Overview: development/index.md
     - Game:
       - Assets:
+        - Music and sound effects: development/game/assets/sound-effects.md
         - Weapon configurations: development/game/assets/weapon-configurations.md
         - Weapon images: development/game/assets/weapon-images.md
         - Weapon types and categories: development/game/assets/weapon-types-categories.md

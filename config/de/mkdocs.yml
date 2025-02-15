@@ -39,6 +39,7 @@ nav:
     - Overview: /en/development/index.html
     - Game:
       - Assets:
+        - Music and sound effects: /en/development/game/assets/sound-effects/index.html
         - Weapon configurations: /en/development/game/assets/weapon-configurations/index.html
         - Weapon images: /en/development/game/assets/weapon-images/index.html
         - Weapon types and categories: /en/development/game/assets/weapon-types-categories/index.html
