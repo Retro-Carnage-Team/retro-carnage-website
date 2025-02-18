@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Retro Carnage
 
 Das Ziel dieses Projekts ist es, Dich in die beste Zeit deiner Kindheit zurückzubringen. Um dies zu erreichen, bauen wir
