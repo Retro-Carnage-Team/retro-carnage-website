@@ -19,7 +19,7 @@ that all music and files are expected to be encoded in:
 ### Converting audio files to meet these settings
 
 Converting audio files to meet the required encoding is simple. You can use e.g. the free and open source audio editor 
-[Audacity](https://www.audacityteam.org/) for that purpose. All you need to do is open your audio file in Audacity, edit
+[Audacity](https://www.audacityteam.org/) for that purpose. All you need to do is open your audio file in Audacity,
 select the export option from the menu and set the export settings as shown here.
 
 ![Audacity](/en/media/development/audacity.png)
