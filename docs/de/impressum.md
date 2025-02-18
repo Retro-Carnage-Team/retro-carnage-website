@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Impressum
 
 ## Angaben gemäß § 5 DDG

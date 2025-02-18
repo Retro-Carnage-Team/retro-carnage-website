@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Retro Carnage
 
 The goal of this project is to take you back to the best part of your childhood. To do this, we are building a modern

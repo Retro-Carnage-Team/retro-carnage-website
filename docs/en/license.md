@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # MIT License
 
 Copyright (c) 2020 Thomas Werner
