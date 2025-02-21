@@ -41,7 +41,7 @@ Start the game
 
 The repository contains IDE settings for Visual Studio Code to debug, run, and test the game.
 
-# Running the tests
+## Running the tests
 
 Run the steps to install the development environment first (see previous chapter).
 Open a terminal, navigate into the application folder and run the test script:
