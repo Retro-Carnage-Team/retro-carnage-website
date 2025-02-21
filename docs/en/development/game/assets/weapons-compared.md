@@ -33,7 +33,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
     </thead>
     <tbody>
         <tr>
-            <td><img src="/en/media/development/weapon-45.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-45.png" alt="629 Classic revolver"></img>
+            </td>
             <td>
                 <span class="weapon-name">629 Classic</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -67,7 +69,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-46.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-46.png" alt="P30 pistol"></img>
+            </td>
             <td>
                 <span class="weapon-name">P30</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -101,7 +105,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-08.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-08.png" alt="HK45 pistol"></img>
+            </td>
             <td>
                 <span class="weapon-name">HK45</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -135,7 +141,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-16.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-16.png" alt="AKS 74U submachine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">AKS 74U</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -169,7 +177,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-11.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-11.png" alt="ABR submachine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">ABR</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -203,7 +213,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-21.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-21.png" alt="Kriss Vector submachine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">Kriss Vector</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -237,7 +249,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-34.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-34.png" alt="VHS 2S submachine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">VHS 2S</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -271,7 +285,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-07.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-07.png" alt="M500 shotgun"></img>
+            </td>
             <td>
                 <span class="weapon-name">M500</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -305,7 +321,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-40.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-40.png" alt="870 SBS shotgun"></img>
+            </td>
             <td>
                 <span class="weapon-name">870 SBS</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -339,7 +357,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-51.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-51.png" alt="AA12 shotgun"></img>
+            </td>
             <td>
                 <span class="weapon-name">AA12</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -373,7 +393,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-18.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-18.png" alt="AK47 assault rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">AK-47</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -382,7 +404,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-02.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-02.png" alt="M27 IAR assault rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">M27 IAR</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -391,7 +415,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-22.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-22.png" alt="M4A1 assault rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">M4A1</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -400,7 +426,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-04.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-04.png" alt="XM8 assault rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">XM8</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -409,7 +437,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-35.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-35.png" alt="M4 Pro assault rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">M4 Pro</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -418,7 +448,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-42.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-42.png" alt="SCAR assault rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">SCAR</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -427,7 +459,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-52.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-52.png" alt="M60 machine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">M60</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -436,7 +470,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-19.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-19.png" alt="M1919 machine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">M1919</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -445,7 +481,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-01.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-01.png" alt="M134 machine gun"></img>
+            </td>
             <td>
                 <span class="weapon-name">M134</span><br />
                 <span class="weapon-type">automatic</span><br />
@@ -454,7 +492,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             <td></td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-14.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-14.png" alt="PSR sniper rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">PSR</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -488,7 +528,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-29.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-29.png" alt="M1 sniper rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">M1</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -522,7 +564,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-54.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-54.png" alt="M14 sniper rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">M14</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -556,7 +600,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-33.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-33.png" alt="G3SG1 sniper rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">G3SG1</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -590,7 +636,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-05.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-05.png" alt="L96 sniper rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">L96</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -624,7 +672,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-06.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-06.png" alt="M82 sniper rifle"></img>
+            </td>
             <td>
                 <span class="weapon-name">M82</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -658,7 +708,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-24.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-24.png" alt="M203 grenade launcher"></img>
+            </td>
             <td>
                 <span class="weapon-name">M203</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -692,7 +744,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-47.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-47.png" alt="MGL grenade launcher"></img>
+            </td>
             <td>
                 <span class="weapon-name">MGL</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -726,7 +780,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-10.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-10.png" alt="RPG-7 anti-tank rocket launcher"></img>
+            </td>
             <td>
                 <span class="weapon-name">RPG-7</span><br />
                 <span class="weapon-type">non-automatic</span><br />
@@ -760,7 +816,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-43.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-43.png" alt="M67 hand grenade"></img>
+            </td>
             <td>
                 <span class="weapon-name">M67</span><br />
                 <span class="weapon-category">hand grenade</span>
@@ -793,7 +851,9 @@ The weapons in Retro Carnage differ in several aspects that are important for th
             </td>
         </tr>
         <tr>
-            <td><img src="/en/media/development/weapon-44.png"></img></td>
+            <td>
+                <img src="/en/media/development/weapon-44.png" alt="DM51 hand grenade"></img>
+            </td>
             <td>
                 <span class="weapon-name">DM51</span><br />
                 <span class="weapon-category">hand grenade</span>
