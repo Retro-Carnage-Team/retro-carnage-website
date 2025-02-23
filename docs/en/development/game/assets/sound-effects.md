@@ -1,3 +1,8 @@
+---
+description: Music and sound effects are stored in a directory called sounds. Retro Carnage uses a single, fixed audio configuration for all music and sounds.
+title: Music and sounds effects
+---
+
 # Music and sounds effects
 
 Retro Carnage has background music and sound effects stored in a directory called `sounds`. As the names suggest music

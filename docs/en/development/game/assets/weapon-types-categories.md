@@ -1,3 +1,8 @@
+---
+description: The weapons of Retro Carnage are set up via their configuration files so that they can be assigned to different types and categories.
+title: Weapon types and categories
+---
+
 # Weapon types and categories
 
 The weapons of Retro Carnage are set up via their [configuration files](./weapon-configurations.md) so that they can be assigned to different types and categories. These types, categories and their properties are briefly described here.

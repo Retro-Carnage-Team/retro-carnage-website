@@ -1,3 +1,8 @@
+---
+description: This article describes the workflow used to create the images for weapons. These images are used to display the weapons in the store and the sidebars of the game screen.
+title: Weapon images
+---
+
 # Weapon images
 
 ## Overview

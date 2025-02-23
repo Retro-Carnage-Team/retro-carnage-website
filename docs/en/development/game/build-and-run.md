@@ -1,3 +1,8 @@
+---
+description: This article explains how to set up the build environment to build the Retro Carnage binaries.
+title: Build and run Retro Carnage
+---
+
 # Build and run
 
 ## Install toolchain

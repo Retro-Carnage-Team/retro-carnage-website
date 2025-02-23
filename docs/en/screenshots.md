@@ -1,3 +1,8 @@
+---
+description: The screenshots show the different screens of the game and the level editor.
+title: Screenshot gallery
+---
+
 # Screenshots
 
 ## Retro-Carnage
