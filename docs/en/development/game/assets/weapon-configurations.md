@@ -1,3 +1,8 @@
+---
+description: Weapons play a central role in Retro Carnage. One of the challenges of the game is the correct use of money in order to be able to afford increasingly powerful weapons and their expensive ammunition for more difficult missions as the game progresses.
+title: Weapon configurations
+---
+
 # Weapon configurations
 
 ## Overview

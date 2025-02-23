@@ -1,6 +1,8 @@
 ---
+description: The weapons in Retro Carnage differ in several aspects that are important for the gameplay. The different categories of weapons and their respective characteristics are explained below.
 hide:
   - toc
+title: Weapons compared
 ---
 
 # Weapons compared

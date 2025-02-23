@@ -1,6 +1,8 @@
 ---
+description: The following screen flow diagram shows the possible screen sequences that a user can navigate through. 
 hide:
   - toc
+title: Screen flow
 ---
 
 # Screen flow
