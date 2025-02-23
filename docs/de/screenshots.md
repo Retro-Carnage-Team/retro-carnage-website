@@ -1,3 +1,8 @@
+---
+description: Die Screenshots zeigen die verschiedenen Screens des Spiels und des Level-Editors.
+title: Screenshot-Galerie
+---
+
 # Screenshots
 
 ## Retro Carnage
@@ -135,7 +140,6 @@
     <img src="/de/media/screenshot-editor-asset-manager-small.png" alt="Asset-Manager" style="width: 250px" title="Asset-Manager"/>
   </a>
 </div>
-
 
 <link rel="stylesheet" href="/de/assets/css/photoswipe.css">
 

@@ -1,6 +1,8 @@
 ---
+description: Retro Carnage ist ein Projekt zur Entwicklung eines Retro-Computerspiels im Stil eines multi-direktionalaen Scrolling-Shooters.
 hide:
   - toc
+title: Retro Carnage Homepage (deutsch)
 ---
 
 # Retro Carnage

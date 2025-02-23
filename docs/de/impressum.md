@@ -1,7 +1,16 @@
 ---
+description: Retro Carnage ist ein Open Source-Projekt ohne kommerziellen Hintergrund. Die Angaben im Impressum sind freiwillig. 
 hide:
   - toc
+title: Impressum
 ---
+
+!!! note
+
+    Retro Carnage ist das Hobby-Projekt einer Familie und ohne jeden kommerziellen Hintergrund. Die Website enthält aus 
+    diesem Grund keine Werbung, Affiliate-Links, Werbe-Tracker oder Ähnliches. Die von uns entwickelten Software ist 
+    kostenlos und ebenfalls frei von Werbung. Zudem steht auch dier Quelltext und alles Quellmaterial zur Verwendung 
+    unter einer Open Source-Lizenz öffentlich bereit. Die Angaben in diesem Impressum erfolgen daher rein freiwillig. 
 
 # Impressum
 
