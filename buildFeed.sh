@@ -39,7 +39,7 @@ do
 
     articleFileRel=${articleFile:15}
     articleFileRel=$(echo "${articleFileRel//.md/}")
-    articleLink="https://www.retro-carnage.net/de/blog/${articleFileRel}/"
+    articleLink="https://www.retro-carnage.net/de/blog/${articleFileRel}.html"
     articleDate=$(date --date $articleFileRel -R)
 
     while IFS= read -r line

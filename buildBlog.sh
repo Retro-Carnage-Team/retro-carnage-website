@@ -27,17 +27,22 @@ do
         lineNum=0
         while IFS= read -r line
         do
-            if [[ "$lineNum" -eq 0 ]]
+            if [[ "$lineNum" -eq 5 ]]
             then
                 headline="${line:2}"                
                 headline="## [${headline}](./${articleFile:15})" 
                 echo "" >> "$search_dir/index.md"
                 echo "$headline" >> "$search_dir/index.md"
-            elif [[ "${line::1}" = "#" ]]
-            then
-                echo "#$line" >> "$search_dir/index.md"
             else
-                echo "$line" >> "$search_dir/index.md"
+                if [[ "$lineNum" -gt 5 ]]
+                then
+                    if [[ "${line::1}" = "#" ]]
+                    then
+                        echo "#$line" >> "$search_dir/index.md"
+                    else
+                        echo "$line" >> "$search_dir/index.md"
+                    fi
+                fi
             fi
             lineNum=$((lineNum+1))
         done < "$articleFile"
@@ -58,13 +63,13 @@ do
         lineNum=0
         while IFS= read -r line
         do
-            if [[ "$lineNum" -eq 0 ]]
+            if [[ "$lineNum" -eq 5 ]]
             then
                 headline="${line:2}"                
                 headline="## [${headline}](./${articleFile:15})"
                 echo "$headline" >> "$search_dir/blog-archive.md"
                 echo "" >> "$search_dir/blog-archive.md"
-            elif [[ "$lineNum" -eq 4 ]]
+            elif [[ "$lineNum" -eq 9 ]]
             then
                 lineLen=${#line} 
                 if [[ "$lineLen" -gt 240 ]]
