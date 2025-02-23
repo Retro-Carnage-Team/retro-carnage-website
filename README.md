@@ -1,4 +1,4 @@
-[![CD](https://github.com/Retro-Carnage-Team/retro-carnage-website/actions/workflows/cd.yml/badge.svg)](https://github.com/Retro-Carnage-Team/retro-carnage-website/actions/workflows/cd.yml) [![CD](https://img.shields.io/badge/W3C%20Link%20Checker-Run-f39f37)](https://validator.w3.org/checklink?uri=https%3A%2F%2Fretro-carnage.net%2F&summary=on&hide_type=all&recursive=on&depth=10&cookie=nochanges&check=Check)
+[![CD](https://github.com/Retro-Carnage-Team/retro-carnage-website/actions/workflows/cd.yml/badge.svg)](https://github.com/Retro-Carnage-Team/retro-carnage-website/actions/workflows/cd.yml) [![CD](https://img.shields.io/badge/Bing%20Sitescan-Run-f39f37)](https://www.bing.com/webmasters/sitescan?siteUrl=https://retro-carnage.net/) [![CD](https://img.shields.io/badge/W3C%20Link%20Checker-Run-f39f37)](https://validator.w3.org/checklink?uri=https%3A%2F%2Fretro-carnage.net%2F&summary=on&hide_type=all&recursive=on&depth=10&cookie=nochanges&check=Check)
 
 # Retro Carnage Website
 
