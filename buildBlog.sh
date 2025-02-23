@@ -12,7 +12,12 @@ do
 done
 
 # Create blog page -----------------------------------------------------------------------------------------------------
-echo "# Blog" > "$search_dir/index.md"
+echo "---" > "$search_dir/index.md"
+echo "description: Ankündigungen, Aktuelles, und Spannendes aus von den Projekt-Mitgliedern" >> "$search_dir/index.md"
+echo "title: Projekt-Blog" >> "$search_dir/index.md"
+echo "---" >> "$search_dir/index.md"
+echo "# Blog" >> "$search_dir/index.md"
+
 articleNum=0
 for articleFile in $(cat articles.txt | tac) 
 do
@@ -42,7 +47,11 @@ do
             echo "$line" >> "$search_dir/index.md"
             echo "Ältere Artikel sind im [Blog-Archiv](./blog-archive.md)" >> "$search_dir/index.md"
             
-            echo "# Blog-Archiv" > "$search_dir/blog-archive.md"
+            echo "---" > "$search_dir/blog-archive.md"
+            echo "description: Archivierte Ankündigungen, Aktuelles, und Spannendes aus von den Projekt-Mitgliedern" >> "$search_dir/blog-archive.md"
+            echo "title: Archiv des Projekt-Blogs" >> "$search_dir/blog-archive.md"
+            echo "---" >> "$search_dir/blog-archive.md"
+            echo "# Blog-Archiv" >> "$search_dir/blog-archive.md"
             echo "" >> "$search_dir/blog-archive.md"
         fi
 

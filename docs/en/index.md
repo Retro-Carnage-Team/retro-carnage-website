@@ -1,6 +1,8 @@
 ---
+description: Retro Carnage is a project to build a retro multidirectional scrolling shooter video game.
 hide:
   - toc
+title: Retro Carnage Homepage (english)
 ---
 
 # Retro Carnage
