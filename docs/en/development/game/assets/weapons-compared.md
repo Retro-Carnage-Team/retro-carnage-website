@@ -64,8 +64,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 55%, white 55%);"
+                        title="900"
                     />
                 </div>
             </td>
@@ -100,8 +100,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 62.5%, white 62.5%);"
+                        title="750"
                     />
                 </div>
             </td>
@@ -136,8 +136,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 82.5%, white 82.5%);"
+                        title="350"
                     />
                 </div>
             </td>
@@ -173,7 +173,7 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div 
                         class="comp-value" 
                         style="background: linear-gradient(to right, darkgrey 52.63%, white 52.63%);"
-                        title="10 bullets / second"
+                        title="100"
                     />
                 </div>
             </td>
@@ -208,8 +208,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 31.58%, white 31.58%);"
-                        title="7.14 bullets / second"
+                        style="background: linear-gradient(to right, darkgrey 93%, white 93%);"
+                        title="140"
                     />
                 </div>
             </td>
@@ -244,8 +244,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 42.1%, white 42.1%);"
-                        title="8.33 bullets / second"
+                        style="background: linear-gradient(to right, darkgrey 94%, white 94%);"
+                        title="120"
                     />
                 </div>
             </td>
@@ -264,7 +264,7 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Price</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 10%, white 10%);" 
+                        style="background: linear-gradient(to right, darkgrey 11.2%, white 11.2%);" 
                         title="2500"
                     />
                 </div>
@@ -280,8 +280,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 42.1%, white 42.1%);"
-                        title="8.33 bullets / second"
+                        style="background: linear-gradient(to right, darkgrey 94%, white 94%);"
+                        title="120"
                     />
                 </div>
             </td>
@@ -300,7 +300,7 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Price</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 4.8%, white 4.8%);" 
+                        style="background: linear-gradient(to right, darkgrey 6%, white 6%);" 
                         title="1200"
                     />
                 </div>
@@ -316,8 +316,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 22.5%, white 22.5%);"
+                        title="1550"
                     />
                 </div>
             </td>
@@ -336,7 +336,7 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Price</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 5.4%, white 5.4%);" 
+                        style="background: linear-gradient(to right, darkgrey 12.8%, white 12.8%);" 
                         title="1350"
                     />
                 </div>
@@ -352,8 +352,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 42.5%, white 42.5%);"
+                        title="1150"
                     />
                 </div>
             </td>
@@ -388,8 +388,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 15.8%, white 15.8%);"
-                        title="5.88 bullets / second"
+                        style="background: linear-gradient(to right, darkgrey 85%, white 85%);"
+                        title="300"
                     />
                 </div>
             </td>
@@ -403,7 +403,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">assault rifle</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 12%, white 12%);" 
+                        title="3000"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 42.5%, white 42.5%);"
+                        title="680"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94.5%, white 94.5%);"
+                        title="110"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -414,7 +439,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">assault rifle</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 20.8%, white 20.8%);" 
+                        title="5200"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 43.75%, white 43.75%);"
+                        title="700"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94.5%, white 94.5%);"
+                        title="110"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -425,7 +475,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">assault rifle</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 25.6%, white 25.6%);" 
+                        title="6400"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 46.875%, white 46.875%);"
+                        title="750"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94%, white 94%);"
+                        title="120"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -436,7 +511,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">assault rifle</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 39.2%, white 39.2%);" 
+                        title="9800"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 46.875%, white 46.875%);"
+                        title="750"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94%, white 94%);"
+                        title="120"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -447,7 +547,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">assault rifle</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 48%, white 48%);" 
+                        title="12000"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 52.5%, white 52.5%);"
+                        title="840"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94.5%, white 94.5%);"
+                        title="110"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -458,7 +583,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">assault rifle</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 58%, white 58%);" 
+                        title="14500"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 55%, white 55%);"
+                        title="880"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 95.2%, white 95.2%);"
+                        title="96"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -469,7 +619,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">machine gun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 64%, white 64%);" 
+                        title="16000"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 59.375%, white 59.375%);"
+                        title="950"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94.5%, white 94.5%);"
+                        title="110"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -480,7 +655,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">machine gun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 72%, white 72%);" 
+                        title="18000"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 62.5%, white 62.5%);"
+                        title="1000"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 94.5%, white 94.5%);"
+                        title="110"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -491,7 +691,32 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                 <span class="weapon-type">automatic</span><br />
                 <span class="weapon-category">machine gun</span>
             </td>
-            <td></td>
+            <td>
+                <div class="price-box">
+                    <div class="comp-label">Price</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 100%, white 100%);" 
+                        title="25000"
+                    />
+                </div>
+                <div class="range-box">
+                    <div class="comp-label">Range</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 62.5%, white 62.5%);"
+                        title="1000"
+                    />
+                </div>
+                <div class="rate-of-fire-box">
+                    <div class="comp-label">Rate of fire</div>
+                    <div 
+                        class="comp-value" 
+                        style="background: linear-gradient(to right, darkgrey 99.5%, white 99.5%);"
+                        title="10"
+                    />
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -523,8 +748,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 25%, white 25%);"
+                        title="1500"
                     />
                 </div>
             </td>
@@ -559,8 +784,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 32.5%, white 32.5%);"
+                        title="1350"
                     />
                 </div>
             </td>
@@ -595,8 +820,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 40%, white 40%);"
+                        title="1200"
                     />
                 </div>
             </td>
@@ -631,8 +856,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 40%, white 40%);"
+                        title="1200"
                     />
                 </div>
             </td>
@@ -667,8 +892,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 55%, white 55%);"
+                        title="900"
                     />
                 </div>
             </td>
@@ -703,8 +928,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 62.5%, white 62.5%);"
+                        title="750"
                     />
                 </div>
             </td>
@@ -739,8 +964,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 10%, white 10%);"
+                        title="1800"
                     />
                 </div>
             </td>
@@ -775,8 +1000,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 50%, white 50%);"
+                        title="1000"
                     />
                 </div>
             </td>
@@ -811,8 +1036,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 0%, white 0%);"
+                        title="2000"
                     />
                 </div>
             </td>
@@ -846,8 +1071,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 50%, white 50%);"
+                        title="1000"
                     />
                 </div>
             </td>
@@ -881,8 +1106,8 @@ The weapons in Retro Carnage differ in several aspects that are important for th
                     <div class="comp-label">Rate of fire</div>
                     <div 
                         class="comp-value" 
-                        style="background: linear-gradient(to right, darkgrey 1%, white 1%);"
-                        title="Rate of fire depends on speed of user input"
+                        style="background: linear-gradient(to right, darkgrey 50%, white 50%);"
+                        title="1000"
                     />
                 </div>
             </td>
