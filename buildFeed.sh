@@ -44,10 +44,10 @@ do
 
     while IFS= read -r line
     do
-        if [[ "$lineNum" -eq 0 ]]
+        if [[ "$lineNum" -eq 5 ]]
         then
             articleTitle="${line:2}"
-        elif [[ "$lineNum" -eq 4 ]]
+        elif [[ "$lineNum" -eq 9 ]]
         then
             lineLen=${#line} 
             if [[ "$lineLen" -gt 240 ]]
